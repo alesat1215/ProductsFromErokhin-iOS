@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F424FFBE7E0094BAFE /* AppDelegate.swift */; };
 		D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */; };
-		D79520F924FFBE7E0094BAFE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F824FFBE7E0094BAFE /* FirstViewController.swift */; };
+		D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F824FFBE7E0094BAFE /* StartViewController.swift */; };
 		D79520FB24FFBE7E0094BAFE /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520FA24FFBE7E0094BAFE /* SecondViewController.swift */; };
 		D79520FE24FFBE7E0094BAFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D79520FC24FFBE7E0094BAFE /* Main.storyboard */; };
 		D795210124FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D79520FF24FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld */; };
@@ -40,7 +40,7 @@
 		D79520F124FFBE7E0094BAFE /* ProductsFromErokhin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductsFromErokhin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79520F424FFBE7E0094BAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D79520F824FFBE7E0094BAFE /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		D79520F824FFBE7E0094BAFE /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 		D79520FA24FFBE7E0094BAFE /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		D79520FD24FFBE7E0094BAFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D795210024FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProductsFromErokhin.xcdatamodel; sourceTree = "<group>"; };
@@ -103,9 +103,9 @@
 		D79520F324FFBE7E0094BAFE /* ProductsFromErokhin */ = {
 			isa = PBXGroup;
 			children = (
+				D795212924FFD0F50094BAFE /* Start */,
 				D79520F424FFBE7E0094BAFE /* AppDelegate.swift */,
 				D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */,
-				D79520F824FFBE7E0094BAFE /* FirstViewController.swift */,
 				D79520FA24FFBE7E0094BAFE /* SecondViewController.swift */,
 				D79520FC24FFBE7E0094BAFE /* Main.storyboard */,
 				D795210224FFBE7F0094BAFE /* Assets.xcassets */,
@@ -132,6 +132,14 @@
 				D795211D24FFBE800094BAFE /* Info.plist */,
 			);
 			path = ProductsFromErokhinUITests;
+			sourceTree = "<group>";
+		};
+		D795212924FFD0F50094BAFE /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				D79520F824FFBE7E0094BAFE /* StartViewController.swift */,
+			);
+			path = Start;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,7 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D79520FB24FFBE7E0094BAFE /* SecondViewController.swift in Sources */,
-				D79520F924FFBE7E0094BAFE /* FirstViewController.swift in Sources */,
+				D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */,
 				D795210124FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld in Sources */,
 				D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */,
 				D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */,

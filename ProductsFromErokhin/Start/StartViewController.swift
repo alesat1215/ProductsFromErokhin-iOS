@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  StartViewController.swift
 //  ProductsFromErokhin
 //
 //  Created by Alexander Satunin on 02.09.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
