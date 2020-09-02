@@ -45,14 +45,39 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vX-5L-XQO" userLabel="Products title container">
+                                                <rect key="frame" x="8" y="228" width="167" height="45"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F84-hf-PDl">
+                                                        <rect key="frame" x="8" y="8" width="151" height="29"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="F84-hf-PDl" firstAttribute="leading" secondItem="4vX-5L-XQO" secondAttribute="leading" constant="8" id="0Ts-LW-7hq"/>
+                                                    <constraint firstItem="F84-hf-PDl" firstAttribute="centerX" secondItem="4vX-5L-XQO" secondAttribute="centerX" id="CpO-c0-d4R"/>
+                                                    <constraint firstItem="F84-hf-PDl" firstAttribute="centerY" secondItem="4vX-5L-XQO" secondAttribute="centerY" id="U6o-MJ-ltM"/>
+                                                    <constraint firstItem="F84-hf-PDl" firstAttribute="top" secondItem="4vX-5L-XQO" secondAttribute="top" constant="8" id="Y0N-kF-qST"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="44w-gK-Qcu" firstAttribute="leading" secondItem="cSv-rU-gqT" secondAttribute="leading" constant="8" id="3hO-ty-b2s"/>
+                                            <constraint firstItem="4vX-5L-XQO" firstAttribute="leading" secondItem="cSv-rU-gqT" secondAttribute="leading" constant="8" id="Et4-T6-xnJ"/>
                                             <constraint firstItem="4Rx-RM-Qio" firstAttribute="leading" secondItem="44w-gK-Qcu" secondAttribute="leading" constant="8" id="G0E-wW-U9D"/>
                                             <constraint firstItem="4Rx-RM-Qio" firstAttribute="top" secondItem="44w-gK-Qcu" secondAttribute="top" constant="8" id="YeC-u9-A3Z"/>
                                             <constraint firstAttribute="trailing" secondItem="Ttu-aQ-jH5" secondAttribute="trailing" constant="16" id="aXT-zk-Wva"/>
                                             <constraint firstItem="Ttu-aQ-jH5" firstAttribute="top" secondItem="cSv-rU-gqT" secondAttribute="top" constant="8" id="bXI-en-e2H"/>
+                                            <constraint firstItem="4vX-5L-XQO" firstAttribute="top" secondItem="44w-gK-Qcu" secondAttribute="bottom" constant="8" id="c7u-Lb-uhC"/>
                                             <constraint firstAttribute="trailing" secondItem="44w-gK-Qcu" secondAttribute="trailing" constant="8" id="dll-AS-t3d"/>
                                             <constraint firstItem="Ttu-aQ-jH5" firstAttribute="leading" secondItem="cSv-rU-gqT" secondAttribute="leading" constant="16" id="mrY-1A-8ge"/>
                                             <constraint firstItem="44w-gK-Qcu" firstAttribute="trailing" secondItem="4Rx-RM-Qio" secondAttribute="trailing" constant="8" id="n30-Pw-aKV"/>
