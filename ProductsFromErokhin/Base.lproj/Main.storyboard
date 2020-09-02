@@ -82,7 +82,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="product" id="Jpl-Pv-8uh">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="product" id="Jpl-Pv-8uh" customClass="ProductCell" customModule="ProductsFromErokhin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="5.5" width="248.5" height="142.5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rUs-13-fKr">
@@ -164,6 +164,9 @@
                                                                 <constraint firstItem="yx9-HM-o34" firstAttribute="top" secondItem="rUs-13-fKr" secondAttribute="top" constant="8" id="sNa-pg-xlA"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="name" destination="yx9-HM-o34" id="6y0-Jw-fug"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
@@ -186,7 +189,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="product" id="0BG-3j-ti1">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="product" id="0BG-3j-ti1" customClass="ProductCell" customModule="ProductsFromErokhin" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="5.5" width="248.5" height="142.5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YTj-G6-62Z">
@@ -268,6 +271,9 @@
                                                                 <constraint firstItem="WaN-cs-86o" firstAttribute="top" secondItem="AiR-Vk-M8b" secondAttribute="top" id="rOO-sD-YAL"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="name" destination="csR-xm-uCd" id="TmA-gS-Xvo"/>
+                                                        </connections>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
@@ -318,6 +324,10 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Start" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="products" destination="0eP-fN-Gwy" id="Fr7-bT-lqY"/>
+                        <outlet property="products2" destination="x5d-Ol-Jwt" id="2ZM-cd-ZdA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
