@@ -83,27 +83,27 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="product" id="Jpl-Pv-8uh">
-                                                        <rect key="frame" x="0.0" y="5.5" width="328" height="142"/>
+                                                        <rect key="frame" x="0.0" y="5.5" width="248.5" height="142.5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rUs-13-fKr">
-                                                            <rect key="frame" x="0.0" y="0.0" width="328" height="142"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="248.5" height="142.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yx9-HM-o34">
-                                                                    <rect key="frame" x="8" y="8" width="312" height="21"/>
+                                                                    <rect key="frame" x="8" y="8" width="232.5" height="21.5"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vgo-Z4-li5">
-                                                                    <rect key="frame" x="8" y="37" width="120" height="97"/>
+                                                                    <rect key="frame" x="8" y="37.5" width="120" height="97"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="97" id="GE7-Uq-plz"/>
                                                                         <constraint firstAttribute="width" constant="120" id="lhe-qE-Kbh"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTI-LQ-6Bn" userLabel="Price Container">
-                                                                    <rect key="frame" x="136" y="37" width="104.5" height="40"/>
+                                                                    <rect key="frame" x="136" y="37.5" width="104.5" height="40"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 P/Kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7D-3h-2eX">
                                                                             <rect key="frame" x="8" y="8" width="88.5" height="24"/>
@@ -126,7 +126,7 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ipt-EI-0mZ">
-                                                                    <rect key="frame" x="136" y="110" width="72" height="24"/>
+                                                                    <rect key="frame" x="136" y="110.5" width="72" height="24"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvf-PG-D4t">
                                                                             <rect key="frame" x="0.0" y="0.0" width="25" height="24"/>
@@ -164,7 +164,6 @@
                                                                 <constraint firstItem="yx9-HM-o34" firstAttribute="top" secondItem="rUs-13-fKr" secondAttribute="top" constant="8" id="sNa-pg-xlA"/>
                                                             </constraints>
                                                         </collectionViewCellContentView>
-                                                        <size key="customSize" width="328" height="142"/>
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
