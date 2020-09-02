@@ -48,7 +48,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vX-5L-XQO" userLabel="Products title container">
                                                 <rect key="frame" x="8" y="228" width="167" height="45"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F84-hf-PDl">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F84-hf-PDl">
                                                         <rect key="frame" x="8" y="8" width="151" height="29"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                         <nil key="textColor"/>
@@ -79,6 +79,7 @@
                                             <constraint firstItem="Ttu-aQ-jH5" firstAttribute="top" secondItem="cSv-rU-gqT" secondAttribute="top" constant="8" id="bXI-en-e2H"/>
                                             <constraint firstItem="4vX-5L-XQO" firstAttribute="top" secondItem="44w-gK-Qcu" secondAttribute="bottom" constant="8" id="c7u-Lb-uhC"/>
                                             <constraint firstAttribute="trailing" secondItem="44w-gK-Qcu" secondAttribute="trailing" constant="8" id="dll-AS-t3d"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4vX-5L-XQO" secondAttribute="trailing" constant="8" id="kcW-NH-8Zt"/>
                                             <constraint firstItem="Ttu-aQ-jH5" firstAttribute="leading" secondItem="cSv-rU-gqT" secondAttribute="leading" constant="16" id="mrY-1A-8ge"/>
                                             <constraint firstItem="44w-gK-Qcu" firstAttribute="trailing" secondItem="4Rx-RM-Qio" secondAttribute="trailing" constant="8" id="n30-Pw-aKV"/>
                                             <constraint firstItem="44w-gK-Qcu" firstAttribute="top" secondItem="Ttu-aQ-jH5" secondAttribute="bottom" constant="8" id="t0e-8z-1cd"/>
