@@ -103,11 +103,11 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTI-LQ-6Bn" userLabel="Price Container">
-                                                                    <rect key="frame" x="136" y="37" width="55" height="36.5"/>
+                                                                    <rect key="frame" x="136" y="37" width="104.5" height="40"/>
                                                                     <subviews>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7D-3h-2eX">
-                                                                            <rect key="frame" x="8" y="8" width="39" height="20.5"/>
-                                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 P/Kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N7D-3h-2eX">
+                                                                            <rect key="frame" x="8" y="8" width="88.5" height="24"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -125,15 +125,41 @@
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ipt-EI-0mZ">
+                                                                    <rect key="frame" x="136" y="110" width="72" height="24"/>
+                                                                    <subviews>
+                                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xvf-PG-D4t">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="24"/>
+                                                                            <state key="normal" image="minus.circle.fill" catalog="system">
+                                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                            </state>
+                                                                        </button>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="abW-M7-Ntk">
+                                                                            <rect key="frame" x="30" y="0.0" width="12" height="24"/>
+                                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lpo-Rn-mQF">
+                                                                            <rect key="frame" x="47" y="0.0" width="25" height="24"/>
+                                                                            <state key="normal" image="plus.circle.fill" catalog="system">
+                                                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                            </state>
+                                                                        </button>
+                                                                    </subviews>
+                                                                </stackView>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="yx9-HM-o34" firstAttribute="leading" secondItem="rUs-13-fKr" secondAttribute="leading" constant="8" id="2Eb-gU-Baa"/>
+                                                                <constraint firstItem="Ipt-EI-0mZ" firstAttribute="leading" secondItem="vgo-Z4-li5" secondAttribute="trailing" constant="8" id="5ys-ri-aIC"/>
+                                                                <constraint firstItem="Ipt-EI-0mZ" firstAttribute="bottom" secondItem="vgo-Z4-li5" secondAttribute="bottom" id="BYH-Ca-gZk"/>
                                                                 <constraint firstItem="vgo-Z4-li5" firstAttribute="top" secondItem="yx9-HM-o34" secondAttribute="bottom" constant="8" id="EhM-o7-4gt"/>
                                                                 <constraint firstItem="vgo-Z4-li5" firstAttribute="leading" secondItem="rUs-13-fKr" secondAttribute="leading" constant="8" id="G3e-CL-OY3"/>
                                                                 <constraint firstAttribute="bottom" secondItem="vgo-Z4-li5" secondAttribute="bottom" constant="8" id="JeK-Nb-x7h"/>
                                                                 <constraint firstAttribute="trailing" secondItem="yx9-HM-o34" secondAttribute="trailing" constant="8" id="MSY-GL-5Ng"/>
                                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cTI-LQ-6Bn" secondAttribute="trailing" constant="8" id="Uxw-09-Gob"/>
                                                                 <constraint firstItem="cTI-LQ-6Bn" firstAttribute="top" secondItem="vgo-Z4-li5" secondAttribute="top" id="X9b-e1-gQa"/>
+                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ipt-EI-0mZ" secondAttribute="trailing" constant="8" id="Yj1-ug-gkA"/>
                                                                 <constraint firstItem="cTI-LQ-6Bn" firstAttribute="leading" secondItem="vgo-Z4-li5" secondAttribute="trailing" constant="8" id="bsF-4i-RQg"/>
                                                                 <constraint firstItem="yx9-HM-o34" firstAttribute="top" secondItem="rUs-13-fKr" secondAttribute="top" constant="8" id="sNa-pg-xlA"/>
                                                             </constraints>
@@ -244,6 +270,8 @@
     </scenes>
     <resources>
         <image name="first" width="30" height="30"/>
+        <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>
