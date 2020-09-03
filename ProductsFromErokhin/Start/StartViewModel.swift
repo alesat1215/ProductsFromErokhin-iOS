@@ -10,6 +10,17 @@ import Foundation
 import RxSwift
 
 class StartViewModel {
+    
+    private var repository: ProductsRepository?
+    
+    init(repository: ProductsRepository?) {
+        self.repository = repository
+    }
+    
     let products = Observable.just(["Product1", "Product2", "Product3", "Product4"])
     let products2 = Observable.just(["Product5", "Product6", "Product7", "Product8"])
+    
+    func productsRemote() -> Observable<String>? {
+        repository?.productsAndGroups()
+    }
 }

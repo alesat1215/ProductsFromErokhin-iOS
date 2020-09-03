@@ -13,6 +13,9 @@
 		D73C7DB92500FFC3007062D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D73C7DB82500FFC3007062D9 /* GoogleService-Info.plist */; };
 		D73C7DBE2501060F007062D9 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C7DBD2501060F007062D9 /* StartViewModel.swift */; };
 		D73C7DC12501097E007062D9 /* SwinjectStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C7DC02501097E007062D9 /* SwinjectStoryboard.swift */; };
+		D7877B5E25010F7100244B81 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5D25010F7100244B81 /* Products.swift */; };
+		D7877B602501168700244B81 /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5F2501168700244B81 /* ProductsRepository.swift */; };
+		D7877B632501182200244B81 /* RemoteConfigRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B622501182200244B81 /* RemoteConfigRepository.swift */; };
 		D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F424FFBE7E0094BAFE /* AppDelegate.swift */; };
 		D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */; };
 		D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F824FFBE7E0094BAFE /* StartViewController.swift */; };
@@ -58,6 +61,9 @@
 		D73C7DB82500FFC3007062D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D73C7DBD2501060F007062D9 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		D73C7DC02501097E007062D9 /* SwinjectStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectStoryboard.swift; sourceTree = "<group>"; };
+		D7877B5D25010F7100244B81 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
+		D7877B5F2501168700244B81 /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
+		D7877B622501182200244B81 /* RemoteConfigRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigRepository.swift; sourceTree = "<group>"; };
 		D79520F124FFBE7E0094BAFE /* ProductsFromErokhin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductsFromErokhin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79520F424FFBE7E0094BAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +138,23 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
+		D7877B5C25010F4900244B81 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D7877B5D25010F7100244B81 /* Products.swift */,
+				D7877B5F2501168700244B81 /* ProductsRepository.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D7877B612501180F00244B81 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D7877B622501182200244B81 /* RemoteConfigRepository.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		D79520E824FFBE7E0094BAFE = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +180,8 @@
 		D79520F324FFBE7E0094BAFE /* ProductsFromErokhin */ = {
 			isa = PBXGroup;
 			children = (
+				D7877B612501180F00244B81 /* Util */,
+				D7877B5C25010F4900244B81 /* Data */,
 				D73C7DBF25010953007062D9 /* DI */,
 				D795212924FFD0F50094BAFE /* Start */,
 				D79520F424FFBE7E0094BAFE /* AppDelegate.swift */,
@@ -461,11 +486,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7877B602501168700244B81 /* ProductsRepository.swift in Sources */,
+				D7877B632501182200244B81 /* RemoteConfigRepository.swift in Sources */,
 				D79520FB24FFBE7E0094BAFE /* SecondViewController.swift in Sources */,
 				D73C7DBE2501060F007062D9 /* StartViewModel.swift in Sources */,
 				D73C7DC12501097E007062D9 /* SwinjectStoryboard.swift in Sources */,
 				D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */,
 				D795210124FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld in Sources */,
+				D7877B5E25010F7100244B81 /* Products.swift in Sources */,
 				D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */,
 				D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */,
 			);

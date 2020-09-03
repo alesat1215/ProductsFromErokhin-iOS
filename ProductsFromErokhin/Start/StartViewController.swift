@@ -36,6 +36,13 @@ class StartViewController: UIViewController {
             .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
                 cell.name.text = model
         }.disposed(by: dispose)
+        
+        viewModel?.productsRemote()?.subscribe(
+            onNext: {
+                print($0)
+        }, onError: {
+            print($0)
+        }).disposed(by: dispose)
     }
 
 }
