@@ -165,30 +165,30 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="product" id="0BG-3j-ti1" customClass="ProductCell" customModule="ProductsFromErokhin" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="4.5" width="328" height="166"/>
+                                                        <rect key="frame" x="0.0" y="8.5" width="272.5" height="158.5"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YTj-G6-62Z">
-                                                            <rect key="frame" x="0.0" y="0.0" width="328" height="166"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="272.5" height="158.5"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="by7-vt-Ww2">
-                                                                    <rect key="frame" x="8" y="8" width="312" height="150"/>
+                                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="by7-vt-Ww2">
+                                                                    <rect key="frame" x="8" y="8" width="256.5" height="142.5"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csR-xm-uCd">
-                                                                            <rect key="frame" x="8" y="8" width="296" height="29"/>
+                                                                            <rect key="frame" x="16" y="8" width="232.5" height="21.5"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                             <nil key="textColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AiR-Vk-M8b">
-                                                                            <rect key="frame" x="8" y="45" width="120" height="97"/>
+                                                                            <rect key="frame" x="16" y="37.5" width="120" height="97"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="97" id="IzD-To-pv5"/>
                                                                                 <constraint firstAttribute="width" constant="120" id="p84-er-DEN"/>
                                                                             </constraints>
                                                                         </imageView>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaN-cs-86o" userLabel="Price Container">
-                                                                            <rect key="frame" x="136" y="45" width="104.5" height="40"/>
+                                                                            <rect key="frame" x="144" y="37.5" width="104.5" height="40"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 P/Kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abe-7v-o4a">
                                                                                     <rect key="frame" x="8" y="8" width="88.5" height="24"/>
@@ -211,7 +211,7 @@
                                                                             </userDefinedRuntimeAttributes>
                                                                         </view>
                                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8fn-iQ-bu2">
-                                                                            <rect key="frame" x="136" y="116" width="72" height="24"/>
+                                                                            <rect key="frame" x="144" y="108.5" width="72" height="24"/>
                                                                             <subviews>
                                                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-SW-1Bf">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="25" height="24"/>
@@ -233,18 +233,28 @@
                                                                                 </button>
                                                                             </subviews>
                                                                         </stackView>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WlK-dv-xbR" userLabel="In Cart">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="8" height="142.5"/>
+                                                                            <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="8" id="bAj-mh-OLi"/>
+                                                                            </constraints>
+                                                                        </view>
                                                                     </subviews>
                                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="csR-xm-uCd" secondAttribute="trailing" constant="8" id="17T-1H-Avn"/>
                                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WaN-cs-86o" secondAttribute="trailing" constant="8" id="2mc-lR-fAP"/>
                                                                         <constraint firstItem="8fn-iQ-bu2" firstAttribute="leading" secondItem="AiR-Vk-M8b" secondAttribute="trailing" constant="8" id="4yM-Lo-K5G"/>
+                                                                        <constraint firstItem="WlK-dv-xbR" firstAttribute="leading" secondItem="by7-vt-Ww2" secondAttribute="leading" id="7k9-82-GrL"/>
                                                                         <constraint firstItem="WaN-cs-86o" firstAttribute="firstBaseline" secondItem="AiR-Vk-M8b" secondAttribute="firstBaseline" id="7nH-h0-xEQ"/>
-                                                                        <constraint firstItem="csR-xm-uCd" firstAttribute="leading" secondItem="by7-vt-Ww2" secondAttribute="leading" constant="8" id="IPn-kr-eqN"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="WlK-dv-xbR" secondAttribute="bottom" id="C2i-Ii-OF5"/>
+                                                                        <constraint firstItem="csR-xm-uCd" firstAttribute="leading" secondItem="WlK-dv-xbR" secondAttribute="trailing" constant="8" id="IPn-kr-eqN"/>
                                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8fn-iQ-bu2" secondAttribute="trailing" constant="8" id="Kpb-uE-7xh"/>
                                                                         <constraint firstAttribute="bottom" secondItem="AiR-Vk-M8b" secondAttribute="bottom" constant="8" id="Q7T-mz-aTf"/>
                                                                         <constraint firstItem="csR-xm-uCd" firstAttribute="top" secondItem="by7-vt-Ww2" secondAttribute="top" constant="8" id="S1h-l8-6ud"/>
-                                                                        <constraint firstItem="AiR-Vk-M8b" firstAttribute="leading" secondItem="by7-vt-Ww2" secondAttribute="leading" constant="8" id="YyO-rh-Ydp"/>
+                                                                        <constraint firstItem="AiR-Vk-M8b" firstAttribute="leading" secondItem="WlK-dv-xbR" secondAttribute="trailing" constant="8" id="YyO-rh-Ydp"/>
+                                                                        <constraint firstItem="WlK-dv-xbR" firstAttribute="top" secondItem="by7-vt-Ww2" secondAttribute="top" id="gJ7-GS-wua"/>
                                                                         <constraint firstItem="WaN-cs-86o" firstAttribute="leading" secondItem="AiR-Vk-M8b" secondAttribute="trailing" constant="8" id="ipD-cv-SNX"/>
                                                                         <constraint firstItem="AiR-Vk-M8b" firstAttribute="top" secondItem="csR-xm-uCd" secondAttribute="bottom" constant="8" id="nHl-g4-cdd"/>
                                                                         <constraint firstItem="AiR-Vk-M8b" firstAttribute="baseline" secondItem="8fn-iQ-bu2" secondAttribute="firstBaseline" constant="8" symbolType="layoutAnchor" id="oKi-9M-SUO"/>
@@ -252,18 +262,6 @@
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                             <integer key="value" value="10"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowCollor">
-                                                                            <color key="value" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                                                                            <integer key="value" value="2"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                                                            <real key="value" value="0.5"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                                                            <size key="value" width="0.0" height="1"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
                                                                 </view>
@@ -274,8 +272,21 @@
                                                                 <constraint firstAttribute="trailing" secondItem="by7-vt-Ww2" secondAttribute="trailing" constant="8" id="7CC-5i-mYs"/>
                                                                 <constraint firstAttribute="bottom" secondItem="by7-vt-Ww2" secondAttribute="bottom" constant="8" id="HLe-0B-VcU"/>
                                                             </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="layer.shadowCollor">
+                                                                    <color key="value" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                                                    <integer key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                                                    <real key="value" value="0.5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                                                    <size key="value" width="0.0" height="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                         </collectionViewCellContentView>
-                                                        <size key="customSize" width="328" height="166"/>
                                                         <connections>
                                                             <outlet property="name" destination="csR-xm-uCd" id="TmA-gS-Xvo"/>
                                                         </connections>
