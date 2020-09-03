@@ -17,7 +17,7 @@ class ProductsRepository {
     }
     
     func productsAndGroups() -> Observable<String>? {
-        remoteConfigRepository?.fetchAndActivate()?.map { [weak self] in
+        remoteConfigRepository?.fetchAndActivate()?.map { [weak self] _ in
             self?.remoteConfigRepository?.remoteConfig?["products"].stringValue ?? ""
         }
     }

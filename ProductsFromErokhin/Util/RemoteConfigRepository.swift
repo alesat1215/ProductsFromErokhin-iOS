@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseRemoteConfig
 import RxSwift
+import RxRelay
 
 class RemoteConfigRepository {
     let remoteConfig: RemoteConfig? // di
@@ -20,34 +21,34 @@ class RemoteConfigRepository {
         self.remoteConfigComplection = remoteConfigComplection
     }
     
-    func fetchAndActivate() -> Observable<Void>? {
+    func fetchAndActivate() -> Observable<Result<Void, Error>>? {
         remoteConfig?.fetchAndActivate(completionHandler: remoteConfigComplection?.completionHandler(status:error:))
         return remoteConfigComplection?.result()
     }
 }
 
 class RemoteConfigComplection {
-    private let _result = PublishSubject<Void>()
+    private let _result = PublishRelay<Result<Void, Error>>()
     
     func completionHandler(status: RemoteConfigFetchAndActivateStatus, error: Error?) -> Void {
         switch status {
         case .error:
             let error = error ?? RemoteConfigError.unknown
-            _result.onError(error)
+            _result.accept(.failure(error))
             print("Remote config fetch error: \(error.localizedDescription)")
         case .successFetchedFromRemote:
-            _result.onNext(())
+            _result.accept(.success(()))
             print("Remote config fetched data from remote")
         case .successUsingPreFetchedData:
-            _result.onNext(())
+            _result.accept(.success(()))
             print("Remote config using prefetched data")
         @unknown default:
             print("Remote config unknown status")
         }
     }
     
-    func result() -> Observable<Void> {
-        _result
+    func result() -> Observable<Result<Void, Error>> {
+        _result.asObservable()
     }
 }
 
