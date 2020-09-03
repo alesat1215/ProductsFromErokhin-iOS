@@ -11,6 +11,8 @@
 		C1665CE1F28CEF08B3D40819 /* Pods_ProductsFromErokhin_ProductsFromErokhinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427E07B59CB8A018E86DB397 /* Pods_ProductsFromErokhin_ProductsFromErokhinUITests.framework */; };
 		C39DE96526D98FB517D85559 /* Pods_ProductsFromErokhinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */; };
 		D73C7DB92500FFC3007062D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D73C7DB82500FFC3007062D9 /* GoogleService-Info.plist */; };
+		D73C7DBE2501060F007062D9 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C7DBD2501060F007062D9 /* StartViewModel.swift */; };
+		D73C7DC12501097E007062D9 /* SwinjectStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C7DC02501097E007062D9 /* SwinjectStoryboard.swift */; };
 		D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F424FFBE7E0094BAFE /* AppDelegate.swift */; };
 		D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */; };
 		D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F824FFBE7E0094BAFE /* StartViewController.swift */; };
@@ -54,6 +56,8 @@
 		8E2749B83463305ADEB00F9A /* Pods-ProductsFromErokhin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin/Pods-ProductsFromErokhin.debug.xcconfig"; sourceTree = "<group>"; };
 		B288AC8441DFA8BD9E8EF93C /* Pods-ProductsFromErokhinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhinTests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhinTests/Pods-ProductsFromErokhinTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D73C7DB82500FFC3007062D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D73C7DBD2501060F007062D9 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
+		D73C7DC02501097E007062D9 /* SwinjectStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectStoryboard.swift; sourceTree = "<group>"; };
 		D79520F124FFBE7E0094BAFE /* ProductsFromErokhin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductsFromErokhin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79520F424FFBE7E0094BAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -120,6 +124,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D73C7DBF25010953007062D9 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				D73C7DC02501097E007062D9 /* SwinjectStoryboard.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
 		D79520E824FFBE7E0094BAFE = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +157,7 @@
 		D79520F324FFBE7E0094BAFE /* ProductsFromErokhin */ = {
 			isa = PBXGroup;
 			children = (
+				D73C7DBF25010953007062D9 /* DI */,
 				D795212924FFD0F50094BAFE /* Start */,
 				D79520F424FFBE7E0094BAFE /* AppDelegate.swift */,
 				D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */,
@@ -181,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				D79520F824FFBE7E0094BAFE /* StartViewController.swift */,
+				D73C7DBD2501060F007062D9 /* StartViewModel.swift */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -448,6 +462,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D79520FB24FFBE7E0094BAFE /* SecondViewController.swift in Sources */,
+				D73C7DBE2501060F007062D9 /* StartViewModel.swift in Sources */,
+				D73C7DC12501097E007062D9 /* SwinjectStoryboard.swift in Sources */,
 				D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */,
 				D795210124FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld in Sources */,
 				D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */,

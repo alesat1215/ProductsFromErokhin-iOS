@@ -12,8 +12,12 @@ import RxCocoa
 
 class StartViewController: UIViewController {
 
+    // MARK: - Outlets
     @IBOutlet weak var products: UICollectionView!
     @IBOutlet weak var products2: UICollectionView!
+    
+    var viewModel: StartViewModel? // di
+    
     private let dispose = DisposeBag()
     
     override func viewDidLoad() {
@@ -23,14 +27,24 @@ class StartViewController: UIViewController {
     }
     
     private func bind() {
-        let data = Observable.just(["Product1", "Product2", "Product3", "Product4"])
-        data.bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
-            cell.name.text = model
+//        let data = Observable.just(["Product1", "Product2", "Product3", "Product4"])
+//        data.bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
+//            cell.name.text = model
+//        }.disposed(by: dispose)
+//        
+//        let data2 = Observable.just(["Product5", "Product6", "Product7", "Product8"])
+//        data2.bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
+//            cell.name.text = model
+//        }.disposed(by: dispose)
+        
+        viewModel?.products
+            .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
+                cell.name.text = model
         }.disposed(by: dispose)
         
-        let data2 = Observable.just(["Product5", "Product6", "Product7", "Product8"])
-        data2.bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
-            cell.name.text = model
+        viewModel?.products2
+            .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
+                cell.name.text = model
         }.disposed(by: dispose)
     }
 
