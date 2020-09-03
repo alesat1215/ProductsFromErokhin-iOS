@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A2FA24AC0B9842CD1C283E8 /* Pods_ProductsFromErokhin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2628458932AF1D5D6EFD211C /* Pods_ProductsFromErokhin.framework */; };
+		C1665CE1F28CEF08B3D40819 /* Pods_ProductsFromErokhin_ProductsFromErokhinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427E07B59CB8A018E86DB397 /* Pods_ProductsFromErokhin_ProductsFromErokhinUITests.framework */; };
+		C39DE96526D98FB517D85559 /* Pods_ProductsFromErokhinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */; };
+		D73C7DB72500F269007062D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D73C7DB62500F269007062D9 /* GoogleService-Info.plist */; };
 		D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F424FFBE7E0094BAFE /* AppDelegate.swift */; };
 		D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */; };
 		D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F824FFBE7E0094BAFE /* StartViewController.swift */; };
@@ -17,11 +21,11 @@
 		D795210624FFBE7F0094BAFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D795210424FFBE7F0094BAFE /* LaunchScreen.storyboard */; };
 		D795211124FFBE800094BAFE /* ProductsFromErokhinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795211024FFBE800094BAFE /* ProductsFromErokhinTests.swift */; };
 		D795211C24FFBE800094BAFE /* ProductsFromErokhinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795211B24FFBE800094BAFE /* ProductsFromErokhinUITests.swift */; };
-		D795214C25002BB80094BAFE /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D795214B25002BB80094BAFE /* RxSwift */; };
-		D795214E25002BB80094BAFE /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = D795214D25002BB80094BAFE /* RxTest */; };
-		D795215025002BB80094BAFE /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = D795214F25002BB80094BAFE /* RxRelay */; };
-		D795215225002BB80094BAFE /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D795215125002BB80094BAFE /* RxCocoa */; };
-		D795215425002BB80094BAFE /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = D795215325002BB80094BAFE /* RxBlocking */; };
+		D795214C25002BB80094BAFE /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D795214B25002BB80094BAFE /* SwiftPackageProductDependency */; };
+		D795214E25002BB80094BAFE /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D795214D25002BB80094BAFE /* SwiftPackageProductDependency */; };
+		D795215025002BB80094BAFE /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D795214F25002BB80094BAFE /* SwiftPackageProductDependency */; };
+		D795215225002BB80094BAFE /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D795215125002BB80094BAFE /* SwiftPackageProductDependency */; };
+		D795215425002BB80094BAFE /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D795215325002BB80094BAFE /* SwiftPackageProductDependency */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +46,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F2C0E894169881A842C2B36 /* Pods-ProductsFromErokhin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin.release.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin/Pods-ProductsFromErokhin.release.xcconfig"; sourceTree = "<group>"; };
+		139C2E67474E7B54D03525AE /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.release.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2628458932AF1D5D6EFD211C /* Pods_ProductsFromErokhin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		427E07B59CB8A018E86DB397 /* Pods_ProductsFromErokhin_ProductsFromErokhinUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhin_ProductsFromErokhinUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		691C56139FFEE6B842238CDC /* Pods-ProductsFromErokhinTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhinTests.release.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhinTests/Pods-ProductsFromErokhinTests.release.xcconfig"; sourceTree = "<group>"; };
+		8E2749B83463305ADEB00F9A /* Pods-ProductsFromErokhin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin/Pods-ProductsFromErokhin.debug.xcconfig"; sourceTree = "<group>"; };
+		B288AC8441DFA8BD9E8EF93C /* Pods-ProductsFromErokhinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhinTests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhinTests/Pods-ProductsFromErokhinTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D73C7DB62500F269007062D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D79520F124FFBE7E0094BAFE /* ProductsFromErokhin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductsFromErokhin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79520F424FFBE7E0094BAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +70,8 @@
 		D795211724FFBE800094BAFE /* ProductsFromErokhinUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProductsFromErokhinUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D795211B24FFBE800094BAFE /* ProductsFromErokhinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsFromErokhinUITests.swift; sourceTree = "<group>"; };
 		D795211D24FFBE800094BAFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +79,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D795215225002BB80094BAFE /* RxCocoa in Frameworks */,
-				D795215025002BB80094BAFE /* RxRelay in Frameworks */,
-				D795214C25002BB80094BAFE /* RxSwift in Frameworks */,
+				D795215225002BB80094BAFE /* BuildFile in Frameworks */,
+				D795215025002BB80094BAFE /* BuildFile in Frameworks */,
+				D795214C25002BB80094BAFE /* BuildFile in Frameworks */,
+				9A2FA24AC0B9842CD1C283E8 /* Pods_ProductsFromErokhin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,8 +90,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D795214E25002BB80094BAFE /* RxTest in Frameworks */,
-				D795215425002BB80094BAFE /* RxBlocking in Frameworks */,
+				D795214E25002BB80094BAFE /* BuildFile in Frameworks */,
+				D795215425002BB80094BAFE /* BuildFile in Frameworks */,
+				C39DE96526D98FB517D85559 /* Pods_ProductsFromErokhinTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,12 +100,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1665CE1F28CEF08B3D40819 /* Pods_ProductsFromErokhin_ProductsFromErokhinUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2F0557216AB5646D98F6A7A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E2749B83463305ADEB00F9A /* Pods-ProductsFromErokhin.debug.xcconfig */,
+				0F2C0E894169881A842C2B36 /* Pods-ProductsFromErokhin.release.xcconfig */,
+				F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */,
+				139C2E67474E7B54D03525AE /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.release.xcconfig */,
+				B288AC8441DFA8BD9E8EF93C /* Pods-ProductsFromErokhinTests.debug.xcconfig */,
+				691C56139FFEE6B842238CDC /* Pods-ProductsFromErokhinTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		D79520E824FFBE7E0094BAFE = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +128,8 @@
 				D795210F24FFBE800094BAFE /* ProductsFromErokhinTests */,
 				D795211A24FFBE800094BAFE /* ProductsFromErokhinUITests */,
 				D79520F224FFBE7E0094BAFE /* Products */,
+				C2F0557216AB5646D98F6A7A /* Pods */,
+				F4D9130A77E7626254C8A195 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -121,6 +154,7 @@
 				D795210224FFBE7F0094BAFE /* Assets.xcassets */,
 				D795210424FFBE7F0094BAFE /* LaunchScreen.storyboard */,
 				D795210724FFBE7F0094BAFE /* Info.plist */,
+				D73C7DB62500F269007062D9 /* GoogleService-Info.plist */,
 				D79520FF24FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld */,
 			);
 			path = ProductsFromErokhin;
@@ -152,6 +186,16 @@
 			path = Start;
 			sourceTree = "<group>";
 		};
+		F4D9130A77E7626254C8A195 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2628458932AF1D5D6EFD211C /* Pods_ProductsFromErokhin.framework */,
+				427E07B59CB8A018E86DB397 /* Pods_ProductsFromErokhin_ProductsFromErokhinUITests.framework */,
+				ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,9 +203,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D795212024FFBE800094BAFE /* Build configuration list for PBXNativeTarget "ProductsFromErokhin" */;
 			buildPhases = (
+				252FE1BFBD1F3D1D6CB4448B /* [CP] Check Pods Manifest.lock */,
 				D79520ED24FFBE7E0094BAFE /* Sources */,
 				D79520EE24FFBE7E0094BAFE /* Frameworks */,
 				D79520EF24FFBE7E0094BAFE /* Resources */,
+				19A6A27EBEBDC25A00D720AC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,9 +215,9 @@
 			);
 			name = ProductsFromErokhin;
 			packageProductDependencies = (
-				D795214B25002BB80094BAFE /* RxSwift */,
-				D795214F25002BB80094BAFE /* RxRelay */,
-				D795215125002BB80094BAFE /* RxCocoa */,
+				D795214B25002BB80094BAFE /* SwiftPackageProductDependency */,
+				D795214F25002BB80094BAFE /* SwiftPackageProductDependency */,
+				D795215125002BB80094BAFE /* SwiftPackageProductDependency */,
 			);
 			productName = ProductsFromErokhin;
 			productReference = D79520F124FFBE7E0094BAFE /* ProductsFromErokhin.app */;
@@ -181,6 +227,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D795212324FFBE800094BAFE /* Build configuration list for PBXNativeTarget "ProductsFromErokhinTests" */;
 			buildPhases = (
+				89F813DACE29B2E09FC74CE8 /* [CP] Check Pods Manifest.lock */,
 				D795210824FFBE800094BAFE /* Sources */,
 				D795210924FFBE800094BAFE /* Frameworks */,
 				D795210A24FFBE800094BAFE /* Resources */,
@@ -192,8 +239,8 @@
 			);
 			name = ProductsFromErokhinTests;
 			packageProductDependencies = (
-				D795214D25002BB80094BAFE /* RxTest */,
-				D795215325002BB80094BAFE /* RxBlocking */,
+				D795214D25002BB80094BAFE /* SwiftPackageProductDependency */,
+				D795215325002BB80094BAFE /* SwiftPackageProductDependency */,
 			);
 			productName = ProductsFromErokhinTests;
 			productReference = D795210C24FFBE800094BAFE /* ProductsFromErokhinTests.xctest */;
@@ -203,9 +250,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D795212624FFBE800094BAFE /* Build configuration list for PBXNativeTarget "ProductsFromErokhinUITests" */;
 			buildPhases = (
+				DEB1DE0F0B76E733841C0E20 /* [CP] Check Pods Manifest.lock */,
 				D795211324FFBE800094BAFE /* Sources */,
 				D795211424FFBE800094BAFE /* Frameworks */,
 				D795211524FFBE800094BAFE /* Resources */,
+				F3E36B93ACB53E35C37D1E7E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -250,7 +299,7 @@
 			);
 			mainGroup = D79520E824FFBE7E0094BAFE;
 			packageReferences = (
-				D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */,
+				D795214A25002BB80094BAFE /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = D79520F224FFBE7E0094BAFE /* Products */;
 			projectDirPath = "";
@@ -269,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D795210624FFBE7F0094BAFE /* LaunchScreen.storyboard in Resources */,
+				D73C7DB72500F269007062D9 /* GoogleService-Info.plist in Resources */,
 				D795210324FFBE7F0094BAFE /* Assets.xcassets in Resources */,
 				D79520FE24FFBE7E0094BAFE /* Main.storyboard in Resources */,
 			);
@@ -289,6 +339,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		19A6A27EBEBDC25A00D720AC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProductsFromErokhin/Pods-ProductsFromErokhin-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProductsFromErokhin/Pods-ProductsFromErokhin-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProductsFromErokhin/Pods-ProductsFromErokhin-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		252FE1BFBD1F3D1D6CB4448B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProductsFromErokhin-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89F813DACE29B2E09FC74CE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProductsFromErokhinTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DEB1DE0F0B76E733841C0E20 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ProductsFromErokhin-ProductsFromErokhinUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F3E36B93ACB53E35C37D1E7E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D79520ED24FFBE7E0094BAFE /* Sources */ = {
@@ -470,6 +623,7 @@
 		};
 		D795212124FFBE800094BAFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E2749B83463305ADEB00F9A /* Pods-ProductsFromErokhin.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -487,6 +641,7 @@
 		};
 		D795212224FFBE800094BAFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0F2C0E894169881A842C2B36 /* Pods-ProductsFromErokhin.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -504,6 +659,7 @@
 		};
 		D795212424FFBE800094BAFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B288AC8441DFA8BD9E8EF93C /* Pods-ProductsFromErokhinTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -525,6 +681,7 @@
 		};
 		D795212524FFBE800094BAFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 691C56139FFEE6B842238CDC /* Pods-ProductsFromErokhinTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -546,6 +703,7 @@
 		};
 		D795212724FFBE800094BAFE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -565,6 +723,7 @@
 		};
 		D795212824FFBE800094BAFE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 139C2E67474E7B54D03525AE /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -624,7 +783,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+		D795214A25002BB80094BAFE /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
@@ -635,29 +794,29 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D795214B25002BB80094BAFE /* RxSwift */ = {
+		D795214B25002BB80094BAFE /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = D795214A25002BB80094BAFE /* RemoteSwiftPackageReference */;
 			productName = RxSwift;
 		};
-		D795214D25002BB80094BAFE /* RxTest */ = {
+		D795214D25002BB80094BAFE /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = D795214A25002BB80094BAFE /* RemoteSwiftPackageReference */;
 			productName = RxTest;
 		};
-		D795214F25002BB80094BAFE /* RxRelay */ = {
+		D795214F25002BB80094BAFE /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = D795214A25002BB80094BAFE /* RemoteSwiftPackageReference */;
 			productName = RxRelay;
 		};
-		D795215125002BB80094BAFE /* RxCocoa */ = {
+		D795215125002BB80094BAFE /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = D795214A25002BB80094BAFE /* RemoteSwiftPackageReference */;
 			productName = RxCocoa;
 		};
-		D795215325002BB80094BAFE /* RxBlocking */ = {
+		D795215325002BB80094BAFE /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */;
+			package = D795214A25002BB80094BAFE /* RemoteSwiftPackageReference */;
 			productName = RxBlocking;
 		};
 /* End XCSwiftPackageProductDependency section */

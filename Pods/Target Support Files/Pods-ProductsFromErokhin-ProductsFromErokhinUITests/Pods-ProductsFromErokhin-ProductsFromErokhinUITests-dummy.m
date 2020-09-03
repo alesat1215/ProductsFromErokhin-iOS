@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_ProductsFromErokhin_ProductsFromErokhinUITests : NSObject
+@end
+@implementation PodsDummy_Pods_ProductsFromErokhin_ProductsFromErokhinUITests
+@end
