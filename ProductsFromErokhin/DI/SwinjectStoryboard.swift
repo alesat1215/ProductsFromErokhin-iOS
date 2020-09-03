@@ -11,6 +11,7 @@ import SwinjectStoryboard
 
 extension SwinjectStoryboard {
     public static func setup() {
+        // MARK: - Start
         defaultContainer.storyboardInitCompleted(StartViewController.self) { r, c in
             c.viewModel = r.resolve(StartViewModel.self)
         }
