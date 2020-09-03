@@ -8,6 +8,8 @@ target 'ProductsFromErokhin' do
   # Pods for ProductsFromErokhin
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'
+  pod 'Swinject'
+  pod 'SwinjectStoryboard', :git => 'https://github.com/Swinject/SwinjectStoryboard.git', :branch => 'master'
 
   target 'ProductsFromErokhinTests' do
     inherit! :search_paths

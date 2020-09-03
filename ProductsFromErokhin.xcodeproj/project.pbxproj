@@ -704,7 +704,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ProductsFromErokhinUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -724,7 +724,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 139C2E67474E7B54D03525AE /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ProductsFromErokhinUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
