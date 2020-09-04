@@ -10,11 +10,12 @@ import Foundation
 import RxSwift
 
 class ProductsRepository {
-    private let remoteConfigRepository: RemoteConfigRepository?
-    private let decoder = JSONDecoder()
+    private let remoteConfigRepository: RemoteConfigRepository? // di
+    private let decoder: JSONDecoder? // di
     
-    init(remoteConfigRepository: RemoteConfigRepository?) {
+    init(remoteConfigRepository: RemoteConfigRepository?, decoder: JSONDecoder?) {
         self.remoteConfigRepository = remoteConfigRepository
+        self.decoder = decoder
     }
     /** Get data from remote confic & decode it from JSON */
     func productsAndGroups() -> Observable<[Group]>? {
@@ -23,12 +24,24 @@ class ProductsRepository {
             case .failure(let error):
                   throw error
             default:
-                let products = try self?.decoder.decode(
+                guard let self = self else {
+                    return []
+                }
+                // Check di
+                guard let decoder = self.decoder,
+                    let remoteConfig = self.remoteConfigRepository?.remoteConfig
+                    else { throw AppError.productsRepositoryDI }
+                // Decode JSON
+                let products = try decoder.decode(
                     [Group].self,
-                    from: (self?.remoteConfigRepository?.remoteConfig?["products"].dataValue)!)
-                return products ?? []
+                    from: remoteConfig["products"].dataValue)
+                return products
             }
             
         }
     }
+}
+
+extension AppError {
+    static let productsRepositoryDI: AppError = .error("productsRepositoryDI")
 }

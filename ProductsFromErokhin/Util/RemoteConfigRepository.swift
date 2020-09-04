@@ -33,7 +33,7 @@ class RemoteConfigComplection {
     func completionHandler(status: RemoteConfigFetchAndActivateStatus, error: Error?) -> Void {
         switch status {
         case .error:
-            let error = error ?? RemoteConfigError.unknown
+            let error = error ?? AppError.unknown
             _result.accept(.failure(error))
             print("Remote config fetch error: \(error.localizedDescription)")
         case .successFetchedFromRemote:
@@ -52,18 +52,18 @@ class RemoteConfigComplection {
     }
 }
 
-enum RemoteConfigError: LocalizedError {
-    case error(_ description: String?)
-    
-    // Need for print localizedDescription
-    var errorDescription: String? {
-        switch self {
-        case .error(let error):
-            return NSLocalizedString(error ?? "", comment: "")
-        }
-    }
-}
+//enum RemoteConfigError: LocalizedError {
+//    case error(_ description: String?)
+//
+//    // Need for print localizedDescription
+//    var errorDescription: String? {
+//        switch self {
+//        case .error(let error):
+//            return NSLocalizedString(error ?? "", comment: "")
+//        }
+//    }
+//}
 
-extension RemoteConfigError {
-    static let unknown: RemoteConfigError = .error("unknown")
+extension AppError {
+    static let unknown: AppError = .error("unknown")
 }

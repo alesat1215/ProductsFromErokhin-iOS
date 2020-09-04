@@ -16,6 +16,7 @@
 		D7877B5E25010F7100244B81 /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5D25010F7100244B81 /* Products.swift */; };
 		D7877B602501168700244B81 /* ProductsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5F2501168700244B81 /* ProductsRepository.swift */; };
 		D7877B632501182200244B81 /* RemoteConfigRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B622501182200244B81 /* RemoteConfigRepository.swift */; };
+		D7877B6525028D9200244B81 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B6425028D9200244B81 /* AppError.swift */; };
 		D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F424FFBE7E0094BAFE /* AppDelegate.swift */; };
 		D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */; };
 		D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F824FFBE7E0094BAFE /* StartViewController.swift */; };
@@ -64,6 +65,7 @@
 		D7877B5D25010F7100244B81 /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		D7877B5F2501168700244B81 /* ProductsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRepository.swift; sourceTree = "<group>"; };
 		D7877B622501182200244B81 /* RemoteConfigRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigRepository.swift; sourceTree = "<group>"; };
+		D7877B6425028D9200244B81 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		D79520F124FFBE7E0094BAFE /* ProductsFromErokhin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductsFromErokhin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79520F424FFBE7E0094BAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				D7877B622501182200244B81 /* RemoteConfigRepository.swift */,
+				D7877B6425028D9200244B81 /* AppError.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */,
 				D795210124FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld in Sources */,
 				D7877B5E25010F7100244B81 /* Products.swift in Sources */,
+				D7877B6525028D9200244B81 /* AppError.swift in Sources */,
 				D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */,
 				D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */,
 			);

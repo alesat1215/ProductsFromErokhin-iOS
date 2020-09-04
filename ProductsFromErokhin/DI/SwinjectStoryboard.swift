@@ -20,8 +20,14 @@ extension SwinjectStoryboard {
             StartViewModel(repository: r.resolve(ProductsRepository.self))
         }
         defaultContainer.register(ProductsRepository.self) { r in
-            ProductsRepository(remoteConfigRepository: r.resolve(RemoteConfigRepository.self))
+            ProductsRepository(
+                remoteConfigRepository: r.resolve(RemoteConfigRepository.self),
+                decoder: r.resolve(JSONDecoder.self)
+            )
         }
+        defaultContainer.register(JSONDecoder.self) { _ in
+            JSONDecoder()
+        }.inObjectScope(.container)
         defaultContainer.register(RemoteConfigRepository.self) { r in
             RemoteConfigRepository(remoteConfig: r.resolve(RemoteConfig.self), remoteConfigComplection: r.resolve(RemoteConfigComplection.self))
         }
