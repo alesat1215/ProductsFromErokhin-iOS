@@ -11,14 +11,24 @@ import RxSwift
 
 class ProductsRepository {
     private let remoteConfigRepository: RemoteConfigRepository?
+    private let decoder = JSONDecoder()
     
     init(remoteConfigRepository: RemoteConfigRepository?) {
         self.remoteConfigRepository = remoteConfigRepository
     }
-    
-    func productsAndGroups() -> Observable<String>? {
-        remoteConfigRepository?.fetchAndActivate()?.map { [weak self] _ in
-            self?.remoteConfigRepository?.remoteConfig?["products"].stringValue ?? ""
+    /** Get data from remote confic & decode it from JSON */
+    func productsAndGroups() -> Observable<[Group]>? {
+        remoteConfigRepository?.fetchAndActivate()?.map { [weak self] in
+            switch $0 {
+            case .failure(let error):
+                  throw error
+            default:
+                let products = try self?.decoder.decode(
+                    [Group].self,
+                    from: (self?.remoteConfigRepository?.remoteConfig?["products"].dataValue)!)
+                return products ?? []
+            }
+            
         }
     }
 }
