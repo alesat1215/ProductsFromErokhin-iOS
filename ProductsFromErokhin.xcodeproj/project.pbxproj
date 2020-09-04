@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,11 +27,6 @@
 		D795210624FFBE7F0094BAFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D795210424FFBE7F0094BAFE /* LaunchScreen.storyboard */; };
 		D795211124FFBE800094BAFE /* ProductsFromErokhinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795211024FFBE800094BAFE /* ProductsFromErokhinTests.swift */; };
 		D795211C24FFBE800094BAFE /* ProductsFromErokhinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795211B24FFBE800094BAFE /* ProductsFromErokhinUITests.swift */; };
-		D795214C25002BB80094BAFE /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D795214B25002BB80094BAFE /* RxSwift */; };
-		D795214E25002BB80094BAFE /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = D795214D25002BB80094BAFE /* RxTest */; };
-		D795215025002BB80094BAFE /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = D795214F25002BB80094BAFE /* RxRelay */; };
-		D795215225002BB80094BAFE /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D795215125002BB80094BAFE /* RxCocoa */; };
-		D795215425002BB80094BAFE /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = D795215325002BB80094BAFE /* RxBlocking */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,9 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D795215225002BB80094BAFE /* RxCocoa in Frameworks */,
-				D795215025002BB80094BAFE /* RxRelay in Frameworks */,
-				D795214C25002BB80094BAFE /* RxSwift in Frameworks */,
 				9A2FA24AC0B9842CD1C283E8 /* Pods_ProductsFromErokhin.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,8 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D795214E25002BB80094BAFE /* RxTest in Frameworks */,
-				D795215425002BB80094BAFE /* RxBlocking in Frameworks */,
 				C39DE96526D98FB517D85559 /* Pods_ProductsFromErokhinTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,11 +245,6 @@
 			dependencies = (
 			);
 			name = ProductsFromErokhin;
-			packageProductDependencies = (
-				D795214B25002BB80094BAFE /* RxSwift */,
-				D795214F25002BB80094BAFE /* RxRelay */,
-				D795215125002BB80094BAFE /* RxCocoa */,
-			);
 			productName = ProductsFromErokhin;
 			productReference = D79520F124FFBE7E0094BAFE /* ProductsFromErokhin.app */;
 			productType = "com.apple.product-type.application";
@@ -272,6 +257,7 @@
 				D795210824FFBE800094BAFE /* Sources */,
 				D795210924FFBE800094BAFE /* Frameworks */,
 				D795210A24FFBE800094BAFE /* Resources */,
+				569DABFC6ABAEF0F5B1F6513 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -279,10 +265,6 @@
 				D795210E24FFBE800094BAFE /* PBXTargetDependency */,
 			);
 			name = ProductsFromErokhinTests;
-			packageProductDependencies = (
-				D795214D25002BB80094BAFE /* RxTest */,
-				D795215325002BB80094BAFE /* RxBlocking */,
-			);
 			productName = ProductsFromErokhinTests;
 			productReference = D795210C24FFBE800094BAFE /* ProductsFromErokhinTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -339,9 +321,6 @@
 				Base,
 			);
 			mainGroup = D79520E824FFBE7E0094BAFE;
-			packageReferences = (
-				D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */,
-			);
 			productRefGroup = D79520F224FFBE7E0094BAFE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -419,6 +398,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		569DABFC6ABAEF0F5B1F6513 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProductsFromErokhinTests/Pods-ProductsFromErokhinTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ProductsFromErokhinTests/Pods-ProductsFromErokhinTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProductsFromErokhinTests/Pods-ProductsFromErokhinTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		89F813DACE29B2E09FC74CE8 /* [CP] Check Pods Manifest.lock */ = {
@@ -708,7 +704,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B288AC8441DFA8BD9E8EF93C /* Pods-ProductsFromErokhinTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ProductsFromErokhinTests/Info.plist;
@@ -730,7 +726,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 691C56139FFEE6B842238CDC /* Pods-ProductsFromErokhinTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ProductsFromErokhinTests/Info.plist;
@@ -828,45 +824,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.1.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		D795214B25002BB80094BAFE /* RxSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxSwift;
-		};
-		D795214D25002BB80094BAFE /* RxTest */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxTest;
-		};
-		D795214F25002BB80094BAFE /* RxRelay */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxRelay;
-		};
-		D795215125002BB80094BAFE /* RxCocoa */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxCocoa;
-		};
-		D795215325002BB80094BAFE /* RxBlocking */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D795214A25002BB80094BAFE /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxBlocking;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D79520FF24FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld */ = {
