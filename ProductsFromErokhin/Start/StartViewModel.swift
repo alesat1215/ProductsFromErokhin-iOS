@@ -23,4 +23,8 @@ class StartViewModel {
     func productsRemote() -> Observable<[Group]>? {
         repository?.productsAndGroups()
     }
+    
+    func groups() -> Observable<[GroupInfo]>? {
+        repository?.groups()
+    }
 }

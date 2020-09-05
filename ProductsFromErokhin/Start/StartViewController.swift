@@ -46,6 +46,13 @@ class StartViewController: UIViewController {
             }, onError: {
                 print($0)
             }).disposed(by: dispose)
+        
+        viewModel?.groups()?.subscribe(
+            onNext: {
+                print($0.first?.name)
+        }, onError: {
+            print($0)
+        }).disposed(by: dispose)
     }
 
 }

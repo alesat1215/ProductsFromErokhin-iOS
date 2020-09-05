@@ -1,4 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="GroupInfo" representedClassName="GroupInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="ProductInCart" representedClassName="ProductInCart" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="productInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductInfo" inverseName="inCart" inverseEntity="ProductInfo"/>
+    </entity>
+    <entity name="ProductInfo" representedClassName="ProductInfo" syncable="YES" codeGenerationType="class">
+        <attribute name="consist" optional="YES" attributeType="String"/>
+        <attribute name="group" optional="YES" attributeType="String"/>
+        <attribute name="img" optional="YES" attributeType="String"/>
+        <attribute name="inStart" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="inStart2" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="inCart" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductInCart" inverseName="productInfo" inverseEntity="ProductInCart"/>
+    </entity>
+    <elements>
+        <element name="GroupInfo" positionX="-18" positionY="90" width="128" height="73"/>
+        <element name="ProductInCart" positionX="-140.65625" positionY="-18.96484375" width="128" height="73"/>
+        <element name="ProductInfo" positionX="-431.8671875" positionY="-9.4609375" width="128" height="178"/>
+    </elements>
 </model>

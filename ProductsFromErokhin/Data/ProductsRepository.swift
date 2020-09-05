@@ -8,10 +8,14 @@
 
 import Foundation
 import RxSwift
+import RxCoreData
+import CoreData
 
 class ProductsRepository {
     private let remoteConfigRepository: RemoteConfigRepository? // di
     private let decoder: JSONDecoder? // di
+    private let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
+    private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
     init(remoteConfigRepository: RemoteConfigRepository?, decoder: JSONDecoder?) {
         self.remoteConfigRepository = remoteConfigRepository
@@ -35,9 +39,40 @@ class ProductsRepository {
                 let products = try decoder.decode(
                     [Group].self,
                     from: remoteConfig["products"].dataValue)
+                self.updateGroups(groups: products)
                 return products
             }
             
+        }
+    }
+    
+    func groups() -> Observable<[GroupInfo]>? {
+        let fetchRequest: NSFetchRequest<GroupInfo> = GroupInfo.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \GroupInfo.order, ascending: true)]
+        return context?.rx.entities(fetchRequest: fetchRequest)
+    }
+    
+    func updateGroups(groups: [Group]) {
+        let del = NSBatchDeleteRequest(fetchRequest: GroupInfo.fetchRequest())
+        
+        do {
+            try context?.execute(del)
+        } catch {
+            print(error)
+        }
+        
+        groups.enumerated().forEach {
+            let groupInfo = NSEntityDescription.insertNewObject(forEntityName: "GroupInfo", into: context!)
+            groupInfo.setValue(Int16($0), forKey: "order")
+            groupInfo.setValue($1.name, forKey: "name")
+            context?.insert(groupInfo)
+        }
+        if context?.hasChanges ?? false {
+            do {
+                try context?.save()
+            } catch let error {
+                print(error)
+            }
         }
     }
 }
