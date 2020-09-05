@@ -53,6 +53,10 @@ class ProductsRepository {
         return context?.rx.entities(fetchRequest: GroupInfo.fetchRequestWithSort())
     }
     
+    func products() -> Observable<[ProductInfo]>? {
+        context?.rx.entities(fetchRequest: ProductInfo.fetchRequestWithSort())
+    }
+    
     func updateGroups(groups: [Group]) {
         let del = NSBatchDeleteRequest(fetchRequest: GroupInfo.fetchRequest())
         
@@ -62,12 +66,24 @@ class ProductsRepository {
             print(error)
         }
         
+        var productOrder = 0
         groups.enumerated().forEach {
             let groupInfo = NSEntityDescription.insertNewObject(forEntityName: "GroupInfo", into: context!)
             groupInfo.setValue(Int16($0), forKey: "order")
             groupInfo.setValue($1.name, forKey: "name")
+            
+            let productsInfo = $1.products.map { product -> NSManagedObject in
+                let productInfo = NSEntityDescription.insertNewObject(forEntityName: "ProductInfo", into: context!)
+                (productInfo as? ProductInfo)?.update(from: product, order: productOrder)
+                productOrder += 1
+                return productInfo
+            }
+            
+            (groupInfo as? GroupInfo)?.addToProducts(NSSet(array: productsInfo))
+            
             context?.insert(groupInfo)
         }
+        
         if context?.hasChanges ?? false {
             do {
                 try context?.save()

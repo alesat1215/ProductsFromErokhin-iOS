@@ -42,14 +42,21 @@ class StartViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: {
-                    print($0)
+                    print($0.count)
             }, onError: {
                 print($0)
             }).disposed(by: dispose)
         
         viewModel?.groups()?.subscribe(
             onNext: {
-                print($0.first?.name)
+                print($0)
+        }, onError: {
+            print($0)
+        }).disposed(by: dispose)
+        
+        viewModel?.productsDB()?.subscribe(
+            onNext: {
+                print($0)
         }, onError: {
             print($0)
         }).disposed(by: dispose)
