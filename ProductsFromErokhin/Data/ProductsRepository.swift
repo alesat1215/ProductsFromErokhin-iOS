@@ -14,8 +14,9 @@ import CoreData
 class ProductsRepository {
     private let remoteConfigRepository: RemoteConfigRepository? // di
     private let decoder: JSONDecoder? // di
-    private let container = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer
     private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+    
+    private lazy var groupsWithProducts = ""
     
     init(remoteConfigRepository: RemoteConfigRepository?, decoder: JSONDecoder?) {
         self.remoteConfigRepository = remoteConfigRepository
@@ -47,9 +48,9 @@ class ProductsRepository {
     }
     
     func groups() -> Observable<[GroupInfo]>? {
-        let fetchRequest: NSFetchRequest<GroupInfo> = GroupInfo.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \GroupInfo.order, ascending: true)]
-        return context?.rx.entities(fetchRequest: fetchRequest)
+//        let fetchRequest: NSFetchRequest<GroupInfo> = GroupInfo.fetchRequest()
+//        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \GroupInfo.order, ascending: true)]
+        return context?.rx.entities(fetchRequest: GroupInfo.fetchRequestWithSort())
     }
     
     func updateGroups(groups: [Group]) {
