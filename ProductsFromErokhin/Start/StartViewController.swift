@@ -49,14 +49,14 @@ class StartViewController: UIViewController {
         
         viewModel?.groups()?.subscribe(
             onNext: {
-                print($0)
+                print("Groups \($0.count)")
         }, onError: {
             print($0)
         }).disposed(by: dispose)
         
         viewModel?.productsDB()?.subscribe(
             onNext: {
-                print($0)
+                print("Products \($0.count)")
         }, onError: {
             print($0)
         }).disposed(by: dispose)

@@ -58,13 +58,18 @@ class ProductsRepository {
     }
     
     func updateGroups(groups: [Group]) {
-        let del = NSBatchDeleteRequest(fetchRequest: GroupInfo.fetchRequest())
+        
+        let fetchRequest: NSFetchRequest<GroupInfo> = GroupInfo.fetchRequestWithSort()
+        fetchRequest.includesPropertyValues = false
         
         do {
-            try context?.execute(del)
+            try context?.fetch(fetchRequest).forEach {
+                context?.delete($0)
+            }
         } catch {
             print(error)
         }
+        
         
         var productOrder = 0
         groups.enumerated().forEach {

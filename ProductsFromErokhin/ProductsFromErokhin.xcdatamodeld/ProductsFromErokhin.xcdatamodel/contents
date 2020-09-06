@@ -3,7 +3,7 @@
     <entity name="GroupInfo" representedClassName="GroupInfo" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductInfo" inverseName="groupInfo" inverseEntity="ProductInfo"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ProductInfo" inverseName="groupInfo" inverseEntity="ProductInfo"/>
     </entity>
     <entity name="ProductInCart" representedClassName="ProductInCart" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -22,7 +22,7 @@
         <relationship name="inCart" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductInCart" inverseName="productInfo" inverseEntity="ProductInCart"/>
     </entity>
     <elements>
-        <element name="GroupInfo" positionX="-78.79296875" positionY="90" width="128" height="88"/>
+        <element name="GroupInfo" positionX="-622.515625" positionY="34.71484375" width="128" height="88"/>
         <element name="ProductInCart" positionX="-140.65625" positionY="-18.96484375" width="128" height="73"/>
         <element name="ProductInfo" positionX="-431.8671875" positionY="-9.4609375" width="128" height="193"/>
     </elements>
