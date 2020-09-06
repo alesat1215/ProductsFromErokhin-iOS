@@ -1,5 +1,5 @@
 //
-//  ProductInfo+Extension.swift
+//  ProductInfo+Extensions.swift
 //  ProductsFromErokhin
 //
 //  Created by Alexander Satunin on 05.09.2020.
