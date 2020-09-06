@@ -52,7 +52,14 @@ class ProductsRepository {
     }
     
     func products() -> Observable<[ProductInfo]>? {
-        context?.rx.entities(fetchRequest: ProductInfo.fetchRequestWithSort())
+        let products: Observable<[Group]>? = remoteConfigRepository?.remoteData(key: "products")
+        return products?.flatMap { [weak self] result -> Observable<[ProductInfo]> in
+            guard let self = self, let context = self.context else {
+                return Observable.empty()
+            }
+            self.updateGroups(groups: result)
+            return context.rx.entities(fetchRequest: ProductInfo.fetchRequestWithSort())
+        }
     }
     
     func updateGroups(groups: [Group]) {

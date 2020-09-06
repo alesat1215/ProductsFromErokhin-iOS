@@ -14,6 +14,7 @@ import RxRelay
 class RemoteConfigRepository {
     let remoteConfig: RemoteConfig? // di
     private let remoteConfigComplection: RemoteConfigComplection? // di
+    private let decoder = JSONDecoder()
     
     init(remoteConfig: RemoteConfig?,
          remoteConfigComplection: RemoteConfigComplection?) {
@@ -24,6 +25,21 @@ class RemoteConfigRepository {
     func fetchAndActivate() -> Observable<Result<Void, Error>>? {
         remoteConfig?.fetchAndActivate(completionHandler: remoteConfigComplection?.completionHandler(status:error:))
         return remoteConfigComplection?.result()
+    }
+    
+    func remoteData<T: Codable>(key: String) -> Observable<T>? {
+        fetchAndActivate()?.flatMap { [weak self] result -> Observable<T> in
+            guard let self = self, let remoteCondig = self.remoteConfig else { return Observable.empty() }
+//            guard let remoteCondig = self.remoteConfig else { return Observable.empty() }
+//            guard let decoder = self.decoder else { return Observable.empty() }
+            switch result {
+            case .failure(let error):
+                throw error
+            default:
+                let data = try self.decoder.decode(T.self, from: remoteCondig[key].dataValue)
+                return Observable.just(data)
+            }
+        }
     }
 }
 

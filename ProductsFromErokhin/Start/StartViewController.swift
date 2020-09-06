@@ -37,15 +37,15 @@ class StartViewController: UIViewController {
                 cell.name.text = model
         }.disposed(by: dispose)
         
-        viewModel?.productsRemote()?
-            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
-            .observeOn(MainScheduler.instance)
-            .subscribe(
-                onNext: {
-                    print($0.count)
-            }, onError: {
-                print($0)
-            }).disposed(by: dispose)
+//        viewModel?.productsRemote()?
+//            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(
+//                onNext: {
+//                    print($0.count)
+//            }, onError: {
+//                print($0)
+//            }).disposed(by: dispose)
         
         viewModel?.groups()?.subscribe(
             onNext: {
