@@ -20,6 +20,7 @@
 		D7877B742503EC1300244B81 /* GroupInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B732503EC1300244B81 /* GroupInfo+Extensions.swift */; };
 		D7877B762503F3C000244B81 /* ProductInfo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B752503F3C000244B81 /* ProductInfo+Extensions.swift */; };
 		D7877B782504B05D00244B81 /* Ordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B772504B05D00244B81 /* Ordered.swift */; };
+		D7877B7A2504E0EF00244B81 /* UpdateLimiter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B792504E0EF00244B81 /* UpdateLimiter.swift */; };
 		D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F424FFBE7E0094BAFE /* AppDelegate.swift */; };
 		D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */; };
 		D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79520F824FFBE7E0094BAFE /* StartViewController.swift */; };
@@ -67,6 +68,7 @@
 		D7877B732503EC1300244B81 /* GroupInfo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GroupInfo+Extensions.swift"; sourceTree = "<group>"; };
 		D7877B752503F3C000244B81 /* ProductInfo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProductInfo+Extensions.swift"; sourceTree = "<group>"; };
 		D7877B772504B05D00244B81 /* Ordered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ordered.swift; sourceTree = "<group>"; };
+		D7877B792504E0EF00244B81 /* UpdateLimiter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateLimiter.swift; sourceTree = "<group>"; };
 		D79520F124FFBE7E0094BAFE /* ProductsFromErokhin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductsFromErokhin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79520F424FFBE7E0094BAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				D7877B622501182200244B81 /* RemoteConfigRepository.swift */,
+				D7877B792504E0EF00244B81 /* UpdateLimiter.swift */,
 				D7877B6425028D9200244B81 /* AppError.swift */,
 			);
 			path = Util;
@@ -502,6 +505,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7877B7A2504E0EF00244B81 /* UpdateLimiter.swift in Sources */,
 				D7877B602501168700244B81 /* ProductsRepository.swift in Sources */,
 				D7877B632501182200244B81 /* RemoteConfigRepository.swift in Sources */,
 				D7877B762503F3C000244B81 /* ProductInfo+Extensions.swift in Sources */,
