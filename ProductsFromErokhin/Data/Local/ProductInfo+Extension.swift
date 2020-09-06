@@ -20,13 +20,17 @@ extension ProductInfo {
         price = Int16(remote.price)
     }
     
-    /** Fetch request fith default sort by order attribute */
-    @nonobjc public class func fetchRequestWithSort(
-        _ sortDescriptors: [NSSortDescriptor] =
-        [NSSortDescriptor(keyPath: \ProductInfo.order, ascending: true)]
-    ) -> NSFetchRequest<ProductInfo> {
-        let fetchRequest: NSFetchRequest<ProductInfo> = ProductInfo.fetchRequest()
-        fetchRequest.sortDescriptors = sortDescriptors
-        return fetchRequest
-    }
+//    /** Fetch request fith default sort by order attribute */
+//    @nonobjc public class func fetchRequestWithSort(
+//        _ sortDescriptors: [NSSortDescriptor] =
+//        [NSSortDescriptor(keyPath: \ProductInfo.order, ascending: true)]
+//    ) -> NSFetchRequest<ProductInfo> {
+//        let fetchRequest: NSFetchRequest<ProductInfo> = ProductInfo.fetchRequest()
+//        fetchRequest.sortDescriptors = sortDescriptors
+//        return fetchRequest
+//    }
+}
+
+extension ProductInfo: Ordered {
+    typealias T = ProductInfo
 }
