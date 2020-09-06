@@ -48,8 +48,6 @@ class ProductsRepository {
     }
     
     func groups() -> Observable<[GroupInfo]>? {
-//        let fetchRequest: NSFetchRequest<GroupInfo> = GroupInfo.fetchRequest()
-//        fetchRequest.sortDescriptors = [NSSortDescriptor(keyPath: \GroupInfo.order, ascending: true)]
         return context?.rx.entities(fetchRequest: GroupInfo.fetchRequestWithSort())
     }
     

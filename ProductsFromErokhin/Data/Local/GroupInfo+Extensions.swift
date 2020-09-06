@@ -9,14 +9,6 @@
 import Foundation
 import CoreData
 
-extension GroupInfo {
-    /** Fetch request fith default sort by order attribute */
-    @nonobjc public class func fetchRequestWithSort(
-        _ sortDescriptors: [NSSortDescriptor] =
-        [NSSortDescriptor(keyPath: \GroupInfo.order, ascending: true)]
-    ) -> NSFetchRequest<GroupInfo> {
-        let fetchRequest: NSFetchRequest<GroupInfo> = GroupInfo.fetchRequest()
-        fetchRequest.sortDescriptors = sortDescriptors
-        return fetchRequest
-    }
+extension GroupInfo: Ordered {
+    typealias T = GroupInfo
 }
