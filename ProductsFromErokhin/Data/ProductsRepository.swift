@@ -23,29 +23,29 @@ class ProductsRepository {
         self.decoder = decoder
     }
     /** Get data from remote confic & decode it from JSON */
-    func productsAndGroups() -> Observable<[Group]>? {
-        remoteConfigRepository?.fetchAndActivate()?.map { [weak self] in
-            switch $0 {
-            case .failure(let error):
-                  throw error
-            default:
-                guard let self = self else {
-                    return []
-                }
-                // Check di
-                guard let decoder = self.decoder,
-                    let remoteConfig = self.remoteConfigRepository?.remoteConfig
-                    else { throw AppError.productsRepositoryDI }
-                // Decode JSON
-                let products = try decoder.decode(
-                    [Group].self,
-                    from: remoteConfig["products"].dataValue)
-                self.updateGroups(groups: products)
-                return products
-            }
-            
-        }
-    }
+//    func productsAndGroups() -> Observable<[Group]>? {
+//        remoteConfigRepository?.fetchAndActivate()?.map { [weak self] in
+//            switch $0 {
+//            case .failure(let error):
+//                  throw error
+//            default:
+//                guard let self = self else {
+//                    return []
+//                }
+//                // Check di
+//                guard let decoder = self.decoder,
+//                    let remoteConfig = self.remoteConfigRepository?.remoteConfig
+//                    else { throw AppError.productsRepositoryDI }
+//                // Decode JSON
+//                let products = try decoder.decode(
+//                    [Group].self,
+//                    from: remoteConfig["products"].dataValue)
+//                self.updateDB(groups: products)
+//                return products
+//            }
+//
+//        }
+//    }
     
     func groups() -> Observable<[GroupInfo]>? {
         return context?.rx.entities(fetchRequest: GroupInfo.fetchRequestWithSort())
@@ -57,24 +57,27 @@ class ProductsRepository {
             guard let self = self, let context = self.context else {
                 return Observable.empty()
             }
-            self.updateGroups(groups: result)
+            try self.updateDB(groups: result)
             return context.rx.entities(fetchRequest: ProductInfo.fetchRequestWithSort())
         }
     }
     
-    func updateGroups(groups: [Group]) {
+    private func updateDB(groups: [Group]) throws {
         
         let fetchRequest: NSFetchRequest<GroupInfo> = GroupInfo.fetchRequestWithSort()
         fetchRequest.includesPropertyValues = false
         
-        do {
-            try context?.fetch(fetchRequest).forEach {
-                context?.delete($0)
-            }
-        } catch {
-            print(error)
-        }
+//        do {
+//            try context?.fetch(fetchRequest).forEach {
+//                context?.delete($0)
+//            }
+//        } catch {
+//            print(error)
+//        }
         
+        try context?.fetch(fetchRequest).forEach {
+            context?.delete($0)
+        }
         
         var productOrder = 0
         groups.enumerated().forEach {
@@ -95,13 +98,15 @@ class ProductsRepository {
         }
         
         if context?.hasChanges ?? false {
-            do {
-                try context?.save()
-            } catch let error {
-                print(error)
-            }
+//            do {
+//                try context?.save()
+//            } catch let error {
+//                print(error)
+//            }
+            try context?.save()
         }
     }
+    
 }
 
 extension AppError {
