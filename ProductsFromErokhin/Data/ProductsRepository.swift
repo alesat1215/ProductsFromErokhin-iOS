@@ -63,21 +63,8 @@ class ProductsRepository {
     }
     
     private func updateDB(groups: [Group]) throws {
-        
-        let fetchRequest: NSFetchRequest<GroupInfo> = GroupInfo.fetchRequestWithSort()
-        fetchRequest.includesPropertyValues = false
-        
-//        do {
-//            try context?.fetch(fetchRequest).forEach {
-//                context?.delete($0)
-//            }
-//        } catch {
-//            print(error)
-//        }
-        
-        try context?.fetch(fetchRequest).forEach {
-            context?.delete($0)
-        }
+                
+        try GroupInfo.clearEntity(context: context)
         
         var productOrder = 0
         groups.enumerated().forEach {
@@ -98,11 +85,6 @@ class ProductsRepository {
         }
         
         if context?.hasChanges ?? false {
-//            do {
-//                try context?.save()
-//            } catch let error {
-//                print(error)
-//            }
             try context?.save()
         }
     }
