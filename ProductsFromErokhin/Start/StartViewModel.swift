@@ -24,11 +24,11 @@ class StartViewModel {
 //        repository?.productsAndGroups()
 //    }
     
-    func groups() -> Observable<[GroupInfo]>? {
+    func groups() -> Observable<[Group]>? {
         repository?.groups()
     }
     
-    func productsDB() -> Observable<[ProductInfo]>? {
+    func productsDB() -> Observable<[Product]>? {
         repository?.products()
     }
 }

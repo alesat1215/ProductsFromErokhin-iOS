@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-
+/** NSManagedObject with order attribute, fetch method with sort, clear & update methods from remote data */
 protocol Ordered {
     associatedtype T = Self where T: NSManagedObject
     associatedtype C: Codable

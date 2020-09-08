@@ -1,5 +1,5 @@
 //
-//  Products.swift
+//  ProductsRemote.swift
 //  ProductsFromErokhin
 //
 //  Created by Alexander Satunin on 03.09.2020.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 // MARK: - Product
-struct Product {
+struct ProductRemote {
     let name: String
     let consist: String
     let img: String
@@ -19,7 +19,7 @@ struct Product {
     let inStart2: Bool
 }
 
-extension Product: Codable {
+extension ProductRemote: Codable {
     enum CodingKeys: String, CodingKey {
         case name, consist, img, price, inStart, inStart2
     }
@@ -36,12 +36,12 @@ extension Product: Codable {
 }
 
 // MARK: - Group
-struct Group {
+struct GroupRemote {
     var name = ""
-    var products = [Product]()
+    var products = [ProductRemote]()
 }
 
-extension Group: Codable {
+extension GroupRemote: Codable {
     enum CodingKeys: String, CodingKey {
         case name, products
     }
@@ -49,26 +49,26 @@ extension Group: Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         name = (try? values.decode(String.self, forKey: .name)) ?? ""
-        products = (try? values.decode([Product].self, forKey: .products)) ?? []
+        products = (try? values.decode([ProductRemote].self, forKey: .products)) ?? []
     }
 }
 
-extension Group {
+extension GroupRemote {
     /** Get NSManagedObject for Group */
     func managedObject(context: NSManagedObjectContext, groupOrder: Int, productOrder: inout Int) -> NSManagedObject {
         // Create entity for group & set values
-        let groupInfo = NSEntityDescription.insertNewObject(forEntityName: "GroupInfo", into: context)
-        (groupInfo as? GroupInfo)?.update(from: self, order: groupOrder)
+        let group = NSEntityDescription.insertNewObject(forEntityName: "Group", into: context)
+        (group as? Group)?.update(from: self, order: groupOrder)
         // Create entitys for products & set values
-        let productsInfo = products.map { product -> NSManagedObject in
-            let productInfo = NSEntityDescription.insertNewObject(forEntityName: "ProductInfo", into: context)
-            (productInfo as? ProductInfo)?.update(from: product, order: productOrder)
+        let productsMO = products.map { productRemote -> NSManagedObject in
+            let product = NSEntityDescription.insertNewObject(forEntityName: "Product", into: context)
+            (product as? Product)?.update(from: productRemote, order: productOrder)
             productOrder += 1
-            return productInfo
+            return product
         }
         // Add products to relationship
-        (groupInfo as? GroupInfo)?.addToProducts(NSSet(array: productsInfo))
+        (group as? Group)?.addToProducts(NSSet(array: productsMO))
         // Return result
-        return groupInfo
+        return group
     }
 }

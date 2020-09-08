@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="GroupInfo" representedClassName="GroupInfo" syncable="YES" codeGenerationType="class">
+    <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ProductInfo" inverseName="groupInfo" inverseEntity="ProductInfo"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" inverseName="group" inverseEntity="Product"/>
     </entity>
-    <entity name="ProductInCart" representedClassName="ProductInCart" syncable="YES" codeGenerationType="class">
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="productInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ProductInfo" inverseName="inCart" inverseEntity="ProductInfo"/>
-    </entity>
-    <entity name="ProductInfo" representedClassName="ProductInfo" syncable="YES" codeGenerationType="class">
+    <entity name="Product" representedClassName="Product" syncable="YES" codeGenerationType="class">
         <attribute name="consist" optional="YES" attributeType="String"/>
         <attribute name="img" optional="YES" attributeType="String"/>
         <attribute name="inStart" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
@@ -17,12 +13,16 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="price" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="groupInfo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GroupInfo" inverseName="products" inverseEntity="GroupInfo"/>
-        <relationship name="inCart" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductInCart" inverseName="productInfo" inverseEntity="ProductInCart"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="products" inverseEntity="Group"/>
+        <relationship name="inCart" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductInCart" inverseName="product" inverseEntity="ProductInCart"/>
+    </entity>
+    <entity name="ProductInCart" representedClassName="ProductInCart" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="inCart" inverseEntity="Product"/>
     </entity>
     <elements>
-        <element name="GroupInfo" positionX="-622.515625" positionY="34.71484375" width="128" height="88"/>
+        <element name="Group" positionX="-622.515625" positionY="34.71484375" width="128" height="88"/>
         <element name="ProductInCart" positionX="-140.65625" positionY="-18.96484375" width="128" height="73"/>
-        <element name="ProductInfo" positionX="-431.8671875" positionY="-9.4609375" width="128" height="178"/>
+        <element name="Product" positionX="-431.8671875" positionY="-9.4609375" width="128" height="178"/>
     </elements>
 </model>

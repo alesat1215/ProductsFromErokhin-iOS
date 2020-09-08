@@ -47,29 +47,29 @@ class ProductsRepository {
 //        }
 //    }
     
-    func groups() -> Observable<[GroupInfo]>? {
-        return context?.rx.entities(fetchRequest: GroupInfo.fetchRequestWithSort())
+    func groups() -> Observable<[Group]>? {
+        return context?.rx.entities(fetchRequest: Group.fetchRequestWithSort())
     }
     
-    func products() -> Observable<[ProductInfo]>? {
-        let products: Observable<[Group]>? = remoteConfigRepository?.remoteData(key: "products")
-        return products?.flatMap { [weak self] result -> Observable<[ProductInfo]> in
+    func products() -> Observable<[Product]>? {
+        let products: Observable<[GroupRemote]>? = remoteConfigRepository?.remoteData(key: "products")
+        return products?.flatMap { [weak self] result -> Observable<[Product]> in
             guard let self = self, let context = self.context else {
                 return Observable.empty()
             }
             try self.updateDB(groups: result)
-            return context.rx.entities(fetchRequest: ProductInfo.fetchRequestWithSort())
+            return context.rx.entities(fetchRequest: Product.fetchRequestWithSort())
         }
     }
     
-    private func updateDB(groups: [Group]) throws {
+    private func updateDB(groups: [GroupRemote]) throws {
         
         guard let context = context else {
             print("Context is nil. Nothing to update")
             throw AppError.productsRepositoryDI
         }
                 
-        try GroupInfo.clearEntity(context: context)
+        try Group.clearEntity(context: context)
         
         var productOrder = 0
         groups.enumerated().forEach {
