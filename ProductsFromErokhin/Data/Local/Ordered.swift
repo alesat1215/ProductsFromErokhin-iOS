@@ -11,6 +11,7 @@ import CoreData
 
 protocol Ordered {
     associatedtype T: NSFetchRequestResult
+    associatedtype R: Codable
     /** Attribute for sort */
     var order: Int16 { get set }
     /** Fetch request fith default sort by order attribute */
@@ -20,6 +21,8 @@ protocol Ordered {
     static func fetchRequest() -> NSFetchRequest<T>
     /** Specifies all objects for entity that should be removed. Need save changes after */
     static func clearEntity(context: NSManagedObjectContext?) throws
+    /** Set values from remote data with order */
+    func update(from remote: R, order: Int)
 }
 
 // MARK: - Implementation
@@ -53,3 +56,22 @@ extension Ordered where T: NSManagedObject {
         print("\(fetchResult.count) objects should be removed")
     }
 }
+
+//extension Ordered where Self: GroupInfo {
+//    func update(from remote: Group, order: Int) {
+//        self.order = Int16(order)
+//        name = remote.name
+//    }
+//}
+
+//extension Ordered where Self: ProductInfo {
+//    func update(from remote: Product, order: Int) {
+//        self.order = Int16(order)
+//        consist = remote.consist
+//        img = remote.img
+//        inStart = remote.inStart
+//        inStart2 = remote.inStart2
+//        name = remote.name
+//        price = Int16(remote.price)
+//    }
+//}

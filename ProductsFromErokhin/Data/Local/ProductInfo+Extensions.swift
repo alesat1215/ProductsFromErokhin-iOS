@@ -9,7 +9,21 @@
 import Foundation
 import CoreData
 
-extension ProductInfo {
+//extension ProductInfo {
+    /** Set values from Product with order */
+//    func update(from remote: Product, order: Int) {
+//        self.order = Int16(order)
+//        consist = remote.consist
+//        img = remote.img
+//        inStart = remote.inStart
+//        inStart2 = remote.inStart2
+//        name = remote.name
+//        price = Int16(remote.price)
+//    }
+//}
+
+extension ProductInfo: Ordered {
+    typealias T = ProductInfo
     /** Set values from Product with order */
     func update(from remote: Product, order: Int) {
         self.order = Int16(order)
@@ -20,8 +34,5 @@ extension ProductInfo {
         name = remote.name
         price = Int16(remote.price)
     }
-}
-
-extension ProductInfo: Ordered {
-    typealias T = ProductInfo
+    
 }
