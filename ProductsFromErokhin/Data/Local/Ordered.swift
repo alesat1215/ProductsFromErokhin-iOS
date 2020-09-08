@@ -41,10 +41,6 @@ extension Ordered {
 extension Ordered {
     /** Remove objects for fetchRequestWithSort() result */
     static func clearEntity(context: NSManagedObjectContext) throws {
-//        guard let context = context else {
-//            print("Context in nil. Nothing remove")
-//            return
-//        }
         // Setup request
         let fetchRequest = self.fetchRequestWithSort()
         fetchRequest.includesPropertyValues = false
@@ -56,22 +52,3 @@ extension Ordered {
         print("\(fetchResult.count) objects should be removed")
     }
 }
-
-//extension Ordered where Self: GroupInfo {
-//    func update(from remote: Group, order: Int) {
-//        self.order = Int16(order)
-//        name = remote.name
-//    }
-//}
-
-//extension Ordered where Self: ProductInfo {
-//    func update(from remote: Product, order: Int) {
-//        self.order = Int16(order)
-//        consist = remote.consist
-//        img = remote.img
-//        inStart = remote.inStart
-//        inStart2 = remote.inStart2
-//        name = remote.name
-//        price = Int16(remote.price)
-//    }
-//}

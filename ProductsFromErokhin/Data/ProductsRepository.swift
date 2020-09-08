@@ -73,21 +73,7 @@ class ProductsRepository {
         
         var productOrder = 0
         groups.enumerated().forEach {
-//            let groupInfo = NSEntityDescription.insertNewObject(forEntityName: "GroupInfo", into: context!)
-//            groupInfo.setValue(Int16($0), forKey: "order")
-//            groupInfo.setValue($1.name, forKey: "name")
-//
-//            let productsInfo = $1.products.map { product -> NSManagedObject in
-//                let productInfo = NSEntityDescription.insertNewObject(forEntityName: "ProductInfo", into: context!)
-//                (productInfo as? ProductInfo)?.update(from: product, order: productOrder)
-//                productOrder += 1
-//                return productInfo
-//            }
-//
-//            (groupInfo as? GroupInfo)?.addToProducts(NSSet(array: productsInfo))
-            
-//            context?.insert(groupInfo)
-            context.insert($1.toGroupInfo(context: context, groupOrder: $0, productOrder: &productOrder))
+            context.insert($1.managedObject(context: context, groupOrder: $0, productOrder: &productOrder))
         }
         
         if context.hasChanges {
