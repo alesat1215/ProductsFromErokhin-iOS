@@ -15,5 +15,5 @@ extension GroupInfo: Ordered {
         name = remote.name
     }
     
-    typealias T = GroupInfo
+//    typealias T = GroupInfo
 }

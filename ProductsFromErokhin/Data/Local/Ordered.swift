@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 protocol Ordered {
-    associatedtype T: NSFetchRequestResult
+    associatedtype T = Self where T: NSManagedObject
     associatedtype C: Codable
     /** Attribute for sort */
     var order: Int16 { get set }
@@ -38,7 +38,7 @@ extension Ordered {
     }
 }
 
-extension Ordered where T: NSManagedObject {
+extension Ordered {
     /** Remove objects for fetchRequestWithSort() result */
     static func clearEntity(context: NSManagedObjectContext?) throws {
         guard let context = context else {

@@ -23,7 +23,7 @@ import CoreData
 //}
 
 extension ProductInfo: Ordered {
-    typealias T = ProductInfo
+//    typealias T = ProductInfo
     /** Set values from Product with order */
     func update(from remote: Product, order: Int) {
         self.order = Int16(order)
