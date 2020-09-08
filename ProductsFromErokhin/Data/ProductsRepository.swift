@@ -16,7 +16,10 @@ class ProductsRepository {
     private let decoder: JSONDecoder? // di
     private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
-    private lazy var groupsWithProducts = ""
+    private lazy var _products = context?.rx
+        .entities(fetchRequest: Product.fetchRequestWithSort()) ?? Observable.empty()
+    private lazy var _groups = context?.rx
+        .entities(fetchRequest: Group.fetchRequestWithSort()) ?? Observable.empty()
     
     init(remoteConfigRepository: RemoteConfigRepository?, decoder: JSONDecoder?) {
         self.remoteConfigRepository = remoteConfigRepository
@@ -47,8 +50,9 @@ class ProductsRepository {
 //        }
 //    }
     
-    func groups() -> Observable<[Group]>? {
-        return context?.rx.entities(fetchRequest: Group.fetchRequestWithSort())
+    func groups() -> Observable<[Group]> {
+//        return context?.rx.entities(fetchRequest: Group.fetchRequestWithSort())
+        _groups
     }
     
     func products() -> Observable<[Product]>? {
