@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import CoreData
 
 // MARK: - Product
 struct Product {
-    let group: String
+//    let group: String
     let name: String
     let consist: String
     let img: String
@@ -21,12 +22,12 @@ struct Product {
 
 extension Product: Codable {
     enum CodingKeys: String, CodingKey {
-        case group, name, consist, img, price, inStart, inStart2
+        case name, consist, img, price, inStart, inStart2
     }
     /** Decode or set defaults */
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        group = (try? values.decode(String.self, forKey: .group)) ?? ""
+//        group = (try? values.decode(String.self, forKey: .group)) ?? ""
         name = (try? values.decode(String.self, forKey: .name)) ?? ""
         consist = (try? values.decode(String.self, forKey: .consist)) ?? ""
         img = (try? values.decode(String.self, forKey: .img)) ?? ""
@@ -36,18 +37,18 @@ extension Product: Codable {
     }
 }
 
-extension Product {
-    /** For init product with group name */
-    init(group: String, product: Product) {
-        self.group = group
-        name = product.name
-        consist = product.consist
-        img = product.img
-        price = product.price
-        inStart = product.inStart
-        inStart2 = product.inStart2
-    }
-}
+//extension Product {
+//    /** For init product with group name */
+//    init(group: String, product: Product) {
+//        self.group = group
+//        name = product.name
+//        consist = product.consist
+//        img = product.img
+//        price = product.price
+//        inStart = product.inStart
+//        inStart2 = product.inStart2
+//    }
+//}
 
 // MARK: - Group
 struct Group {
@@ -67,11 +68,31 @@ extension Group: Codable {
     }
 }
 
+//extension Group {
+//    /** - Returns: products with group name */
+//    func productsWithGroup() -> [Product] {
+//        products.map {
+//            Product(group: name, product: $0)
+//        }
+//    }
+//}
+
 extension Group {
-    /** - Returns: products with group name */
-    func productsWithGroup() -> [Product] {
-        products.map {
-            Product(group: name, product: $0)
+    func toGroupInfo(context: NSManagedObjectContext, groupOrder: Int, productOrder: inout Int) -> NSManagedObject {
+        let groupInfo = NSEntityDescription.insertNewObject(forEntityName: "GroupInfo", into: context)
+//        groupInfo.setValue(Int16($0), forKey: "order")
+//        groupInfo.setValue($1.name, forKey: "name")
+        (groupInfo as? GroupInfo)?.update(from: self, order: groupOrder)
+        
+        let productsInfo = products.map { product -> NSManagedObject in
+            let productInfo = NSEntityDescription.insertNewObject(forEntityName: "ProductInfo", into: context)
+            (productInfo as? ProductInfo)?.update(from: product, order: productOrder)
+            productOrder += 1
+            return productInfo
         }
+        
+        (groupInfo as? GroupInfo)?.addToProducts(NSSet(array: productsInfo))
+        
+        return groupInfo
     }
 }

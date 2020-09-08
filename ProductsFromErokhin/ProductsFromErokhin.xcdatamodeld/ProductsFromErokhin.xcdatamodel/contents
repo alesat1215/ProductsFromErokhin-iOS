@@ -11,7 +11,6 @@
     </entity>
     <entity name="ProductInfo" representedClassName="ProductInfo" syncable="YES" codeGenerationType="class">
         <attribute name="consist" optional="YES" attributeType="String"/>
-        <attribute name="group" optional="YES" attributeType="String"/>
         <attribute name="img" optional="YES" attributeType="String"/>
         <attribute name="inStart" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="inStart2" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
@@ -24,6 +23,6 @@
     <elements>
         <element name="GroupInfo" positionX="-622.515625" positionY="34.71484375" width="128" height="88"/>
         <element name="ProductInCart" positionX="-140.65625" positionY="-18.96484375" width="128" height="73"/>
-        <element name="ProductInfo" positionX="-431.8671875" positionY="-9.4609375" width="128" height="193"/>
+        <element name="ProductInfo" positionX="-431.8671875" positionY="-9.4609375" width="128" height="178"/>
     </elements>
 </model>
