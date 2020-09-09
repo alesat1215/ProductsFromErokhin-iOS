@@ -12,10 +12,10 @@ import RxCoreData
 import CoreData
 
 class ProductsRepository {
-    private let remoteConfigRepository: RemoteConfigRepository // di
-    private let context: NSManagedObjectContext// di
+    private let remoteConfigRepository: RemoteConfigRepository! // di
+    private let context: NSManagedObjectContext!// di
     
-    init(remoteConfigRepository: RemoteConfigRepository!, context: NSManagedObjectContext!) {
+    init(remoteConfigRepository: RemoteConfigRepository?, context: NSManagedObjectContext?) {
         self.remoteConfigRepository = remoteConfigRepository
         self.context = context
     }
