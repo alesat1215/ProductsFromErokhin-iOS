@@ -17,16 +17,7 @@ class RemoteConfigRepository {
     private let remoteConfigComplection: RemoteConfigComplection? // di
     private let decoder = JSONDecoder()
     private let context = (UIApplication.shared.delegate as? AppDelegate)!.persistentContainer.viewContext
-    private let isolateQueue = DispatchQueue(label: "isolateQueue")
-    private var _fetchInProcess = false
-    private var fetchInProcess: Bool {
-        get {
-            return isolateQueue.sync { _fetchInProcess }
-        }
-        set {
-            isolateQueue.sync { _fetchInProcess = newValue }
-        }
-    }
+    private let fetchLimiter = FetchLimiter(serialQueue: DispatchQueue(label: "serialQueue"))
     
     init(remoteConfig: RemoteConfig?,
          remoteConfigComplection: RemoteConfigComplection?) {
@@ -74,10 +65,10 @@ class RemoteConfigRepository {
     }
     
     func fetchAndActivate<T>() -> Observable<Result<T, Error>> {
-        if fetchInProcess {
+        if fetchLimiter.fetchInProcess {
             return Observable.empty()
         }
-        fetchInProcess = true
+        fetchLimiter.fetchInProcess = true
         remoteConfig?.fetchAndActivate(completionHandler: remoteConfigComplection?.completionHandler(status:error:))
         return remoteConfigComplection!.result().flatMap { [weak self] result -> Observable<Result<T, Error>> in
             switch result {
@@ -85,7 +76,7 @@ class RemoteConfigRepository {
                 return Observable.just(Result.failure(error))
             default:
                 try self?.updateDB()
-                self?.fetchInProcess = false
+                self?.fetchLimiter.fetchInProcess = false
                 return Observable.empty()
             }
 //            try self?.updateDB()
@@ -156,6 +147,24 @@ class RemoteConfigComplection {
 //        }
 //    }
 //}
+
+class FetchLimiter {
+    private var _fetchInProcess = false
+    private let serialQueue: DispatchQueue?
+    
+    init(serialQueue: DispatchQueue?) {
+        self.serialQueue = serialQueue
+    }
+    
+    var fetchInProcess: Bool {
+        get {
+            return serialQueue?.sync { _fetchInProcess } ?? false
+        }
+        set {
+            serialQueue?.sync { _fetchInProcess = newValue }
+        }
+    }
+}
 
 extension AppError {
     static let unknown: AppError = .error("unknown")
