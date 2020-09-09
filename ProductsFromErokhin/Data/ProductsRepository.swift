@@ -12,35 +12,29 @@ import RxCoreData
 import CoreData
 
 class ProductsRepository {
-    private let remoteConfigRepository: RemoteConfigRepository? // di
-    private let decoder: JSONDecoder? // di
-    private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
+    private let remoteConfigRepository: RemoteConfigRepository // di
+    private let context: NSManagedObjectContext// di
     
-    private lazy var _products = (context?.rx
-        .entities(fetchRequest: Product.fetchRequestWithSort()) ?? Observable.empty()).map {
+    init(remoteConfigRepository: RemoteConfigRepository!, context: NSManagedObjectContext!) {
+        self.remoteConfigRepository = remoteConfigRepository
+        self.context = context
+    }
+    
+    private lazy var _products = context.rx
+        .entities(fetchRequest: Product.fetchRequestWithSort()).map {
             Result<[Product], Error>.success($0)
     }
-    private lazy var _groups = (context?.rx
-        .entities(fetchRequest: Group.fetchRequestWithSort()) ?? Observable.empty()).map {
+    private lazy var _groups = context.rx
+        .entities(fetchRequest: Group.fetchRequestWithSort()).map {
             Result<[Group], Error>.success($0)
     }
     
-    init(remoteConfigRepository: RemoteConfigRepository?, decoder: JSONDecoder?) {
-        self.remoteConfigRepository = remoteConfigRepository
-        self.decoder = decoder
-    }
-
-    
     func groups() -> Observable<Result<[Group], Error>> {
-        Observable.merge([_groups, remoteConfigRepository!.fetchAndActivate()])
+        Observable.merge([_groups, remoteConfigRepository.fetchAndActivate()])
     }
     
     func products() -> Observable<Result<[Product], Error>> {
-        Observable.merge([_products, remoteConfigRepository!.fetchAndActivate()])
+        Observable.merge([_products, remoteConfigRepository.fetchAndActivate()])
     }
     
-}
-
-extension AppError {
-    static let productsRepositoryDI: AppError = .error("productsRepositoryDI")
 }
