@@ -39,15 +39,33 @@ class RemoteConfigRepository {
         }
         fetchLimiter.fetchInProcess = true
         remoteConfig.fetchAndActivate(completionHandler: remoteConfigComplection.completionHandler(status:error:))
-        return remoteConfigComplection.result().flatMap { [weak self] result -> Observable<Result<T, Error>> in
-            switch result {
-            case .failure(let error):
-                return Observable.just(Result.failure(error))
-            default:
+        return remoteConfigComplection.result().flatMap { [weak self] status, error -> Observable<Result<T, Error>> in
+//            switch result {
+//            case .failure(let error):
+//                return Observable.just(Result.failure(error))
+//            default:
+//                try self?.updateDB()
+//                self?.fetchLimiter.fetchInProcess = false
+//                return Observable.empty()
+//            }
+            var result = Observable<Result<T, Error>>.empty()
+            switch status {
+            case .error:
+                let error = error ?? AppError.unknown
+//                _result.accept(.failure(error))
+                print("Remote config fetch error: \(error.localizedDescription)")
+                result = Observable.just(Result.failure(error))
+            case .successFetchedFromRemote:
+//                _result.accept(.success(()))
+                print("Remote config fetched data from remote")
                 try self?.updateDB()
-                self?.fetchLimiter.fetchInProcess = false
-                return Observable.empty()
+            case .successUsingPreFetchedData:
+                print("Remote config using prefetched data")
+            @unknown default:
+                print("Remote config unknown status")
             }
+            self?.fetchLimiter.fetchInProcess = false
+            return result
         }
     }
     
@@ -73,25 +91,29 @@ class RemoteConfigRepository {
 }
 
 class RemoteConfigComplection {
-    private let _result = PublishRelay<Result<Void, Error>>()
+    private let _result = PublishRelay<(status: RemoteConfigFetchAndActivateStatus, error: Error?)>()
     
     func completionHandler(status: RemoteConfigFetchAndActivateStatus, error: Error?) -> Void {
-        switch status {
-        case .error:
-            let error = error ?? AppError.unknown
-            _result.accept(.failure(error))
-            print("Remote config fetch error: \(error.localizedDescription)")
-        case .successFetchedFromRemote:
-            _result.accept(.success(()))
-            print("Remote config fetched data from remote")
-        case .successUsingPreFetchedData:
-            print("Remote config using prefetched data")
-        @unknown default:
-            print("Remote config unknown status")
-        }
+//        switch status {
+//        case .error:
+//            let error = error ?? AppError.unknown
+//            _result.accept(.failure(error))
+//            print("Remote config fetch error: \(error.localizedDescription)")
+//        case .successFetchedFromRemote:
+//            _result.accept(.success(()))
+//            print("Remote config fetched data from remote")
+//        case .successUsingPreFetchedData:
+//            print("Remote config using prefetched data")
+//        @unknown default:
+//            print("Remote config unknown status")
+//        }
+        _result.accept((status, error))
     }
     
-    func result() -> Observable<Result<Void, Error>> {
+//    func result() -> Observable<Result<Void, Error>> {
+//        _result.asObservable()
+//    }
+    func result() -> Observable<(status: RemoteConfigFetchAndActivateStatus, error: Error?)> {
         _result.asObservable()
     }
 }
