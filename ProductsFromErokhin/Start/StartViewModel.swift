@@ -11,7 +11,7 @@ import RxSwift
 
 class StartViewModel {
     
-    private var repository: ProductsRepository?
+    private var repository: ProductsRepository! // di
     
     init(repository: ProductsRepository?) {
         self.repository = repository
@@ -20,11 +20,11 @@ class StartViewModel {
     let products = Observable.just(["Product1", "Product2", "Product3", "Product4"])
     let products2 = Observable.just(["Product5", "Product6", "Product7", "Product8"])
         
-    func groups() -> Observable<Result<[Group], Error>>? {
-        repository?.groups()
+    func groups() -> Observable<Result<[Group], Error>> {
+        repository.groups()
     }
     
-    func productsDB() -> Observable<Result<[Product], Error>>? {
-        repository?.products()
+    func productsDB() -> Observable<Result<[Product], Error>> {
+        repository.products()
     }
 }

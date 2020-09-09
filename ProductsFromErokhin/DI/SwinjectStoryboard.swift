@@ -9,6 +9,7 @@
 import Foundation
 import SwinjectStoryboard
 import FirebaseRemoteConfig
+import CoreData
 
 extension SwinjectStoryboard {
     public static func setup() {
@@ -19,17 +20,22 @@ extension SwinjectStoryboard {
         defaultContainer.register(StartViewModel.self) { r in
             StartViewModel(repository: r.resolve(ProductsRepository.self))
         }
+        // MARK: - Products
         defaultContainer.register(ProductsRepository.self) { r in
             ProductsRepository(
                 remoteConfigRepository: r.resolve(RemoteConfigRepository.self),
-                decoder: r.resolve(JSONDecoder.self)
+                context: r.resolve(NSManagedObjectContext.self)
             )
         }
-        defaultContainer.register(JSONDecoder.self) { _ in
-            JSONDecoder()
-        }.inObjectScope(.container)
+        // MARK: - Remote config
         defaultContainer.register(RemoteConfigRepository.self) { r in
-            RemoteConfigRepository(remoteConfig: r.resolve(RemoteConfig.self), remoteConfigComplection: r.resolve(RemoteConfigComplection.self))
+            RemoteConfigRepository(
+                remoteConfig: r.resolve(RemoteConfig.self),
+                remoteConfigComplection: r.resolve(RemoteConfigComplection.self),
+                decoder: r.resolve(JSONDecoder.self),
+                context: r.resolve(NSManagedObjectContext.self),
+                fetchLimiter: r.resolve(FetchLimiter.self)
+            )
         }
         defaultContainer.register(RemoteConfig.self) { _ in
             RemoteConfig.remoteConfig()
@@ -37,5 +43,18 @@ extension SwinjectStoryboard {
         defaultContainer.register(RemoteConfigComplection.self) { _ in
             RemoteConfigComplection()
         }
+        defaultContainer.register(FetchLimiter.self) { r in
+            FetchLimiter(serialQueue: r.resolve(DispatchQueue.self))
+        }
+        defaultContainer.register(DispatchQueue.self) { _ in
+            DispatchQueue(label: "com.alesat1215.ProductsFromErokhin.serialQueue")
+        }.inObjectScope(.container)
+        // MARK: - Shared
+        defaultContainer.register(NSManagedObjectContext.self) { _ in
+            (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        }.inObjectScope(.container)
+        defaultContainer.register(JSONDecoder.self) { _ in
+            JSONDecoder()
+        }.inObjectScope(.container)
     }
 }

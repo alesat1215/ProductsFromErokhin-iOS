@@ -13,16 +13,24 @@ import RxRelay
 import CoreData
 
 class RemoteConfigRepository {
-    let remoteConfig: RemoteConfig? // di
-    private let remoteConfigComplection: RemoteConfigComplection? // di
-    private let decoder = JSONDecoder()
-    private let context = (UIApplication.shared.delegate as? AppDelegate)!.persistentContainer.viewContext
-    private let fetchLimiter = FetchLimiter(serialQueue: DispatchQueue(label: "serialQueue"))
+    private let remoteConfig: RemoteConfig! // di
+    private let remoteConfigComplection: RemoteConfigComplection! // di
+    private let decoder: JSONDecoder! // di
+    private let context: NSManagedObjectContext! // di
+    private let fetchLimiter: FetchLimiter! // di
     
-    init(remoteConfig: RemoteConfig?,
-         remoteConfigComplection: RemoteConfigComplection?) {
+    init(
+        remoteConfig: RemoteConfig?,
+        remoteConfigComplection: RemoteConfigComplection?,
+        decoder: JSONDecoder?,
+        context: NSManagedObjectContext?,
+        fetchLimiter: FetchLimiter?
+    ) {
         self.remoteConfig = remoteConfig
         self.remoteConfigComplection = remoteConfigComplection
+        self.decoder = decoder
+        self.context = context
+        self.fetchLimiter = fetchLimiter
     }
     
     func fetchAndActivate<T>() -> Observable<Result<T, Error>> {
@@ -30,8 +38,8 @@ class RemoteConfigRepository {
             return Observable.empty()
         }
         fetchLimiter.fetchInProcess = true
-        remoteConfig?.fetchAndActivate(completionHandler: remoteConfigComplection?.completionHandler(status:error:))
-        return remoteConfigComplection!.result().flatMap { [weak self] result -> Observable<Result<T, Error>> in
+        remoteConfig.fetchAndActivate(completionHandler: remoteConfigComplection.completionHandler(status:error:))
+        return remoteConfigComplection.result().flatMap { [weak self] result -> Observable<Result<T, Error>> in
             switch result {
             case .failure(let error):
                 return Observable.just(Result.failure(error))
