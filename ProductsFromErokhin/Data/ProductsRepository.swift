@@ -16,10 +16,14 @@ class ProductsRepository {
     private let decoder: JSONDecoder? // di
     private let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext
     
-    private lazy var _products = context?.rx
-        .entities(fetchRequest: Product.fetchRequestWithSort()) ?? Observable.empty()
-    private lazy var _groups = context?.rx
-        .entities(fetchRequest: Group.fetchRequestWithSort()) ?? Observable.empty()
+    private lazy var _products = (context?.rx
+        .entities(fetchRequest: Product.fetchRequestWithSort()) ?? Observable.empty()).map {
+            Result<[Product], Error>.success($0)
+    }
+    private lazy var _groups = (context?.rx
+        .entities(fetchRequest: Group.fetchRequestWithSort()) ?? Observable.empty()).map {
+            Result<[Group], Error>.success($0)
+    }
     
     init(remoteConfigRepository: RemoteConfigRepository?, decoder: JSONDecoder?) {
         self.remoteConfigRepository = remoteConfigRepository
@@ -50,13 +54,13 @@ class ProductsRepository {
 //        }
 //    }
     
-    func groups() -> Observable<[Group]> {
+    func groups() -> Observable<Result<[Group], Error>> {
 //        return context?.rx.entities(fetchRequest: Group.fetchRequestWithSort())
         Observable.merge([_groups, remoteConfigRepository!.fetchAndActivate()])
 //        _groups
     }
     
-    func products() -> Observable<[Product]>? {
+    func products() -> Observable<Result<[Product], Error>> {
 //        let products: Observable<[GroupRemote]>? = remoteConfigRepository?.remoteData(key: "products")
 //        return products?.flatMap { [weak self] result -> Observable<[Product]> in
 //            guard let self = self, let context = self.context else {

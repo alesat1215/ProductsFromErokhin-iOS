@@ -49,14 +49,26 @@ class StartViewController: UIViewController {
         
         viewModel?.groups()?.subscribe(
             onNext: {
-                print("Groups \($0.count)")
+                switch $0 {
+                case .success(let groups):
+                    print("Groups \(groups.count)")
+                case .failure(let error):
+                    print("Groups error \(error.localizedDescription)")
+                }
+//                print("Groups \($0.count)")
         }, onError: {
             print($0)
         }).disposed(by: dispose)
         
         viewModel?.productsDB()?.subscribe(
             onNext: {
-                print("Products \($0.count)")
+                switch $0 {
+                case .success(let products):
+                    print("Products \(products.count)")
+                case .failure(let error):
+                    print("Products error \(error.localizedDescription)")
+                }
+//                print("Products \($0.count)")
         }, onError: {
             print($0)
         }).disposed(by: dispose)

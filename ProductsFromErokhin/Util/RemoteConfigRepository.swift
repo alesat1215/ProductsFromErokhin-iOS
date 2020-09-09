@@ -17,6 +17,16 @@ class RemoteConfigRepository {
     private let remoteConfigComplection: RemoteConfigComplection? // di
     private let decoder = JSONDecoder()
     private let context = (UIApplication.shared.delegate as? AppDelegate)!.persistentContainer.viewContext
+    private let isolateQueue = DispatchQueue(label: "isolateQueue")
+    private var _fetchInProcess = false
+    private var fetchInProcess: Bool {
+        get {
+            return isolateQueue.sync { _fetchInProcess }
+        }
+        set {
+            isolateQueue.sync { _fetchInProcess = newValue }
+        }
+    }
     
     init(remoteConfig: RemoteConfig?,
          remoteConfigComplection: RemoteConfigComplection?) {
@@ -63,14 +73,19 @@ class RemoteConfigRepository {
         }
     }
     
-    func fetchAndActivate<T>() -> Observable<T> {
+    func fetchAndActivate<T>() -> Observable<Result<T, Error>> {
+        if fetchInProcess {
+            return Observable.empty()
+        }
+        fetchInProcess = true
         remoteConfig?.fetchAndActivate(completionHandler: remoteConfigComplection?.completionHandler(status:error:))
-        return remoteConfigComplection!.result().flatMap { [weak self] result -> Observable<T> in
+        return remoteConfigComplection!.result().flatMap { [weak self] result -> Observable<Result<T, Error>> in
             switch result {
             case .failure(let error):
-                return Observable.error(error)
+                return Observable.just(Result.failure(error))
             default:
                 try self?.updateDB()
+                self?.fetchInProcess = false
                 return Observable.empty()
             }
 //            try self?.updateDB()
