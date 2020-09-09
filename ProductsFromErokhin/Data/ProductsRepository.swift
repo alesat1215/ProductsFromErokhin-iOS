@@ -52,38 +52,40 @@ class ProductsRepository {
     
     func groups() -> Observable<[Group]> {
 //        return context?.rx.entities(fetchRequest: Group.fetchRequestWithSort())
-        _groups
+        Observable.merge([_groups, remoteConfigRepository!.fetchAndActivate()])
+//        _groups
     }
     
     func products() -> Observable<[Product]>? {
-        let products: Observable<[GroupRemote]>? = remoteConfigRepository?.remoteData(key: "products")
-        return products?.flatMap { [weak self] result -> Observable<[Product]> in
-            guard let self = self, let context = self.context else {
-                return Observable.empty()
-            }
-            try self.updateDB(groups: result)
-            return context.rx.entities(fetchRequest: Product.fetchRequestWithSort())
-        }
+//        let products: Observable<[GroupRemote]>? = remoteConfigRepository?.remoteData(key: "products")
+//        return products?.flatMap { [weak self] result -> Observable<[Product]> in
+//            guard let self = self, let context = self.context else {
+//                return Observable.empty()
+//            }
+//            try self.updateDB(groups: result)
+//            return context.rx.entities(fetchRequest: Product.fetchRequestWithSort())
+//        }
+        Observable.merge([_products, remoteConfigRepository!.fetchAndActivate()])
     }
     
-    private func updateDB(groups: [GroupRemote]) throws {
-        
-        guard let context = context else {
-            print("Context is nil. Nothing to update")
-            throw AppError.productsRepositoryDI
-        }
-                
-        try Group.clearEntity(context: context)
-        
-        var productOrder = 0
-        groups.enumerated().forEach {
-            context.insert($1.managedObject(context: context, groupOrder: $0, productOrder: &productOrder))
-        }
-        
-        if context.hasChanges {
-            try context.save()
-        }
-    }
+//    private func updateDB(groups: [GroupRemote]) throws {
+//        
+//        guard let context = context else {
+//            print("Context is nil. Nothing to update")
+//            throw AppError.productsRepositoryDI
+//        }
+//                
+//        try Group.clearEntity(context: context)
+//        
+//        var productOrder = 0
+//        groups.enumerated().forEach {
+//            context.insert($1.managedObject(context: context, groupOrder: $0, productOrder: &productOrder))
+//        }
+//        
+//        if context.hasChanges {
+//            try context.save()
+//        }
+//    }
     
 }
 
