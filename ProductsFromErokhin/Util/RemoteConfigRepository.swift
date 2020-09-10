@@ -33,29 +33,37 @@ class RemoteConfigRepository {
         self.fetchLimiter = fetchLimiter
     }
     
+    /** Update database when config fethed form remote */
     func fetchAndActivate<T>() -> Observable<Event<T>> {
+        // Check can fetch
         if fetchLimiter.fetchInProcess {
             return Observable.empty()
         }
+        // Block fetch for other requests
         fetchLimiter.fetchInProcess = true
+        // Fetch & activate remote config
         remoteConfig.fetchAndActivate(completionHandler: remoteConfigComplection.completionHandler(status:error:))
-        
+        // Get result for request
         return remoteConfigComplection.result().flatMap { [weak self] status, error -> Observable<Event<T>> in
+            // Default result
             var result = Observable<Event<T>>.empty()
-            
+            // Check result status
             switch status {
             case .error:
                 let error = error ?? AppError.unknown
                 print("Remote config fetch error: \(error.localizedDescription)")
+                // Set error to result
                 result = Observable.just(Event.error(error))
             case .successFetchedFromRemote:
                 print("Remote config fetched data from remote")
+                // Update database from remote config
                 try self?.updateDB()
             case .successUsingPreFetchedData:
                 print("Remote config using prefetched data")
             @unknown default:
                 print("Remote config unknown status")
             }
+            // Unblock fetch for other requests
             self?.fetchLimiter.fetchInProcess = false
             return result
         }
