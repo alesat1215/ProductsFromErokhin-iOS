@@ -72,7 +72,7 @@ class DatabaseUpdater {
     /** Update database from remote data */
     private func update() throws {
         // Get groups with products from remote data
-        let groups: [GroupRemote] = try remoteData(key: "products")
+        let groups: [GroupRemote] = try remoteData(key: .products)
         // Delete all groups with products from database
         try Group.clearEntity(context: context)
         // Create groups & products entitys with order from remote
@@ -86,32 +86,38 @@ class DatabaseUpdater {
         }
     }
     /** Get data from remote config & decode it from JSON */
-    private func remoteData<T: Codable>(key: String) throws -> T {
-        try decoder.decode(T.self, from: remoteConfig![key].dataValue)
+    private func remoteData<T: Codable>(key: RemoteDataKeys) throws -> T {
+        try decoder.decode(T.self, from: remoteConfig![key.rawValue].dataValue)
     }
     
 }
-
+/** Keys for remote config parameters */
+fileprivate enum RemoteDataKeys: String {
+    case products
+}
+/** Completion handler for fetchAndActivate with observable result */
 class RemoteConfigComplection {
     private let _result = PublishRelay<(status: RemoteConfigFetchAndActivateStatus, error: Error?)>()
     
     func completionHandler(status: RemoteConfigFetchAndActivateStatus, error: Error?) -> Void {
         _result.accept((status, error))
     }
-    
+    /** - returns: Observable result of fetchAndActivate method */
     func result() -> Observable<(status: RemoteConfigFetchAndActivateStatus, error: Error?)> {
         _result.asObservable()
     }
 }
-
+/** Limit for run fetchAndActivate method */
 class FetchLimiter {
+    /** Fetch status */
     private var _fetchInProcess = false
+    /** Serial queue for get or set value thread-safety */
     private let serialQueue: DispatchQueue?
     
     init(serialQueue: DispatchQueue?) {
         self.serialQueue = serialQueue
     }
-    
+    /** Thread-safety fetch status value */
     var fetchInProcess: Bool {
         get {
             return serialQueue?.sync { _fetchInProcess } ?? false
