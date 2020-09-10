@@ -206,7 +206,9 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </collectionViewCellContentView>
                                                         <connections>
+                                                            <outlet property="inCart" destination="wc8-bK-s63" id="OTI-7O-aDO"/>
                                                             <outlet property="name" destination="9ZU-lb-p6l" id="AQi-Wt-Pg7"/>
+                                                            <outlet property="price" destination="wUf-Rf-03T" id="pK4-Wc-1dd"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
@@ -354,7 +356,9 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </collectionViewCellContentView>
                                                         <connections>
+                                                            <outlet property="inCart" destination="B8F-k9-pR8" id="3Hf-VC-PGK"/>
                                                             <outlet property="name" destination="csR-xm-uCd" id="TmA-gS-Xvo"/>
+                                                            <outlet property="price" destination="Abe-7v-o4a" id="itG-0f-Oa1"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>

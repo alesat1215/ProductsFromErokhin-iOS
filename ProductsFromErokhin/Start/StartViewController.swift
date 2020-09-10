@@ -40,6 +40,8 @@ class StartViewController: UIViewController {
             .debug("Products in start", trimOutput: true)
             .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
                 cell.name.text = model.name
+                cell.price.text = "\(model.price) P/Kg"
+                cell.inCart.text = "\(model.inCart?.count ?? 0)"
         }.disposed(by: dispose)
         
         // Filter [Product] for products2 & bind
@@ -47,6 +49,8 @@ class StartViewController: UIViewController {
             .debug("Products in start 2", trimOutput: true)
             .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
                 cell.name.text = model.name
+                cell.price.text = "\(model.price) P/Kg"
+                cell.inCart.text = "\(model.inCart?.count ?? 0)"
         }.disposed(by: dispose)
     }
 
@@ -55,4 +59,6 @@ class StartViewController: UIViewController {
 class ProductCell: UICollectionViewCell {
     
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var price: UILabel!
+    @IBOutlet weak var inCart: UILabel!
 }
