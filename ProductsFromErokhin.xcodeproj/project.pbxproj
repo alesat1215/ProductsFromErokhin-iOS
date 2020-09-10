@@ -142,6 +142,7 @@
 				D7877B8125080A4600244B81 /* Remote */,
 				D7877B722503EBF600244B81 /* Local */,
 				D7877B5F2501168700244B81 /* ProductsRepository.swift */,
+				D7877B622501182200244B81 /* RemoteConfigRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -149,7 +150,6 @@
 		D7877B612501180F00244B81 /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				D7877B622501182200244B81 /* RemoteConfigRepository.swift */,
 				D7877B6425028D9200244B81 /* AppError.swift */,
 				D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */,
 			);
