@@ -16,6 +16,9 @@ class StartViewController: UIViewController {
     @IBOutlet weak var products: UICollectionView!
     @IBOutlet weak var products2: UICollectionView!
     
+    private let productsSegueId = "productsSegueId"
+    private let productsSegueId2 = "productsSegueId2"
+    
     var viewModel: StartViewModel! // di
     
     private let disposeBag = DisposeBag()
@@ -50,6 +53,18 @@ class StartViewController: UIViewController {
                 // Bind product to cell
                 cell.bind(product: product)
         }.disposed(by: disposeBag)
+    }
+    
+    // Set otlets for products
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Set products outlet
+        if segue.identifier == productsSegueId {
+            products = segue.destination.view.subviews[0] as? UICollectionView
+        }
+        // Set products2 outlet
+        if segue.identifier == productsSegueId2 {
+            products2 = segue.destination.view.subviews[0] as? UICollectionView
+        }
     }
     
 }
