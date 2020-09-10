@@ -18,7 +18,7 @@ class StartViewController: UIViewController {
     
     var viewModel: StartViewModel! // di
     
-    private let dispose = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,27 +38,34 @@ class StartViewController: UIViewController {
         // Filter [Product] for products & bind
         _products.map { $0.filter { $0.inStart } }
             .debug("Products in start", trimOutput: true)
-            .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
-                cell.name.text = model.name
-                cell.price.text = "\(model.price) P/Kg"
-                cell.inCart.text = "\(model.inCart?.count ?? 0)"
-        }.disposed(by: dispose)
+            .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, product, cell in
+                // Bind product to cell
+                cell.bind(product: product)
+        }.disposed(by: disposeBag)
         
         // Filter [Product] for products2 & bind
         _products.map { $0.filter { $0.inStart2 } }
             .debug("Products in start 2", trimOutput: true)
-            .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
-                cell.name.text = model.name
-                cell.price.text = "\(model.price) P/Kg"
-                cell.inCart.text = "\(model.inCart?.count ?? 0)"
-        }.disposed(by: dispose)
+            .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, product, cell in
+                // Bind product to cell
+                cell.bind(product: product)
+        }.disposed(by: disposeBag)
     }
-
+    
 }
 
+// MARK: - Cell
 class ProductCell: UICollectionViewCell {
-    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var inCart: UILabel!
+}
+
+extension ProductCell {
+    /** Bind data from product to views */
+    func bind(product: Product) {
+        name.text = product.name
+        price.text = "\(product.price) P/Kg"
+        inCart.text = "\(product.inCart?.count ?? 0)"
+    }
 }
