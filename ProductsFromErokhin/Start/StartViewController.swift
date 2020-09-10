@@ -37,14 +37,14 @@ class StartViewController: UIViewController {
         
         // Filter [Product] for products & bind
         _products.map { $0.filter { $0.inStart } }
-            .debug("Products", trimOutput: true)
+            .debug("Products in start", trimOutput: true)
             .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
                 cell.name.text = model.name
         }.disposed(by: dispose)
         
         // Filter [Product] for products2 & bind
         _products.map { $0.filter { $0.inStart2 } }
-            .debug("Products2", trimOutput: true)
+            .debug("Products in start 2", trimOutput: true)
             .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
                 cell.name.text = model.name
         }.disposed(by: dispose)

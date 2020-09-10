@@ -37,22 +37,30 @@ extension SwinjectStoryboard {
                 fetchLimiter: r.resolve(FetchLimiter.self)
             )
         }
+        
         defaultContainer.register(RemoteConfig.self) { _ in
-            RemoteConfig.remoteConfig()
+            let remoteConfig = RemoteConfig.remoteConfig()
+            remoteConfig.setDefaults(fromPlist: "RemoteConfigDefaults")
+            return remoteConfig
         }.inObjectScope(.container)
+        
         defaultContainer.register(RemoteConfigComplection.self) { _ in
             RemoteConfigComplection()
         }
+        
         defaultContainer.register(FetchLimiter.self) { r in
             FetchLimiter(serialQueue: r.resolve(DispatchQueue.self))
         }
+        
         defaultContainer.register(DispatchQueue.self) { _ in
             DispatchQueue(label: "com.alesat1215.ProductsFromErokhin.serialQueue")
         }.inObjectScope(.container)
+        
         // MARK: - Shared
         defaultContainer.register(NSManagedObjectContext.self) { _ in
             (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         }.inObjectScope(.container)
+        
         defaultContainer.register(JSONDecoder.self) { _ in
             JSONDecoder()
         }.inObjectScope(.container)

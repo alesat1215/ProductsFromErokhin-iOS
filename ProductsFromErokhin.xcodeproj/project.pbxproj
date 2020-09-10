@@ -30,6 +30,7 @@
 		D795211124FFBE800094BAFE /* ProductsFromErokhinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795211024FFBE800094BAFE /* ProductsFromErokhinTests.swift */; };
 		D795211C24FFBE800094BAFE /* ProductsFromErokhinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795211B24FFBE800094BAFE /* ProductsFromErokhinUITests.swift */; };
 		D7B4B51C250A299D00BA07CB /* ObservableType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */; };
+		D7B4B51E250A5E8200BA07CB /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		D795211B24FFBE800094BAFE /* ProductsFromErokhinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsFromErokhinUITests.swift; sourceTree = "<group>"; };
 		D795211D24FFBE800094BAFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extensions.swift"; sourceTree = "<group>"; };
+		D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,6 +211,7 @@
 				D795210224FFBE7F0094BAFE /* Assets.xcassets */,
 				D795210424FFBE7F0094BAFE /* LaunchScreen.storyboard */,
 				D795210724FFBE7F0094BAFE /* Info.plist */,
+				D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */,
 				D73C7DB82500FFC3007062D9 /* GoogleService-Info.plist */,
 				D79520FF24FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld */,
 			);
@@ -363,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D795210624FFBE7F0094BAFE /* LaunchScreen.storyboard in Resources */,
+				D7B4B51E250A5E8200BA07CB /* RemoteConfigDefaults.plist in Resources */,
 				D73C7DB92500FFC3007062D9 /* GoogleService-Info.plist in Resources */,
 				D795210324FFBE7F0094BAFE /* Assets.xcassets in Resources */,
 				D79520FE24FFBE7E0094BAFE /* Main.storyboard in Resources */,
