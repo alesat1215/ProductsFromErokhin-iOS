@@ -11,6 +11,7 @@ import RxSwift
 import RxCoreData
 import CoreData
 
+/** Repository for groups & products */
 class ProductsRepository {
     private let updater: DatabaseUpdater! // di
     private let context: NSManagedObjectContext!// di
@@ -19,16 +20,24 @@ class ProductsRepository {
         self.updater = updater
         self.context = context
     }
-    
-    private lazy var _products = context.rx
-        .entities(fetchRequest: Product.fetchRequestWithSort()).materialize()
+    /** Fetch observable groups array from database only once */
     private lazy var _groups = context.rx
         .entities(fetchRequest: Group.fetchRequestWithSort()).materialize()
-    
+    /** Fetch observable products array from database only once */
+    private lazy var _products = context.rx
+        .entities(fetchRequest: Product.fetchRequestWithSort()).materialize()
+
+    /**
+     Get groups from database & update it if needed
+     - returns: Observable array with groups
+     */
     func groups() -> Observable<Event<[Group]>> {
         Observable.merge([_groups, updater.sync()])
     }
-    
+    /**
+     Get products from database & update it if needed
+     - returns: Observable array with products
+     */
     func products() -> Observable<Event<[Product]>> {
         Observable.merge([_products, updater.sync()])
     }
