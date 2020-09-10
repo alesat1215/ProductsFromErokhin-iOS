@@ -31,7 +31,7 @@ extension ProductRemote: Codable {
         img = (try? values.decode(String.self, forKey: .img)) ?? ""
         price = (try? values.decode(Int.self, forKey: .price)) ?? 0
         inStart = (try? values.decode(Bool.self, forKey: .inStart)) ?? false
-        inStart2 = (try? values.decode(Bool.self, forKey: .inStart)) ?? false
+        inStart2 = (try? values.decode(Bool.self, forKey: .inStart2)) ?? false
     }
 }
 

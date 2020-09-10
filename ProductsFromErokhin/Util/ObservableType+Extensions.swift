@@ -12,7 +12,6 @@ import RxSwift
 extension ObservableType where Element: EventConvertible {
     /**
      Dematerilize Observable`<Event<Element>>` without error. For error event run handler & return empty observable.
-     
      - parameter handler: handler for error.
      - returns: An observable sequence without error.
      */

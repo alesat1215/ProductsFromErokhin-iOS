@@ -26,38 +26,61 @@ class StartViewController: UIViewController {
         bind()
     }
     
-    private func bind() {        
-        viewModel.products
-            .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
-                cell.name.text = model
-        }.disposed(by: dispose)
-        
-        viewModel.products2
-            .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
-                cell.name.text = model
-        }.disposed(by: dispose)
-                
-        viewModel.groups()
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
-            .observeOn(MainScheduler.instance)
-            .flatMapError { print("Groups error: \($0.localizedDescription)") }
-            .subscribe(
-                onNext: {
-                    print("Groups: \($0.count)")
-            }, onError: {
-                print($0)
-            }).disposed(by: dispose)
-        
-        viewModel.productsDB()
+    /** Bind data to views */
+    private func bind() {
+        // Shared observable with products
+        let _products = viewModel.products()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { print("Products error: \($0.localizedDescription)") }
-            .subscribe(
-                onNext: {
-                    print("Products: \($0.count)")
-            }, onError: {
-                print($0)
-            }).disposed(by: dispose)
+            .share()
+        
+        // Filter [Product] for products & bind
+        _products.map { $0.filter { $0.inStart } }
+            .debug("Products", trimOutput: true)
+            .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
+                cell.name.text = model.name
+        }.disposed(by: dispose)
+        
+        // Filter [Product] for products2 & bind
+        _products.map { $0.filter { $0.inStart2 } }
+            .debug("Products2", trimOutput: true)
+            .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
+                cell.name.text = model.name
+        }.disposed(by: dispose)
+        
+        
+//        viewModel.products1
+//            .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
+//                cell.name.text = model
+//        }.disposed(by: dispose)
+        
+//        viewModel.products2
+//            .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
+//                cell.name.text = model
+//        }.disposed(by: dispose)
+                
+//        viewModel.groups()
+//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .observeOn(MainScheduler.instance)
+//            .flatMapError { print("Groups error: \($0.localizedDescription)") }
+//            .subscribe(
+//                onNext: {
+//                    print("Groups: \($0.count)")
+//            }, onError: {
+//                print($0)
+//            }).disposed(by: dispose)
+//
+//        viewModel.products()
+//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .observeOn(MainScheduler.instance)
+//            .flatMapError { print("Products error: \($0.localizedDescription)") }
+//            .subscribe(
+//                onNext: {
+//                    print("Products: \($0.count)")
+//            }, onError: {
+//                print($0)
+//            }).disposed(by: dispose)
         
     }
 
