@@ -37,8 +37,8 @@ extension ProductRemote: Codable {
 
 // MARK: - Group
 struct GroupRemote {
-    var name = ""
-    var products = [ProductRemote]()
+    let name: String
+    let products: [ProductRemote]
 }
 
 extension GroupRemote: Codable {
