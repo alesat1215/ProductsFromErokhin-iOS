@@ -21,19 +21,15 @@ class ProductsRepository {
     }
     
     private lazy var _products = context.rx
-        .entities(fetchRequest: Product.fetchRequestWithSort()).map {
-            Result<[Product], Error>.success($0)
-    }
+        .entities(fetchRequest: Product.fetchRequestWithSort()).materialize()
     private lazy var _groups = context.rx
-        .entities(fetchRequest: Group.fetchRequestWithSort()).map {
-            Result<[Group], Error>.success($0)
-    }
+        .entities(fetchRequest: Group.fetchRequestWithSort()).materialize()
     
-    func groups() -> Observable<Result<[Group], Error>> {
+    func groups() -> Observable<Event<[Group]>> {
         Observable.merge([_groups, remoteConfigRepository.fetchAndActivate()])
     }
     
-    func products() -> Observable<Result<[Product], Error>> {
+    func products() -> Observable<Event<[Product]>> {
         Observable.merge([_products, remoteConfigRepository.fetchAndActivate()])
     }
     

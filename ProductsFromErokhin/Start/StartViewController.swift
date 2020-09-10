@@ -37,35 +37,69 @@ class StartViewController: UIViewController {
                 cell.name.text = model
         }.disposed(by: dispose)
                 
-        viewModel.groups()
+//        viewModel.groups()
+//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(
+//                onNext: {
+//                    switch $0 {
+//                    case .success(let groups):
+//                        print("Groups \(groups.count)")
+//                    case .failure(let error):
+//                        print("Groups error \(error.localizedDescription)")
+//                    }
+//            }, onError: {
+//                print($0)
+//            }).disposed(by: dispose)
+        
+        catchErrorInEvent(viewModel.groups())
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: {
-                    switch $0 {
-                    case .success(let groups):
-                        print("Groups \(groups.count)")
-                    case .failure(let error):
-                        print("Groups error \(error.localizedDescription)")
-                    }
+                    print("Groups: \($0.count)")
             }, onError: {
                 print($0)
             }).disposed(by: dispose)
         
-        viewModel.productsDB()
+        catchErrorInEvent(viewModel.productsDB())
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: {
-                    switch $0 {
-                    case .success(let products):
-                        print("Products \(products.count)")
-                    case .failure(let error):
-                        print("Products error \(error.localizedDescription)")
-                    }
+                    print("Products: \($0.count)")
             }, onError: {
                 print($0)
             }).disposed(by: dispose)
+        
+//        viewModel.productsDB()
+//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(
+//                onNext: {
+//                    switch $0 {
+//                    case .success(let products):
+//                        print("Products \(products.count)")
+//                    case .failure(let error):
+//                        print("Products error \(error.localizedDescription)")
+//                    }
+//            }, onError: {
+//                print($0)
+//            }).disposed(by: dispose)
+    }
+    
+    private func catchErrorInEvent<T>(_ observable: Observable<Event<T>>) -> Observable<T> {
+        observable.flatMap { event -> Observable<T> in
+            switch event {
+            case .error(let error):
+                print("Event with error: \(error.localizedDescription)")
+                return Observable.empty()
+            case .next(let element):
+                return Observable.just(element)
+            default:
+                return Observable.empty()
+            }
+        }
     }
 
 }
