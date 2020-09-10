@@ -52,9 +52,20 @@ class StartViewController: UIViewController {
 //                print($0)
 //            }).disposed(by: dispose)
         
-        catchErrorInEvent(viewModel.groups())
+//        catchErrorInEvent(viewModel.groups())
+//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(
+//                onNext: {
+//                    print("Groups: \($0.count)")
+//            }, onError: {
+//                print($0)
+//            }).disposed(by: dispose)
+        
+        viewModel.groups()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
+            .flatMapError { print("Groups error: \($0.localizedDescription)") }
             .subscribe(
                 onNext: {
                     print("Groups: \($0.count)")
@@ -62,15 +73,26 @@ class StartViewController: UIViewController {
                 print($0)
             }).disposed(by: dispose)
         
-        catchErrorInEvent(viewModel.productsDB())
+        viewModel.productsDB()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
+            .flatMapError { print("Products error: \($0.localizedDescription)") }
             .subscribe(
                 onNext: {
                     print("Products: \($0.count)")
             }, onError: {
                 print($0)
             }).disposed(by: dispose)
+        
+//        catchErrorInEvent(viewModel.productsDB())
+//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .observeOn(MainScheduler.instance)
+//            .subscribe(
+//                onNext: {
+//                    print("Products: \($0.count)")
+//            }, onError: {
+//                print($0)
+//            }).disposed(by: dispose)
         
 //        viewModel.productsDB()
 //            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
@@ -88,19 +110,19 @@ class StartViewController: UIViewController {
 //            }).disposed(by: dispose)
     }
     
-    private func catchErrorInEvent<T>(_ observable: Observable<Event<T>>) -> Observable<T> {
-        observable.flatMap { event -> Observable<T> in
-            switch event {
-            case .error(let error):
-                print("Event with error: \(error.localizedDescription)")
-                return Observable.empty()
-            case .next(let element):
-                return Observable.just(element)
-            default:
-                return Observable.empty()
-            }
-        }
-    }
+//    private func catchErrorInEvent<T>(_ observable: Observable<Event<T>>) -> Observable<T> {
+//        observable.flatMap { event -> Observable<T> in
+//            switch event {
+//            case .error(let error):
+//                print("Event with error: \(error.localizedDescription)")
+//                return Observable.empty()
+//            case .next(let element):
+//                return Observable.just(element)
+//            default:
+//                return Observable.empty()
+//            }
+//        }
+//    }
 
 }
 
@@ -108,3 +130,19 @@ class ProductCell: UICollectionViewCell {
     
     @IBOutlet weak var name: UILabel!
 }
+
+//extension ObservableType where Element: EventConvertible {
+//    func catchErrorInEvent() -> Observable<Element.Element> {
+//        self.flatMap { element -> Observable<Element.Element> in
+//            switch element.event {
+//            case .error(let error):
+//                print("Event with error: \(error.localizedDescription)")
+//                return Observable.empty()
+//            case .next(let element):
+//                return Observable.just(element)
+//            default:
+//                return Observable.empty()
+//            }
+//        }
+//    }
+//}
