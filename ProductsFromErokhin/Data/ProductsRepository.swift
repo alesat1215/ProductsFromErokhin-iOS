@@ -12,11 +12,11 @@ import RxCoreData
 import CoreData
 
 class ProductsRepository {
-    private let remoteConfigRepository: RemoteConfigRepository! // di
+    private let updater: DatabaseUpdater! // di
     private let context: NSManagedObjectContext!// di
     
-    init(remoteConfigRepository: RemoteConfigRepository?, context: NSManagedObjectContext?) {
-        self.remoteConfigRepository = remoteConfigRepository
+    init(updater: DatabaseUpdater?, context: NSManagedObjectContext?) {
+        self.updater = updater
         self.context = context
     }
     
@@ -26,11 +26,11 @@ class ProductsRepository {
         .entities(fetchRequest: Group.fetchRequestWithSort()).materialize()
     
     func groups() -> Observable<Event<[Group]>> {
-        Observable.merge([_groups, remoteConfigRepository.fetchAndActivate()])
+        Observable.merge([_groups, updater.sync()])
     }
     
     func products() -> Observable<Event<[Product]>> {
-        Observable.merge([_products, remoteConfigRepository.fetchAndActivate()])
+        Observable.merge([_products, updater.sync()])
     }
     
 }

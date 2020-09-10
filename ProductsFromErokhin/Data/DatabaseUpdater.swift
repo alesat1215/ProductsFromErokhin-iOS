@@ -12,7 +12,7 @@ import RxSwift
 import RxRelay
 import CoreData
 
-class RemoteConfigRepository {
+class DatabaseUpdater {
     private let remoteConfig: RemoteConfig! // di
     private let remoteConfigComplection: RemoteConfigComplection! // di
     private let decoder: JSONDecoder! // di
@@ -33,8 +33,8 @@ class RemoteConfigRepository {
         self.fetchLimiter = fetchLimiter
     }
     
-    /** Update database when config fethed form remote */
-    func fetchAndActivate<T>() -> Observable<Event<T>> {
+    /** Sync database with remote data */
+    func sync<T>() -> Observable<Event<T>> {
         // Check can fetch
         if fetchLimiter.fetchInProcess {
             return Observable.empty()
@@ -47,7 +47,7 @@ class RemoteConfigRepository {
         return remoteConfigComplection.result().flatMap { [weak self] status, error -> Observable<Event<T>> in
             // Default result
             var result = Observable<Event<T>>.empty()
-            // Check result status
+            // Update database only when config wethed from remote
             switch status {
             case .error:
                 let error = error ?? AppError.unknown
@@ -57,7 +57,7 @@ class RemoteConfigRepository {
             case .successFetchedFromRemote:
                 print("Remote config fetched data from remote")
                 // Update database from remote config
-                try self?.updateDB()
+                try self?.update()
             case .successUsingPreFetchedData:
                 print("Remote config using prefetched data")
             @unknown default:
@@ -69,7 +69,7 @@ class RemoteConfigRepository {
         }
     }
     
-    private func updateDB() throws {
+    private func update() throws {
         let groups: [GroupRemote] = try remoteData(key: "products")
         
         try Group.clearEntity(context: context)

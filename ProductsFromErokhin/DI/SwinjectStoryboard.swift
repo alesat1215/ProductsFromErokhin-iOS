@@ -23,13 +23,13 @@ extension SwinjectStoryboard {
         // MARK: - Products
         defaultContainer.register(ProductsRepository.self) { r in
             ProductsRepository(
-                remoteConfigRepository: r.resolve(RemoteConfigRepository.self),
+                updater: r.resolve(DatabaseUpdater.self),
                 context: r.resolve(NSManagedObjectContext.self)
             )
         }
         // MARK: - Remote config
-        defaultContainer.register(RemoteConfigRepository.self) { r in
-            RemoteConfigRepository(
+        defaultContainer.register(DatabaseUpdater.self) { r in
+            DatabaseUpdater(
                 remoteConfig: r.resolve(RemoteConfig.self),
                 remoteConfigComplection: r.resolve(RemoteConfigComplection.self),
                 decoder: r.resolve(JSONDecoder.self),
