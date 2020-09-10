@@ -12,6 +12,7 @@ import RxSwift
 import RxRelay
 import CoreData
 
+/** Sync database with remote config */
 class DatabaseUpdater {
     private let remoteConfig: RemoteConfig! // di
     private let remoteConfigComplection: RemoteConfigComplection! // di
@@ -68,22 +69,23 @@ class DatabaseUpdater {
             return result
         }
     }
-    
+    /** Update database from remote data */
     private func update() throws {
+        // Get groups with products from remote data
         let groups: [GroupRemote] = try remoteData(key: "products")
-        
+        // Delete all groups with products from database
         try Group.clearEntity(context: context)
-        
+        // Create groups & products entitys with order from remote
         var productOrder = 0
         groups.enumerated().forEach {
             context.insert($1.managedObject(context: context, groupOrder: $0, productOrder: &productOrder))
         }
-        
+        // Save result
         if context.hasChanges {
             try context.save()
         }
     }
-        
+    /** Get data from remote config & decode it from JSON */
     private func remoteData<T: Codable>(key: String) throws -> T {
         try decoder.decode(T.self, from: remoteConfig![key].dataValue)
     }
