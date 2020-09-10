@@ -48,40 +48,6 @@ class StartViewController: UIViewController {
             .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
                 cell.name.text = model.name
         }.disposed(by: dispose)
-        
-        
-//        viewModel.products1
-//            .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
-//                cell.name.text = model
-//        }.disposed(by: dispose)
-        
-//        viewModel.products2
-//            .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, model, cell in
-//                cell.name.text = model
-//        }.disposed(by: dispose)
-                
-//        viewModel.groups()
-//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
-//            .observeOn(MainScheduler.instance)
-//            .flatMapError { print("Groups error: \($0.localizedDescription)") }
-//            .subscribe(
-//                onNext: {
-//                    print("Groups: \($0.count)")
-//            }, onError: {
-//                print($0)
-//            }).disposed(by: dispose)
-//
-//        viewModel.products()
-//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
-//            .observeOn(MainScheduler.instance)
-//            .flatMapError { print("Products error: \($0.localizedDescription)") }
-//            .subscribe(
-//                onNext: {
-//                    print("Products: \($0.count)")
-//            }, onError: {
-//                print($0)
-//            }).disposed(by: dispose)
-        
     }
 
 }
