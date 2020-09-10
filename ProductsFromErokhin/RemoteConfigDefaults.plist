@@ -4,5 +4,7 @@
 <dict>
 	<key>products</key>
 	<string>[]</string>
+	<key>titles</key>
+	<string></string>
 </dict>
 </plist>

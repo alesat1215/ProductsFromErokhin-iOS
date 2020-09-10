@@ -13,6 +13,10 @@ import RxCocoa
 class StartViewController: UIViewController {
 
     // MARK: - Outlets
+    @IBOutlet weak var _title: UILabel!
+    @IBOutlet weak var imgTitle: UILabel!
+    @IBOutlet weak var productsTitle: UILabel!
+    @IBOutlet weak var productsTitle2: UILabel!
     @IBOutlet weak var products: UICollectionView!
     @IBOutlet weak var products2: UICollectionView!
     
@@ -25,12 +29,27 @@ class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        bind()
+        // Bind data to views
+        bindTitles()
+        bindProducts()
     }
     
-    /** Bind data to views */
-    private func bind() {
+    /** Bind first result from request to titles */
+    private func bindTitles() {
+        viewModel.titles()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .observeOn(MainScheduler.instance)
+            .flatMapError { print("Products error: \($0.localizedDescription)") }
+            .map { $0.first }
+            .subscribe(onNext: { [weak self] in
+                self?._title.text = $0?.title
+                self?.imgTitle.text = $0?.imgTitle
+                self?.productsTitle.text = $0?.productsTitle
+                self?.productsTitle2.text = $0?.productsTitle2
+            }).disposed(by: disposeBag)
+    }
+    
+    private func bindProducts() {
         // Shared observable with products
         let _products = viewModel.products()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))

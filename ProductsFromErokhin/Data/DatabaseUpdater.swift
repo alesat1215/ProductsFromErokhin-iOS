@@ -71,6 +71,15 @@ class DatabaseUpdater {
     }
     /** Update database from remote data */
     private func update() throws {
+        try updateProducts()
+        try updateTitles()
+        // Save result
+        if context.hasChanges {
+            try context.save()
+        }
+    }
+    
+    func updateProducts() throws {
         // Get groups with products from remote data
         let groups: [GroupRemote] = try remoteData(key: .products)
         // Delete all groups with products from database
@@ -80,21 +89,30 @@ class DatabaseUpdater {
         groups.enumerated().forEach {
             context.insert($1.managedObject(context: context, groupOrder: $0, productOrder: &productOrder))
         }
-        // Save result
-        if context.hasChanges {
-            try context.save()
-        }
     }
+    
+    func updateTitles() throws {
+        // Get titles from remote data
+        let titles: TitlesRemote = try remoteData(key: .titles)
+        // Delete all titles from database
+        try Titles.clearEntity(context: context)
+        // Create titles entity from remote
+        context.insert(titles.managedObject(context: context))
+    }
+    
     /** Get data from remote config & decode it from JSON */
     private func remoteData<T: Codable>(key: RemoteDataKeys) throws -> T {
         try decoder.decode(T.self, from: remoteConfig![key.rawValue].dataValue)
     }
     
 }
+
+// MARK: - Keys
 /** Keys for remote config parameters */
 fileprivate enum RemoteDataKeys: String {
-    case products
+    case products, titles
 }
+
 /** Completion handler for fetchAndActivate with observable result */
 class RemoteConfigComplection {
     private let _result = PublishRelay<(status: RemoteConfigFetchAndActivateStatus, error: Error?)>()
@@ -107,6 +125,7 @@ class RemoteConfigComplection {
         _result.asObservable()
     }
 }
+
 /** Limit for run fetchAndActivate method */
 class FetchLimiter {
     /** Fetch status */

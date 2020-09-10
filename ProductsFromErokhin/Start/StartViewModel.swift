@@ -17,11 +17,8 @@ class StartViewModel {
         self.repository = repository
     }
     
-    let products1 = Observable.just(["Product1", "Product2", "Product3", "Product4"])
-    let products2 = Observable.just(["Product5", "Product6", "Product7", "Product8"])
-        
-    func groups() -> Observable<Event<[Group]>> {
-        repository.groups()
+    func titles() -> Observable<Event<[Titles]>> {
+        repository.titles()
     }
     
     func products() -> Observable<Event<[Product]>> {

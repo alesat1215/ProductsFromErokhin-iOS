@@ -141,6 +141,12 @@
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Start" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="_title" destination="Ttu-aQ-jH5" id="i4k-dd-bHb"/>
+                        <outlet property="imgTitle" destination="4Rx-RM-Qio" id="phr-8h-Rxk"/>
+                        <outlet property="productsTitle" destination="F84-hf-PDl" id="5as-4b-DRo"/>
+                        <outlet property="productsTitle2" destination="DUd-Vn-rCM" id="kJu-Bz-mY5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -359,6 +365,7 @@
                             <constraint firstAttribute="trailing" secondItem="x5d-Ol-Jwt" secondAttribute="trailing" id="Vko-L9-yEd"/>
                             <constraint firstItem="x5d-Ol-Jwt" firstAttribute="top" secondItem="aVF-DZ-Nfd" secondAttribute="top" id="ow9-TP-kYs"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="pRK-HL-gUF"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Duv-Zu-ZdS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

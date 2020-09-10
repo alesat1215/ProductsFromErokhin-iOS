@@ -31,6 +31,8 @@
 		D795211C24FFBE800094BAFE /* ProductsFromErokhinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795211B24FFBE800094BAFE /* ProductsFromErokhinUITests.swift */; };
 		D7B4B51C250A299D00BA07CB /* ObservableType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */; };
 		D7B4B51E250A5E8200BA07CB /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */; };
+		D7B4B520250A774100BA07CB /* TitlesRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B51F250A774100BA07CB /* TitlesRemote.swift */; };
+		D7B4B522250A7AF700BA07CB /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B521250A7AF700BA07CB /* Titles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		D795211D24FFBE800094BAFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extensions.swift"; sourceTree = "<group>"; };
 		D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
+		D7B4B51F250A774100BA07CB /* TitlesRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesRemote.swift; sourceTree = "<group>"; };
+		D7B4B521250A7AF700BA07CB /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -162,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				D7877B7F250809F300244B81 /* Products.swift */,
+				D7B4B521250A7AF700BA07CB /* Titles.swift */,
 				D7877B772504B05D00244B81 /* Ordered.swift */,
 			);
 			path = Local;
@@ -171,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				D7877B5D25010F7100244B81 /* ProductsRemote.swift */,
+				D7B4B51F250A774100BA07CB /* TitlesRemote.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -525,6 +531,8 @@
 				D7877B5E25010F7100244B81 /* ProductsRemote.swift in Sources */,
 				D7877B6525028D9200244B81 /* AppError.swift in Sources */,
 				D7B4B51C250A299D00BA07CB /* ObservableType+Extensions.swift in Sources */,
+				D7B4B520250A774100BA07CB /* TitlesRemote.swift in Sources */,
+				D7B4B522250A7AF700BA07CB /* Titles.swift in Sources */,
 				D7877B80250809F300244B81 /* Products.swift in Sources */,
 				D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */,
 				D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */,

@@ -26,6 +26,9 @@ class ProductsRepository {
     /** Fetch observable products array from database only once */
     private lazy var _products = context.rx
         .entities(fetchRequest: Product.fetchRequestWithSort()).materialize()
+    /** Fetch observable titles array from database only once */
+    private lazy var _titles = context.rx
+        .entities(fetchRequest: Titles.fetchRequestWithSort()).materialize()
 
     /**
      Get groups from database & update it if needed
@@ -40,6 +43,13 @@ class ProductsRepository {
      */
     func products() -> Observable<Event<[Product]>> {
         Observable.merge([_products, updater.sync()])
+    }
+    /**
+    Get titles from database & update it if needed
+    - returns: Observable array with products
+    */
+    func titles() -> Observable<Event<[Titles]>> {
+        Observable.merge([_titles, updater.sync()])
     }
     
 }
