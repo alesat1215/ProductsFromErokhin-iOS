@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import CoreData
 
 class StartViewController: UIViewController {
 
@@ -62,16 +63,23 @@ class StartViewController: UIViewController {
             .debug("Products in start", trimOutput: true)
             .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, product, cell in
                 // Bind product to cell
-                cell.bind(product: product)
+                cell.bind(model: product)
         }.disposed(by: disposeBag)
         
         // Filter [Product] for products2 & bind
-        _products.map { $0.filter { $0.inStart2 } }
-            .debug("Products in start 2", trimOutput: true)
-            .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, product, cell in
-                // Bind product to cell
-                cell.bind(product: product)
-        }.disposed(by: disposeBag)
+//        _products.map { $0.filter { $0.inStart2 } }
+//            .debug("Products in start 2", trimOutput: true)
+//            .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, product, cell in
+//                // Bind product to cell
+//                cell.bind(product: product)
+//        }.disposed(by: disposeBag)
+        viewModel.products2.flatMapError { print("Products error: \($0.localizedDescription)") }.subscribe(
+            onNext: { [weak self] in
+                $0.bind(collectionView: self?.products2)
+                
+        }, onError: {
+            print("Bind error: \($0)")
+        }).disposed(by: disposeBag)
     }
     
     // Set otlets for products
@@ -90,16 +98,23 @@ class StartViewController: UIViewController {
 
 // MARK: - Cell
 class ProductCell: UICollectionViewCell {
+    
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var inCart: UILabel!
 }
 
-extension ProductCell {
-    /** Bind data from product to views */
-    func bind(product: Product) {
-        name.text = product.name
-        price.text = "\(product.price) P/Kg"
-        inCart.text = "\(product.inCart?.count ?? 0)"
+extension ProductCell: CellBind {
+    func bind<T>(model: T) {
+        name.text = (model as? Product)?.name
+        price.text = "\((model as? Product)?.price ?? 0) P/Kg"
+        inCart.text = "\((model as? Product)?.inCart?.count ?? 0)"
     }
+    
+    /** Bind data from product to views */
+//    func bind(model: Product) {
+//        name.text = model.name
+//        price.text = "\(model.price) P/Kg"
+//        inCart.text = "\(model.inCart?.count ?? 0)"
+//    }
 }
