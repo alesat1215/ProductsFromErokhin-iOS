@@ -24,7 +24,6 @@ class CoreDataSource<T: NSManagedObject>: NSObject, UICollectionViewDataSource, 
         self.frc = frc
         self.cellId = cellId
         super.init()
-        self.frc.delegate = self
         
         do {
             try self.frc.performFetch()
@@ -35,6 +34,7 @@ class CoreDataSource<T: NSManagedObject>: NSObject, UICollectionViewDataSource, 
     }
     
     func bind(collectionView: UICollectionView?) {
+        self.frc.delegate = self
         self.collectionView?.dataSource = nil
         self.collectionView = collectionView
         self.collectionView?.dataSource = self
