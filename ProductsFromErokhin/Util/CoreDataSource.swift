@@ -30,7 +30,7 @@ class CoreDataSource<T: NSManagedObject>: NSObject, UICollectionViewDataSource, 
             try self.frc.performFetch()
             observer.onNext(self)
         } catch {
-            observer.on(.error(error))
+            observer.onError(error)
         }
     }
     
@@ -88,6 +88,12 @@ extension CoreDataSource: Disposable {
     func dispose() {
         frc.delegate = nil
         collectionView?.dataSource = nil
+    }
+}
+
+extension CoreDataSource {
+    func object(at indexPath: IndexPath) -> T {
+        frc.object(at: indexPath)
     }
 }
 
