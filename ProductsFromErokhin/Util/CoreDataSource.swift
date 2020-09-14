@@ -1,5 +1,5 @@
 //
-//  DataSourceCoreData.swift
+//  CoreDataSource.swift
 //  ProductsFromErokhin
 //
 //  Created by Alexander Satunin on 13.09.2020.
@@ -10,9 +10,9 @@ import UIKit
 import CoreData
 import RxSwift
 
-class DataSourceCoreData<T: NSManagedObject>: NSObject, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
+class CoreDataSource<T: NSManagedObject>: NSObject, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
     
-    typealias Observer = AnyObserver<DataSourceCoreData<T>>
+    typealias Observer = AnyObserver<CoreDataSource<T>>
     
     private let observer: Observer
     private let frc: NSFetchedResultsController<T>
@@ -84,7 +84,7 @@ class DataSourceCoreData<T: NSManagedObject>: NSObject, UICollectionViewDataSour
 
 }
 
-extension DataSourceCoreData: Disposable {
+extension CoreDataSource: Disposable {
     func dispose() {
         frc.delegate = nil
         collectionView?.dataSource = nil

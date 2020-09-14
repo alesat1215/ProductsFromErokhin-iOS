@@ -33,7 +33,7 @@
 		D7B4B51E250A5E8200BA07CB /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */; };
 		D7B4B520250A774100BA07CB /* TitlesRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B51F250A774100BA07CB /* TitlesRemote.swift */; };
 		D7B4B522250A7AF700BA07CB /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B521250A7AF700BA07CB /* Titles.swift */; };
-		D7B4B52A250E542100BA07CB /* DataSourceCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B529250E542100BA07CB /* DataSourceCoreData.swift */; };
+		D7B4B52A250E542100BA07CB /* CoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B529250E542100BA07CB /* CoreDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,7 +90,7 @@
 		D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		D7B4B51F250A774100BA07CB /* TitlesRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesRemote.swift; sourceTree = "<group>"; };
 		D7B4B521250A7AF700BA07CB /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
-		D7B4B529250E542100BA07CB /* DataSourceCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceCoreData.swift; sourceTree = "<group>"; };
+		D7B4B529250E542100BA07CB /* CoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSource.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,7 +160,7 @@
 			children = (
 				D7877B6425028D9200244B81 /* AppError.swift */,
 				D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */,
-				D7B4B529250E542100BA07CB /* DataSourceCoreData.swift */,
+				D7B4B529250E542100BA07CB /* CoreDataSource.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -530,7 +530,7 @@
 				D7877B782504B05D00244B81 /* Ordered.swift in Sources */,
 				D73C7DC12501097E007062D9 /* SwinjectStoryboard.swift in Sources */,
 				D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */,
-				D7B4B52A250E542100BA07CB /* DataSourceCoreData.swift in Sources */,
+				D7B4B52A250E542100BA07CB /* CoreDataSource.swift in Sources */,
 				D795210124FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld in Sources */,
 				D7877B5E25010F7100244B81 /* ProductsRemote.swift in Sources */,
 				D7877B6525028D9200244B81 /* AppError.swift in Sources */,
