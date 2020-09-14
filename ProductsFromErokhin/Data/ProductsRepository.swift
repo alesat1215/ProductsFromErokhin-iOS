@@ -53,18 +53,12 @@ class ProductsRepository {
     }
     
     func products2(predicate: NSPredicate? = nil) -> Observable<Event<CoreDataSource<Product>>> {
+        // Create request with predicate
         let request = Product.fetchRequestWithSort()
         request.predicate = predicate
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-        
+        // Return result of request & sync db if needed
         return Observable.merge([
-            Observable<CoreDataSource<Product>>.create { observer in
-                let dataSource = CoreDataSource(observer: observer, frc: frc, cellId: "product")
-                
-                return Disposables.create {
-                    dataSource.dispose()
-                }
-            }.materialize(),
+            context.rx.coreDataSource(cellId: "product", fetchRequest: request).materialize(),
             updater.sync()
         ])
     }

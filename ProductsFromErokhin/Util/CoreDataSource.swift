@@ -19,10 +19,22 @@ class CoreDataSource<T: NSManagedObject>: NSObject, UICollectionViewDataSource, 
     private let cellId: String
     private weak var collectionView: UICollectionView?
     
-    init(observer: Observer, frc: NSFetchedResultsController<T>, cellId: String) {
+    init(
+        observer: Observer,
+        cellId: String,
+        fetchRequest: NSFetchRequest<T>,
+        managedObjectContext: NSManagedObjectContext,
+        sectionNameKeyPath: String?,
+        cacheName: String?
+    ) {
         self.observer = observer
-        self.frc = frc
         self.cellId = cellId
+        self.frc = NSFetchedResultsController(
+            fetchRequest: fetchRequest,
+            managedObjectContext: managedObjectContext,
+            sectionNameKeyPath: sectionNameKeyPath,
+            cacheName: cacheName
+        )
         super.init()
         
         do {
