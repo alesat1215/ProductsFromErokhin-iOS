@@ -47,7 +47,7 @@ class CoreDataSource<T: NSManagedObject>: NSObject, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        (cell as? CellBind)?.bind(model: frc.object(at: indexPath))
+        (cell as? BindableCell)?.bind(model: frc.object(at: indexPath))
         return cell
     }
     
@@ -65,7 +65,7 @@ class CoreDataSource<T: NSManagedObject>: NSObject, UICollectionViewDataSource, 
             }
         case .update:
             if let indexPath = indexPath {
-                (collectionView.cellForItem(at: indexPath) as? CellBind)?
+                (collectionView.cellForItem(at: indexPath) as? BindableCell)?
                     .bind(model: controller.object(at: indexPath))
             }
         case .move:
@@ -97,6 +97,8 @@ extension CoreDataSource {
     }
 }
 
-protocol CellBind {
-    func bind<T>(model: T)
+class BindableCell<T>: UICollectionViewCell {
+    func bind(model: T) {
+        print("Warning! Bind for cell isn't ovverite")
+    }
 }

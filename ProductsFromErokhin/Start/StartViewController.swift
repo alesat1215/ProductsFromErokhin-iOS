@@ -97,24 +97,30 @@ class StartViewController: UIViewController {
 }
 
 // MARK: - Cell
-class ProductCell: UICollectionViewCell {
+class ProductCell: BindableCell<Product> {
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var inCart: UILabel!
+    
+    override func bind(model: Product) {
+        name.text = model.name
+        price.text = "\(model.price) P/Kg"
+        inCart.text = "\(model.inCart?.count ?? 0)"
+    }
 }
 
-extension ProductCell: CellBind {
-    func bind<T>(model: T) {
-        name.text = (model as? Product)?.name
-        price.text = "\((model as? Product)?.price ?? 0) P/Kg"
-        inCart.text = "\((model as? Product)?.inCart?.count ?? 0)"
-    }
-    
-    /** Bind data from product to views */
-//    func bind(model: Product) {
-//        name.text = model.name
-//        price.text = "\(model.price) P/Kg"
-//        inCart.text = "\(model.inCart?.count ?? 0)"
+//extension ProductCell: CellBind {
+//    func bind<T>(model: T) {
+//        name.text = (model as? Product)?.name
+//        price.text = "\((model as? Product)?.price ?? 0) P/Kg"
+//        inCart.text = "\((model as? Product)?.inCart?.count ?? 0)"
 //    }
-}
+//
+//    /** Bind data from product to views */
+////    func bind(model: Product) {
+////        name.text = model.name
+////        price.text = "\(model.price) P/Kg"
+////        inCart.text = "\(model.inCart?.count ?? 0)"
+////    }
+//}
