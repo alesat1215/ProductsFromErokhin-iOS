@@ -301,7 +301,7 @@
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WlK-dv-xbR" userLabel="In Cart">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WlK-dv-xbR" userLabel="In Cart Marker">
                                                             <rect key="frame" x="0.0" y="0.0" width="8" height="142.5"/>
                                                             <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
@@ -357,6 +357,7 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="inCart" destination="B8F-k9-pR8" id="qIg-JX-1dN"/>
+                                            <outlet property="inCartMarker" destination="WlK-dv-xbR" id="sH2-O7-RcM"/>
                                             <outlet property="name" destination="csR-xm-uCd" id="ZWB-i8-5bf"/>
                                             <outlet property="price" destination="Abe-7v-o4a" id="PeL-Pl-Yxz"/>
                                         </connections>
