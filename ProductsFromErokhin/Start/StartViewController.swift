@@ -111,8 +111,6 @@ class ProductCell: BindableCell<Product> {
             print("Product add to cart success")
         }
     }
-    private var indexPath: IndexPath!
-    private weak var dataSource: CoreDataSource<Product>?
     
     override func bind(model: Product, indexPath: IndexPath, dataSource: CoreDataSource<Product>?) {
         name.text = model.name

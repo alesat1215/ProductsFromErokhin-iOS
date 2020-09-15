@@ -110,6 +110,9 @@ extension CoreDataSource {
 }
 
 class BindableCell<T: NSFetchRequestResult>: UICollectionViewCell {
+    var indexPath: IndexPath!
+    weak var dataSource: CoreDataSource<Product>?
+    
     func bind(model: T, indexPath: IndexPath, dataSource: CoreDataSource<T>?) {
         print("Warning! Bind for cell isn't ovverite")
     }
