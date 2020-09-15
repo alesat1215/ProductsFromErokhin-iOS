@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import RxSwift
 
-class CoreDataSource<T: NSManagedObject>: NSObject, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
+class CoreDataSource<T: NSFetchRequestResult>: NSObject, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
     
     typealias Observer = AnyObserver<CoreDataSource<T>>
     
@@ -59,7 +59,7 @@ class CoreDataSource<T: NSManagedObject>: NSObject, UICollectionViewDataSource, 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        (cell as? BindableCell)?.bind(model: frc.object(at: indexPath))
+        (cell as? BindableCell)?.bind(model: frc.object(at: indexPath), indexPath: indexPath, dataSource: self)
         return cell
     }
     
@@ -78,7 +78,7 @@ class CoreDataSource<T: NSManagedObject>: NSObject, UICollectionViewDataSource, 
         case .update:
             if let indexPath = indexPath {
                 (collectionView.cellForItem(at: indexPath) as? BindableCell)?
-                    .bind(model: controller.object(at: indexPath))
+                    .bind(model: frc.object(at: indexPath), indexPath: indexPath, dataSource: self)
             }
         case .move:
             if let indexPath = indexPath, let newIndexPath = newIndexPath {
@@ -109,8 +109,8 @@ extension CoreDataSource {
     }
 }
 
-class BindableCell<T>: UICollectionViewCell {
-    func bind(model: T) {
+class BindableCell<T: NSFetchRequestResult>: UICollectionViewCell {
+    func bind(model: T, indexPath: IndexPath, dataSource: CoreDataSource<T>?) {
         print("Warning! Bind for cell isn't ovverite")
     }
 }

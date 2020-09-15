@@ -146,7 +146,3 @@ class FetchLimiter {
         }
     }
 }
-
-extension AppError {
-    static let unknown: AppError = .error("unknown")
-}

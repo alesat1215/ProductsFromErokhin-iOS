@@ -292,6 +292,9 @@
                                                                     <state key="normal" image="plus.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="add:" destination="0BG-3j-ti1" eventType="touchUpInside" id="fIA-2x-gsY"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>

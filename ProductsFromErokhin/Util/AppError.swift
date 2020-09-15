@@ -19,3 +19,8 @@ enum AppError: LocalizedError {
         }
     }
 }
+
+extension AppError {
+    static let unknown: AppError = .error("unknown")
+    static let context: AppError = .error("Error add to cart. Context is nil.")
+}

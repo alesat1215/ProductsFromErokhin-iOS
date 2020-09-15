@@ -59,12 +59,12 @@ class StartViewController: UIViewController {
             .share()
         
         // Filter [Product] for products & bind
-        _products.map { $0.filter { $0.inStart } }
-            .debug("Products in start", trimOutput: true)
-            .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, product, cell in
-                // Bind product to cell
-                cell.bind(model: product)
-        }.disposed(by: disposeBag)
+//        _products.map { $0.filter { $0.inStart } }
+//            .debug("Products in start", trimOutput: true)
+//            .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, product, cell in
+//                // Bind product to cell
+//                cell.bind(model: product)
+//        }.disposed(by: disposeBag)
         
         // Filter [Product] for products2 & bind
 //        _products.map { $0.filter { $0.inStart2 } }
@@ -103,10 +103,23 @@ class ProductCell: BindableCell<Product> {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var inCart: UILabel!
     
-    override func bind(model: Product) {
+    @IBAction func add(_ sender: UIButton) {
+        switch dataSource?.object(at: indexPath).addToCart() {
+        case .failure(let error):
+            print(error.localizedDescription)
+        default:
+            print("Product add to cart success")
+        }
+    }
+    private var indexPath: IndexPath!
+    private weak var dataSource: CoreDataSource<Product>?
+    
+    override func bind(model: Product, indexPath: IndexPath, dataSource: CoreDataSource<Product>?) {
         name.text = model.name
         price.text = "\(model.price) P/Kg"
         inCart.text = "\(model.inCart?.count ?? 0)"
+        self.indexPath = indexPath
+        self.dataSource = dataSource
     }
 }
 

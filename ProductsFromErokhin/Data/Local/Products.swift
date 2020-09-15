@@ -24,6 +24,26 @@ extension Product: Ordered {
     
 }
 
+extension Product {
+    /** Add product to cart */
+    func addToCart() -> Result<Void, Error> {
+        // Check context
+        guard let context = managedObjectContext else {
+            return .failure(AppError.context)
+        }
+        // Create `ProductInCart` entity & add to relationship
+        let productInCart = NSEntityDescription.insertNewObject(forEntityName: "ProductInCart", into: context)
+        self.addToInCart(NSSet(object: productInCart))
+        // Save & return result
+        do {
+            try context.save()
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
+    }
+}
+
 // MARK: - Group
 extension Group: Ordered {
     /** Set values from GroupRemote with order */
