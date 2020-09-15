@@ -94,6 +94,7 @@ class ProductCell: BindableCell<Product> {
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var inCart: UILabel!
     @IBOutlet weak var inCartMarker: UIView!
+    @IBOutlet weak var _del: UIButton!
     /** Add product to cart */
     @IBAction func add(_ sender: UIButton) {
         switch dataSource?.object(at: indexPath).addToCart() {
@@ -119,7 +120,11 @@ class ProductCell: BindableCell<Product> {
         price.text = "\(model.price) P/Kg"
         let inCartCount = model.inCart?.count ?? 0
         inCart.text = "\(inCartCount)"
-        inCartMarker.isHidden = inCartCount == 0 ? true : false
+        // Set visible of elements
+        let hidden = inCartCount == 0 ? true : false
+        inCartMarker.isHidden = hidden
+        _del.isHidden = hidden
+        inCart.isHidden = hidden
         // Set indexPath & dataSource
         super.bind(model: model, indexPath: indexPath, dataSource: dataSource)
     }

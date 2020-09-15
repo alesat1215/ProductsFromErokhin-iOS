@@ -325,7 +325,7 @@
                                                         <constraint firstItem="WlK-dv-xbR" firstAttribute="top" secondItem="by7-vt-Ww2" secondAttribute="top" id="gJ7-GS-wua"/>
                                                         <constraint firstItem="WaN-cs-86o" firstAttribute="leading" secondItem="AiR-Vk-M8b" secondAttribute="trailing" constant="8" id="ipD-cv-SNX"/>
                                                         <constraint firstItem="AiR-Vk-M8b" firstAttribute="top" secondItem="csR-xm-uCd" secondAttribute="bottom" constant="8" id="nHl-g4-cdd"/>
-                                                        <constraint firstItem="AiR-Vk-M8b" firstAttribute="baseline" secondItem="8fn-iQ-bu2" secondAttribute="firstBaseline" constant="8" symbolType="layoutAnchor" id="oKi-9M-SUO"/>
+                                                        <constraint firstItem="AiR-Vk-M8b" firstAttribute="baseline" secondItem="8fn-iQ-bu2" secondAttribute="baseline" constant="8" symbolType="layoutAnchor" id="oKi-9M-SUO"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -356,6 +356,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="_del" destination="ICF-SW-1Bf" id="TGU-S3-hS7"/>
                                             <outlet property="inCart" destination="B8F-k9-pR8" id="qIg-JX-1dN"/>
                                             <outlet property="inCartMarker" destination="WlK-dv-xbR" id="sH2-O7-RcM"/>
                                             <outlet property="name" destination="csR-xm-uCd" id="ZWB-i8-5bf"/>
