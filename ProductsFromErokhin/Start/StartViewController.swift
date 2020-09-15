@@ -112,6 +112,15 @@ class ProductCell: BindableCell<Product> {
         }
     }
     
+    @IBAction func del(_ sender: UIButton) {
+        switch dataSource?.object(at: indexPath).delFromCart() {
+        case .failure(let error):
+            print(error.localizedDescription)
+        default:
+            print("Product del from cart success")
+        }
+    }
+    
     override func bind(model: Product, indexPath: IndexPath, dataSource: CoreDataSource<Product>?) {
         name.text = model.name
         price.text = "\(model.price) P/Kg"
