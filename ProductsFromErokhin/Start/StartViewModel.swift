@@ -21,9 +21,7 @@ class StartViewModel {
         repository.titles()
     }
     
-    func products() -> Observable<Event<[Product]>> {
-        repository.products()
+    func products(_ predicate: NSPredicate) -> Observable<Event<CoreDataSource<Product>>> {
+        repository.products(predicate: predicate)
     }
-    
-    lazy var products2 = repository.products2(predicate: NSPredicate(format: "inStart2 == %@", NSNumber(value: true)))
 }

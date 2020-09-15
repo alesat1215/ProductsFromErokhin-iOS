@@ -50,36 +50,27 @@ class StartViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
     
+    /** Bind products & products2 UICollectionView */
     private func bindProducts() {
-        // Shared observable with products
-        let _products = viewModel.products()
+        // products
+        viewModel.products(NSPredicate(format: "inStart == %@", NSNumber(value: true)))
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { print("Products error: \($0.localizedDescription)") }
-            .share()
+            .subscribe(
+                onNext: { [weak self] in
+                    $0.bind(collectionView: self?.products)
+            }).disposed(by: disposeBag)
         
-        // Filter [Product] for products & bind
-//        _products.map { $0.filter { $0.inStart } }
-//            .debug("Products in start", trimOutput: true)
-//            .bind(to: products.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, product, cell in
-//                // Bind product to cell
-//                cell.bind(model: product)
-//        }.disposed(by: disposeBag)
-        
-        // Filter [Product] for products2 & bind
-//        _products.map { $0.filter { $0.inStart2 } }
-//            .debug("Products in start 2", trimOutput: true)
-//            .bind(to: products2.rx.items(cellIdentifier: "product", cellType: ProductCell.self)) { index, product, cell in
-//                // Bind product to cell
-//                cell.bind(product: product)
-//        }.disposed(by: disposeBag)
-        viewModel.products2.flatMapError { print("Products error: \($0.localizedDescription)") }.subscribe(
-            onNext: { [weak self] in
-                $0.bind(collectionView: self?.products2)
-                
-        }, onError: {
-            print("Bind error: \($0)")
-        }).disposed(by: disposeBag)
+        // products2
+        viewModel.products(NSPredicate(format: "inStart2 == %@", NSNumber(value: true)))
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .observeOn(MainScheduler.instance)
+            .flatMapError { print("Products error: \($0.localizedDescription)") }
+            .subscribe(
+                onNext: { [weak self] in
+                    $0.bind(collectionView: self?.products2)
+            }).disposed(by: disposeBag)
     }
     
     // Set otlets for products
