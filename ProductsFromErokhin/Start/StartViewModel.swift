@@ -22,10 +22,16 @@ class StartViewModel {
     }
     
     func products() -> Observable<Event<CoreDataSource<Product>>> {
-        repository.products(predicate: NSPredicate(format: "inStart == %@", NSNumber(value: true)))
+        repository.products(
+            predicate: NSPredicate(format: "inStart == %@", NSNumber(value: true)),
+            cellId: "product"
+        )
     }
     
     func products2() -> Observable<Event<CoreDataSource<Product>>> {
-        repository.products(predicate: NSPredicate(format: "inStart2 == %@", NSNumber(value: true)))
+        repository.products(
+            predicate: NSPredicate(format: "inStart2 == %@", NSNumber(value: true)),
+            cellId: "product"
+        )
     }
 }

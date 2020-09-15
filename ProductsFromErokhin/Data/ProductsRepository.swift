@@ -45,10 +45,10 @@ class ProductsRepository {
     Get products from database & update it if needed
     - returns: Observable dataSource with products
     */
-    func products(predicate: NSPredicate? = nil) -> Observable<Event<CoreDataSource<Product>>> {
+    func products(predicate: NSPredicate? = nil, cellId: String) -> Observable<Event<CoreDataSource<Product>>> {
         Observable.merge([
             context.rx.coreDataSource(
-                cellId: "product",
+                cellId: cellId,
                 fetchRequest: Product.fetchRequestWithSort(predicate: predicate)
             ).materialize(),
             updater.sync()
