@@ -55,14 +55,18 @@ extension GroupRemote: Codable {
 
 extension GroupRemote {
     /** Get NSManagedObject for Group */
-    func managedObject(context: NSManagedObjectContext, groupOrder: Int, productOrder: inout Int) -> NSManagedObject {
+    func managedObject(context: NSManagedObjectContext, groupOrder: Int, productOrder: inout Int, allInCart: [ProductInCart]) -> NSManagedObject {
         // Create entity for group & set values
         let group = NSEntityDescription.insertNewObject(forEntityName: "Group", into: context)
         (group as? Group)?.update(from: self, order: groupOrder)
-        // Create entitys for products & set values
+        // Create entitys for products, set values & relationship by name with products in cart
         let productsMO = products.map { productRemote -> NSManagedObject in
             let product = NSEntityDescription.insertNewObject(forEntityName: "Product", into: context)
-            (product as? Product)?.update(from: productRemote, order: productOrder)
+            (product as? Product)?.update(
+                from: productRemote,
+                order: productOrder,
+                inCart: allInCart.filter { $0.name == productRemote.name }
+            )
             productOrder += 1
             return product
         }

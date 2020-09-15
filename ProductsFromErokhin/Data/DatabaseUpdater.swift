@@ -86,8 +86,9 @@ class DatabaseUpdater {
         try Group.clearEntity(context: context)
         // Create groups & products entitys with order from remote
         var productOrder = 0
+        let allInCart = try context.fetch(ProductInCart.fetchRequestWithSortByName())
         groups.enumerated().forEach {
-            context.insert($1.managedObject(context: context, groupOrder: $0, productOrder: &productOrder))
+            context.insert($1.managedObject(context: context, groupOrder: $0, productOrder: &productOrder, allInCart: allInCart))
         }
     }
     

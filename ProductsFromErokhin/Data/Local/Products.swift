@@ -11,8 +11,8 @@ import CoreData
 
 // MARK: - Product
 extension Product: Ordered {
-    /** Set values from ProductRemote with order */
-    func update(from remote: ProductRemote, order: Int) {
+    /** Set values from ProductRemote with order & products in cart */
+    func update(from remote: ProductRemote, order: Int, inCart: [ProductInCart]) {
         self.order = Int16(order)
         consist = remote.consist
         img = remote.img
@@ -20,6 +20,7 @@ extension Product: Ordered {
         inStart2 = remote.inStart2
         name = remote.name
         price = Int16(remote.price)
+        addToInCart(NSSet(array: inCart))
     }
     
 }
@@ -31,6 +32,7 @@ extension Product {
         return save { context in
             // Create `ProductInCart` entity & add to relationship
             let productInCart = NSEntityDescription.insertNewObject(forEntityName: "ProductInCart", into: context)
+            (productInCart as? ProductInCart)?.name = name
             addToInCart(NSSet(object: productInCart))
         }
     }
@@ -66,6 +68,15 @@ extension Product {
         } catch {
             return .failure(error)
         }
+    }
+}
+
+extension ProductInCart {
+    /** Request for all entitys sorded by name */
+    static func fetchRequestWithSortByName() -> NSFetchRequest<ProductInCart> {
+        let fetchRequest: NSFetchRequest<ProductInCart> = ProductInCart.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        return fetchRequest
     }
 }
 

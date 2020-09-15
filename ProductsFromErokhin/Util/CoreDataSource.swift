@@ -86,7 +86,7 @@ class CoreDataSource<T: NSFetchRequestResult>: NSObject, UICollectionViewDataSou
                 collectionView.insertItems(at: [newIndexPath])
             }
         case .delete:
-            if let indexPath = indexPath {
+            if let indexPath = indexPath, collectionView.numberOfItems(inSection: 0) > 0 {
                 collectionView.deleteItems(at: [indexPath])
             }
         @unknown default:
