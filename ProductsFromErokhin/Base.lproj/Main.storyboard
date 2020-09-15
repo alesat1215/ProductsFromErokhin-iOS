@@ -227,17 +227,17 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="product" id="0BG-3j-ti1" customClass="ProductCell" customModule="ProductsFromErokhin" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="8.5" width="272.5" height="158.5"/>
+                                        <rect key="frame" x="0.0" y="8.5" width="273.5" height="158.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="YTj-G6-62Z">
-                                            <rect key="frame" x="0.0" y="0.0" width="272.5" height="158.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="273.5" height="158.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="by7-vt-Ww2">
-                                                    <rect key="frame" x="8" y="8" width="256.5" height="142.5"/>
+                                                    <rect key="frame" x="8" y="8" width="257.5" height="142.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csR-xm-uCd">
-                                                            <rect key="frame" x="16" y="8" width="232.5" height="21.5"/>
+                                                            <rect key="frame" x="16" y="8" width="233.5" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -250,10 +250,10 @@
                                                             </constraints>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaN-cs-86o" userLabel="Price Container">
-                                                            <rect key="frame" x="144" y="37.5" width="104.5" height="40"/>
+                                                            <rect key="frame" x="144" y="37.5" width="105.5" height="40"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="250 P/Kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abe-7v-o4a">
-                                                                    <rect key="frame" x="8" y="8" width="88.5" height="24"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="380 P/Kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Abe-7v-o4a">
+                                                                    <rect key="frame" x="8" y="8" width="89.5" height="24"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -273,7 +273,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8fn-iQ-bu2">
-                                                            <rect key="frame" x="153.5" y="103.5" width="86" height="31"/>
+                                                            <rect key="frame" x="154" y="103.5" width="86" height="31"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-SW-1Bf">
                                                                     <rect key="frame" x="0.0" y="0.0" width="32" height="31"/>
@@ -312,7 +312,7 @@
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="csR-xm-uCd" secondAttribute="trailing" constant="8" id="17T-1H-Avn"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WaN-cs-86o" secondAttribute="trailing" constant="8" id="2mc-lR-fAP"/>
+                                                        <constraint firstAttribute="trailing" secondItem="WaN-cs-86o" secondAttribute="trailing" constant="8" id="2mc-lR-fAP"/>
                                                         <constraint firstItem="WlK-dv-xbR" firstAttribute="leading" secondItem="by7-vt-Ww2" secondAttribute="leading" id="7k9-82-GrL"/>
                                                         <constraint firstItem="WaN-cs-86o" firstAttribute="firstBaseline" secondItem="AiR-Vk-M8b" secondAttribute="firstBaseline" id="7nH-h0-xEQ"/>
                                                         <constraint firstAttribute="bottom" secondItem="WlK-dv-xbR" secondAttribute="bottom" id="C2i-Ii-OF5"/>
@@ -327,6 +327,7 @@
                                                         <constraint firstItem="AiR-Vk-M8b" firstAttribute="top" secondItem="csR-xm-uCd" secondAttribute="bottom" constant="8" id="nHl-g4-cdd"/>
                                                         <constraint firstItem="AiR-Vk-M8b" firstAttribute="baseline" secondItem="8fn-iQ-bu2" secondAttribute="baseline" constant="8" symbolType="layoutAnchor" id="oKi-9M-SUO"/>
                                                         <constraint firstItem="8fn-iQ-bu2" firstAttribute="centerX" secondItem="WaN-cs-86o" secondAttribute="centerX" id="wcI-eL-noD"/>
+                                                        <constraint firstItem="csR-xm-uCd" firstAttribute="width" secondItem="WaN-cs-86o" secondAttribute="width" multiplier="2.21327" id="y00-0c-dd0"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
