@@ -88,7 +88,7 @@ class StartViewController: UIViewController {
 }
 
 // MARK: - Cell
-class ProductCell: BindableCell<Product> {
+class ProductCell: CoreDataCell<Product> {
     
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!

@@ -35,7 +35,7 @@
 		D7B4B522250A7AF700BA07CB /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B521250A7AF700BA07CB /* Titles.swift */; };
 		D7B4B52A250E542100BA07CB /* CoreDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B529250E542100BA07CB /* CoreDataSource.swift */; };
 		D7B4B52C250FE43700BA07CB /* NSManagedObjectContext+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52B250FE43700BA07CB /* NSManagedObjectContext+Rx.swift */; };
-		D7B4B52E2510C5BD00BA07CB /* BindableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52D2510C5BD00BA07CB /* BindableCell.swift */; };
+		D7B4B52E2510C5BD00BA07CB /* CoreDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52D2510C5BD00BA07CB /* CoreDataCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +94,7 @@
 		D7B4B521250A7AF700BA07CB /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
 		D7B4B529250E542100BA07CB /* CoreDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSource.swift; sourceTree = "<group>"; };
 		D7B4B52B250FE43700BA07CB /* NSManagedObjectContext+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Rx.swift"; sourceTree = "<group>"; };
-		D7B4B52D2510C5BD00BA07CB /* BindableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableCell.swift; sourceTree = "<group>"; };
+		D7B4B52D2510C5BD00BA07CB /* CoreDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCell.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,7 +166,7 @@
 				D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */,
 				D7B4B529250E542100BA07CB /* CoreDataSource.swift */,
 				D7B4B52B250FE43700BA07CB /* NSManagedObjectContext+Rx.swift */,
-				D7B4B52D2510C5BD00BA07CB /* BindableCell.swift */,
+				D7B4B52D2510C5BD00BA07CB /* CoreDataCell.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -547,7 +547,7 @@
 				D7877B80250809F300244B81 /* Products.swift in Sources */,
 				D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */,
 				D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */,
-				D7B4B52E2510C5BD00BA07CB /* BindableCell.swift in Sources */,
+				D7B4B52E2510C5BD00BA07CB /* CoreDataCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

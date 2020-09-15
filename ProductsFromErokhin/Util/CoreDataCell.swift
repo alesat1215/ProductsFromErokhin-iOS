@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 /** Cell with bind method for CoreDataSource */
-class BindableCell<T: NSFetchRequestResult>: UICollectionViewCell {
+class CoreDataCell<T: NSFetchRequestResult>: UICollectionViewCell {
     // IndexPath for current cell
     var indexPath: IndexPath!
     // For get model for current cell
