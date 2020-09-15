@@ -53,7 +53,7 @@ class StartViewController: UIViewController {
     /** Bind products & products2 UICollectionView */
     private func bindProducts() {
         // products
-        viewModel.products(NSPredicate(format: "inStart == %@", NSNumber(value: true)))
+        viewModel.products()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { print("Products error: \($0.localizedDescription)") }
@@ -63,7 +63,7 @@ class StartViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         // products2
-        viewModel.products(NSPredicate(format: "inStart2 == %@", NSNumber(value: true)))
+        viewModel.products2()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { print("Products error: \($0.localizedDescription)") }
@@ -120,18 +120,3 @@ class ProductCell: BindableCell<Product> {
         self.dataSource = dataSource
     }
 }
-
-//extension ProductCell: CellBind {
-//    func bind<T>(model: T) {
-//        name.text = (model as? Product)?.name
-//        price.text = "\((model as? Product)?.price ?? 0) P/Kg"
-//        inCart.text = "\((model as? Product)?.inCart?.count ?? 0)"
-//    }
-//
-//    /** Bind data from product to views */
-////    func bind(model: Product) {
-////        name.text = model.name
-////        price.text = "\(model.price) P/Kg"
-////        inCart.text = "\(model.inCart?.count ?? 0)"
-////    }
-//}
