@@ -93,7 +93,7 @@ class ProductCell: BindableCell<Product> {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var inCart: UILabel!
-    
+    /** Add product to cart */
     @IBAction func add(_ sender: UIButton) {
         switch dataSource?.object(at: indexPath).addToCart() {
         case .failure(let error):
@@ -102,7 +102,7 @@ class ProductCell: BindableCell<Product> {
             print("Product add to cart success")
         }
     }
-    
+    /** Del product from cart */
     @IBAction func del(_ sender: UIButton) {
         switch dataSource?.object(at: indexPath).delFromCart() {
         case .failure(let error):
@@ -113,10 +113,11 @@ class ProductCell: BindableCell<Product> {
     }
     
     override func bind(model: Product, indexPath: IndexPath, dataSource: CoreDataSource<Product>?) {
+        // Model values to views
         name.text = model.name
         price.text = "\(model.price) P/Kg"
         inCart.text = "\(model.inCart?.count ?? 0)"
-        self.indexPath = indexPath
-        self.dataSource = dataSource
+        // Set indexPath & dataSource
+        super.bind(model: model, indexPath: indexPath, dataSource: dataSource)
     }
 }

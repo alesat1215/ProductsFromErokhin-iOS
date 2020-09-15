@@ -10,10 +10,13 @@ import UIKit
 import CoreData
 
 class BindableCell<T: NSFetchRequestResult>: UICollectionViewCell {
+    // IndexPath for current cell
     var indexPath: IndexPath!
-    weak var dataSource: CoreDataSource<Product>?
-    
+    // For get model for current cell
+    weak var dataSource: CoreDataSource<T>?
+    /** Bind model values to views & save indexPath & dataSource. Must be ovverited in extenshion */
     func bind(model: T, indexPath: IndexPath, dataSource: CoreDataSource<T>?) {
-        print("Warning! Bind for cell isn't ovverite")
+        self.indexPath = indexPath
+        self.dataSource = dataSource
     }
 }
