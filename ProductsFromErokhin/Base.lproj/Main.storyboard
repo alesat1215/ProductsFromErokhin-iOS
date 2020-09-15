@@ -273,7 +273,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8fn-iQ-bu2">
-                                                            <rect key="frame" x="144" y="108.5" width="72" height="24"/>
+                                                            <rect key="frame" x="160.5" y="108.5" width="72" height="24"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-SW-1Bf">
                                                                     <rect key="frame" x="0.0" y="0.0" width="25" height="24"/>
@@ -313,12 +313,12 @@
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="csR-xm-uCd" secondAttribute="trailing" constant="8" id="17T-1H-Avn"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WaN-cs-86o" secondAttribute="trailing" constant="8" id="2mc-lR-fAP"/>
-                                                        <constraint firstItem="8fn-iQ-bu2" firstAttribute="leading" secondItem="AiR-Vk-M8b" secondAttribute="trailing" constant="8" id="4yM-Lo-K5G"/>
                                                         <constraint firstItem="WlK-dv-xbR" firstAttribute="leading" secondItem="by7-vt-Ww2" secondAttribute="leading" id="7k9-82-GrL"/>
                                                         <constraint firstItem="WaN-cs-86o" firstAttribute="firstBaseline" secondItem="AiR-Vk-M8b" secondAttribute="firstBaseline" id="7nH-h0-xEQ"/>
                                                         <constraint firstAttribute="bottom" secondItem="WlK-dv-xbR" secondAttribute="bottom" id="C2i-Ii-OF5"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8fn-iQ-bu2" secondAttribute="trailing" constant="8" id="EcO-iU-n0L"/>
                                                         <constraint firstItem="csR-xm-uCd" firstAttribute="leading" secondItem="WlK-dv-xbR" secondAttribute="trailing" constant="8" id="IPn-kr-eqN"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8fn-iQ-bu2" secondAttribute="trailing" constant="8" id="Kpb-uE-7xh"/>
+                                                        <constraint firstItem="8fn-iQ-bu2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="AiR-Vk-M8b" secondAttribute="trailing" constant="8" id="Lya-k0-dZP"/>
                                                         <constraint firstAttribute="bottom" secondItem="AiR-Vk-M8b" secondAttribute="bottom" constant="8" id="Q7T-mz-aTf"/>
                                                         <constraint firstItem="csR-xm-uCd" firstAttribute="top" secondItem="by7-vt-Ww2" secondAttribute="top" constant="8" id="S1h-l8-6ud"/>
                                                         <constraint firstItem="AiR-Vk-M8b" firstAttribute="leading" secondItem="WlK-dv-xbR" secondAttribute="trailing" constant="8" id="YyO-rh-Ydp"/>
@@ -326,6 +326,7 @@
                                                         <constraint firstItem="WaN-cs-86o" firstAttribute="leading" secondItem="AiR-Vk-M8b" secondAttribute="trailing" constant="8" id="ipD-cv-SNX"/>
                                                         <constraint firstItem="AiR-Vk-M8b" firstAttribute="top" secondItem="csR-xm-uCd" secondAttribute="bottom" constant="8" id="nHl-g4-cdd"/>
                                                         <constraint firstItem="AiR-Vk-M8b" firstAttribute="baseline" secondItem="8fn-iQ-bu2" secondAttribute="baseline" constant="8" symbolType="layoutAnchor" id="oKi-9M-SUO"/>
+                                                        <constraint firstItem="8fn-iQ-bu2" firstAttribute="centerX" secondItem="WaN-cs-86o" secondAttribute="centerX" id="wcI-eL-noD"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
