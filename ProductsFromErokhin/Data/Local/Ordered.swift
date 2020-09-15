@@ -11,7 +11,6 @@ import CoreData
 /** NSManagedObject with order attribute, fetch method with sort, clear & update methods from remote data */
 protocol Ordered {
     associatedtype T = Self where T: NSManagedObject
-//    associatedtype C: Codable
     /** Attribute for sort */
     var order: Int16 { get set }
     /** Fetch request fith default sort by order attribute */
@@ -21,8 +20,6 @@ protocol Ordered {
     static func fetchRequest() -> NSFetchRequest<T>
     /** Specifies all objects for entity that should be removed. Need save changes after */
     static func clearEntity(context: NSManagedObjectContext) throws
-    /** Set values from remote data with order */
-//    func update(from remote: C, order: Int)
 }
 
 // MARK: - Implementation
