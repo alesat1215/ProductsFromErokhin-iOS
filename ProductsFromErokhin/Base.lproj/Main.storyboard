@@ -273,27 +273,27 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8fn-iQ-bu2">
-                                                            <rect key="frame" x="160.5" y="108.5" width="72" height="24"/>
+                                                            <rect key="frame" x="153.5" y="103.5" width="86" height="31"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-SW-1Bf">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="24"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="32" height="31"/>
                                                                     <state key="normal" image="minus.circle.fill" catalog="system">
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
                                                                     </state>
                                                                     <connections>
                                                                         <action selector="del:" destination="0BG-3j-ti1" eventType="touchUpInside" id="XoM-UO-1m6"/>
                                                                     </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8F-k9-pR8">
-                                                                    <rect key="frame" x="30" y="0.0" width="12" height="24"/>
+                                                                    <rect key="frame" x="37" y="0.0" width="12" height="31"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djJ-na-YXs">
-                                                                    <rect key="frame" x="47" y="0.0" width="25" height="24"/>
+                                                                    <rect key="frame" x="54" y="0.0" width="32" height="31"/>
                                                                     <state key="normal" image="plus.circle.fill" catalog="system">
-                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
                                                                     </state>
                                                                     <connections>
                                                                         <action selector="add:" destination="0BG-3j-ti1" eventType="touchUpInside" id="fIA-2x-gsY"/>
