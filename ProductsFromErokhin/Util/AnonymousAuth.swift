@@ -11,6 +11,7 @@ import FirebaseAuth
 import RxSwift
 import RxRelay
 
+/** Sign in to Firebase Auth as anonymous */
 class AnonymousAuth {
     private let auth: Auth! // di
     private let authComplection: AuthComplection! // di
@@ -30,7 +31,7 @@ class AnonymousAuth {
             return Observable.just(Event.next(()))        }
     }
 }
-
+/** Observable complection for Firebase Auth */
 class AuthComplection {
     private let _result = PublishRelay<(result: AuthDataResult?, error: Error?)>()
     
