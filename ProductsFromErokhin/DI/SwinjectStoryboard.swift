@@ -9,6 +9,7 @@
 import Foundation
 import SwinjectStoryboard
 import FirebaseRemoteConfig
+import FirebaseAuth
 import CoreData
 
 extension SwinjectStoryboard {
@@ -18,7 +19,10 @@ extension SwinjectStoryboard {
             c.viewModel = r.resolve(StartViewModel.self)
         }
         defaultContainer.register(StartViewModel.self) { r in
-            StartViewModel(repository: r.resolve(ProductsRepository.self))
+            StartViewModel(
+                repository: r.resolve(ProductsRepository.self),
+                anonymousAuth: r.resolve(AnonymousAuth.self)
+            )
         }
         // MARK: - Products
         defaultContainer.register(ProductsRepository.self) { r in
@@ -26,6 +30,19 @@ extension SwinjectStoryboard {
                 updater: r.resolve(DatabaseUpdater.self),
                 context: r.resolve(NSManagedObjectContext.self)
             )
+        }
+        // MARK: - Auth
+        defaultContainer.register(AnonymousAuth.self) { r in
+            AnonymousAuth(
+                auth: r.resolve(Auth.self),
+                authComplection: r.resolve(AuthComplection.self)
+            )
+        }
+        defaultContainer.register(Auth.self) { _ in
+            Auth.auth()
+        }.inObjectScope(.container)
+        defaultContainer.register(AuthComplection.self) { _ in
+            AuthComplection()
         }
         // MARK: - Remote config
         defaultContainer.register(DatabaseUpdater.self) { r in
