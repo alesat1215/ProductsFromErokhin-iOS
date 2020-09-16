@@ -37,6 +37,8 @@
 		D7B4B52C250FE43700BA07CB /* NSManagedObjectContext+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52B250FE43700BA07CB /* NSManagedObjectContext+Rx.swift */; };
 		D7B4B52E2510C5BD00BA07CB /* CoreDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52D2510C5BD00BA07CB /* CoreDataCell.swift */; };
 		D7B4B5302512262100BA07CB /* AnonymousAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52F2512262100BA07CB /* AnonymousAuth.swift */; };
+		D7B4B5332512428000BA07CB /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B5322512428000BA07CB /* LoadViewController.swift */; };
+		D7B4B5352512429900BA07CB /* LoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B5342512429900BA07CB /* LoadViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		D7B4B52B250FE43700BA07CB /* NSManagedObjectContext+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Rx.swift"; sourceTree = "<group>"; };
 		D7B4B52D2510C5BD00BA07CB /* CoreDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCell.swift; sourceTree = "<group>"; };
 		D7B4B52F2512262100BA07CB /* AnonymousAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuth.swift; sourceTree = "<group>"; };
+		D7B4B5322512428000BA07CB /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
+		D7B4B5342512429900BA07CB /* LoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModel.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -218,10 +222,11 @@
 		D79520F324FFBE7E0094BAFE /* ProductsFromErokhin */ = {
 			isa = PBXGroup;
 			children = (
+				D7B4B5312512424E00BA07CB /* Load */,
+				D795212924FFD0F50094BAFE /* Start */,
 				D7877B612501180F00244B81 /* Util */,
 				D7877B5C25010F4900244B81 /* Data */,
 				D73C7DBF25010953007062D9 /* DI */,
-				D795212924FFD0F50094BAFE /* Start */,
 				D79520F424FFBE7E0094BAFE /* AppDelegate.swift */,
 				D79520F624FFBE7E0094BAFE /* SceneDelegate.swift */,
 				D79520FA24FFBE7E0094BAFE /* SecondViewController.swift */,
@@ -261,6 +266,15 @@
 				D73C7DBD2501060F007062D9 /* StartViewModel.swift */,
 			);
 			path = Start;
+			sourceTree = "<group>";
+		};
+		D7B4B5312512424E00BA07CB /* Load */ = {
+			isa = PBXGroup;
+			children = (
+				D7B4B5322512428000BA07CB /* LoadViewController.swift */,
+				D7B4B5342512429900BA07CB /* LoadViewModel.swift */,
+			);
+			path = Load;
 			sourceTree = "<group>";
 		};
 		F4D9130A77E7626254C8A195 /* Frameworks */ = {
@@ -538,9 +552,11 @@
 				D73C7DBE2501060F007062D9 /* StartViewModel.swift in Sources */,
 				D7877B782504B05D00244B81 /* Ordered.swift in Sources */,
 				D73C7DC12501097E007062D9 /* SwinjectStoryboard.swift in Sources */,
+				D7B4B5352512429900BA07CB /* LoadViewModel.swift in Sources */,
 				D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */,
 				D7B4B52A250E542100BA07CB /* CoreDataSource.swift in Sources */,
 				D795210124FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld in Sources */,
+				D7B4B5332512428000BA07CB /* LoadViewController.swift in Sources */,
 				D7877B5E25010F7100244B81 /* ProductsRemote.swift in Sources */,
 				D7877B6525028D9200244B81 /* AppError.swift in Sources */,
 				D7B4B52C250FE43700BA07CB /* NSManagedObjectContext+Rx.swift in Sources */,

@@ -38,6 +38,6 @@ class StartViewModel {
     }
     
     func auth() -> Observable<Event<Void>> {
-        anonymousAuth.signInAnonymously()
+        anonymousAuth.signIn()
     }
 }

@@ -21,7 +21,7 @@ class AnonymousAuth {
         self.authComplection = authComplection
     }
     
-    func signInAnonymously() -> Observable<Event<Void>> {
+    func signIn() -> Observable<Event<Void>> {
         auth.signInAnonymously(completion: authComplection.complection(result:error:))
         
         return authComplection.result().flatMap { _, error -> Observable<Event<Void>> in

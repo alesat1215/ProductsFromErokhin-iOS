@@ -14,6 +14,16 @@ import CoreData
 
 extension SwinjectStoryboard {
     public static func setup() {
+        // MARK: - Load
+        defaultContainer.storyboardInitCompleted(LoadViewController.self) { r, c in
+            c.viewModel = r.resolve(LoadViewModel.self)
+        }
+        defaultContainer.register(LoadViewModel.self) { r in
+            LoadViewModel(
+                repository: r.resolve(ProductsRepository.self),
+                anonymousAuth: r.resolve(AnonymousAuth.self)
+            )
+        }
         // MARK: - Start
         defaultContainer.storyboardInitCompleted(StartViewController.self) { r, c in
             c.viewModel = r.resolve(StartViewModel.self)

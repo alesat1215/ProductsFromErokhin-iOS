@@ -27,24 +27,12 @@ class StartViewController: UIViewController {
     var viewModel: StartViewModel! // di
     
     private var disposeBag = DisposeBag()
-    private let authDisposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Bind data to views
-//        bindTitles()
-//        bindProducts()
-        bind()
-    }
-    
-    func bind() {
-        viewModel.auth()
-            .flatMapError { print("Auth error: \($0.localizedDescription)") }
-            .subscribe(onNext: { [weak self] in
-                self?.disposeBag = DisposeBag()
-                self?.bindTitles()
-                self?.bindProducts()
-            }).disposed(by: authDisposeBag)
+        bindTitles()
+        bindProducts()
     }
     
     /** Bind first result from request to titles */
