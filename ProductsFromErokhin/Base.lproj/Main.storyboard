@@ -30,9 +30,8 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="44w-gK-Qcu">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="44w-gK-Qcu">
                                                 <rect key="frame" x="8" y="45" width="398" height="175"/>
-                                                <color key="backgroundColor" systemColor="linkColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="175" id="8Lc-KO-gvh"/>
                                                 </constraints>
@@ -145,6 +144,7 @@
                     <tabBarItem key="tabBarItem" title="Start" image="first" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="_title" destination="Ttu-aQ-jH5" id="i4k-dd-bHb"/>
+                        <outlet property="img" destination="44w-gK-Qcu" id="4rV-bn-EMG"/>
                         <outlet property="imgTitle" destination="4Rx-RM-Qio" id="phr-8h-Rxk"/>
                         <outlet property="productsTitle" destination="F84-hf-PDl" id="5as-4b-DRo"/>
                         <outlet property="productsTitle2" destination="DUd-Vn-rCM" id="kJu-Bz-mY5"/>

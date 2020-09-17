@@ -18,6 +18,7 @@ class StartViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var _title: UILabel!
+    @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var imgTitle: UILabel!
     @IBOutlet weak var productsTitle: UILabel!
     @IBOutlet weak var productsTitle2: UILabel!
@@ -47,6 +48,7 @@ class StartViewController: UIViewController {
             .map { $0.first }
             .subscribe(onNext: { [weak self] in
                 self?._title.text = $0?.title
+                self?.img.sd_setImage(with: storageReference(path: $0?.img ?? ""))
                 self?.imgTitle.text = $0?.imgTitle
                 self?.productsTitle.text = $0?.productsTitle
                 self?.productsTitle2.text = $0?.productsTitle2
@@ -125,7 +127,7 @@ class ProductCell: CoreDataCell<Product> {
         let inCartCount = model.inCart?.count ?? 0
         inCart.text = "\(inCartCount)"
         // Set image
-        img.sd_setImage(with: imageFromStorage(path: model.img ?? ""))
+        img.sd_setImage(with: storageReference(path: model.img ?? ""))
         // Set visible of elements
         let hidden = inCartCount == 0 ? true : false
         inCartMarker.isHidden = hidden
@@ -136,6 +138,6 @@ class ProductCell: CoreDataCell<Product> {
     }
 }
 /** - Returns: Referense for path from Firebase Storage */
-func imageFromStorage(path: String) -> StorageReference {
+func storageReference(path: String) -> StorageReference {
     SwinjectStoryboard.defaultContainer.resolve(StorageReference.self)!.child(path)
 }
