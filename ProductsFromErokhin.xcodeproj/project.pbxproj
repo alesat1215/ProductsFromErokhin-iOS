@@ -102,7 +102,7 @@
 		D7B4B52F2512262100BA07CB /* AnonymousAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuth.swift; sourceTree = "<group>"; };
 		D7B4B5322512428000BA07CB /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
 		D7B4B5342512429900BA07CB /* LoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModel.swift; sourceTree = "<group>"; };
-		D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "ObservableType+ExtensionsTests.swift"; path = "Util/ObservableType+ExtensionsTests.swift"; sourceTree = "<group>"; };
+		D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,9 +246,9 @@
 		D795210F24FFBE800094BAFE /* ProductsFromErokhinTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7C0FB962513D216009BC51F /* Util */,
 				D795211024FFBE800094BAFE /* ProductsFromErokhinTests.swift */,
 				D795211224FFBE800094BAFE /* Info.plist */,
-				D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */,
 			);
 			path = ProductsFromErokhinTests;
 			sourceTree = "<group>";
@@ -278,6 +278,14 @@
 				D7B4B5342512429900BA07CB /* LoadViewModel.swift */,
 			);
 			path = Load;
+			sourceTree = "<group>";
+		};
+		D7C0FB962513D216009BC51F /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 		F4D9130A77E7626254C8A195 /* Frameworks */ = {
