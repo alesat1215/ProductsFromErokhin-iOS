@@ -28,8 +28,8 @@ class LoadViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .flatMapError { print("Auth error: \($0)") }
             // Load data
+            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .flatMap { _ in loadComplete }
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { print("Load error: \($0)") }
             .subscribe(onNext: { [weak self] in
