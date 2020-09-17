@@ -41,7 +41,8 @@ extension SwinjectStoryboard {
                 updater: r.resolve(DatabaseUpdater.self),
                 context: r.resolve(NSManagedObjectContext.self)
             )
-        }
+        }.inObjectScope(.container)
+        
         // MARK: - Auth
         defaultContainer.register(AnonymousAuth.self) { r in
             AnonymousAuth(
@@ -52,6 +53,7 @@ extension SwinjectStoryboard {
         defaultContainer.register(Auth.self) { _ in
             Auth.auth()
         }.inObjectScope(.container)
+        
         defaultContainer.register(AuthComplection.self) { _ in
             AuthComplection()
         }
