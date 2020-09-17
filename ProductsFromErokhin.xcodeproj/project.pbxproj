@@ -40,6 +40,8 @@
 		D7B4B5332512428000BA07CB /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B5322512428000BA07CB /* LoadViewController.swift */; };
 		D7B4B5352512429900BA07CB /* LoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B5342512429900BA07CB /* LoadViewModel.swift */; };
 		D7C0FB922513C5B2009BC51F /* ObservableType+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */; };
+		D7C0FBAC2513E045009BC51F /* AnonymousAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBAB2513E045009BC51F /* AnonymousAuthTests.swift */; };
+		D7C0FBB22513E082009BC51F /* AuthComplectionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +105,8 @@
 		D7B4B5322512428000BA07CB /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
 		D7B4B5342512429900BA07CB /* LoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModel.swift; sourceTree = "<group>"; };
 		D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+ExtensionsTests.swift"; sourceTree = "<group>"; };
+		D7C0FBAB2513E045009BC51F /* AnonymousAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuthTests.swift; sourceTree = "<group>"; };
+		D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthComplectionMock.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -246,6 +250,7 @@
 		D795210F24FFBE800094BAFE /* ProductsFromErokhinTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7C0FBB02513E063009BC51F /* Mock */,
 				D7C0FB962513D216009BC51F /* Util */,
 				D795211024FFBE800094BAFE /* ProductsFromErokhinTests.swift */,
 				D795211224FFBE800094BAFE /* Info.plist */,
@@ -284,8 +289,17 @@
 			isa = PBXGroup;
 			children = (
 				D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */,
+				D7C0FBAB2513E045009BC51F /* AnonymousAuthTests.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		D7C0FBB02513E063009BC51F /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		F4D9130A77E7626254C8A195 /* Frameworks */ = {
@@ -586,6 +600,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7C0FBAC2513E045009BC51F /* AnonymousAuthTests.swift in Sources */,
+				D7C0FBB22513E082009BC51F /* AuthComplectionMock.swift in Sources */,
 				D7C0FB922513C5B2009BC51F /* ObservableType+ExtensionsTests.swift in Sources */,
 				D795211124FFBE800094BAFE /* ProductsFromErokhinTests.swift in Sources */,
 			);
