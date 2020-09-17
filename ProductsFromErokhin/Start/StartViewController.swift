@@ -10,6 +10,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 import CoreData
+import FirebaseStorage
+import FirebaseUI
+import SwinjectStoryboard
 
 class StartViewController: UIViewController {
 
@@ -95,6 +98,7 @@ class ProductCell: CoreDataCell<Product> {
     @IBOutlet weak var inCart: UILabel!
     @IBOutlet weak var inCartMarker: UIView!
     @IBOutlet weak var _del: UIButton!
+    @IBOutlet weak var img: UIImageView!
     /** Add product to cart */
     @IBAction func add(_ sender: UIButton) {
         switch dataSource?.object(at: indexPath).addToCart() {
@@ -120,6 +124,8 @@ class ProductCell: CoreDataCell<Product> {
         price.text = "\(model.price) P/Kg"
         let inCartCount = model.inCart?.count ?? 0
         inCart.text = "\(inCartCount)"
+        // Set image
+        img.sd_setImage(with: imageFromStorage(path: model.img ?? ""))
         // Set visible of elements
         let hidden = inCartCount == 0 ? true : false
         inCartMarker.isHidden = hidden
@@ -128,4 +134,8 @@ class ProductCell: CoreDataCell<Product> {
         // Set indexPath & dataSource
         super.bind(model: model, indexPath: indexPath, dataSource: dataSource)
     }
+}
+/** - Returns: Referense for path from Firebase Storage */
+func imageFromStorage(path: String) -> StorageReference {
+    SwinjectStoryboard.defaultContainer.resolve(StorageReference.self)!.child(path)
 }

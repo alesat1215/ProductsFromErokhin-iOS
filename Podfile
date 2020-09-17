@@ -15,6 +15,8 @@ target 'ProductsFromErokhin' do
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Auth'
+  pod 'Firebase/Storage'
+  pod 'FirebaseUI/Storage'
   # DI
   pod 'Swinject'
   pod 'SwinjectStoryboard', :git => 'https://github.com/Swinject/SwinjectStoryboard.git', :branch => 'master'

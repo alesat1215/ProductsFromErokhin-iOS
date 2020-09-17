@@ -10,6 +10,7 @@ import Foundation
 import SwinjectStoryboard
 import FirebaseRemoteConfig
 import FirebaseAuth
+import FirebaseStorage
 import CoreData
 
 extension SwinjectStoryboard {
@@ -81,6 +82,11 @@ extension SwinjectStoryboard {
         
         defaultContainer.register(DispatchQueue.self) { _ in
             DispatchQueue(label: "com.alesat1215.ProductsFromErokhin.serialQueue")
+        }.inObjectScope(.container)
+        
+        // MARK: - Storage
+        defaultContainer.register(StorageReference.self) { _ in
+            Storage.storage().reference()
         }.inObjectScope(.container)
         
         // MARK: - Shared

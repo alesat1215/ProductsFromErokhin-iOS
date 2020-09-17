@@ -1,5 +1,5 @@
 //
-//  BindableCell.swift
+//  CoreDataCell.swift
 //  ProductsFromErokhin
 //
 //  Created by Alexander Satunin on 15.09.2020.
