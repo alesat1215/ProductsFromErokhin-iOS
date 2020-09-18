@@ -72,11 +72,6 @@ class NSManagedObjectContext_RxTests: XCTestCase {
     override func tearDownWithError() throws {
         try Product.clearEntity(context: context)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
     
     func testCoreDataSource() throws {
         XCTAssertNotNil(dataSource)
@@ -138,12 +133,12 @@ class NSManagedObjectContext_RxTests: XCTestCase {
     func testObject() {
         XCTAssertEqual(dataSource.object(at: IndexPath(item: 0, section: 0)), products.first)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testDispose() {
+        dataSource.bind(collectionView: collectionView)
+        XCTAssertNotNil(collectionView.dataSource)
+        dataSource.dispose()
+        XCTAssertNil(collectionView.dataSource)
     }
 
 }
