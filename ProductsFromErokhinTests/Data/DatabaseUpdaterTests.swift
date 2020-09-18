@@ -12,51 +12,7 @@ import FirebaseRemoteConfig
 import CoreData
 @testable import ProductsFromErokhin
 
-class DatabaseUpdaterTests: XCTestCase {
-    // Setup mocks
-    class RemoteConfigComplectionMock: RemoteConfigComplection {
-        var _result: (status: RemoteConfigFetchAndActivateStatus, error: Error?)?
-        override func result() -> Observable<(status: RemoteConfigFetchAndActivateStatus, error: Error?)> {
-            if let _result = _result {
-                return Observable.just(_result)
-            }
-            return Observable.empty()
-        }
-    }
-    
-    class JSONDecoderMock: JSONDecoder {
-        override func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
-            if type == [GroupRemote].self {
-                return [GroupRemote(name: "", products: [])] as! T
-            }
-            return TitlesRemote(title: "", img: "", imgTitle: "", productsTitle: "", productsTitle2: "") as! T
-        }
-    }
-    
-    class ContextMock: NSManagedObjectContext {
-        init() {
-            super.init(concurrencyType: .mainQueueConcurrencyType)
-            let managedObjectModel = NSManagedObjectModel.mergedModel(from: nil)!
-            let storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
-            persistentStoreCoordinator = storeCoordinator
-        }
-        
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-        
-        var isSaving = false
-        override func save() throws {
-            isSaving.toggle()
-        }
-        var isInsert = false
-        override func insert(_ object: NSManagedObject) {
-            isInsert = true
-        }
-        
-        override var hasChanges: Bool { true }
-    }
-    
+class DatabaseUpdaterTests: XCTestCase {    
     // MARK: - Database
     func testSync() throws {
         // Not update. Fetch in process

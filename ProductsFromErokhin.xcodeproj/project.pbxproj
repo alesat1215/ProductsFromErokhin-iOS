@@ -53,6 +53,10 @@
 		D7C0FC1325151426009BC51F /* DatabaseUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC1225151426009BC51F /* DatabaseUpdaterTests.swift */; };
 		D7C0FC1925154199009BC51F /* CoreDataCellMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC1825154199009BC51F /* CoreDataCellMock.swift */; };
 		D7C0FC242515429E009BC51F /* CollectionViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC232515429E009BC51F /* CollectionViewMock.swift */; };
+		D7C0FC29251543B7009BC51F /* CoreDataCellMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC28251543B7009BC51F /* CoreDataCellMockTests.swift */; };
+		D7C0FC2E25154437009BC51F /* ContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC2D25154437009BC51F /* ContextMock.swift */; };
+		D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC3225154559009BC51F /* JSONDecoderMock.swift */; };
+		D7C0FC38251545A0009BC51F /* RemoteConfigComplectionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC37251545A0009BC51F /* RemoteConfigComplectionMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +133,10 @@
 		D7C0FC1225151426009BC51F /* DatabaseUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdaterTests.swift; sourceTree = "<group>"; };
 		D7C0FC1825154199009BC51F /* CoreDataCellMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCellMock.swift; sourceTree = "<group>"; };
 		D7C0FC232515429E009BC51F /* CollectionViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewMock.swift; sourceTree = "<group>"; };
+		D7C0FC28251543B7009BC51F /* CoreDataCellMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCellMockTests.swift; sourceTree = "<group>"; };
+		D7C0FC2D25154437009BC51F /* ContextMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMock.swift; sourceTree = "<group>"; };
+		D7C0FC3225154559009BC51F /* JSONDecoderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderMock.swift; sourceTree = "<group>"; };
+		D7C0FC37251545A0009BC51F /* RemoteConfigComplectionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigComplectionMock.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -326,6 +334,9 @@
 				D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */,
 				D7C0FC1825154199009BC51F /* CoreDataCellMock.swift */,
 				D7C0FC232515429E009BC51F /* CollectionViewMock.swift */,
+				D7C0FC3225154559009BC51F /* JSONDecoderMock.swift */,
+				D7C0FC2D25154437009BC51F /* ContextMock.swift */,
+				D7C0FC37251545A0009BC51F /* RemoteConfigComplectionMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -363,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				D7C0FBB92513E5AE009BC51F /* AuthComplectionMockTests.swift */,
+				D7C0FC28251543B7009BC51F /* CoreDataCellMockTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -669,16 +681,20 @@
 				D7C0FC062514FEBE009BC51F /* ProductsTests.swift in Sources */,
 				D7C0FBF82514EC5B009BC51F /* TitlesRemoteTests.swift in Sources */,
 				D7C0FBAC2513E045009BC51F /* AnonymousAuthTests.swift in Sources */,
+				D7C0FC2E25154437009BC51F /* ContextMock.swift in Sources */,
 				D7C0FBE92514DCF4009BC51F /* CoreDataCellTests.swift in Sources */,
 				D7C0FBB22513E082009BC51F /* AuthComplectionMock.swift in Sources */,
+				D7C0FC29251543B7009BC51F /* CoreDataCellMockTests.swift in Sources */,
 				D7C0FBBA2513E5AE009BC51F /* AuthComplectionMockTests.swift in Sources */,
 				D7C0FB922513C5B2009BC51F /* ObservableType+ExtensionsTests.swift in Sources */,
 				D795211124FFBE800094BAFE /* ProductsFromErokhinTests.swift in Sources */,
 				D7C0FC0E25150772009BC51F /* TitlesTests.swift in Sources */,
+				D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */,
 				D7C0FC1925154199009BC51F /* CoreDataCellMock.swift in Sources */,
 				D7C0FC1325151426009BC51F /* DatabaseUpdaterTests.swift in Sources */,
 				D7C0FBFE2514EF06009BC51F /* OrderedTests.swift in Sources */,
 				D7C0FBBF2513EBE8009BC51F /* CoreDataSourceTests.swift in Sources */,
+				D7C0FC38251545A0009BC51F /* RemoteConfigComplectionMock.swift in Sources */,
 				D7C0FBF02514E042009BC51F /* ProductsRemoteTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
