@@ -12,48 +12,12 @@ import RxCoreData
 @testable import ProductsFromErokhin
 
 class CoreDataSourceTests: XCTestCase {
-    // Setup mocks
-    class MockCell: CoreDataCell<Product> {
-        var isBind = false
-        override func bind(model: Product, indexPath: IndexPath, dataSource: CoreDataSource<Product>?) {
-            isBind.toggle()
-        }
-    }
-    
-    class MockCollectionView: UICollectionView {
-        override func dequeueReusableCell(withReuseIdentifier identifier: String, for indexPath: IndexPath) -> UICollectionViewCell {
-            MockCell()
-        }
-        
-        var isReload = false
-        override func reloadData() {
-            isReload.toggle()
-        }
-        
-        var isInsert = false
-        override func insertItems(at indexPaths: [IndexPath]) {
-            isInsert.toggle()
-        }
-        
-        var isDelete = false
-        override func deleteItems(at indexPaths: [IndexPath]) {
-            isDelete.toggle()
-        }
-        
-        override func numberOfItems(inSection section: Int) -> Int {
-            3
-        }
-        var cell = MockCell()
-        override func cellForItem(at indexPath: IndexPath) -> UICollectionViewCell? {
-            return cell
-        }
-    }
     
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private var products = [NSManagedObject]()
     private var dataSource: CoreDataSource<Product>!
-    private var collectionView: MockCollectionView!
+    private var collectionView: CollectionViewMock!
     
     override func setUpWithError() throws {
         // Clear products
@@ -68,7 +32,7 @@ class CoreDataSourceTests: XCTestCase {
         try context.save()
         
         dataSource = try context.rx.coreDataSource(cellId: "product", fetchRequest: Product.fetchRequestWithSort()).toBlocking().first()
-        collectionView = MockCollectionView(frame: .init(), collectionViewLayout: .init())
+        collectionView = CollectionViewMock(frame: .init(), collectionViewLayout: .init())
     }
 
     override func tearDownWithError() throws {
@@ -94,7 +58,7 @@ class CoreDataSourceTests: XCTestCase {
         XCTAssertEqual(dataSource.collectionView(collectionView, numberOfItemsInSection: 0), products.count)
         // Cell for indexPath
         let cell = dataSource.collectionView(collectionView, cellForItemAt: IndexPath(item: 0, section: 0))
-        XCTAssertTrue((cell as! MockCell).isBind)
+        XCTAssertTrue((cell as! CoreDataCellMock).isBind)
     }
     
     func testNSFetchedResultsControllerDelegate() {
