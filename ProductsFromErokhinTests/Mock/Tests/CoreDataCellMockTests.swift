@@ -7,33 +7,15 @@
 //
 
 import XCTest
+@testable import ProductsFromErokhin
 
 class CoreDataCellMockTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
     func testBind() {
         let cell = CoreDataCellMock()
         XCTAssertFalse(cell.isBind)
-//        cell.bind(model: <#T##Product#>, indexPath: <#T##IndexPath#>, dataSource: <#T##CoreDataSource<Product>?#>)
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        cell.bind(model: Product(context: ContextMock()), indexPath: IndexPath(), dataSource: nil)
+        XCTAssertTrue(cell.isBind)
     }
 
 }
