@@ -39,6 +39,10 @@ class NSManagedObjectContext_RxTests: XCTestCase {
         override func deleteItems(at indexPaths: [IndexPath]) {
             isDelete.toggle()
         }
+        
+        override func numberOfItems(inSection section: Int) -> Int {
+            3
+        }
     }
     
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -91,7 +95,35 @@ class NSManagedObjectContext_RxTests: XCTestCase {
     }
     
     func testNSFetchedResultsControllerDelegate() {
+        let fetchRequest = Product.fetchRequestWithSort() as! NSFetchRequest<NSFetchRequestResult>
+        let frc: NSFetchedResultsController<NSFetchRequestResult> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        // Not bind
+        dataSource.controller(frc, didChange: products.first!, at: nil, for: .insert, newIndexPath: nil)
+        XCTAssertFalse(collectionView.isInsert)
         
+        dataSource.bind(collectionView: collectionView)
+        
+        // Insert
+        dataSource.controller(frc, didChange: products.first!, at: nil, for: .insert, newIndexPath: nil)
+        XCTAssertFalse(collectionView.isInsert)
+        dataSource.controller(frc, didChange: products.first!, at: nil, for: .insert, newIndexPath: .init())
+        XCTAssertTrue(collectionView.isInsert)
+        collectionView.isInsert.toggle()
+        // Move
+        dataSource.controller(frc, didChange: products.first!, at: nil, for: .move, newIndexPath: nil)
+        XCTAssertFalse(collectionView.isInsert)
+        XCTAssertFalse(collectionView.isDelete)
+        dataSource.controller(frc, didChange: products.first!, at: .init(), for: .move, newIndexPath: .init())
+        XCTAssertTrue(collectionView.isInsert)
+        XCTAssertTrue(collectionView.isDelete)
+        collectionView.isInsert.toggle()
+        collectionView.isDelete.toggle()
+        // Delete
+        dataSource.controller(frc, didChange: products.first!, at: nil, for: .delete, newIndexPath: nil)
+        XCTAssertFalse(collectionView.isDelete)
+        dataSource.controller(frc, didChange: products.first!, at: .init(), for: .delete, newIndexPath: nil)
+        XCTAssertTrue(collectionView.isDelete)
+        collectionView.isDelete.toggle()
     }
 
     func testPerformanceExample() throws {
