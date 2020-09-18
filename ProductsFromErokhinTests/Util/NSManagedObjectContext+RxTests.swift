@@ -125,13 +125,15 @@ class NSManagedObjectContext_RxTests: XCTestCase {
         // Delete
         dataSource.controller(frc, didChange: products.first!, at: nil, for: .delete, newIndexPath: nil)
         XCTAssertFalse(collectionView.isDelete)
-        dataSource.controller(frc, didChange: products.first!, at: .init(), for: .delete, newIndexPath: nil)
+        dataSource.controller(frc, didChange: products.first!, at: IndexPath(item: 0, section: 0), for: .delete, newIndexPath: nil)
         XCTAssertTrue(collectionView.isDelete)
         collectionView.isDelete.toggle()
     }
     
     func testObject() {
         XCTAssertEqual(dataSource.object(at: IndexPath(item: 0, section: 0)), products.first)
+        XCTAssertNil(dataSource.object(at: IndexPath(item: 0, section: 7)))
+        XCTAssertNil(dataSource.object(at: IndexPath(item: 5, section: 0)))
     }
     
     func testDispose() {

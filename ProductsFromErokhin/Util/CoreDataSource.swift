@@ -60,7 +60,10 @@ class CoreDataSource<T: NSFetchRequestResult>: NSObject, UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        (cell as? CoreDataCell)?.bind(model: frc.object(at: indexPath), indexPath: indexPath, dataSource: self)
+        if let model = object(at: indexPath) {
+            (cell as? CoreDataCell)?
+                .bind(model: model, indexPath: indexPath, dataSource: self)
+        }
         return cell
     }
     
@@ -101,7 +104,9 @@ class CoreDataSource<T: NSFetchRequestResult>: NSObject, UICollectionViewDataSou
 extension CoreDataSource {
     func object(at indexPath: IndexPath) -> T? {
         var result: T?
-        if let numberOfObjects = frc.sections?[indexPath.section].numberOfObjects, numberOfObjects > indexPath.item {
+        if frc.sections?.indices.contains(indexPath.section) ?? false,
+           let numberOfObjects = frc.sections?[indexPath.section].numberOfObjects, numberOfObjects > indexPath.item
+        {
             result = frc.object(at: indexPath)
         }
         return result
