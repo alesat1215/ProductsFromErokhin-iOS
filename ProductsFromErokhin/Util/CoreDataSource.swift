@@ -99,8 +99,12 @@ class CoreDataSource<T: NSFetchRequestResult>: NSObject, UICollectionViewDataSou
 }
 
 extension CoreDataSource {
-    func object(at indexPath: IndexPath) -> T {
-        frc.object(at: indexPath)
+    func object(at indexPath: IndexPath) -> T? {
+        var result: T?
+        if let numberOfObjects = frc.sections?[indexPath.section].numberOfObjects, numberOfObjects > indexPath.item {
+            result = frc.object(at: indexPath)
+        }
+        return result
     }
 }
 

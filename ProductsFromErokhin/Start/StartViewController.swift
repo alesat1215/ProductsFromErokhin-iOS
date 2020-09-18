@@ -103,7 +103,7 @@ class ProductCell: CoreDataCell<Product> {
     @IBOutlet weak var img: UIImageView!
     /** Add product to cart */
     @IBAction func add(_ sender: UIButton) {
-        switch dataSource?.object(at: indexPath).addToCart() {
+        switch dataSource?.object(at: indexPath)?.addToCart() {
         case .failure(let error):
             print(error.localizedDescription)
         default:
@@ -112,7 +112,7 @@ class ProductCell: CoreDataCell<Product> {
     }
     /** Del product from cart */
     @IBAction func del(_ sender: UIButton) {
-        switch dataSource?.object(at: indexPath).delFromCart() {
+        switch dataSource?.object(at: indexPath)?.delFromCart() {
         case .failure(let error):
             print(error.localizedDescription)
         default:
