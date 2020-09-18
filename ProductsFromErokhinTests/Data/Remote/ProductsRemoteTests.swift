@@ -12,14 +12,6 @@ import XCTest
 class ProductsRemoteTests: XCTestCase {
     
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
     
     func testManagedObject() {
         let allInCart: [ProductInCart] = ["product2", "product2", "product2"].map {
@@ -35,22 +27,16 @@ class ProductsRemoteTests: XCTestCase {
         let groupRemote = GroupRemote(name: "group", products: productsRemote)
         var productOrder = 0
         let group = groupRemote.managedObject(context: context, groupOrder: 0, productOrder: &productOrder, allInCart: allInCart) as! Group
+        
+        XCTAssertEqual(productOrder, productsRemote.count)
         XCTAssertEqual(group.name, groupRemote.name)
         XCTAssertEqual(group.products?.count, productsRemote.count)
-        XCTAssertEqual(productOrder, productsRemote.count)
-        
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+        let product = group.products?.filter { ($0 as! Product).name == "product" }.first as! Product
+        XCTAssertEqual(product.inCart?.count, 0)
+        let product2 = group.products?.filter { ($0 as! Product).name == "product2" }.first as! Product
+        XCTAssertEqual(product2.inCart?.count, allInCart.count)
+        let product3 = group.products?.filter { ($0 as! Product).name == "product3" }.first as! Product
+        XCTAssertEqual(product3.inCart?.count, 0)
     }
 
 }
