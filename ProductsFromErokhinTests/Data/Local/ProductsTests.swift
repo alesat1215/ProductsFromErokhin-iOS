@@ -15,20 +15,13 @@ class ProductsTests: XCTestCase {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         try Product.clearEntity(context: context)
         try context.save()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         try Product.clearEntity(context: context)
         try context.save()
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
     // MARK: - Product
@@ -48,7 +41,7 @@ class ProductsTests: XCTestCase {
         XCTAssertEqual(product.inCart?.anyObject() as? ProductInCart, productsInCart.first)
     }
     
-    func testAddToCart() throws {
+    func testAddToCart() {
         let product = Product(context: context)
         product.name = "name"
         XCTAssertEqual(product.inCart?.count, 0)
@@ -56,12 +49,21 @@ class ProductsTests: XCTestCase {
         XCTAssertNoThrow(try result.get())
         XCTAssertEqual((product.inCart?.anyObject() as! ProductInCart).name, product.name)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testDelFromCart() {
+        let product = Product(context: context)
+        product.name = "name"
+        _ = product.addToCart()
+        XCTAssertEqual(product.inCart?.count, 1)
+        let result = product.delFromCart()
+        XCTAssertNoThrow(try result.get())
+        XCTAssertEqual(product.inCart?.count, 0)
+    }
+    
+    func testFetchRequestWithSortByName() {
+        let fetchRequest = ProductInCart.fetchRequestWithSortByName()
+        XCTAssertEqual(fetchRequest.sortDescriptors?.first?.key, "name")
+        XCTAssertEqual(fetchRequest.sortDescriptors?.first?.ascending, true)
     }
 
 }
