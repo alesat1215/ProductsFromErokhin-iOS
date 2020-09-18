@@ -79,7 +79,7 @@ class DatabaseUpdater {
         }
     }
     
-    func updateProducts() throws {
+    private func updateProducts() throws {
         // Get groups with products from remote data
         let groups: [GroupRemote] = try remoteData(key: .products)
         // Delete all groups with products from database
@@ -92,7 +92,7 @@ class DatabaseUpdater {
         }
     }
     
-    func updateTitles() throws {
+    private func updateTitles() throws {
         // Get titles from remote data
         let titles: TitlesRemote = try remoteData(key: .titles)
         // Delete all titles from database
