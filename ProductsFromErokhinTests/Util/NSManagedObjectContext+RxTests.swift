@@ -134,6 +134,10 @@ class NSManagedObjectContext_RxTests: XCTestCase {
         XCTAssertTrue(collectionView.isDelete)
         collectionView.isDelete.toggle()
     }
+    
+    func testObject() {
+        XCTAssertEqual(dataSource.object(at: IndexPath(item: 0, section: 0)), products.first)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
