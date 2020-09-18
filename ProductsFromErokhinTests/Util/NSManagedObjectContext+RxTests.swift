@@ -43,6 +43,10 @@ class NSManagedObjectContext_RxTests: XCTestCase {
         override func numberOfItems(inSection section: Int) -> Int {
             3
         }
+        var cell = MockCell()
+        override func cellForItem(at indexPath: IndexPath) -> UICollectionViewCell? {
+            return cell
+        }
     }
     
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -100,15 +104,20 @@ class NSManagedObjectContext_RxTests: XCTestCase {
         // Not bind
         dataSource.controller(frc, didChange: products.first!, at: nil, for: .insert, newIndexPath: nil)
         XCTAssertFalse(collectionView.isInsert)
-        
+        // Bind
         dataSource.bind(collectionView: collectionView)
-        
         // Insert
         dataSource.controller(frc, didChange: products.first!, at: nil, for: .insert, newIndexPath: nil)
         XCTAssertFalse(collectionView.isInsert)
         dataSource.controller(frc, didChange: products.first!, at: nil, for: .insert, newIndexPath: .init())
         XCTAssertTrue(collectionView.isInsert)
         collectionView.isInsert.toggle()
+        // Update
+        dataSource.controller(frc, didChange: products.first!, at: nil, for: .update, newIndexPath: nil)
+        XCTAssertFalse(collectionView.cell.isBind)
+        dataSource.controller(frc, didChange: products.first!, at: .init(), for: .update, newIndexPath: nil)
+        XCTAssertTrue(collectionView.cell.isBind)
+        collectionView.cell.isBind.toggle()
         // Move
         dataSource.controller(frc, didChange: products.first!, at: nil, for: .move, newIndexPath: nil)
         XCTAssertFalse(collectionView.isInsert)
