@@ -56,7 +56,9 @@ class CoreDataSourceTests: XCTestCase {
     private var collectionView: MockCollectionView!
     
     override func setUpWithError() throws {
+        // Clear products
         try Product.clearEntity(context: context)
+        // Add products
         products = [("product", 0), ("product2", 1), ("product3", 2)].map {
             let product = NSEntityDescription.insertNewObject(forEntityName: "Product", into: context)
             product.setValue($0.0, forKey: "name")
@@ -70,6 +72,7 @@ class CoreDataSourceTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
+        // Clear products
         try Product.clearEntity(context: context)
     }
     
