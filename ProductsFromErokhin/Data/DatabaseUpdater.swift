@@ -108,7 +108,7 @@ class DatabaseUpdater {
     
 }
 
-// MARK: - Keys
+// MARK: - Remote config
 /** Keys for remote config parameters */
 fileprivate enum RemoteDataKeys: String {
     case products, titles
