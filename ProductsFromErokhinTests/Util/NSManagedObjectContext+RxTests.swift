@@ -12,14 +12,42 @@ import RxCoreData
 @testable import ProductsFromErokhin
 
 class NSManagedObjectContext_RxTests: XCTestCase {
+    // Setup mocks
+    class MockCell: CoreDataCell<Product> {
+        var isBind = false
+        override func bind(model: Product, indexPath: IndexPath, dataSource: CoreDataSource<Product>?) {
+            isBind.toggle()
+        }
+    }
+    
+    class MockCollectionView: UICollectionView {
+        override func dequeueReusableCell(withReuseIdentifier identifier: String, for indexPath: IndexPath) -> UICollectionViewCell {
+            MockCell()
+        }
+        
+        var isReload = false
+        override func reloadData() {
+            isReload.toggle()
+        }
+        
+        var isInsert = false
+        override func insertItems(at indexPaths: [IndexPath]) {
+            isInsert.toggle()
+        }
+        
+        var isDelete = false
+        override func deleteItems(at indexPaths: [IndexPath]) {
+            isDelete.toggle()
+        }
+    }
     
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private var products = [NSManagedObject]()
     private var dataSource: CoreDataSource<Product>!
+    private var collectionView: MockCollectionView!
     
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         try Product.clearEntity(context: context)
         products = [("product", 0), ("product2", 1), ("product3", 2)].map {
             let product = NSEntityDescription.insertNewObject(forEntityName: "Product", into: context)
@@ -30,10 +58,10 @@ class NSManagedObjectContext_RxTests: XCTestCase {
         try context.save()
         
         dataSource = try context.rx.coreDataSource(cellId: "product", fetchRequest: Product.fetchRequestWithSort()).toBlocking().first()
+        collectionView = MockCollectionView(frame: .init(), collectionViewLayout: .init())
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         try Product.clearEntity(context: context)
     }
 
@@ -47,13 +75,6 @@ class NSManagedObjectContext_RxTests: XCTestCase {
     }
     
     func testBind() {
-        class MockCollectionView: UICollectionView {
-            var isReload = false
-            override func reloadData() {
-                isReload.toggle()
-            }
-        }
-        let collectionView = MockCollectionView(frame: .init(), collectionViewLayout: .init())
         XCTAssertNil(collectionView.dataSource)
         XCTAssertFalse(collectionView.isReload)
         dataSource.bind(collectionView: collectionView)
@@ -62,25 +83,15 @@ class NSManagedObjectContext_RxTests: XCTestCase {
     }
     
     func testUICollectionViewDataSource() {
-        // Setup mocks
-        class MockCell: CoreDataCell<Product> {
-            var isBind = false
-            override func bind(model: Product, indexPath: IndexPath, dataSource: CoreDataSource<Product>?) {
-                isBind.toggle()
-            }
-        }
-        
-        class MockCollectionView: UICollectionView {
-            override func dequeueReusableCell(withReuseIdentifier identifier: String, for indexPath: IndexPath) -> UICollectionViewCell {
-                MockCell()
-            }
-        }
-        let collectionView = MockCollectionView(frame: .init(), collectionViewLayout: .init())
         // Count of items
         XCTAssertEqual(dataSource.collectionView(collectionView, numberOfItemsInSection: 0), products.count)
         // Cell for indexPath
         let cell = dataSource.collectionView(collectionView, cellForItemAt: IndexPath(item: 0, section: 0))
         XCTAssertTrue((cell as! MockCell).isBind)
+    }
+    
+    func testNSFetchedResultsControllerDelegate() {
+        
     }
 
     func testPerformanceExample() throws {
