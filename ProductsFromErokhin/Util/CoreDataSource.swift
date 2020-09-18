@@ -53,6 +53,7 @@ class CoreDataSource<T: NSFetchRequestResult>: NSObject, UICollectionViewDataSou
         self.collectionView?.reloadData()
     }
     
+    // MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         frc.sections?[section].numberOfObjects ?? 0
     }
@@ -63,6 +64,7 @@ class CoreDataSource<T: NSFetchRequestResult>: NSObject, UICollectionViewDataSou
         return cell
     }
     
+    // MARK: - NSFetchedResultsControllerDelegate
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         guard let collectionView = collectionView else {
@@ -96,15 +98,16 @@ class CoreDataSource<T: NSFetchRequestResult>: NSObject, UICollectionViewDataSou
 
 }
 
+extension CoreDataSource {
+    func object(at indexPath: IndexPath) -> T {
+        frc.object(at: indexPath)
+    }
+}
+
+// MARK: - Rx
 extension CoreDataSource: Disposable {
     func dispose() {
         frc.delegate = nil
         collectionView?.dataSource = nil
-    }
-}
-
-extension CoreDataSource {
-    func object(at indexPath: IndexPath) -> T {
-        frc.object(at: indexPath)
     }
 }

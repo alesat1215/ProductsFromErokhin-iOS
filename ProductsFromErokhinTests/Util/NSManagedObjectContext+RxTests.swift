@@ -21,9 +21,10 @@ class NSManagedObjectContext_RxTests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         try Product.clearEntity(context: context)
-        products = ["product", "product2", "product3"].map {
+        products = [("product", 0), ("product2", 1), ("product3", 2)].map {
             let product = NSEntityDescription.insertNewObject(forEntityName: "Product", into: context)
-            product.setValue($0, forKey: "name")
+            product.setValue($0.0, forKey: "name")
+            product.setValue($0.1, forKey: "order")
             return product
         }
         try context.save()
@@ -58,6 +59,28 @@ class NSManagedObjectContext_RxTests: XCTestCase {
         dataSource.bind(collectionView: collectionView)
         XCTAssertNotNil(collectionView.dataSource)
         XCTAssertTrue(collectionView.isReload)
+    }
+    
+    func testUICollectionViewDataSource() {
+        // Setup mocks
+        class MockCell: CoreDataCell<Product> {
+            var isBind = false
+            override func bind(model: Product, indexPath: IndexPath, dataSource: CoreDataSource<Product>?) {
+                isBind.toggle()
+            }
+        }
+        
+        class MockCollectionView: UICollectionView {
+            override func dequeueReusableCell(withReuseIdentifier identifier: String, for indexPath: IndexPath) -> UICollectionViewCell {
+                MockCell()
+            }
+        }
+        let collectionView = MockCollectionView(frame: .init(), collectionViewLayout: .init())
+        // Count of items
+        XCTAssertEqual(dataSource.collectionView(collectionView, numberOfItemsInSection: 0), products.count)
+        // Cell for indexPath
+        let cell = dataSource.collectionView(collectionView, cellForItemAt: IndexPath(item: 0, section: 0))
+        XCTAssertTrue((cell as! MockCell).isBind)
     }
 
     func testPerformanceExample() throws {
