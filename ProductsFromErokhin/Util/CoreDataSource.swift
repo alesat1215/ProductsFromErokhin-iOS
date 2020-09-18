@@ -78,9 +78,9 @@ class CoreDataSource<T: NSFetchRequestResult>: NSObject, UICollectionViewDataSou
                 collectionView.insertItems(at: [newIndexPath])
             }
         case .update:
-            if let indexPath = indexPath {
+            if let indexPath = indexPath, let anObject = anObject as? T {
                 (collectionView.cellForItem(at: indexPath) as? CoreDataCell)?
-                    .bind(model: frc.object(at: indexPath), indexPath: indexPath, dataSource: self)
+                    .bind(model: anObject, indexPath: indexPath, dataSource: self)
             }
         case .move:
             if let indexPath = indexPath, let newIndexPath = newIndexPath {
