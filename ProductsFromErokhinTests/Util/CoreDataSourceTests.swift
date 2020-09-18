@@ -11,7 +11,7 @@ import CoreData
 import RxCoreData
 @testable import ProductsFromErokhin
 
-class NSManagedObjectContext_RxTests: XCTestCase {
+class CoreDataSourceTests: XCTestCase {
     // Setup mocks
     class MockCell: CoreDataCell<Product> {
         var isBind = false
