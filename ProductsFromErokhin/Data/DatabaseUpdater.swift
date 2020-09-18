@@ -12,6 +12,7 @@ import RxSwift
 import RxRelay
 import CoreData
 
+// MARK: - Database
 /** Sync database with remote config */
 class DatabaseUpdater {
     private let remoteConfig: RemoteConfig! // di
@@ -103,7 +104,7 @@ class DatabaseUpdater {
     
     /** Get data from remote config & decode it from JSON */
     private func remoteData<T: Codable>(key: RemoteDataKeys) throws -> T {
-        try decoder.decode(T.self, from: remoteConfig![key.rawValue].dataValue)
+        try decoder.decode(T.self, from: remoteConfig[key.rawValue].dataValue)
     }
     
 }

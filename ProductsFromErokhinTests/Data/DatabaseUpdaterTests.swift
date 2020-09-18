@@ -9,21 +9,89 @@
 import XCTest
 import RxSwift
 import FirebaseRemoteConfig
+import CoreData
 @testable import ProductsFromErokhin
 
 class DatabaseUpdaterTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    // Setup mocks
+    class RemoteConfigComplectionMock: RemoteConfigComplection {
+        var _result: (status: RemoteConfigFetchAndActivateStatus, error: Error?)?
+        override func result() -> Observable<(status: RemoteConfigFetchAndActivateStatus, error: Error?)> {
+            if let _result = _result {
+                return Observable.just(_result)
+            }
+            return Observable.empty()
+        }
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    class JSONDecoderMock: JSONDecoder {
+        override func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
+            if type == [GroupRemote].self {
+                return [GroupRemote(name: "", products: [])] as! T
+            }
+            return TitlesRemote(title: "", img: "", imgTitle: "", productsTitle: "", productsTitle2: "") as! T
+        }
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    class ContextMock: NSManagedObjectContext {
+        init() {
+            super.init(concurrencyType: .mainQueueConcurrencyType)
+            let managedObjectModel = NSManagedObjectModel.mergedModel(from: nil)!
+            let storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
+            persistentStoreCoordinator = storeCoordinator
+        }
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+        
+        var isSaving = false
+        override func save() throws {
+            isSaving.toggle()
+        }
+        var isInsert = false
+        override func insert(_ object: NSManagedObject) {
+            isInsert = true
+        }
+        
+        override var hasChanges: Bool { true }
+    }
+    
+    // MARK: - Database
+    func testSync() throws {
+        // Not update. Fetch in process
+        let fetchLimiter = FetchLimiter(serialQueue: DispatchQueue(label: "test"))
+        fetchLimiter.fetchInProcess = true
+        var databaseUpdater = DatabaseUpdater(remoteConfig: nil, remoteConfigComplection: nil, decoder: nil, context: nil, fetchLimiter: fetchLimiter)
+        var sync: Observable<Event<Void>> = databaseUpdater.sync()
+        XCTAssertNil(try sync.toBlocking().first())
+        // Not update. successUsingPreFetchedData
+        let context = ContextMock()
+        fetchLimiter.fetchInProcess = false
+        var complection = RemoteConfigComplectionMock()
+        complection._result = (RemoteConfigFetchAndActivateStatus.successUsingPreFetchedData, nil)
+        databaseUpdater = DatabaseUpdater(remoteConfig: RemoteConfig.remoteConfig(), remoteConfigComplection: complection, decoder: JSONDecoderMock(), context: context, fetchLimiter: fetchLimiter)
+        sync = databaseUpdater.sync()
+        XCTAssertNil(try sync.toBlocking().first())
+        XCTAssertFalse(context.isSaving)
+        XCTAssertFalse(context.isInsert)
+        // Not update. Error
+        fetchLimiter.fetchInProcess = false
+        complection = RemoteConfigComplectionMock()
+        complection._result = (RemoteConfigFetchAndActivateStatus.error, AppError.unknown)
+        databaseUpdater = DatabaseUpdater(remoteConfig: RemoteConfig.remoteConfig(), remoteConfigComplection: complection, decoder: JSONDecoderMock(), context: context, fetchLimiter: fetchLimiter)
+        sync = databaseUpdater.sync()
+        XCTAssertEqual(try sync.toBlocking().first()?.error?.localizedDescription, AppError.unknown.localizedDescription)
+        XCTAssertFalse(context.isSaving)
+        XCTAssertFalse(context.isInsert)
+        // Update
+        fetchLimiter.fetchInProcess = false
+        complection._result = (RemoteConfigFetchAndActivateStatus.successFetchedFromRemote, nil)
+        databaseUpdater = DatabaseUpdater(remoteConfig: RemoteConfig.remoteConfig(), remoteConfigComplection: complection, decoder: JSONDecoderMock(), context: context, fetchLimiter: fetchLimiter)
+        sync = databaseUpdater.sync()
+        XCTAssertNil(try sync.toBlocking().first())
+        XCTAssertTrue(context.isSaving)
+        XCTAssertTrue(context.isInsert)
     }
     
     // MARK: - Remote config
@@ -54,13 +122,6 @@ class DatabaseUpdaterTests: XCTestCase {
         XCTAssertFalse(fetchLimiter.fetchInProcess)
         fetchLimiter.fetchInProcess = true
         XCTAssertTrue(fetchLimiter.fetchInProcess)
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 
 }
