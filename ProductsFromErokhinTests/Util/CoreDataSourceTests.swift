@@ -74,6 +74,7 @@ class CoreDataSourceTests: XCTestCase {
     override func tearDownWithError() throws {
         // Clear products
         try Product.clearEntity(context: context)
+        try context.save()
     }
     
     func testCoreDataSource() throws {

@@ -7,22 +7,12 @@
 //
 
 import XCTest
+import CoreData
 @testable import ProductsFromErokhin
 
 class OrderedTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     func testFetchRequestWithSort() {
         var fetchRequest = Product.fetchRequestWithSort()
@@ -35,12 +25,23 @@ class OrderedTests: XCTestCase {
         XCTAssertTrue(fetchRequest.sortDescriptors?.first?.ascending ?? false)
         XCTAssertEqual(fetchRequest.predicate, predicate)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testClearEntity() throws {
+        // Clear products
+        try Product.clearEntity(context: context)
+        try context.save()
+        // Add products
+        let products: [NSManagedObject] = [("product", 0), ("product2", 1), ("product3", 2)].map {
+            let product = NSEntityDescription.insertNewObject(forEntityName: "Product", into: context)
+            product.setValue($0.0, forKey: "name")
+            product.setValue($0.1, forKey: "order")
+            return product
         }
+        // Del products
+        XCTAssertEqual(context.deletedObjects.count, 0)
+        try Product.clearEntity(context: context)
+        XCTAssertEqual(context.deletedObjects.count, products.count)
+        try context.save()
     }
 
 }
