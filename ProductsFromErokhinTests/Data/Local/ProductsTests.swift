@@ -16,10 +16,14 @@ class ProductsTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        try Product.clearEntity(context: context)
+        try context.save()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        try Product.clearEntity(context: context)
+        try context.save()
     }
 
     func testExample() throws {
@@ -42,6 +46,15 @@ class ProductsTests: XCTestCase {
         XCTAssertEqual(product.inStart, productRemote.inStart)
         XCTAssertEqual(product.inStart2, productRemote.inStart2)
         XCTAssertEqual(product.inCart?.anyObject() as? ProductInCart, productsInCart.first)
+    }
+    
+    func testAddToCart() throws {
+        let product = Product(context: context)
+        product.name = "name"
+        XCTAssertEqual(product.inCart?.count, 0)
+        let result = product.addToCart()
+        XCTAssertNoThrow(try result.get())
+        XCTAssertEqual((product.inCart?.anyObject() as! ProductInCart).name, product.name)
     }
 
     func testPerformanceExample() throws {
