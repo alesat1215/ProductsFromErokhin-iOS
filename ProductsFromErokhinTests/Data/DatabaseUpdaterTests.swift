@@ -26,7 +26,7 @@ class DatabaseUpdaterTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    // MARK: - RemoteConfigComplection
+    // MARK: - Remote config
     func testResult() {
         let disposeBag = DisposeBag()
         let complection = RemoteConfigComplection()
@@ -41,6 +41,19 @@ class DatabaseUpdaterTests: XCTestCase {
         complection.completionHandler(status: .error, error: AppError.unknown)
         XCTAssertEqual(result?.status, .error)
         XCTAssertEqual(result?.error?.localizedDescription, AppError.unknown.localizedDescription)
+    }
+    
+    func testFetchInProcess() {
+        // No queue
+        var fetchLimiter = FetchLimiter(serialQueue: nil)
+        XCTAssertFalse(fetchLimiter.fetchInProcess)
+        fetchLimiter.fetchInProcess = true
+        XCTAssertFalse(fetchLimiter.fetchInProcess)
+        // With queue
+        fetchLimiter = FetchLimiter(serialQueue: DispatchQueue(label: "test"))
+        XCTAssertFalse(fetchLimiter.fetchInProcess)
+        fetchLimiter.fetchInProcess = true
+        XCTAssertTrue(fetchLimiter.fetchInProcess)
     }
 
     func testPerformanceExample() throws {
