@@ -66,6 +66,7 @@ class ProductsTests: XCTestCase {
         XCTAssertEqual(fetchRequest.sortDescriptors?.first?.ascending, true)
     }
     
+    // MARK: - Group
     func testGroupUpdate() {
         let groupRemote = GroupRemote(name: "name", products: [])
         let order = 1
