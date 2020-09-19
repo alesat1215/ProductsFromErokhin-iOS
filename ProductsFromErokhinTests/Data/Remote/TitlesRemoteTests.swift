@@ -10,10 +10,9 @@ import XCTest
 @testable import ProductsFromErokhin
 
 class TitlesRemoteTests: XCTestCase {
-    
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+        
     func testManagedObject() {
+        let context = ContextMock()
         let titlesRemote = TitlesRemote(title: "title", img: "img", imgTitle: "imgTitle", productsTitle: "productsTitle", productsTitle2: "productsTitle2")
         let titles = titlesRemote.managedObject(context: context) as! Titles
         XCTAssertEqual(titles.order, 0)
