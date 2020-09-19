@@ -32,7 +32,7 @@ class CoreDataSourceTests: XCTestCase {
         try context.save()
         
         dataSource = try context.rx.coreDataSource(cellId: "product", fetchRequest: Product.fetchRequestWithSort()).toBlocking().first()
-        collectionView = CollectionViewMock(frame: .init(), collectionViewLayout: .init())
+        collectionView = CollectionViewMock()
     }
 
     override func tearDownWithError() throws {

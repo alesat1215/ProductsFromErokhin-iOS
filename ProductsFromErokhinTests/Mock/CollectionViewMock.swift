@@ -9,6 +9,15 @@
 import UIKit
 
 class CollectionViewMock: UICollectionView {
+    
+    init() {
+        super.init(frame: .init(), collectionViewLayout: .init())
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     let cell = CoreDataCellMock()
     override func dequeueReusableCell(withReuseIdentifier identifier: String, for indexPath: IndexPath) -> UICollectionViewCell {
         cell
@@ -28,9 +37,9 @@ class CollectionViewMock: UICollectionView {
     override func deleteItems(at indexPaths: [IndexPath]) {
         isDelete.toggle()
     }
-    
+    let count = 3
     override func numberOfItems(inSection section: Int) -> Int {
-        3
+        count
     }
     override func cellForItem(at indexPath: IndexPath) -> UICollectionViewCell? {
         return cell
