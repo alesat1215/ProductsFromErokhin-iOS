@@ -8,6 +8,7 @@
 
 import XCTest
 import RxSwift
+import FirebaseAuth
 @testable import ProductsFromErokhin
 
 class AnonymousAuthTests: XCTestCase {
@@ -21,6 +22,15 @@ class AnonymousAuthTests: XCTestCase {
         complection.error = AppError.unknown
         auth = AnonymousAuth(auth: nil, authComplection: complection)
         XCTAssertEqual(try auth.signIn().toBlocking().first()?.error?.localizedDescription, AppError.unknown.localizedDescription)
+    }
+    
+    func testResult() {
+        let disposeBag = DisposeBag()
+        let complection = AuthComplection()
+        var result: (result: AuthDataResult?, error: Error?)?
+        complection.result().subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
+        complection.complection(result: nil, error: nil)
+        XCTAssertNotNil(result)
     }
     
 }
