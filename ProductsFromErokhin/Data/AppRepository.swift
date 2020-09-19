@@ -20,15 +20,15 @@ class AppRepository {
         self.updater = updater
         self.context = context
     }
-    /** Fetch observable groups array from database only once */
-    private lazy var _groups = context.rx
-        .entities(fetchRequest: Group.fetchRequestWithSort()).materialize()
     /**
      Get groups from database & update it if needed
      - returns: Observable array with groups
      */
     func groups() -> Observable<Event<[Group]>> {
-        Observable.merge([_groups, updater.sync()])
+        Observable.merge([
+            context.rx.entities(fetchRequest: Group.fetchRequestWithSort()).materialize(),
+            updater.sync()
+        ])
     }
     /**
     Get titles from database & update it if needed

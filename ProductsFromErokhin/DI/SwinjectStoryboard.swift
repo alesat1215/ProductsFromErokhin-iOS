@@ -31,8 +31,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(StartViewModel.self) { r in
             StartViewModel(
-                repository: r.resolve(AppRepository.self),
-                anonymousAuth: r.resolve(AnonymousAuth.self)
+                repository: r.resolve(AppRepository.self)
             )
         }
         // MARK: - Products

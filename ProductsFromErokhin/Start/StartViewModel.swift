@@ -12,11 +12,9 @@ import RxSwift
 class StartViewModel {
     
     private let repository: AppRepository! // di
-    private let anonymousAuth: AnonymousAuth! // di
     
-    init(repository: AppRepository?, anonymousAuth: AnonymousAuth?) {
+    init(repository: AppRepository?) {
         self.repository = repository
-        self.anonymousAuth = anonymousAuth
     }
     
     func titles() -> Observable<Event<[Titles]>> {
@@ -36,8 +34,5 @@ class StartViewModel {
             cellId: "product"
         )
     }
-    
-    func auth() -> Observable<Event<Void>> {
-        anonymousAuth.signIn()
-    }
+
 }
