@@ -35,11 +35,11 @@ class AppRepositoryTests: XCTestCase {
         XCTAssertNotNil(try repository.products(cellId: "").toBlocking().first()?.element)
         XCTAssertTrue(updater.isSync)
         XCTAssertTrue(context.isFetch)
-        // Error
+        // Error sync
         updater.isSync = false
         context.isFetch = false
         updater.error = AppError.unknown
-        XCTAssertNotNil(try repository.products(cellId: "").toBlocking().first()?.element)
+        XCTAssertTrue(try repository.products(cellId: "").take(2).toBlocking().toArray().contains { $0.error?.localizedDescription == AppError.unknown.localizedDescription })
         XCTAssertTrue(updater.isSync)
         XCTAssertTrue(context.isFetch)
     }
