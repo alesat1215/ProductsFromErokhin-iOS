@@ -33,9 +33,6 @@ class AppRepositoryTests: XCTestCase {
     }
     
     func testProducts() throws {
-//        let updater = DatabaseUpdaterMock()
-//        let context = ContextMock()
-//        let repository = AppRepository(updater: updater, context: context)
         // Success
         // Check sequence contains only one element
         XCTAssertThrowsError(try repository.products(cellId: "").take(2).toBlocking(timeout: 1).toArray())
