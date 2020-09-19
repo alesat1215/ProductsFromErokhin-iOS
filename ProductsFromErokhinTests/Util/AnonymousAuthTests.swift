@@ -14,11 +14,11 @@ class AnonymousAuthTests: XCTestCase {
     
     func testSignIn() {
         // Success
-        var complection = AuthComplectionMock()
+        let complection = AuthComplectionMock()
         var auth = AnonymousAuth(auth: nil, authComplection: complection)
         XCTAssertNotNil(try auth.signIn().toBlocking().first()?.element)
         // Error
-        complection = AuthComplectionMock(error: AppError.unknown)
+        complection.error = AppError.unknown
         auth = AnonymousAuth(auth: nil, authComplection: complection)
         XCTAssertEqual(try auth.signIn().toBlocking().first()?.error?.localizedDescription, AppError.unknown.localizedDescription)
     }

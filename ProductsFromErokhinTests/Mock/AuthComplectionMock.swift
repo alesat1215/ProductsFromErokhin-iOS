@@ -13,17 +13,13 @@ import RxSwift
 
 class AuthComplectionMock: AuthComplection {
     
-    let error: Error?
+    var error: Error?
     
-    init(error: Error? = nil) {
-        self.error = error
-    }
-    
-    func complection(result: AuthDataResult?, error: Error?) {
+    override func complection(result: AuthDataResult?, error: Error?) {
         
     }
     
-    func result() -> Observable<(result: AuthDataResult?, error: Error?)> {
+    override func result() -> Observable<(result: AuthDataResult?, error: Error?)> {
         Observable.just((nil, error))
     }
     

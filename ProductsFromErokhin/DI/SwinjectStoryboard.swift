@@ -55,7 +55,7 @@ extension SwinjectStoryboard {
         }.inObjectScope(.container)
         
         defaultContainer.register(AuthComplection.self) { _ in
-            AuthComplectionImpl()
+            AuthComplection()
         }
         // MARK: - Remote config
         defaultContainer.register(DatabaseUpdater.self) { r in

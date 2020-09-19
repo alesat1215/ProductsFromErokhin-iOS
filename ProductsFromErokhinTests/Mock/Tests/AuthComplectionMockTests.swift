@@ -13,10 +13,10 @@ class AuthComplectionMockTests: XCTestCase {
     
     func testResult() {
         // Success
-        var complection = AuthComplectionMock()
+        let complection = AuthComplectionMock()
         XCTAssertNotNil(try complection.result().toBlocking().first())
         // Error
-        complection = AuthComplectionMock(error: AppError.unknown)
+        complection.error = AppError.unknown
         XCTAssertEqual(try complection.result().toBlocking().first()?.error?.localizedDescription, AppError.unknown.localizedDescription)
     }
 

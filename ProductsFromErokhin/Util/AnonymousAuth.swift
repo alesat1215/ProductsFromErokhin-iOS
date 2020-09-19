@@ -33,12 +33,7 @@ class AnonymousAuth {
     }
 }
 /** Observable complection for Firebase Auth */
-protocol AuthComplection {
-    func complection(result: AuthDataResult?, error: Error?)
-    func result() -> Observable<(result: AuthDataResult?, error: Error?)>
-}
-
-class AuthComplectionImpl: AuthComplection {
+class AuthComplection {
     private let _result = PublishRelay<(result: AuthDataResult?, error: Error?)>()
     
     func complection(result: AuthDataResult?, error: Error?) {
