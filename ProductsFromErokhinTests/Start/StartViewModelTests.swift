@@ -39,6 +39,18 @@ class StartViewModelTests: XCTestCase {
         repository.titlesResult.accept(Event.next(titles))
         XCTAssertEqual(result, titles)
     }
+    
+    func testProducts() {
+        let products = CoreDataSource(observer: AnyObserver(eventHandler: {_ in }), cellId: "", fetchRequest: Product.fetchRequestWithSort(), managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        var result: CoreDataSource<Product>?
+        XCTAssertNil(repository.predicate)
+        XCTAssertNil(repository.cellId)
+        viewModel.products().subscribe(onNext: { result = $0.element }).disposed(by: disposeBag)
+        repository.productsResult.accept(Event.next(products))
+        XCTAssertEqual(result, products)
+        XCTAssertNotNil(repository.predicate)
+        XCTAssertNotNil(repository.cellId)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
