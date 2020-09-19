@@ -11,9 +11,8 @@ import XCTest
 
 class ProductsRemoteTests: XCTestCase {
     
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     func testManagedObject() {
+        let context = ContextMock()
         let allInCart: [ProductInCart] = ["product2", "product2", "product2"].map {
             let product = ProductInCart(context: context)
             product.setValue($0, forKey: "name")
