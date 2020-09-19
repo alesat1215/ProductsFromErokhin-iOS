@@ -18,9 +18,11 @@ class ContextMockTest: XCTestCase {
         XCTAssertFalse(context.isSaving)
         try context.save()
         XCTAssertTrue(context.isSaving)
-        // Insert
+        // Delete, Insert
+        XCTAssertFalse(context.isDelete)
         XCTAssertFalse(context.isInsert)
-        context.insert(Product(context: context))
+        context.delete(Product(context: context))
+        XCTAssertTrue(context.isDelete)
         XCTAssertTrue(context.isInsert)
         // Changes
         XCTAssertTrue(context.hasChanges)
