@@ -32,10 +32,16 @@ class AppRepositoryTests: XCTestCase {
         // Success
         XCTAssertFalse(updater.isSync)
         XCTAssertFalse(context.isFetch)
+        // Check sequence contains only one element
+        XCTAssertThrowsError(try repository.products(cellId: "").take(2).toBlocking(timeout: 1).toArray())
+        updater.isSync = false
+        context.isFetch = false
+        // Check that element
         XCTAssertNotNil(try repository.products(cellId: "").toBlocking().first()?.element)
         XCTAssertTrue(updater.isSync)
         XCTAssertTrue(context.isFetch)
-        // Error sync
+        
+        // Sync error
         updater.isSync = false
         context.isFetch = false
         updater.error = AppError.unknown
