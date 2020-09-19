@@ -30,6 +30,7 @@
 		D795211124FFBE800094BAFE /* ProductsFromErokhinTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795211024FFBE800094BAFE /* ProductsFromErokhinTests.swift */; };
 		D795211C24FFBE800094BAFE /* ProductsFromErokhinUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795211B24FFBE800094BAFE /* ProductsFromErokhinUITests.swift */; };
 		D79579282516966B007AD022 /* AppRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79579272516966B007AD022 /* AppRepositoryMock.swift */; };
+		D795793A251699E9007AD022 /* StartViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7957939251699E9007AD022 /* StartViewModelTests.swift */; };
 		D7B4B51C250A299D00BA07CB /* ObservableType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */; };
 		D7B4B51E250A5E8200BA07CB /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */; };
 		D7B4B520250A774100BA07CB /* TitlesRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B51F250A774100BA07CB /* TitlesRemote.swift */; };
@@ -118,6 +119,7 @@
 		D795211B24FFBE800094BAFE /* ProductsFromErokhinUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsFromErokhinUITests.swift; sourceTree = "<group>"; };
 		D795211D24FFBE800094BAFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D79579272516966B007AD022 /* AppRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepositoryMock.swift; sourceTree = "<group>"; };
+		D7957939251699E9007AD022 /* StartViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModelTests.swift; sourceTree = "<group>"; };
 		D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extensions.swift"; sourceTree = "<group>"; };
 		D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		D7B4B51F250A774100BA07CB /* TitlesRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesRemote.swift; sourceTree = "<group>"; };
@@ -296,9 +298,10 @@
 		D795210F24FFBE800094BAFE /* ProductsFromErokhinTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7957938251699D2007AD022 /* Start */,
+				D7C0FB962513D216009BC51F /* Util */,
 				D7C0FBED2514E027009BC51F /* Data */,
 				D7C0FBB02513E063009BC51F /* Mock */,
-				D7C0FB962513D216009BC51F /* Util */,
 				D795211024FFBE800094BAFE /* ProductsFromErokhinTests.swift */,
 				D795211224FFBE800094BAFE /* Info.plist */,
 			);
@@ -319,6 +322,14 @@
 			children = (
 				D79520F824FFBE7E0094BAFE /* StartViewController.swift */,
 				D73C7DBD2501060F007062D9 /* StartViewModel.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		D7957938251699D2007AD022 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				D7957939251699E9007AD022 /* StartViewModelTests.swift */,
 			);
 			path = Start;
 			sourceTree = "<group>";
@@ -714,6 +725,7 @@
 				D7C0FC4C2515E866009BC51F /* RemoteConfigComplectionMockTests.swift in Sources */,
 				D7C0FBB22513E082009BC51F /* AuthComplectionMock.swift in Sources */,
 				D7C0FC422515E40F009BC51F /* JSONDecoderMockTests.swift in Sources */,
+				D795793A251699E9007AD022 /* StartViewModelTests.swift in Sources */,
 				D7C0FC29251543B7009BC51F /* CoreDataCellMockTests.swift in Sources */,
 				D7C0FBBA2513E5AE009BC51F /* AuthComplectionMockTests.swift in Sources */,
 				D7C0FC592515F1E4009BC51F /* AppRepositoryTests.swift in Sources */,

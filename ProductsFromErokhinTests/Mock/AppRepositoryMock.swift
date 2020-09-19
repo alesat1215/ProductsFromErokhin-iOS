@@ -8,10 +8,15 @@
 
 import Foundation
 import RxSwift
+import RxSwift
 import RxRelay
 @testable import ProductsFromErokhin
 
 class AppRepositoryMock: AppRepository {
+    
+    init() {
+        super.init(updater: nil, context: nil)
+    }
     
     let titlesResult = PublishRelay<Event<[Titles]>>()
     override func titles() -> Observable<Event<[Titles]>> {
