@@ -19,7 +19,11 @@ class AppRepositoryMock: AppRepository {
     }
     
     let productsResult = PublishRelay<Event<CoreDataSource<Product>>>()
+    var predicate: NSPredicate?
+    var cellId: String?
     override func products(predicate: NSPredicate? = nil, cellId: String) -> Observable<Event<CoreDataSource<Product>>> {
-        productsResult.asObservable()
+        self.predicate = predicate
+        self.cellId = cellId
+        return productsResult.asObservable()
     }
 }
