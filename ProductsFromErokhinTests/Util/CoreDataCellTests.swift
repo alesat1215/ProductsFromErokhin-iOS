@@ -10,10 +10,9 @@ import XCTest
 @testable import ProductsFromErokhin
 
 class CoreDataCellTests: XCTestCase {
-    
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
+        
     func testBind() throws {
+        let context = ContextMock()
         let dataSource = try context.rx.coreDataSource(cellId: "product", fetchRequest: Product.fetchRequestWithSort()).toBlocking().first()
         let indexPath = IndexPath()
         let cell = CoreDataCell<Product>()
