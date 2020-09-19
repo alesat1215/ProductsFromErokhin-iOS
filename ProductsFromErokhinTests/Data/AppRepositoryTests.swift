@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import RxSwift
 @testable import ProductsFromErokhin
 
 class AppRepositoryTests: XCTestCase {
@@ -28,9 +29,17 @@ class AppRepositoryTests: XCTestCase {
         let updater = DatabaseUpdaterMock()
         let context = ContextMock()
         let repository = AppRepository(updater: updater, context: context)
+        // Success
         XCTAssertFalse(updater.isSync)
         XCTAssertFalse(context.isFetch)
-        XCTAssertNotNil(try repository.products(cellId: "").toBlocking().first())
+        XCTAssertNotNil(try repository.products(cellId: "").toBlocking().first()?.element)
+        XCTAssertTrue(updater.isSync)
+        XCTAssertTrue(context.isFetch)
+        // Error
+        updater.isSync = false
+        context.isFetch = false
+        updater.error = AppError.unknown
+        XCTAssertNotNil(try repository.products(cellId: "").toBlocking().first()?.element)
         XCTAssertTrue(updater.isSync)
         XCTAssertTrue(context.isFetch)
     }
