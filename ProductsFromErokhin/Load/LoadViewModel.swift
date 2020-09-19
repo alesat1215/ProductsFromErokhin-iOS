@@ -10,10 +10,10 @@ import Foundation
 import RxSwift
 
 class LoadViewModel {
-    private let repository: ProductsRepository! // di
+    private let repository: AppRepository! // di
     private let anonymousAuth: AnonymousAuth! // di
     
-    init(repository: ProductsRepository?, anonymousAuth: AnonymousAuth?) {
+    init(repository: AppRepository?, anonymousAuth: AnonymousAuth?) {
         self.repository = repository
         self.anonymousAuth = anonymousAuth
     }

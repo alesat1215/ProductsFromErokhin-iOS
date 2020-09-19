@@ -21,7 +21,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(LoadViewModel.self) { r in
             LoadViewModel(
-                repository: r.resolve(ProductsRepository.self),
+                repository: r.resolve(AppRepository.self),
                 anonymousAuth: r.resolve(AnonymousAuth.self)
             )
         }
@@ -31,13 +31,13 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(StartViewModel.self) { r in
             StartViewModel(
-                repository: r.resolve(ProductsRepository.self),
+                repository: r.resolve(AppRepository.self),
                 anonymousAuth: r.resolve(AnonymousAuth.self)
             )
         }
         // MARK: - Products
-        defaultContainer.register(ProductsRepository.self) { r in
-            ProductsRepository(
+        defaultContainer.register(AppRepository.self) { r in
+            AppRepository(
                 updater: r.resolve(DatabaseUpdater.self),
                 context: r.resolve(NSManagedObjectContext.self)
             )

@@ -12,7 +12,7 @@ import RxCoreData
 import CoreData
 
 /** Repository for groups & products */
-class ProductsRepository {
+class AppRepository {
     private let updater: DatabaseUpdater! // di
     private let context: NSManagedObjectContext!// di
     

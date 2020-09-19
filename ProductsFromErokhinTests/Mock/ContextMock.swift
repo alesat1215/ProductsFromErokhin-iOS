@@ -31,4 +31,10 @@ class ContextMock: NSManagedObjectContext {
     }
     
     override var hasChanges: Bool { true }
+    
+    var isFetch = false
+    override func fetch(_ request: NSFetchRequest<NSFetchRequestResult>) throws -> [Any] {
+        isFetch.toggle()
+        return []
+    }
 }
