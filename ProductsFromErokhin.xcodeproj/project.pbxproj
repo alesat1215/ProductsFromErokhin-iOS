@@ -60,6 +60,7 @@
 		D7C0FC3D2515E14A009BC51F /* CollectionViewMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC3C2515E14A009BC51F /* CollectionViewMockTests.swift */; };
 		D7C0FC422515E40F009BC51F /* JSONDecoderMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC412515E40F009BC51F /* JSONDecoderMockTests.swift */; };
 		D7C0FC472515E60A009BC51F /* ContextMockTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC462515E60A009BC51F /* ContextMockTest.swift */; };
+		D7C0FC4C2515E866009BC51F /* RemoteConfigComplectionMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC4B2515E866009BC51F /* RemoteConfigComplectionMockTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 		D7C0FC3C2515E14A009BC51F /* CollectionViewMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewMockTests.swift; sourceTree = "<group>"; };
 		D7C0FC412515E40F009BC51F /* JSONDecoderMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderMockTests.swift; sourceTree = "<group>"; };
 		D7C0FC462515E60A009BC51F /* ContextMockTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMockTest.swift; sourceTree = "<group>"; };
+		D7C0FC4B2515E866009BC51F /* RemoteConfigComplectionMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigComplectionMockTests.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -384,6 +386,7 @@
 				D7C0FC3C2515E14A009BC51F /* CollectionViewMockTests.swift */,
 				D7C0FC412515E40F009BC51F /* JSONDecoderMockTests.swift */,
 				D7C0FC462515E60A009BC51F /* ContextMockTest.swift */,
+				D7C0FC4B2515E866009BC51F /* RemoteConfigComplectionMockTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -693,6 +696,7 @@
 				D7C0FBAC2513E045009BC51F /* AnonymousAuthTests.swift in Sources */,
 				D7C0FC2E25154437009BC51F /* ContextMock.swift in Sources */,
 				D7C0FBE92514DCF4009BC51F /* CoreDataCellTests.swift in Sources */,
+				D7C0FC4C2515E866009BC51F /* RemoteConfigComplectionMockTests.swift in Sources */,
 				D7C0FBB22513E082009BC51F /* AuthComplectionMock.swift in Sources */,
 				D7C0FC422515E40F009BC51F /* JSONDecoderMockTests.swift in Sources */,
 				D7C0FC29251543B7009BC51F /* CoreDataCellMockTests.swift in Sources */,
