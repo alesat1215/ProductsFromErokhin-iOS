@@ -22,8 +22,14 @@ class ContextMockTest: XCTestCase {
         XCTAssertFalse(context.isInsert)
         context.insert(Product(context: context))
         XCTAssertTrue(context.isInsert)
-        
+        // Changes
         XCTAssertTrue(context.hasChanges)
+        // Fetch
+        var result = try context.fetch(Product.fetchRequest())
+        XCTAssertEqual(result.count, context.fetchResult.count)
+        context.fetchResult = [Product](repeating: Product(context: context), count: 3)
+        result = try context.fetch(Product.fetchRequest())
+        XCTAssertEqual(result.count, context.fetchResult.count)
     }
 
 }
