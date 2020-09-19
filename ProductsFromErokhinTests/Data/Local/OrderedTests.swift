@@ -12,8 +12,6 @@ import CoreData
 
 class OrderedTests: XCTestCase {
     
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     func testFetchRequestWithSort() {
         var fetchRequest = Product.fetchRequestWithSort()
         XCTAssertEqual(fetchRequest.sortDescriptors?.first?.key, "order")
@@ -27,21 +25,11 @@ class OrderedTests: XCTestCase {
     }
     
     func testClearEntity() throws {
-        // Clear products
+        let context = ContextMock()
+        context.fetchResult = [Product](repeating: Product(context: context), count: 3)
+        XCTAssertFalse(context.isDelete)
         try Product.clearEntity(context: context)
-        try context.save()
-        // Add products
-        let products: [NSManagedObject] = [("product", 0), ("product2", 1), ("product3", 2)].map {
-            let product = NSEntityDescription.insertNewObject(forEntityName: "Product", into: context)
-            product.setValue($0.0, forKey: "name")
-            product.setValue($0.1, forKey: "order")
-            return product
-        }
-        // Del products
-        XCTAssertEqual(context.deletedObjects.count, 0)
-        try Product.clearEntity(context: context)
-        XCTAssertEqual(context.deletedObjects.count, products.count)
-        try context.save()
+        XCTAssertTrue(context.isDelete)
     }
 
 }

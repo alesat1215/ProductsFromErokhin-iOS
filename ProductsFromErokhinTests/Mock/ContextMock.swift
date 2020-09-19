@@ -25,6 +25,12 @@ class ContextMock: NSManagedObjectContext {
     override func save() throws {
         isSaving.toggle()
     }
+    
+    var isDelete = false
+    override func delete(_ object: NSManagedObject) {
+        isDelete = true
+    }
+    
     var isInsert = false
     override func insert(_ object: NSManagedObject) {
         isInsert = true
