@@ -73,6 +73,8 @@
 		D7C0FC542515F067009BC51F /* DatabaseUpdaterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC532515F067009BC51F /* DatabaseUpdaterMock.swift */; };
 		D7C0FC592515F1E4009BC51F /* AppRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC582515F1E4009BC51F /* AppRepositoryTests.swift */; };
 		D7C0FC5E251676C5009BC51F /* DatabaseUpdaterMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC5D251676C5009BC51F /* DatabaseUpdaterMockTests.swift */; };
+		D7D6EBE92517CD410098ABC7 /* AnonymousAuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBE82517CD410098ABC7 /* AnonymousAuthMock.swift */; };
+		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +171,8 @@
 		D7C0FC532515F067009BC51F /* DatabaseUpdaterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdaterMock.swift; sourceTree = "<group>"; };
 		D7C0FC582515F1E4009BC51F /* AppRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepositoryTests.swift; sourceTree = "<group>"; };
 		D7C0FC5D251676C5009BC51F /* DatabaseUpdaterMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdaterMockTests.swift; sourceTree = "<group>"; };
+		D7D6EBE82517CD410098ABC7 /* AnonymousAuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuthMock.swift; sourceTree = "<group>"; };
+		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -314,6 +318,7 @@
 		D795210F24FFBE800094BAFE /* ProductsFromErokhinTests */ = {
 			isa = PBXGroup;
 			children = (
+				D7D6EBED2517CE120098ABC7 /* Load */,
 				D7957938251699D2007AD022 /* Start */,
 				D7C0FB962513D216009BC51F /* Util */,
 				D7C0FBED2514E027009BC51F /* Data */,
@@ -385,6 +390,7 @@
 				D79579272516966B007AD022 /* AppRepositoryMock.swift */,
 				D795795125175190007AD022 /* CoreDataSourceMock.swift */,
 				D79579562517B500007AD022 /* StartViewModelMock.swift */,
+				D7D6EBE82517CD410098ABC7 /* AnonymousAuthMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -433,6 +439,14 @@
 				D79579602517C06C007AD022 /* StartViewModelMockTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		D7D6EBED2517CE120098ABC7 /* Load */ = {
+			isa = PBXGroup;
+			children = (
+				D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */,
+			);
+			path = Load;
 			sourceTree = "<group>";
 		};
 		F4D9130A77E7626254C8A195 /* Frameworks */ = {
@@ -740,6 +754,7 @@
 				D7C0FC3D2515E14A009BC51F /* CollectionViewMockTests.swift in Sources */,
 				D79579572517B500007AD022 /* StartViewModelMock.swift in Sources */,
 				D7C0FC242515429E009BC51F /* CollectionViewMock.swift in Sources */,
+				D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */,
 				D7C0FC062514FEBE009BC51F /* ProductsTests.swift in Sources */,
 				D7C0FBF82514EC5B009BC51F /* TitlesRemoteTests.swift in Sources */,
 				D7C0FBAC2513E045009BC51F /* AnonymousAuthTests.swift in Sources */,
@@ -754,6 +769,7 @@
 				D7C0FC29251543B7009BC51F /* CoreDataCellMockTests.swift in Sources */,
 				D79579612517C06C007AD022 /* StartViewModelMockTests.swift in Sources */,
 				D7C0FBBA2513E5AE009BC51F /* AuthComplectionMockTests.swift in Sources */,
+				D7D6EBE92517CD410098ABC7 /* AnonymousAuthMock.swift in Sources */,
 				D79579422517251A007AD022 /* StartViewControllerTests.swift in Sources */,
 				D7C0FC592515F1E4009BC51F /* AppRepositoryTests.swift in Sources */,
 				D7C0FB922513C5B2009BC51F /* ObservableType+ExtensionsTests.swift in Sources */,
