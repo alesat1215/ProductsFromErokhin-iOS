@@ -10,7 +10,7 @@ import XCTest
 import CoreData
 @testable import ProductsFromErokhin
 
-class ContextMockTest: XCTestCase {
+class ContextMockTests: XCTestCase {
 
     func testContextMock() throws {
         let context = ContextMock()
