@@ -13,7 +13,6 @@ import RxSwift
 class StartViewControllerTests: XCTestCase {
     
     private var controller: StartViewController!
-//    private let repository = AppRepositoryMock()
     private var viewModel: StartViewModelMock!
     private let context = ContextMock()
     // Outlets
@@ -26,9 +25,7 @@ class StartViewControllerTests: XCTestCase {
     private var products2: UICollectionView!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "StartViewController")
-//        controller.viewModel = StartViewModel(repository: repository)
         viewModel = StartViewModelMock()
         controller.viewModel = viewModel
         // Set views
@@ -45,19 +42,8 @@ class StartViewControllerTests: XCTestCase {
         controller.imgTitle = imgTitle
         controller.productsTitle = productsTitle
         controller.productsTitle2 = productsTitle2
-        controller.products = products
-        controller.products2 = products2
         
         controller.viewDidLoad()
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
     func testBindTitles() {
@@ -108,6 +94,8 @@ class StartViewControllerTests: XCTestCase {
     }
     
     func testBindProducts() {
+        controller.products = products
+        controller.products2 = products2
         XCTAssertNil(controller.products.dataSource)
         XCTAssertNil(controller.products2.dataSource)
         XCTAssertFalse((controller.products as! CollectionViewMock).isReload)
@@ -154,12 +142,20 @@ class StartViewControllerTests: XCTestCase {
         XCTAssertTrue((controller.products as! CollectionViewMock).isReload)
         XCTAssertTrue((controller.products2 as! CollectionViewMock).isReload)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testPrepare() {
+        let destination = UIViewController()
+        destination.view.addSubview(products)
+        // products
+        var segue = UIStoryboardSegue(identifier: "productsSegueId", source: UIViewController(), destination: destination)
+        XCTAssertNil(controller.products)
+        controller.prepare(for: segue, sender: nil)
+        XCTAssertEqual(controller.products, products)
+        // products2
+        segue = UIStoryboardSegue(identifier: "productsSegueId2", source: UIViewController(), destination: destination)
+        XCTAssertNil(controller.products2)
+        controller.prepare(for: segue, sender: nil)
+        XCTAssertEqual(controller.products2, products)
     }
 
 }
