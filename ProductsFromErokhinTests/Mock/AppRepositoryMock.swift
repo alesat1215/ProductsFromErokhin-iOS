@@ -18,17 +18,17 @@ class AppRepositoryMock: AppRepository {
         super.init(updater: nil, context: nil)
     }
     
-    let titlesResult = PublishRelay<Event<[Titles]>>()
+    let titlesResult = [Titles(context: ContextMock())]
     override func titles() -> Observable<Event<[Titles]>> {
-        titlesResult.asObservable()
+        Observable.just(Event.next(titlesResult))
     }
     
-    let productsResult = PublishRelay<Event<CoreDataSource<Product>>>()
+    let productsResult = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
     var predicate: NSPredicate?
     var cellId: String?
     override func products(predicate: NSPredicate? = nil, cellId: String) -> Observable<Event<CoreDataSource<Product>>> {
         self.predicate = predicate
         self.cellId = cellId
-        return productsResult.asObservable()
+        return Observable.just(Event.next(productsResult))
     }
 }
