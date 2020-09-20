@@ -32,6 +32,7 @@
 		D79579282516966B007AD022 /* AppRepositoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79579272516966B007AD022 /* AppRepositoryMock.swift */; };
 		D795793A251699E9007AD022 /* StartViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7957939251699E9007AD022 /* StartViewModelTests.swift */; };
 		D79579422517251A007AD022 /* StartViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79579412517251A007AD022 /* StartViewControllerTests.swift */; };
+		D795795225175190007AD022 /* CoreDataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795795125175190007AD022 /* CoreDataSourceMock.swift */; };
 		D7B4B51C250A299D00BA07CB /* ObservableType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */; };
 		D7B4B51E250A5E8200BA07CB /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */; };
 		D7B4B520250A774100BA07CB /* TitlesRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B51F250A774100BA07CB /* TitlesRemote.swift */; };
@@ -122,6 +123,7 @@
 		D79579272516966B007AD022 /* AppRepositoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepositoryMock.swift; sourceTree = "<group>"; };
 		D7957939251699E9007AD022 /* StartViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModelTests.swift; sourceTree = "<group>"; };
 		D79579412517251A007AD022 /* StartViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewControllerTests.swift; sourceTree = "<group>"; };
+		D795795125175190007AD022 /* CoreDataSourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceMock.swift; sourceTree = "<group>"; };
 		D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extensions.swift"; sourceTree = "<group>"; };
 		D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		D7B4B51F250A774100BA07CB /* TitlesRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesRemote.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				D7C0FC37251545A0009BC51F /* RemoteConfigComplectionMock.swift */,
 				D7C0FC532515F067009BC51F /* DatabaseUpdaterMock.swift */,
 				D79579272516966B007AD022 /* AppRepositoryMock.swift */,
+				D795795125175190007AD022 /* CoreDataSourceMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -724,6 +727,7 @@
 				D7C0FBAC2513E045009BC51F /* AnonymousAuthTests.swift in Sources */,
 				D7C0FC5E251676C5009BC51F /* DatabaseUpdaterMockTests.swift in Sources */,
 				D7C0FC2E25154437009BC51F /* ContextMock.swift in Sources */,
+				D795795225175190007AD022 /* CoreDataSourceMock.swift in Sources */,
 				D7C0FBE92514DCF4009BC51F /* CoreDataCellTests.swift in Sources */,
 				D7C0FC4C2515E866009BC51F /* RemoteConfigComplectionMockTests.swift in Sources */,
 				D7C0FBB22513E082009BC51F /* AuthComplectionMock.swift in Sources */,

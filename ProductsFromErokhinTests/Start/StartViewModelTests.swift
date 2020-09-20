@@ -32,7 +32,7 @@ class StartViewModelTests: XCTestCase {
     }
     
     func testProducts() {
-        let products = CoreDataSource(observer: AnyObserver(eventHandler: {_ in }), cellId: "", fetchRequest: Product.fetchRequestWithSort(), managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        let products = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
         var result: CoreDataSource<Product>?
         XCTAssertNil(repository.predicate)
         XCTAssertNil(repository.cellId)
@@ -44,7 +44,7 @@ class StartViewModelTests: XCTestCase {
     }
     
     func testProducts2() {
-        let products = CoreDataSource(observer: AnyObserver(eventHandler: {_ in }), cellId: "", fetchRequest: Product.fetchRequestWithSort(), managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        let products = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
         var result: CoreDataSource<Product>?
         XCTAssertNil(repository.predicate)
         XCTAssertNil(repository.cellId)
