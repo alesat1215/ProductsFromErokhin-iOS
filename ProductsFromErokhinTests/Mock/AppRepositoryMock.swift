@@ -18,7 +18,7 @@ class AppRepositoryMock: AppRepository {
         super.init(updater: nil, context: nil)
     }
     
-    let titlesResult = [Titles(context: ContextMock())]
+    var titlesResult = [Titles(context: ContextMock())]
     override func titles() -> Observable<Event<[Titles]>> {
         Observable.just(Event.next(titlesResult))
     }
