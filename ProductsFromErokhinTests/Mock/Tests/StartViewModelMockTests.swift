@@ -13,34 +13,30 @@ import RxSwift
 class StartViewModelMockTests: XCTestCase {
     
     private let viewModel = StartViewModelMock()
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+    private let disposeBag = DisposeBag()
     
     func testTitles() {
-        let disposeBag = DisposeBag()
         let titles = [Titles(context: ContextMock())]
         var result: [Titles]?
         viewModel.titles().subscribe(onNext: { result = $0.element }).disposed(by: disposeBag)
         viewModel.titlesResult.accept(Event.next(titles))
         XCTAssertEqual(result, titles)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testProducts() {
+        let dataSource = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
+        var result: CoreDataSource<Product>?
+        viewModel.products().subscribe(onNext: { result = $0.element }).disposed(by: disposeBag)
+        viewModel.productsResult.accept(Event.next(dataSource))
+        XCTAssertEqual(result, dataSource)
+    }
+    
+    func testProducts2() {
+        let dataSource = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
+        var result: CoreDataSource<Product>?
+        viewModel.products2().subscribe(onNext: { result = $0.element }).disposed(by: disposeBag)
+        viewModel.productsResult2.accept(Event.next(dataSource))
+        XCTAssertEqual(result, dataSource)
     }
 
 }
