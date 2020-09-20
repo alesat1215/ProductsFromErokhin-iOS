@@ -8,11 +8,7 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
-import CoreData
-import FirebaseStorage
 import FirebaseUI
-import SwinjectStoryboard
 
 class StartViewController: UIViewController {
 
@@ -90,11 +86,4 @@ class StartViewController: UIViewController {
         }
     }
     
-}
-
-// MARK: - Cell
-
-/** - Returns: Referense for path from Firebase Storage */
-func storageReference(path: String) -> StorageReference {
-    SwinjectStoryboard.defaultContainer.resolve(StorageReference.self)!.child(path)
 }

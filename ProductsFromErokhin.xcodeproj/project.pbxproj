@@ -37,6 +37,7 @@
 		D795795C2517BE72007AD022 /* AppRepositoryMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795795B2517BE72007AD022 /* AppRepositoryMockTests.swift */; };
 		D79579612517C06C007AD022 /* StartViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79579602517C06C007AD022 /* StartViewModelMockTests.swift */; };
 		D79579692517C787007AD022 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79579682517C787007AD022 /* ProductCell.swift */; };
+		D795796E2517C900007AD022 /* FirebaseStorageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795796D2517C900007AD022 /* FirebaseStorageReference.swift */; };
 		D7B4B51C250A299D00BA07CB /* ObservableType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */; };
 		D7B4B51E250A5E8200BA07CB /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */; };
 		D7B4B520250A774100BA07CB /* TitlesRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B51F250A774100BA07CB /* TitlesRemote.swift */; };
@@ -132,6 +133,7 @@
 		D795795B2517BE72007AD022 /* AppRepositoryMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepositoryMockTests.swift; sourceTree = "<group>"; };
 		D79579602517C06C007AD022 /* StartViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModelMockTests.swift; sourceTree = "<group>"; };
 		D79579682517C787007AD022 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		D795796D2517C900007AD022 /* FirebaseStorageReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageReference.swift; sourceTree = "<group>"; };
 		D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extensions.swift"; sourceTree = "<group>"; };
 		D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		D7B4B51F250A774100BA07CB /* TitlesRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesRemote.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				D7B4B52D2510C5BD00BA07CB /* CoreDataCell.swift */,
 				D79579682517C787007AD022 /* ProductCell.swift */,
 				D7B4B52F2512262100BA07CB /* AnonymousAuth.swift */,
+				D795796D2517C900007AD022 /* FirebaseStorageReference.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -723,6 +726,7 @@
 				D7B4B5302512262100BA07CB /* AnonymousAuth.swift in Sources */,
 				D79579692517C787007AD022 /* ProductCell.swift in Sources */,
 				D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */,
+				D795796E2517C900007AD022 /* FirebaseStorageReference.swift in Sources */,
 				D7B4B52E2510C5BD00BA07CB /* CoreDataCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
