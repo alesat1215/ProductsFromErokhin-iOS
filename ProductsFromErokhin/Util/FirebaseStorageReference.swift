@@ -12,5 +12,5 @@ import SwinjectStoryboard
 
 /** - Returns: Referense for path from Firebase Storage */
 func storageReference(path: String) -> StorageReference {
-    SwinjectStoryboard.defaultContainer.resolve(StorageReference.self)!.child(path)
+    SwinjectStoryboard.defaultContainer.resolve(StorageReference.self)?.child(path) ?? StorageReference()
 }
