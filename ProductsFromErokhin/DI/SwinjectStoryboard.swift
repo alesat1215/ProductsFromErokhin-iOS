@@ -15,6 +15,10 @@ import CoreData
 
 extension SwinjectStoryboard {
     public static func setup() {
+        // Disable di for test
+        if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
+            return
+        }
         // MARK: - Load
         defaultContainer.storyboardInitCompleted(LoadViewController.self) { r, c in
             c.viewModel = r.resolve(LoadViewModel.self)
@@ -34,7 +38,7 @@ extension SwinjectStoryboard {
                 repository: r.resolve(AppRepository.self)
             )
         }
-        // MARK: - Products
+        // MARK: - Repository
         defaultContainer.register(AppRepository.self) { r in
             AppRepository(
                 updater: r.resolve(DatabaseUpdater.self),

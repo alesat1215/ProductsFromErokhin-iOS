@@ -24,7 +24,7 @@ class StartViewController: UIViewController {
     private let productsSegueId = "productsSegueId"
     private let productsSegueId2 = "productsSegueId2"
     
-    var viewModel: StartViewModel! // di
+    var viewModel: StartViewModel? // di
     
     private let disposeBag = DisposeBag()
     
@@ -37,7 +37,7 @@ class StartViewController: UIViewController {
     
     /** Bind first result from request to titles */
     private func bindTitles() {
-        viewModel.titles()
+        viewModel?.titles()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { print("Products error: \($0.localizedDescription)") }
@@ -54,7 +54,7 @@ class StartViewController: UIViewController {
     /** Bind products & products2 UICollectionView */
     private func bindProducts() {
         // products
-        viewModel.products()
+        viewModel?.products()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { print("Products error: \($0.localizedDescription)") }
@@ -64,7 +64,7 @@ class StartViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         // products2
-        viewModel.products2()
+        viewModel?.products2()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { print("Products error: \($0.localizedDescription)") }

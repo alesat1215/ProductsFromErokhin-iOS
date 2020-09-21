@@ -192,7 +192,7 @@
         <!--Load View Controller-->
         <scene sceneID="VAL-7R-h3q">
             <objects>
-                <viewController id="9bK-eD-lRJ" customClass="LoadViewController" customModule="ProductsFromErokhin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoadViewController" id="9bK-eD-lRJ" customClass="LoadViewController" customModule="ProductsFromErokhin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bxI-6c-L5o">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

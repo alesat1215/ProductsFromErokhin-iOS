@@ -11,7 +11,7 @@ import RxSwift
 
 class LoadViewController: UIViewController {
     
-    var viewModel: LoadViewModel! // di
+    var viewModel: LoadViewModel? // di
     
     private let disposeBag = DisposeBag()
 
@@ -22,14 +22,16 @@ class LoadViewController: UIViewController {
     }
     /** Sign in to Firebase, load data & navigate to destination */
     private func loadData() {
-        let loadComplete = viewModel.loadComplete()
+//        let loadComplete = viewModel?.loadComplete() ?? Observable.empty()
         // Sign in
-        viewModel.auth()
+        viewModel?.auth()
             .observeOn(MainScheduler.instance)
             .flatMapError { print("Auth error: \($0)") }
             // Load data
             .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
-            .flatMap { _ in loadComplete }
+            .flatMapLatest { [weak self] in
+                self?.viewModel?.loadComplete() ?? Observable.empty()
+            }
             .observeOn(MainScheduler.instance)
             .flatMapError { print("Load error: \($0)") }
             .subscribe(onNext: { [weak self] in
