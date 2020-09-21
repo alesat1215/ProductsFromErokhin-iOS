@@ -8,8 +8,6 @@
 
 import XCTest
 import RxSwift
-import Swinject
-import SwinjectStoryboard
 @testable import ProductsFromErokhin
 
 class LoadViewControllerTests: XCTestCase {
@@ -20,11 +18,10 @@ class LoadViewControllerTests: XCTestCase {
     override func setUpWithError() throws {
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoadViewController") as! LoadViewController
         controller.viewModel = viewModel
+        // For segue
         let window = UIWindow()
         window.rootViewController = controller
         window.makeKeyAndVisible()
-        
-        
     }
     
     func testLoadDataAuthError() {
