@@ -22,8 +22,6 @@ class LoadViewController: UIViewController {
     }
     /** Sign in to Firebase, load data & navigate to destination */
     private func loadData() {
-//        let loadComplete = viewModel?.loadComplete() ?? Observable.empty()
-        // Sign in
         viewModel?.auth()
             .observeOn(MainScheduler.instance)
             .flatMapError { print("Auth error: \($0)") }
@@ -41,16 +39,5 @@ class LoadViewController: UIViewController {
                 } else { print("Load incomplete") }
             }).disposed(by: disposeBag)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -17,13 +17,13 @@ class LoadViewModelMock: LoadViewModel {
         super.init(repository: nil, anonymousAuth: nil)
     }
     
-    let authResult = PublishRelay<Event<Void>>()
+    var authResult: Event<Void>?
     override func auth() -> Observable<Event<Void>> {
-        authResult.asObservable()
+        Observable.just(authResult ?? Event.error(AppError.unknown))
     }
     
-    var loadCompleteResult: Event<Bool>?
+    let loadCompleteResult = PublishRelay<Event<Bool>>()
     override func loadComplete() -> Observable<Event<Bool>> {
-        Observable.just(loadCompleteResult ?? Event.error(AppError.unknown))
+        loadCompleteResult.asObservable()
     }
 }
