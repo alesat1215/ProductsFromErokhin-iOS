@@ -12,6 +12,10 @@ import RxSwift
 class LoadViewModelMockTests: XCTestCase {
     
     private var viewModel: LoadViewModelMock!
+
+    override func setUpWithError() throws {
+        viewModel = LoadViewModelMock()
+    }
     
     func testAuth() {
         XCTAssertEqual(try viewModel.auth().toBlocking().first()?.error?.localizedDescription, viewModel.authResult.error?.localizedDescription)
