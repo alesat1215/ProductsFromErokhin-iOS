@@ -26,8 +26,8 @@ class LoadViewControllerTests: XCTestCase {
     
     func testLoadDataAuthError() {
         controller.viewDidLoad()
-        let exp = expectation(description: "Wait 3 seconds")
-        _ = XCTWaiter.wait(for: [exp], timeout: 3)
+        let exp = expectation(description: "Wait 1 second")
+        _ = XCTWaiter.wait(for: [exp], timeout: 1)
         XCTAssertNil(controller.presentedViewController)
     }
     
@@ -37,18 +37,18 @@ class LoadViewControllerTests: XCTestCase {
         XCTAssertNil(controller.presentedViewController)
         // Load error
         viewModel.loadCompleteResult.accept(Event.error(AppError.unknown))
-        var exp = expectation(description: "Wait 3 seconds")
-        _ = XCTWaiter.wait(for: [exp], timeout: 3)
+        var exp = expectation(description: "Wait 1 second")
+        _ = XCTWaiter.wait(for: [exp], timeout: 1)
         XCTAssertNil(controller.presentedViewController)
         // Load empty
         viewModel.loadCompleteResult.accept(Event.next(false))
-        exp = expectation(description: "Wait 3 seconds")
-        _ = XCTWaiter.wait(for: [exp], timeout: 3)
+        exp = expectation(description: "Wait 1 second")
+        _ = XCTWaiter.wait(for: [exp], timeout: 1)
         XCTAssertNil(controller.presentedViewController)
         // Load success
         viewModel.loadCompleteResult.accept(Event.next(true))
-        exp = expectation(description: "Wait 3 seconds")
-        _ = XCTWaiter.wait(for: [exp], timeout: 3)
+        exp = expectation(description: "Wait 1 second")
+        _ = XCTWaiter.wait(for: [exp], timeout: 1)
         XCTAssertNotNil(controller.presentedViewController)
     }
 
