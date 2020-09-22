@@ -65,8 +65,10 @@ class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         if let model = object(at: indexPath) {
-            (cell as? CoreDataCell)?
-                .bind(model: model, indexPath: indexPath, dataSource: self)
+//            (cell as? CoreDataCell)?
+//                .bind(model: model, indexPath: indexPath, dataSource: self)
+            (cell as? BindableCollectionViewCell)?
+                .bind(model: model)
         }
         return cell
     }
@@ -86,8 +88,10 @@ class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollect
             }
         case .update:
             if let indexPath = indexPath, let anObject = anObject as? T {
-                (collectionView.cellForItem(at: indexPath) as? CoreDataCell)?
-                    .bind(model: anObject, indexPath: indexPath, dataSource: self)
+//                (collectionView.cellForItem(at: indexPath) as? CoreDataCell)?
+//                    .bind(model: anObject, indexPath: indexPath, dataSource: self)
+                (collectionView.cellForItem(at: indexPath) as? BindableCollectionViewCell)?
+                    .bind(model: anObject)
             }
         case .move:
             if let indexPath = indexPath, let newIndexPath = newIndexPath {
