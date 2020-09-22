@@ -64,7 +64,7 @@ class CoreDataSourceTableView<T: NSFetchRequestResult>: NSObject, UITableViewDat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        (cell as? ProductTableViewCell)?.bind(model: frc.object(at: indexPath) as! Product)
+        (cell as? BindableTableViewCell)?.bind(model: frc.object(at: indexPath))
         return cell
     }
     
@@ -79,17 +79,17 @@ class CoreDataSourceTableView<T: NSFetchRequestResult>: NSObject, UITableViewDat
         switch type {
         case .insert:
             if let newIndexPath = newIndexPath {
-                tableView.insertItemsAtIndexPaths([newIndexPath], animationStyle: .automatic)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         case .update:
             if let indexPath = indexPath, let anObject = anObject as? T {
-                (tableView.cellForRow(at: indexPath) as? ProductTableViewCell)?
-                    .bind(model: anObject as! Product)
+                (tableView.cellForRow(at: indexPath) as? BindableTableViewCell)?
+                    .bind(model: anObject)
             }
         case .move:
             if let indexPath = indexPath, let newIndexPath = newIndexPath {
                 tableView.deleteRows(at: [indexPath], with: .automatic)
-                tableView.insertItemsAtIndexPaths([newIndexPath], animationStyle: .automatic)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
             }
         case .delete:
             if let indexPath = indexPath, tableView.numberOfRows(inSection: indexPath.section) > 0 {

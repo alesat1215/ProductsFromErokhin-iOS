@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProductTableViewCell: UITableViewCell {
+class ProductTableViewCell: BindableTableViewCell<Product> {
 
 //    override func awakeFromNib() {
 //        super.awakeFromNib()
@@ -46,21 +46,34 @@ class ProductTableViewCell: UITableViewCell {
         }
     }
     
-    private weak var model: Product?
-    
-    func bind(model: Product) {
-        name.text = model.name
-        price.text = "\(model.price) P/Kg"
-        let inCartCount = model.inCart?.count ?? 0
+//    private weak var model: Product?
+    override func bind(model: Product?) {
+        name.text = model?.name
+        price.text = "\(model?.price ?? 0) P/Kg"
+        let inCartCount = model?.inCart?.count ?? 0
         inCart.text = "\(inCartCount)"
         // Set image
-        img.sd_setImage(with: storageReference(path: model.img ?? ""))
+        img.sd_setImage(with: storageReference(path: model?.img ?? ""))
         // Set visible of elements
         let hidden = inCartCount == 0 ? true : false
         inCartMarker.isHidden = hidden
         _del.isHidden = hidden
         inCart.isHidden = hidden
-        self.model = model
+        super.bind(model: model)
     }
+//    func bind(model: Product) {
+//        name.text = model.name
+//        price.text = "\(model.price) P/Kg"
+//        let inCartCount = model.inCart?.count ?? 0
+//        inCart.text = "\(inCartCount)"
+//        // Set image
+//        img.sd_setImage(with: storageReference(path: model.img ?? ""))
+//        // Set visible of elements
+//        let hidden = inCartCount == 0 ? true : false
+//        inCartMarker.isHidden = hidden
+//        _del.isHidden = hidden
+//        inCart.isHidden = hidden
+//        self.model = model
+//    }
     
 }
