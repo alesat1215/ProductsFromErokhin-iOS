@@ -10,17 +10,6 @@ import UIKit
 
 class ProductTableViewCell: BindableTableViewCell<Product> {
 
-//    override func awakeFromNib() {
-//        super.awakeFromNib()
-//        // Initialization code
-//    }
-//
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var price: UILabel!
@@ -46,7 +35,6 @@ class ProductTableViewCell: BindableTableViewCell<Product> {
         }
     }
     
-//    private weak var model: Product?
     override func bind(model: Product?) {
         name.text = model?.name
         price.text = "\(model?.price ?? 0) P/Kg"
@@ -61,19 +49,5 @@ class ProductTableViewCell: BindableTableViewCell<Product> {
         inCart.isHidden = hidden
         super.bind(model: model)
     }
-//    func bind(model: Product) {
-//        name.text = model.name
-//        price.text = "\(model.price) P/Kg"
-//        let inCartCount = model.inCart?.count ?? 0
-//        inCart.text = "\(inCartCount)"
-//        // Set image
-//        img.sd_setImage(with: storageReference(path: model.img ?? ""))
-//        // Set visible of elements
-//        let hidden = inCartCount == 0 ? true : false
-//        inCartMarker.isHidden = hidden
-//        _del.isHidden = hidden
-//        inCart.isHidden = hidden
-//        self.model = model
-//    }
     
 }
