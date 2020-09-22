@@ -49,7 +49,7 @@
 		D7B4B522250A7AF700BA07CB /* Titles.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B521250A7AF700BA07CB /* Titles.swift */; };
 		D7B4B52A250E542100BA07CB /* CoreDataSourceCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B529250E542100BA07CB /* CoreDataSourceCollectionView.swift */; };
 		D7B4B52C250FE43700BA07CB /* NSManagedObjectContext+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52B250FE43700BA07CB /* NSManagedObjectContext+Rx.swift */; };
-		D7B4B52E2510C5BD00BA07CB /* CoreDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52D2510C5BD00BA07CB /* CoreDataCell.swift */; };
+		D7B4B52E2510C5BD00BA07CB /* BindableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52D2510C5BD00BA07CB /* BindableCells.swift */; };
 		D7B4B5302512262100BA07CB /* AnonymousAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52F2512262100BA07CB /* AnonymousAuth.swift */; };
 		D7B4B5332512428000BA07CB /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B5322512428000BA07CB /* LoadViewController.swift */; };
 		D7B4B5352512429900BA07CB /* LoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B5342512429900BA07CB /* LoadViewModel.swift */; };
@@ -154,7 +154,7 @@
 		D7B4B521250A7AF700BA07CB /* Titles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Titles.swift; sourceTree = "<group>"; };
 		D7B4B529250E542100BA07CB /* CoreDataSourceCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceCollectionView.swift; sourceTree = "<group>"; };
 		D7B4B52B250FE43700BA07CB /* NSManagedObjectContext+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Rx.swift"; sourceTree = "<group>"; };
-		D7B4B52D2510C5BD00BA07CB /* CoreDataCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCell.swift; sourceTree = "<group>"; };
+		D7B4B52D2510C5BD00BA07CB /* BindableCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableCells.swift; sourceTree = "<group>"; };
 		D7B4B52F2512262100BA07CB /* AnonymousAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuth.swift; sourceTree = "<group>"; };
 		D7B4B5322512428000BA07CB /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
 		D7B4B5342512429900BA07CB /* LoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModel.swift; sourceTree = "<group>"; };
@@ -259,7 +259,7 @@
 				D7B4B529250E542100BA07CB /* CoreDataSourceCollectionView.swift */,
 				D71A78C92519F8E1001B9234 /* CoreDataSourceTableView.swift */,
 				D7B4B52B250FE43700BA07CB /* NSManagedObjectContext+Rx.swift */,
-				D7B4B52D2510C5BD00BA07CB /* CoreDataCell.swift */,
+				D7B4B52D2510C5BD00BA07CB /* BindableCells.swift */,
 				D79579682517C787007AD022 /* ProductCollectionViewCell.swift */,
 				D7B4613E25193472001ED878 /* ProductTableViewCell.swift */,
 				D7B4B52F2512262100BA07CB /* AnonymousAuth.swift */,
@@ -772,7 +772,7 @@
 				D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */,
 				D7B4614725193A1F001ED878 /* MenuViewModel.swift in Sources */,
 				D795796E2517C900007AD022 /* FirebaseStorageReference.swift in Sources */,
-				D7B4B52E2510C5BD00BA07CB /* CoreDataCell.swift in Sources */,
+				D7B4B52E2510C5BD00BA07CB /* BindableCells.swift in Sources */,
 				D71A78CA2519F8E1001B9234 /* CoreDataSourceTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
