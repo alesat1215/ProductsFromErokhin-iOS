@@ -16,7 +16,7 @@ class CoreDataSourceTests: XCTestCase {
     private let context = ContextMock()
     
     private var products = [NSManagedObject]()
-    private var dataSource: CoreDataSource<Product>!
+    private var dataSource: CoreDataSourceCollectionView<Product>!
     private var collectionView: CollectionViewMock!
     
     override func setUpWithError() throws {

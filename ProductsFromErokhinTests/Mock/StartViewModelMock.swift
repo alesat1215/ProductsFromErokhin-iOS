@@ -22,13 +22,13 @@ class StartViewModelMock: StartViewModel {
         titlesResult.asObservable()
     }
     
-    let productsResult = PublishRelay<Event<CoreDataSource<Product>>>()
-    override func products() -> Observable<Event<CoreDataSource<Product>>> {
+    let productsResult = PublishRelay<Event<CoreDataSourceCollectionView<Product>>>()
+    override func products() -> Observable<Event<CoreDataSourceCollectionView<Product>>> {
         productsResult.asObservable()
     }
     
-    let productsResult2 = PublishRelay<Event<CoreDataSource<Product>>>()
-    override func products2() -> Observable<Event<CoreDataSource<Product>>> {
+    let productsResult2 = PublishRelay<Event<CoreDataSourceCollectionView<Product>>>()
+    override func products2() -> Observable<Event<CoreDataSourceCollectionView<Product>>> {
         productsResult2.asObservable()
     }
 }

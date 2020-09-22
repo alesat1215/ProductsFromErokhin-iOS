@@ -85,6 +85,22 @@ PODS:
   - GoogleUtilities/UserDefaults (6.7.2):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.4.0)
+  - MaterialComponents/AnimationTiming (116.0.0)
+  - MaterialComponents/Availability (116.0.0)
+  - MaterialComponents/private/Color (116.0.0):
+    - MaterialComponents/Availability
+  - MaterialComponents/private/Math (116.0.0)
+  - MaterialComponents/Ripple (116.0.0):
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/Availability
+    - MaterialComponents/private/Color
+    - MaterialComponents/private/Math
+  - "MaterialComponents/Tabs+TabBarView (116.0.0)":
+    - MaterialComponents/AnimationTiming
+    - MaterialComponents/private/Math
+    - MaterialComponents/Ripple
+    - MDFInternationalization
+  - MDFInternationalization (2.0.0)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -117,6 +133,7 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - Firebase/Storage
   - FirebaseUI/Storage
+  - "MaterialComponents/Tabs+TabBarView"
   - RxBlocking (~> 5)
   - RxCocoa (~> 5)
   - RxCoreData (~> 1.0.0)
@@ -142,6 +159,8 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
+    - MaterialComponents
+    - MDFInternationalization
     - nanopb
     - PromisesObjC
     - RxBlocking
@@ -178,6 +197,8 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 672fb0ce96fe7f7f31d43672fca62ad2c9c86f7b
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  MaterialComponents: a6cf920307c2864f71e37972620f24c4d14fae8d
+  MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   RxBlocking: 5f700a78cad61ce253ebd37c9a39b5ccc76477b4
@@ -190,6 +211,6 @@ SPEC CHECKSUMS:
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   SwinjectStoryboard: f0d5b1c16459949d6ff1cbb6610107946b18e1f8
 
-PODFILE CHECKSUM: 96597aa0ecd0fc2dca029714d966796d367b3bf7
+PODFILE CHECKSUM: b4b6ec1449e82096befa4421b7b3337ad1b31fb5
 
 COCOAPODS: 1.9.3

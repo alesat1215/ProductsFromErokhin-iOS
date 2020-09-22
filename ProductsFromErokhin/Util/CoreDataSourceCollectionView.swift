@@ -10,9 +10,9 @@ import UIKit
 import CoreData
 import RxSwift
 
-class CoreDataSource<T: NSFetchRequestResult>: NSObject, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
+class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollectionViewDataSource, NSFetchedResultsControllerDelegate {
     
-    typealias Observer = AnyObserver<CoreDataSource<T>>
+    typealias Observer = AnyObserver<CoreDataSourceCollectionView<T>>
     
     private let observer: Observer
     private let frc: NSFetchedResultsController<T>
@@ -105,7 +105,7 @@ class CoreDataSource<T: NSFetchRequestResult>: NSObject, UICollectionViewDataSou
 
 }
 
-extension CoreDataSource {
+extension CoreDataSourceCollectionView {
     func object(at indexPath: IndexPath) -> T? {
         var result: T?
         if frc.sections?.indices.contains(indexPath.section) ?? false,
@@ -118,7 +118,7 @@ extension CoreDataSource {
 }
 
 // MARK: - Rx
-extension CoreDataSource: Disposable {
+extension CoreDataSourceCollectionView: Disposable {
     func dispose() {
         frc.delegate = nil
         collectionView?.dataSource = nil

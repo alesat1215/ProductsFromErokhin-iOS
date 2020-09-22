@@ -11,7 +11,7 @@ import CoreData
 import RxSwift
 @testable import ProductsFromErokhin
 
-class CoreDataSourceMock<T: NSFetchRequestResult>: CoreDataSource<T> {
+class CoreDataSourceMock<T: NSFetchRequestResult>: CoreDataSourceCollectionView<T> {
     init(fetchRequest: NSFetchRequest<T>) {
         super.init(observer: AnyObserver(eventHandler: {_ in }), cellId: "", fetchRequest: fetchRequest, managedObjectContext: ContextMock(), sectionNameKeyPath: nil, cacheName: nil)
     }

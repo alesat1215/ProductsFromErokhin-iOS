@@ -42,9 +42,22 @@ class AppRepository {
     }
     /**
     Get products from database & update it if needed
-    - returns: Observable dataSource with products
+    - returns: Observable dataSource with products for collection view
     */
-    func products(predicate: NSPredicate? = nil, cellId: String) -> Observable<Event<CoreDataSource<Product>>> {
+    func products(predicate: NSPredicate? = nil, cellId: String) -> Observable<Event<CoreDataSourceCollectionView<Product>>> {
+        Observable.merge([
+            context.rx.coreDataSource(
+                cellId: cellId,
+                fetchRequest: Product.fetchRequestWithSort(predicate: predicate)
+            ).materialize(),
+            updater.sync()
+        ])
+    }
+    /**
+    Get products from database & update it if needed
+    - returns: Observable dataSource with products for table view
+    */
+    func products(predicate: NSPredicate? = nil, cellId: String) -> Observable<Event<CoreDataSourceTableView<Product>>> {
         Observable.merge([
             context.rx.coreDataSource(
                 cellId: cellId,

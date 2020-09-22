@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import RxDataSources
 
 // MARK: - Product
 extension Product: Ordered {
@@ -68,6 +69,12 @@ extension Product {
         } catch {
             return .failure(error)
         }
+    }
+}
+
+extension Product: IdentifiableType {
+    public var identity: Int16 {
+        order
     }
 }
 

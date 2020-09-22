@@ -106,8 +106,8 @@ class StartViewControllerTests: XCTestCase {
         // Success event
         viewModel.productsResult.accept(Event.next(dataSource))
         viewModel.productsResult2.accept(Event.next(dataSource2))
-        XCTAssertEqual(controller.products.dataSource as! CoreDataSource, dataSource)
-        XCTAssertEqual(controller.products2.dataSource as! CoreDataSource, dataSource2)
+        XCTAssertEqual(controller.products.dataSource as! CoreDataSourceCollectionView, dataSource)
+        XCTAssertEqual(controller.products2.dataSource as! CoreDataSourceCollectionView, dataSource2)
         XCTAssertTrue((controller.products as! CollectionViewMock).isReload)
         XCTAssertTrue((controller.products2 as! CollectionViewMock).isReload)
         
@@ -117,8 +117,8 @@ class StartViewControllerTests: XCTestCase {
         (controller.products2 as! CollectionViewMock).isReload = false
         viewModel.productsResult.accept(Event.next(dataSource))
         viewModel.productsResult2.accept(Event.next(dataSource2))
-        XCTAssertEqual(controller.products.dataSource as! CoreDataSource, dataSource)
-        XCTAssertEqual(controller.products2.dataSource as! CoreDataSource, dataSource2)
+        XCTAssertEqual(controller.products.dataSource as! CoreDataSourceCollectionView, dataSource)
+        XCTAssertEqual(controller.products2.dataSource as! CoreDataSourceCollectionView, dataSource2)
         XCTAssertTrue((controller.products as! CollectionViewMock).isReload)
         XCTAssertTrue((controller.products2 as! CollectionViewMock).isReload)
         // Error event
@@ -126,8 +126,8 @@ class StartViewControllerTests: XCTestCase {
         (controller.products2 as! CollectionViewMock).isReload = false
         viewModel.productsResult.accept(Event.error(AppError.unknown))
         viewModel.productsResult2.accept(Event.error(AppError.unknown))
-        XCTAssertEqual(controller.products.dataSource as! CoreDataSource, dataSource)
-        XCTAssertEqual(controller.products2.dataSource as! CoreDataSource, dataSource2)
+        XCTAssertEqual(controller.products.dataSource as! CoreDataSourceCollectionView, dataSource)
+        XCTAssertEqual(controller.products2.dataSource as! CoreDataSourceCollectionView, dataSource2)
         XCTAssertFalse((controller.products as! CollectionViewMock).isReload)
         XCTAssertFalse((controller.products2 as! CollectionViewMock).isReload)
         // Success event after error
@@ -137,8 +137,8 @@ class StartViewControllerTests: XCTestCase {
         (controller.products2 as! CollectionViewMock).isReload = false
         viewModel.productsResult.accept(Event.next(dataSource))
         viewModel.productsResult2.accept(Event.next(dataSource2))
-        XCTAssertEqual(controller.products.dataSource as! CoreDataSource, dataSource)
-        XCTAssertEqual(controller.products2.dataSource as! CoreDataSource, dataSource2)
+        XCTAssertEqual(controller.products.dataSource as! CoreDataSourceCollectionView, dataSource)
+        XCTAssertEqual(controller.products2.dataSource as! CoreDataSourceCollectionView, dataSource2)
         XCTAssertTrue((controller.products as! CollectionViewMock).isReload)
         XCTAssertTrue((controller.products2 as! CollectionViewMock).isReload)
     }

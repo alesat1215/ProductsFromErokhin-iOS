@@ -1,42 +1,54 @@
 //
-//  ProductCell.swift
+//  ProductTableViewCell.swift
 //  ProductsFromErokhin
 //
-//  Created by Alexander Satunin on 20.09.2020.
+//  Created by Alexander Satunin on 21.09.2020.
 //  Copyright © 2020 Alexander Satunin. All rights reserved.
 //
 
 import UIKit
 
-class ProductCell: CoreDataCell<Product> {
-    
+class ProductTableViewCell: UITableViewCell {
+
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//        // Initialization code
+//    }
+//
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
+
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var inCart: UILabel!
     @IBOutlet weak var inCartMarker: UIView!
     @IBOutlet weak var _del: UIButton!
-    @IBOutlet weak var img: UIImageView!
-    /** Add product to cart */
+    
     @IBAction func add(_ sender: UIButton) {
-        switch dataSource?.object(at: indexPath)?.addToCart() {
+        switch model?.addToCart() {
         case .failure(let error):
             print(error.localizedDescription)
         default:
             print("Product add to cart success")
         }
     }
-    /** Del product from cart */
+    
     @IBAction func del(_ sender: UIButton) {
-        switch dataSource?.object(at: indexPath)?.delFromCart() {
+        switch model?.delFromCart() {
         case .failure(let error):
             print(error.localizedDescription)
         default:
-            print("Product del from cart success")
+            print("Product add to cart success")
         }
     }
     
-    override func bind(model: Product, indexPath: IndexPath, dataSource: CoreDataSource<Product>?) {
-        // Model values to views
+    private weak var model: Product?
+    
+    func bind(model: Product) {
         name.text = model.name
         price.text = "\(model.price) P/Kg"
         let inCartCount = model.inCart?.count ?? 0
@@ -48,7 +60,7 @@ class ProductCell: CoreDataCell<Product> {
         inCartMarker.isHidden = hidden
         _del.isHidden = hidden
         inCart.isHidden = hidden
-        // Set indexPath & dataSource
-        super.bind(model: model, indexPath: indexPath, dataSource: dataSource)
+        self.model = model
     }
+    
 }

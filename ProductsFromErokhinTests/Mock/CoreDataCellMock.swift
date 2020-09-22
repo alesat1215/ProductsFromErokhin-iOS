@@ -11,7 +11,7 @@ import Foundation
 
 class CoreDataCellMock: CoreDataCell<Product> {
     var isBind = false
-    override func bind(model: Product, indexPath: IndexPath, dataSource: CoreDataSource<Product>?) {
+    override func bind(model: Product, indexPath: IndexPath, dataSource: CoreDataSourceCollectionView<Product>?) {
         isBind.toggle()
     }
 }

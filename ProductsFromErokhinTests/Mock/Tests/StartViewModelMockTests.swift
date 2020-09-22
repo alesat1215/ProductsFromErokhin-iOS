@@ -25,7 +25,7 @@ class StartViewModelMockTests: XCTestCase {
     
     func testProducts() {
         let dataSource = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
-        var result: CoreDataSource<Product>?
+        var result: CoreDataSourceCollectionView<Product>?
         viewModel.products().subscribe(onNext: { result = $0.element }).disposed(by: disposeBag)
         viewModel.productsResult.accept(Event.next(dataSource))
         XCTAssertEqual(result, dataSource)
@@ -33,7 +33,7 @@ class StartViewModelMockTests: XCTestCase {
     
     func testProducts2() {
         let dataSource = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
-        var result: CoreDataSource<Product>?
+        var result: CoreDataSourceCollectionView<Product>?
         viewModel.products2().subscribe(onNext: { result = $0.element }).disposed(by: disposeBag)
         viewModel.productsResult2.accept(Event.next(dataSource))
         XCTAssertEqual(result, dataSource)

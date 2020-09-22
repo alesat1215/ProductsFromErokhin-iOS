@@ -38,6 +38,15 @@ extension SwinjectStoryboard {
                 repository: r.resolve(AppRepository.self)
             )
         }
+        // MARK: - Menu
+        defaultContainer.storyboardInitCompleted(MenuViewController.self) { r, c in
+            c.viewModel = r.resolve(MenuViewModel.self)
+        }
+        defaultContainer.register(MenuViewModel.self) { r in
+            MenuViewModel(
+                repository: r.resolve(AppRepository.self)
+            )
+        }
         // MARK: - Repository
         defaultContainer.register(AppRepository.self) { r in
             AppRepository(
