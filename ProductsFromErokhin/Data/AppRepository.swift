@@ -24,9 +24,12 @@ class AppRepository {
      Get groups from database & update it if needed
      - returns: Observable array with groups
      */
-    func groups() -> Observable<Event<[Group]>> {
+    func groups() -> Observable<Event<CoreDataSourceCollectionView<Group>>> {
         Observable.merge([
-            context.rx.entities(fetchRequest: Group.fetchRequestWithSort()).materialize(),
+            context.rx.coreDataSource(
+                cellId: "group",
+                fetchRequest: Group.fetchRequestWithSort()
+            ).materialize(),
             updater.sync()
         ])
     }

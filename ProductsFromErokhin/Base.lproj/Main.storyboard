@@ -162,13 +162,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r4q-9e-cMX" userLabel="TabBar Container">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MHg-uA-Dhf">
                                 <rect key="frame" x="0.0" y="44" width="414" height="49"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="sqm-Oo-xUf"/>
+                                    <constraint firstAttribute="height" constant="49" id="F5z-ub-ZBS"/>
                                 </constraints>
-                            </view>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aPi-qH-MkK">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="group" id="QNo-bL-Icp" customClass="GroupCell" customModule="ProductsFromErokhin" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-39.666666666666664" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="F9E-vp-xkn">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1jG-un-CUD">
+                                                    <rect key="frame" x="8" y="8" width="112" height="120"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" systemColor="systemGray2Color"/>
+                                                    <color key="highlightedColor" systemColor="labelColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1jG-un-CUD" firstAttribute="top" secondItem="F9E-vp-xkn" secondAttribute="top" constant="8" id="4Yc-P7-Ofl"/>
+                                                <constraint firstAttribute="trailing" secondItem="1jG-un-CUD" secondAttribute="trailing" constant="8" id="5b7-Bk-bBO"/>
+                                                <constraint firstItem="1jG-un-CUD" firstAttribute="leading" secondItem="F9E-vp-xkn" secondAttribute="leading" constant="8" id="7M4-z5-F9Y"/>
+                                                <constraint firstAttribute="bottom" secondItem="1jG-un-CUD" secondAttribute="bottom" id="NFr-vP-Mvr"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="name" destination="1jG-un-CUD" id="CUD-PU-IsD"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7x7-IU-lEF">
                                 <rect key="frame" x="0.0" y="93" width="414" height="720"/>
                                 <connections>
@@ -179,16 +212,19 @@
                         <viewLayoutGuide key="safeArea" id="XGt-iE-nDM"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="r4q-9e-cMX" firstAttribute="top" secondItem="XGt-iE-nDM" secondAttribute="top" id="cQ1-o1-AgX"/>
-                            <constraint firstItem="r4q-9e-cMX" firstAttribute="leading" secondItem="XGt-iE-nDM" secondAttribute="leading" id="eVb-Ue-4fW"/>
+                            <constraint firstItem="XGt-iE-nDM" firstAttribute="trailing" secondItem="MHg-uA-Dhf" secondAttribute="trailing" id="10r-sy-EDL"/>
+                            <constraint firstItem="MHg-uA-Dhf" firstAttribute="leading" secondItem="XGt-iE-nDM" secondAttribute="leading" id="8l7-Eb-tdf"/>
+                            <constraint firstItem="MHg-uA-Dhf" firstAttribute="top" secondItem="XGt-iE-nDM" secondAttribute="top" id="L0u-Kd-OiF"/>
+                            <constraint firstItem="7x7-IU-lEF" firstAttribute="top" secondItem="MHg-uA-Dhf" secondAttribute="bottom" id="gph-7Y-tse"/>
                             <constraint firstItem="7x7-IU-lEF" firstAttribute="leading" secondItem="XGt-iE-nDM" secondAttribute="leading" id="iH3-B1-Yqg"/>
                             <constraint firstItem="XGt-iE-nDM" firstAttribute="bottom" secondItem="7x7-IU-lEF" secondAttribute="bottom" id="s8D-9f-f4h"/>
                             <constraint firstItem="XGt-iE-nDM" firstAttribute="trailing" secondItem="7x7-IU-lEF" secondAttribute="trailing" id="tel-Iv-QPp"/>
-                            <constraint firstItem="XGt-iE-nDM" firstAttribute="trailing" secondItem="r4q-9e-cMX" secondAttribute="trailing" id="w9E-yK-tIG"/>
-                            <constraint firstItem="7x7-IU-lEF" firstAttribute="top" secondItem="r4q-9e-cMX" secondAttribute="bottom" id="xK8-bm-8oi"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Menu" image="second" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="groups" destination="MHg-uA-Dhf" id="SuG-q5-xXE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -582,11 +618,17 @@
         <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="second" width="30" height="30"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
             <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

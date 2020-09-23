@@ -48,8 +48,39 @@ extension Product {
             removeFromInCart(NSSet(object: productInCart))
         }
     }
+}
+
+extension ProductInCart {
+    /** Request for all entitys sorded by name */
+    static func fetchRequestWithSortByName() -> NSFetchRequest<ProductInCart> {
+        let fetchRequest: NSFetchRequest<ProductInCart> = ProductInCart.fetchRequest()
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+        return fetchRequest
+    }
+}
+
+// MARK: - Group
+extension Group: Ordered {
+    /** Set values from GroupRemote with order */
+    func update(from remote: GroupRemote, order: Int) {
+        self.order = Int16(order)
+        name = remote.name
+    }
+    /** Set true to isSelected & save result in context */
+    func select() -> Result<Void, Error> {
+        save { _ in
+            isSelected = true
+        }
+    }
+    /** Set false to isSelected without saving the result */
+    func unSelect() {
+        isSelected = false
+    }
+}
+
+extension NSManagedObject {
     /** Save changes in context */
-    private func save(_ block: (_ context: NSManagedObjectContext) -> Void) -> Result<Void, Error> {
+    func save(_ block: (_ context: NSManagedObjectContext) -> Void) -> Result<Void, Error> {
         // Check context
         guard let context = managedObjectContext else {
             return .failure(AppError.context)
@@ -68,23 +99,5 @@ extension Product {
         } catch {
             return .failure(error)
         }
-    }
-}
-
-extension ProductInCart {
-    /** Request for all entitys sorded by name */
-    static func fetchRequestWithSortByName() -> NSFetchRequest<ProductInCart> {
-        let fetchRequest: NSFetchRequest<ProductInCart> = ProductInCart.fetchRequest()
-        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-        return fetchRequest
-    }
-}
-
-// MARK: - Group
-extension Group: Ordered {
-    /** Set values from GroupRemote with order */
-    func update(from remote: GroupRemote, order: Int) {
-        self.order = Int16(order)
-        name = remote.name
     }
 }
