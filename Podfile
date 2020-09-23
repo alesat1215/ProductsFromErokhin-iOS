@@ -17,8 +17,6 @@ target 'ProductsFromErokhin' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
   pod 'FirebaseUI/Storage'
-  # UI
-  pod 'MaterialComponents/Tabs+TabBarView'
   # DI
   pod 'Swinject'
   pod 'SwinjectStoryboard', :git => 'https://github.com/Swinject/SwinjectStoryboard.git', :branch => 'master'
