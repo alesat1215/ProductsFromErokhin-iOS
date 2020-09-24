@@ -122,6 +122,13 @@ extension CoreDataSourceCollectionView where T == Group {
         // Select group for indexPath
         return object(at: indexPath)?.select() ?? .success(())
     }
+    /** Select group by name after unselect previous */
+    func select(name: String?) -> Result<Void, Error> {
+        // Uselect previous group
+        frc.fetchedObjects?.first { $0.isSelected }?.unSelect()
+        // Select group by name
+        return frc.fetchedObjects?.first { $0.name == name }?.select() ?? .success(())
+    }
 }
 
 // MARK: - Rx

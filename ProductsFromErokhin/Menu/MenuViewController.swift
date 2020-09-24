@@ -35,7 +35,10 @@ class MenuViewController: UIViewController {
     private func bindProducts() {
         viewModel?.products()
             .flatMapError { print("Products error: \($0.localizedDescription)") }
-            .subscribe(onNext: { [weak self] in $0.bind(tableView: self?.products) })
+            .subscribe(onNext: { [weak self] in
+                $0.bind(tableView: self?.products)
+                self?.selectGroup()
+            })
             .disposed(by: disposeBag)
     }
 
@@ -44,6 +47,16 @@ class MenuViewController: UIViewController {
         if segue.identifier == "productsSegueId" {
             products = segue.destination.view as? UITableView
         }
+    }
+    
+    private func selectGroup() {
+        switch (products.visibleCells.first as? ProductTableViewCell)?.model?.group?.select() {
+        case .failure(let error):
+            print("Group select error: \(error.localizedDescription)")
+        default:
+            print("Group select success")
+        }
+        
     }
 
 }
