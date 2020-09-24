@@ -26,37 +26,31 @@ class MenuViewController: UIViewController {
         bindProducts()
     }
     
+    /** Set delegate & dataSorce for groups */
     private func bindGroups() {
         groups.delegate = self
         viewModel?.groups()
             .flatMapError { print("Groups error: \($0.localizedDescription)") }
             .subscribe(onNext: { [weak self] in $0.bind(collectionView: self?.groups) }).disposed(by: disposeBag)
     }
-    
+    /** Setup select group when scroll & set dataSource for products */
     private func bindProducts() {
+        // Select group for top visible cell of products
         products.rx.willDisplayCell
             .throttle(RxTimeInterval.milliseconds(50), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-//                if !((self?.products.visibleCells.first as? ProductTableViewCell)?.model?.group?.isSelected ?? true) {
-//                    self?.selectGroup()
-//                }
-                guard
-                    let indexPath = self?.products.indexPathsForVisibleRows?.first,
-                    let product = (self?.products.dataSource as? CoreDataSourceTableView<Product>)?.object(at: indexPath)
-                else {
-                    return
+                if let indexPath = self?.products.indexPathsForVisibleRows?.first,
+                   let group = (self?.products.dataSource as? CoreDataSourceTableView<Product>)?.object(at: indexPath)?.group,
+                   !group.isSelected
+                {
+                    self?.selectGroup(group: group)
                 }
-                if !(product.group?.isSelected ?? true) {
-                    self?.selectGroup(group: product.group)
-                }
-                
-        }).disposed(by: disposeBag)
-        
+            }).disposed(by: disposeBag)
+        // Set dataSource for products
         viewModel?.products()
             .flatMapError { print("Products error: \($0.localizedDescription)") }
             .subscribe(onNext: { [weak self] in
                 $0.bind(tableView: self?.products)
-//                self?.selectGroup()
             }).disposed(by: disposeBag)
     }
 
@@ -66,21 +60,12 @@ class MenuViewController: UIViewController {
             products = segue.destination.view as? UITableView
         }
     }
-    
-    private func selectGroup(group: Group?) {
-//        guard
-//            let group = (products.visibleCells.first as? ProductTableViewCell)?.model?.group,
-//            let indexPath = (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group)
-//        else {
-//            return
-//        }
-        guard
-            let group = group,
-            let indexPath = (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group)
-        else {
-            return
+    /** Select group & scroll to it */
+    private func selectGroup(group: Group) {
+        if let indexPath = (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group) {
+            collectionView(groups, didSelectItemAt: indexPath)
         }
-        collectionView(groups, didSelectItemAt: indexPath)
+        
     }
 
 }
@@ -109,6 +94,5 @@ class GroupCell: BindableCollectionViewCell<Group> {
         name.text = model?.name
         // Setup font color for selected group
         name.isHighlighted = model?.isSelected ?? false
-//        super.bind(model: model)
     }
 }
