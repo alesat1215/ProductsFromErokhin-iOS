@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class MenuViewController: UIViewController {
     
@@ -33,13 +34,30 @@ class MenuViewController: UIViewController {
     }
     
     private func bindProducts() {
+        products.rx.willDisplayCell
+            .throttle(RxTimeInterval.milliseconds(50), scheduler: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+//                if !((self?.products.visibleCells.first as? ProductTableViewCell)?.model?.group?.isSelected ?? true) {
+//                    self?.selectGroup()
+//                }
+                guard
+                    let indexPath = self?.products.indexPathsForVisibleRows?.first,
+                    let product = (self?.products.dataSource as? CoreDataSourceTableView<Product>)?.object(at: indexPath)
+                else {
+                    return
+                }
+                if !(product.group?.isSelected ?? true) {
+                    self?.selectGroup(group: product.group)
+                }
+                
+        }).disposed(by: disposeBag)
+        
         viewModel?.products()
             .flatMapError { print("Products error: \($0.localizedDescription)") }
             .subscribe(onNext: { [weak self] in
                 $0.bind(tableView: self?.products)
-                self?.selectGroup()
-            })
-            .disposed(by: disposeBag)
+//                self?.selectGroup()
+            }).disposed(by: disposeBag)
     }
 
     // Set otlets for products
@@ -49,9 +67,15 @@ class MenuViewController: UIViewController {
         }
     }
     
-    private func selectGroup() {
+    private func selectGroup(group: Group?) {
+//        guard
+//            let group = (products.visibleCells.first as? ProductTableViewCell)?.model?.group,
+//            let indexPath = (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group)
+//        else {
+//            return
+//        }
         guard
-            let group = (products.visibleCells.first as? ProductTableViewCell)?.model?.group,
+            let group = group,
             let indexPath = (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group)
         else {
             return

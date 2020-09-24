@@ -103,7 +103,7 @@ class CoreDataSourceTableView<T: NSFetchRequestResult>: NSObject, UITableViewDat
 }
 
 extension CoreDataSourceTableView {
-    private func object(at indexPath: IndexPath) -> T? {
+    func object(at indexPath: IndexPath) -> T? {
         var result: T?
         if frc.sections?.indices.contains(indexPath.section) ?? false,
            let numberOfObjects = frc.sections?[indexPath.section].numberOfObjects, numberOfObjects > indexPath.item
