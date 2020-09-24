@@ -26,12 +26,26 @@ class MenuViewController: UIViewController {
         bindProducts()
     }
     
-    /** Set delegate & dataSorce for groups */
+    /** Setup select & dataSorce for groups */
     private func bindGroups() {
-        groups.delegate = self
+        // Select group when item selected & scroll to it
+        groups.rx.itemSelected.subscribe(onNext: { [weak self] in
+            // Scroll to the middle for selected item
+            self?.groups.scrollToItem(at: $0, at: .centeredHorizontally, animated: true)
+            // Select group for indexPath
+            switch (self?.groups.dataSource as? CoreDataSourceCollectionView<Group>)?.select(indexPath: $0) {
+            case .failure(let error):
+                print("Select error: \(error)")
+            default:
+                print("Select group success")
+            }
+        }).disposed(by: disposeBag)
+        // Set dataSource for groups
         viewModel?.groups()
             .flatMapError { print("Groups error: \($0.localizedDescription)") }
-            .subscribe(onNext: { [weak self] in $0.bind(collectionView: self?.groups) }).disposed(by: disposeBag)
+            .subscribe(onNext: { [weak self] in
+                $0.bind(collectionView: self?.groups)
+            }).disposed(by: disposeBag)
     }
     /** Setup select group when scroll & set dataSource for products */
     private func bindProducts() {
@@ -63,27 +77,11 @@ class MenuViewController: UIViewController {
     /** Select group & scroll to it */
     private func selectGroup(group: Group) {
         if let indexPath = (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group) {
-            collectionView(groups, didSelectItemAt: indexPath)
+            groups.delegate?.collectionView?(groups, didSelectItemAt: indexPath)
         }
         
     }
 
-}
-
-extension MenuViewController: UICollectionViewDelegate {
-    // Setup tab bar
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Scroll to the middle for selected item
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-        // Select group for indexPath
-        switch (collectionView.dataSource as? CoreDataSourceCollectionView<Group>)?.select(indexPath: indexPath) {
-        case .failure(let error):
-            print("Select error: \(error)")
-        default:
-            print("Select group success")
-        }
-        
-    }
 }
 
 class GroupCell: BindableCollectionViewCell<Group> {
