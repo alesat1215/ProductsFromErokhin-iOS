@@ -50,13 +50,13 @@ class MenuViewController: UIViewController {
     }
     
     private func selectGroup() {
-        switch (products.visibleCells.first as? ProductTableViewCell)?.model?.group?.select() {
-        case .failure(let error):
-            print("Group select error: \(error.localizedDescription)")
-        default:
-            print("Group select success")
+        guard
+            let group = (products.visibleCells.first as? ProductTableViewCell)?.model?.group,
+            let indexPath = (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group)
+        else {
+            return
         }
-        
+        collectionView(groups, didSelectItemAt: indexPath)
     }
 
 }
