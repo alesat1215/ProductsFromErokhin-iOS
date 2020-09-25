@@ -88,6 +88,11 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
         XCTAssertNil(dataSource.object(at: IndexPath(item: 5, section: 0)))
     }
     
+    func testIndexPath() {
+        XCTAssertNotNil(dataSource.indexPath(for: context.fetchResult.first as! Product))
+        XCTAssertNil(dataSource.indexPath(for: Product(context: context)))
+    }
+    
     func testDispose() {
         dataSource.bind(collectionView: collectionView)
         XCTAssertNotNil(collectionView.dataSource)
