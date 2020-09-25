@@ -42,7 +42,7 @@ class CoreDataSourceTests: XCTestCase {
         XCTAssertEqual(dataSource.collectionView(collectionView, numberOfItemsInSection: 0), context.fetchResult.count)
         // Cell for indexPath
         let cell = dataSource.collectionView(collectionView, cellForItemAt: IndexPath(item: 0, section: 0))
-        XCTAssertTrue((cell as! CoreDataCellMock).isBind)
+        XCTAssertTrue((cell as! CollectionViewCellMock).isBind)
     }
     
     func testNSFetchedResultsControllerDelegate() {

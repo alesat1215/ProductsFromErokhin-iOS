@@ -9,12 +9,12 @@
 import XCTest
 @testable import ProductsFromErokhin
 
-class CoreDataCellMockTests: XCTestCase {
+class CollectionViewCellMockTests: XCTestCase {
 
     func testBind() {
-        let cell = CoreDataCellMock()
+        let cell = CollectionViewCellMock()
         XCTAssertFalse(cell.isBind)
-        cell.bind(model: Product(context: ContextMock()), indexPath: IndexPath(), dataSource: nil)
+        cell.bind(model: Product(context: ContextMock()))
         XCTAssertTrue(cell.isBind)
     }
 

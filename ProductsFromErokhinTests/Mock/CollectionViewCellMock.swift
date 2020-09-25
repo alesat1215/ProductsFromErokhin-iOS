@@ -9,9 +9,9 @@
 import Foundation
 @testable import ProductsFromErokhin
 
-class CoreDataCellMock: CoreDataCell<Product> {
+class CollectionViewCellMock: BindableCollectionViewCell<Product> {
     var isBind = false
-    override func bind(model: Product, indexPath: IndexPath, dataSource: CoreDataSourceCollectionView<Product>?) {
+    override func bind(model: Product?) {
         isBind.toggle()
     }
 }

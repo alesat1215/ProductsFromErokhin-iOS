@@ -33,13 +33,17 @@ class AppRepositoryTests: XCTestCase {
     }
     
     func testProducts() throws {
+        // Products for CollectionView
         // Success
         // Check sequence contains only one element
-        XCTAssertThrowsError(try repository.products(cellId: "").take(2).toBlocking(timeout: 1).toArray())
+        var dataSourceCollectionView: Observable<Event<CoreDataSourceCollectionView<Product>>>?
+        dataSourceCollectionView = repository.products(cellId: "")
+        XCTAssertThrowsError(try dataSourceCollectionView?.take(2).toBlocking(timeout: 1).toArray())
         updater.isSync = false
         context.isFetch = false
         // Check that element
-        XCTAssertNotNil(try repository.products(cellId: "").toBlocking().first()?.element)
+        dataSourceCollectionView = repository.products(cellId: "")
+        XCTAssertNotNil(try dataSourceCollectionView?.toBlocking().first()?.element)
         XCTAssertTrue(updater.isSync)
         XCTAssertTrue(context.isFetch)
         
@@ -47,7 +51,8 @@ class AppRepositoryTests: XCTestCase {
         updater.isSync = false
         context.isFetch = false
         updater.error = AppError.unknown
-        XCTAssertTrue(try repository.products(cellId: "").take(2).toBlocking().toArray().contains { $0.error?.localizedDescription == AppError.unknown.localizedDescription })
+        dataSourceCollectionView = repository.products(cellId: "")
+        XCTAssertTrue(try dataSourceCollectionView!.take(2).toBlocking().toArray().contains { $0.error?.localizedDescription == AppError.unknown.localizedDescription })
         XCTAssertTrue(updater.isSync)
         XCTAssertTrue(context.isFetch)
     }

@@ -18,7 +18,7 @@ class CollectionViewMock: UICollectionView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    let cell = CoreDataCellMock()
+    let cell = CollectionViewCellMock()
     override func dequeueReusableCell(withReuseIdentifier identifier: String, for indexPath: IndexPath) -> UICollectionViewCell {
         cell
     }

@@ -58,14 +58,14 @@
 		D7C0FBB22513E082009BC51F /* AuthComplectionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */; };
 		D7C0FBBA2513E5AE009BC51F /* AuthComplectionMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBB92513E5AE009BC51F /* AuthComplectionMockTests.swift */; };
 		D7C0FBBF2513EBE8009BC51F /* CoreDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBBE2513EBE8009BC51F /* CoreDataSourceTests.swift */; };
-		D7C0FBE92514DCF4009BC51F /* CoreDataCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBE82514DCF4009BC51F /* CoreDataCellTests.swift */; };
+		D7C0FBE92514DCF4009BC51F /* BindableCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBE82514DCF4009BC51F /* BindableCellTests.swift */; };
 		D7C0FBF02514E042009BC51F /* ProductsRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBEF2514E042009BC51F /* ProductsRemoteTests.swift */; };
 		D7C0FBF82514EC5B009BC51F /* TitlesRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBF72514EC5B009BC51F /* TitlesRemoteTests.swift */; };
 		D7C0FBFE2514EF06009BC51F /* OrderedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBFD2514EF06009BC51F /* OrderedTests.swift */; };
 		D7C0FC062514FEBE009BC51F /* ProductsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC052514FEBE009BC51F /* ProductsTests.swift */; };
 		D7C0FC0E25150772009BC51F /* TitlesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC0D25150772009BC51F /* TitlesTests.swift */; };
 		D7C0FC1325151426009BC51F /* DatabaseUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC1225151426009BC51F /* DatabaseUpdaterTests.swift */; };
-		D7C0FC1925154199009BC51F /* CoreDataCellMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC1825154199009BC51F /* CoreDataCellMock.swift */; };
+		D7C0FC1925154199009BC51F /* CollectionViewCellMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC1825154199009BC51F /* CollectionViewCellMock.swift */; };
 		D7C0FC242515429E009BC51F /* CollectionViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC232515429E009BC51F /* CollectionViewMock.swift */; };
 		D7C0FC29251543B7009BC51F /* CoreDataCellMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC28251543B7009BC51F /* CoreDataCellMockTests.swift */; };
 		D7C0FC2E25154437009BC51F /* ContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC2D25154437009BC51F /* ContextMock.swift */; };
@@ -163,14 +163,14 @@
 		D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthComplectionMock.swift; sourceTree = "<group>"; };
 		D7C0FBB92513E5AE009BC51F /* AuthComplectionMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthComplectionMockTests.swift; sourceTree = "<group>"; };
 		D7C0FBBE2513EBE8009BC51F /* CoreDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceTests.swift; sourceTree = "<group>"; };
-		D7C0FBE82514DCF4009BC51F /* CoreDataCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCellTests.swift; sourceTree = "<group>"; };
+		D7C0FBE82514DCF4009BC51F /* BindableCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableCellTests.swift; sourceTree = "<group>"; };
 		D7C0FBEF2514E042009BC51F /* ProductsRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRemoteTests.swift; sourceTree = "<group>"; };
 		D7C0FBF72514EC5B009BC51F /* TitlesRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesRemoteTests.swift; sourceTree = "<group>"; };
 		D7C0FBFD2514EF06009BC51F /* OrderedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderedTests.swift; sourceTree = "<group>"; };
 		D7C0FC052514FEBE009BC51F /* ProductsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTests.swift; sourceTree = "<group>"; };
 		D7C0FC0D25150772009BC51F /* TitlesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesTests.swift; sourceTree = "<group>"; };
 		D7C0FC1225151426009BC51F /* DatabaseUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdaterTests.swift; sourceTree = "<group>"; };
-		D7C0FC1825154199009BC51F /* CoreDataCellMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCellMock.swift; sourceTree = "<group>"; };
+		D7C0FC1825154199009BC51F /* CollectionViewCellMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellMock.swift; sourceTree = "<group>"; };
 		D7C0FC232515429E009BC51F /* CollectionViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewMock.swift; sourceTree = "<group>"; };
 		D7C0FC28251543B7009BC51F /* CoreDataCellMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCellMockTests.swift; sourceTree = "<group>"; };
 		D7C0FC2D25154437009BC51F /* ContextMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMock.swift; sourceTree = "<group>"; };
@@ -395,7 +395,7 @@
 			children = (
 				D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */,
 				D7C0FBBE2513EBE8009BC51F /* CoreDataSourceTests.swift */,
-				D7C0FBE82514DCF4009BC51F /* CoreDataCellTests.swift */,
+				D7C0FBE82514DCF4009BC51F /* BindableCellTests.swift */,
 				D7C0FBAB2513E045009BC51F /* AnonymousAuthTests.swift */,
 			);
 			path = Util;
@@ -406,7 +406,7 @@
 			children = (
 				D7C0FC1725154173009BC51F /* Tests */,
 				D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */,
-				D7C0FC1825154199009BC51F /* CoreDataCellMock.swift */,
+				D7C0FC1825154199009BC51F /* CollectionViewCellMock.swift */,
 				D7C0FC232515429E009BC51F /* CollectionViewMock.swift */,
 				D7C0FC3225154559009BC51F /* JSONDecoderMock.swift */,
 				D7C0FC2D25154437009BC51F /* ContextMock.swift */,
@@ -796,7 +796,7 @@
 				D7C0FC5E251676C5009BC51F /* DatabaseUpdaterMockTests.swift in Sources */,
 				D7C0FC2E25154437009BC51F /* ContextMock.swift in Sources */,
 				D795795225175190007AD022 /* CoreDataSourceMock.swift in Sources */,
-				D7C0FBE92514DCF4009BC51F /* CoreDataCellTests.swift in Sources */,
+				D7C0FBE92514DCF4009BC51F /* BindableCellTests.swift in Sources */,
 				D7C0FC4C2515E866009BC51F /* RemoteConfigComplectionMockTests.swift in Sources */,
 				D7C0FBB22513E082009BC51F /* AuthComplectionMock.swift in Sources */,
 				D7C0FC422515E40F009BC51F /* JSONDecoderMockTests.swift in Sources */,
@@ -814,7 +814,7 @@
 				D7C0FC472515E60A009BC51F /* ContextMockTests.swift in Sources */,
 				D7C0FC0E25150772009BC51F /* TitlesTests.swift in Sources */,
 				D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */,
-				D7C0FC1925154199009BC51F /* CoreDataCellMock.swift in Sources */,
+				D7C0FC1925154199009BC51F /* CollectionViewCellMock.swift in Sources */,
 				D7C0FC1325151426009BC51F /* DatabaseUpdaterTests.swift in Sources */,
 				D7C0FBFE2514EF06009BC51F /* OrderedTests.swift in Sources */,
 				D7C0FBBF2513EBE8009BC51F /* CoreDataSourceTests.swift in Sources */,
