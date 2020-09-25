@@ -46,6 +46,8 @@ class MenuViewController: UIViewController {
         
         // Set dataSource for groups
         viewModel?.groups()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .observeOn(MainScheduler.instance)
             .flatMapError { print("Groups error: \($0.localizedDescription)") }
             .subscribe(onNext: { [weak self] in
                 $0.bind(collectionView: self?.groups)
@@ -76,6 +78,8 @@ class MenuViewController: UIViewController {
         
         // Set dataSource for products
         viewModel?.products()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .observeOn(MainScheduler.instance)
             .flatMapError { print("Products error: \($0.localizedDescription)") }
             .subscribe(onNext: { [weak self] in
                 $0.bind(tableView: self?.products)
