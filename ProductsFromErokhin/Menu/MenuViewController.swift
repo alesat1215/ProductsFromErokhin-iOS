@@ -32,15 +32,6 @@ class MenuViewController: UIViewController {
     private func bindGroups() {
         // Select group when item selected & scroll to it
         groups.rx.itemSelected.subscribe(onNext: { [weak self] in
-//            // Scroll to the middle for selected item
-//            self?.groups.scrollToItem(at: $0, at: .centeredHorizontally, animated: true)
-//            // Select group for indexPath
-//            switch (self?.groups.dataSource as? CoreDataSourceCollectionView<Group>)?.select(indexPath: $0) {
-//            case .failure(let error):
-//                print("Select error: \(error)")
-//            default:
-//                print("Select group success")
-//            }
             // Disable select group by scroll products
             self?.tabSelected = true
             // Select group
@@ -97,18 +88,9 @@ class MenuViewController: UIViewController {
             products = segue.destination.view as? UITableView
         }
     }
-    /** Select group & scroll to it */
-//    private func selectGroup(group: Group) {
-//        if let indexPath = (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group) {
-//            groups.delegate?.collectionView?(groups, didSelectItemAt: indexPath)
-//        }
-//
-//    }
     
+    /** Select group & scroll to it */
     private func selectGroup(indexPath: IndexPath) {
-//        if let indexPath = (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group) {
-//            groups.delegate?.collectionView?(groups, didSelectItemAt: indexPath)
-//        }
         // Scroll to the middle for selected item
         groups.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         // Select group for indexPath

@@ -115,7 +115,7 @@ extension CoreDataSourceTableView {
 }
 
 extension CoreDataSourceTableView where T == Product {
-    
+    /** - Returns: IndexPath for first product with group */
     func productPositionForGroup(group: Group) -> IndexPath? {
         if let product = frc.fetchedObjects?.first(where: { $0.group == group }) {
             return frc.indexPath(forObject: product)
