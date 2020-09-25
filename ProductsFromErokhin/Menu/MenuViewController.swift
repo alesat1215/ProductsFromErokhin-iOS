@@ -16,6 +16,8 @@ class MenuViewController: UIViewController {
     weak var products: UITableView!
     
     var viewModel: MenuViewModel?
+    
+    private var tabSelected = false
 
     private let disposeBag = DisposeBag()
 
@@ -30,15 +32,21 @@ class MenuViewController: UIViewController {
     private func bindGroups() {
         // Select group when item selected & scroll to it
         groups.rx.itemSelected.subscribe(onNext: { [weak self] in
-            // Scroll to the middle for selected item
-            self?.groups.scrollToItem(at: $0, at: .centeredHorizontally, animated: true)
-            // Select group for indexPath
-            switch (self?.groups.dataSource as? CoreDataSourceCollectionView<Group>)?.select(indexPath: $0) {
-            case .failure(let error):
-                print("Select error: \(error)")
-            default:
-                print("Select group success")
-            }
+//            // Scroll to the middle for selected item
+//            self?.groups.scrollToItem(at: $0, at: .centeredHorizontally, animated: true)
+//            // Select group for indexPath
+//            switch (self?.groups.dataSource as? CoreDataSourceCollectionView<Group>)?.select(indexPath: $0) {
+//            case .failure(let error):
+//                print("Select error: \(error)")
+//            default:
+//                print("Select group success")
+//            }
+            self?.selectGroup(indexPath: $0)
+//            if let group = (self?.groups.dataSource as? CoreDataSourceCollectionView<Group>)?.object(at: $0),
+//               let indexPath = (self?.products.dataSource as? CoreDataSourceTableView<Product>)?.productPositionForGroup(group: group)
+//               {
+//                self?.products.scrollToRow(at: indexPath, at: .top, animated: true)
+//            }
         }).disposed(by: disposeBag)
         // Set dataSource for groups
         viewModel?.groups()
@@ -53,11 +61,12 @@ class MenuViewController: UIViewController {
         products.rx.willDisplayCell
             .throttle(RxTimeInterval.milliseconds(50), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
-                if let indexPath = self?.products.indexPathsForVisibleRows?.first,
-                   let group = (self?.products.dataSource as? CoreDataSourceTableView<Product>)?.object(at: indexPath)?.group,
-                   !group.isSelected
+                if let productIndexPath = self?.products.indexPathsForVisibleRows?.first,
+                   let group = (self?.products.dataSource as? CoreDataSourceTableView<Product>)?.object(at: productIndexPath)?.group,
+                   !group.isSelected,
+                   let groupIndexPath = (self?.groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group)
                 {
-                    self?.selectGroup(group: group)
+                    self?.selectGroup(indexPath: groupIndexPath)
                 }
             }).disposed(by: disposeBag)
         // Set dataSource for products
@@ -75,11 +84,26 @@ class MenuViewController: UIViewController {
         }
     }
     /** Select group & scroll to it */
-    private func selectGroup(group: Group) {
-        if let indexPath = (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group) {
-            groups.delegate?.collectionView?(groups, didSelectItemAt: indexPath)
+//    private func selectGroup(group: Group) {
+//        if let indexPath = (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group) {
+//            groups.delegate?.collectionView?(groups, didSelectItemAt: indexPath)
+//        }
+//
+//    }
+    
+    private func selectGroup(indexPath: IndexPath) {
+//        if let indexPath = (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.indexPath(for: group) {
+//            groups.delegate?.collectionView?(groups, didSelectItemAt: indexPath)
+//        }
+        // Scroll to the middle for selected item
+        groups.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+        // Select group for indexPath
+        switch (groups.dataSource as? CoreDataSourceCollectionView<Group>)?.select(indexPath: indexPath) {
+        case .failure(let error):
+            print("Select error: \(error)")
+        default:
+            print("Select group success")
         }
-        
     }
 
 }

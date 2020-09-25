@@ -104,7 +104,7 @@ class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollect
 
 extension CoreDataSourceCollectionView {
     /** - Returns: Object for indexPath */
-    private func object(at indexPath: IndexPath) -> T? {
+    func object(at indexPath: IndexPath) -> T? {
         var result: T?
         if frc.sections?.indices.contains(indexPath.section) ?? false,
            let numberOfObjects = frc.sections?[indexPath.section].numberOfObjects, numberOfObjects > indexPath.item
@@ -127,17 +127,6 @@ extension CoreDataSourceCollectionView where T == Group {
         // Select group for indexPath
         return object(at: indexPath)?.select() ?? .success(())
     }
-    
-//    func indexPath(for group: Group) -> IndexPath? {
-//        frc.indexPath(forObject: group)
-//    }
-//    /** Select group by name after unselect previous */
-//    func select(name: String?) -> Result<Void, Error> {
-//        // Uselect previous group
-//        frc.fetchedObjects?.first { $0.isSelected }?.unSelect()
-//        // Select group by name
-//        return frc.fetchedObjects?.first { $0.name == name }?.select() ?? .success(())
-//    }
 }
 
 // MARK: - Rx

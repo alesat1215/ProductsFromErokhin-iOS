@@ -114,6 +114,16 @@ extension CoreDataSourceTableView {
     }
 }
 
+extension CoreDataSourceTableView where T == Product {
+    
+    func productPositionForGroup(group: Group) -> IndexPath? {
+        if let product = frc.fetchedObjects?.first(where: { $0.group == group }) {
+            return frc.indexPath(forObject: product)
+        }
+        return nil
+    }
+}
+
 // MARK: - Rx
 extension CoreDataSourceTableView: Disposable {
     func dispose() {
