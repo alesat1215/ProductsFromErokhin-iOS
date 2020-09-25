@@ -57,7 +57,7 @@
 		D7C0FBAC2513E045009BC51F /* AnonymousAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBAB2513E045009BC51F /* AnonymousAuthTests.swift */; };
 		D7C0FBB22513E082009BC51F /* AuthComplectionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */; };
 		D7C0FBBA2513E5AE009BC51F /* AuthComplectionMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBB92513E5AE009BC51F /* AuthComplectionMockTests.swift */; };
-		D7C0FBBF2513EBE8009BC51F /* CoreDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBBE2513EBE8009BC51F /* CoreDataSourceTests.swift */; };
+		D7C0FBBF2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBBE2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift */; };
 		D7C0FBE92514DCF4009BC51F /* BindableCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBE82514DCF4009BC51F /* BindableCellTests.swift */; };
 		D7C0FBF02514E042009BC51F /* ProductsRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBEF2514E042009BC51F /* ProductsRemoteTests.swift */; };
 		D7C0FBF82514EC5B009BC51F /* TitlesRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBF72514EC5B009BC51F /* TitlesRemoteTests.swift */; };
@@ -162,7 +162,7 @@
 		D7C0FBAB2513E045009BC51F /* AnonymousAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuthTests.swift; sourceTree = "<group>"; };
 		D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthComplectionMock.swift; sourceTree = "<group>"; };
 		D7C0FBB92513E5AE009BC51F /* AuthComplectionMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthComplectionMockTests.swift; sourceTree = "<group>"; };
-		D7C0FBBE2513EBE8009BC51F /* CoreDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceTests.swift; sourceTree = "<group>"; };
+		D7C0FBBE2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceCollectionViewTests.swift; sourceTree = "<group>"; };
 		D7C0FBE82514DCF4009BC51F /* BindableCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableCellTests.swift; sourceTree = "<group>"; };
 		D7C0FBEF2514E042009BC51F /* ProductsRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRemoteTests.swift; sourceTree = "<group>"; };
 		D7C0FBF72514EC5B009BC51F /* TitlesRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlesRemoteTests.swift; sourceTree = "<group>"; };
@@ -394,7 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */,
-				D7C0FBBE2513EBE8009BC51F /* CoreDataSourceTests.swift */,
+				D7C0FBBE2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift */,
 				D7C0FBE82514DCF4009BC51F /* BindableCellTests.swift */,
 				D7C0FBAB2513E045009BC51F /* AnonymousAuthTests.swift */,
 			);
@@ -817,7 +817,7 @@
 				D7C0FC1925154199009BC51F /* CollectionViewCellMock.swift in Sources */,
 				D7C0FC1325151426009BC51F /* DatabaseUpdaterTests.swift in Sources */,
 				D7C0FBFE2514EF06009BC51F /* OrderedTests.swift in Sources */,
-				D7C0FBBF2513EBE8009BC51F /* CoreDataSourceTests.swift in Sources */,
+				D7C0FBBF2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift in Sources */,
 				D7C0FC38251545A0009BC51F /* RemoteConfigComplectionMock.swift in Sources */,
 				D7C0FBF02514E042009BC51F /* ProductsRemoteTests.swift in Sources */,
 			);

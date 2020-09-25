@@ -11,7 +11,7 @@ import CoreData
 import RxCoreData
 @testable import ProductsFromErokhin
 
-class CoreDataSourceTests: XCTestCase {
+class CoreDataSourceCollectionViewTests: XCTestCase {
         
     private let context = ContextMock()
     
