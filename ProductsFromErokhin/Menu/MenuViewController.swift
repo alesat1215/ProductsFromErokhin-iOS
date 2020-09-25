@@ -16,7 +16,7 @@ class MenuViewController: UIViewController {
     weak var products: UITableView!
     
     var viewModel: MenuViewModel?
-    
+    /** For check scroll by group select */
     private var tabSelected = false
 
     private let disposeBag = DisposeBag()
@@ -41,13 +41,18 @@ class MenuViewController: UIViewController {
 //            default:
 //                print("Select group success")
 //            }
+            // Disable select group by scroll products
+            self?.tabSelected = true
+            // Select group
             self?.selectGroup(indexPath: $0)
-//            if let group = (self?.groups.dataSource as? CoreDataSourceCollectionView<Group>)?.object(at: $0),
-//               let indexPath = (self?.products.dataSource as? CoreDataSourceTableView<Product>)?.productPositionForGroup(group: group)
-//               {
-//                self?.products.scrollToRow(at: indexPath, at: .top, animated: true)
-//            }
+            // Scroll to product from group
+            if let group = (self?.groups.dataSource as? CoreDataSourceCollectionView<Group>)?.object(at: $0),
+               let indexPath = (self?.products.dataSource as? CoreDataSourceTableView<Product>)?.productPositionForGroup(group: group)
+            {
+                self?.products.scrollToRow(at: indexPath, at: .top, animated: true)
+            }
         }).disposed(by: disposeBag)
+        
         // Set dataSource for groups
         viewModel?.groups()
             .flatMapError { print("Groups error: \($0.localizedDescription)") }
@@ -61,6 +66,9 @@ class MenuViewController: UIViewController {
         products.rx.willDisplayCell
             .throttle(RxTimeInterval.milliseconds(50), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
+                // Return for scrolling products by group selected
+                if self?.tabSelected ?? true { return }
+                // Select group
                 if let productIndexPath = self?.products.indexPathsForVisibleRows?.first,
                    let group = (self?.products.dataSource as? CoreDataSourceTableView<Product>)?.object(at: productIndexPath)?.group,
                    !group.isSelected,
@@ -69,6 +77,12 @@ class MenuViewController: UIViewController {
                     self?.selectGroup(indexPath: groupIndexPath)
                 }
             }).disposed(by: disposeBag)
+        
+        // Enable select group by scroll products
+        products.rx.willBeginDragging.subscribe(onNext: { [weak self] _ in
+            self?.tabSelected = false
+        }).disposed(by: disposeBag)
+        
         // Set dataSource for products
         viewModel?.products()
             .flatMapError { print("Products error: \($0.localizedDescription)") }
