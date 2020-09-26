@@ -98,6 +98,12 @@ class CoreDataSourceTableViewTests: XCTestCase {
         XCTAssertTrue(tableView.isDelete)
         tableView.isDelete.toggle()
     }
+    
+    func testObject() {
+        XCTAssertEqual(dataSourceProducts.object(at: IndexPath(item: 0, section: 0)), products.first!)
+        XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 0, section: 7)))
+        XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 5, section: 0)))
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
