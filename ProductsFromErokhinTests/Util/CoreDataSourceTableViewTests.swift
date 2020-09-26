@@ -44,6 +44,14 @@ class CoreDataSourceTableViewTests: XCTestCase {
     func testCoreDataSource() throws {
         XCTAssertNotNil(dataSourceProducts)
     }
+    
+    func testBind() {
+        XCTAssertNil(tableView.dataSource)
+        XCTAssertFalse(tableView.isReload)
+        dataSourceProducts.bind(tableView: tableView)
+        XCTAssertNotNil(tableView.dataSource)
+        XCTAssertTrue(tableView.isReload)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

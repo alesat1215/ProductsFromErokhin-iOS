@@ -49,6 +49,7 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
     
     func testCoreDataSource() throws {
         XCTAssertNotNil(dataSourceProducts)
+        XCTAssertNotNil(dataSourceGroups)
     }
     
     func testBind() {
