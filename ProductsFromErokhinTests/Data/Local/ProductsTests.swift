@@ -16,12 +16,12 @@ class ProductsTests: XCTestCase {
 
     override func setUpWithError() throws {
         try Product.clearEntity(context: context)
-        try context.save()
+//        try context.save()
     }
 
     override func tearDownWithError() throws {
         try Product.clearEntity(context: context)
-        try context.save()
+//        try context.save()
     }
     
     // MARK: - Product
@@ -74,6 +74,18 @@ class ProductsTests: XCTestCase {
         group.update(from: groupRemote, order: order)
         XCTAssertEqual(group.order, Int16(order))
         XCTAssertEqual(group.name, groupRemote.name)
+    }
+    
+    func testSelect() {
+        let group = Group(context: context)
+        XCTAssertFalse(group.isSelected)
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        
+        XCTAssertNoThrow(try group.select().get())
+        XCTAssertTrue(group.isSelected)
+        
+        waitForExpectations(timeout: 1)
     }
 
 }
