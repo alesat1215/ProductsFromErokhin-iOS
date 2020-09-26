@@ -11,9 +11,17 @@ import RxSwift
 @testable import ProductsFromErokhin
 
 class BindableCellTests: XCTestCase {
+    
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    func testBindableTableViewCell() {
+        let model = Product(context: context)
+        let cell = BindableTableViewCell<Product>()
+        cell.bind(model: model)
+        XCTAssertEqual(cell.model, model)
+    }
         
     func testBindCollectionViewCell() throws {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let model = Product(context: context)
         let cell = BindableCollectionViewCell<Product>()
         cell.bind(model: model)
