@@ -27,8 +27,9 @@ class CoreDataSourceTableViewTests: XCTestCase {
             return product
         }
         
-        dataSourceProducts = try context.rx.coreDataSource(cellId: "", fetchRequest: Product.fetchRequestWithSort()).toBlocking().first()
+        dataSourceProducts = try context.rx.coreDataSource(cellId: "product", fetchRequest: Product.fetchRequestWithSort()).toBlocking().first()
         tableView = TableViewMock()
+        tableView.register(TableViewCellMock.self, forCellReuseIdentifier: "product")
     }
 
     override func tearDownWithError() throws {
@@ -51,6 +52,14 @@ class CoreDataSourceTableViewTests: XCTestCase {
         dataSourceProducts.bind(tableView: tableView)
         XCTAssertNotNil(tableView.dataSource)
         XCTAssertTrue(tableView.isReload)
+    }
+    
+    func testUITableViewDataSource() {
+        // Count of items
+        XCTAssertEqual(dataSourceProducts.tableView(tableView, numberOfRowsInSection: 0), products.count)
+        // Cell for indexPath
+        let cell = dataSourceProducts.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0))
+        XCTAssertTrue((cell as! TableViewCellMock).isBind)
     }
 
     func testPerformanceExample() throws {
