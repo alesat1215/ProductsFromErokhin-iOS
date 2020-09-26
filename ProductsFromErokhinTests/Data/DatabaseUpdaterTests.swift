@@ -22,32 +22,43 @@ class DatabaseUpdaterTests: XCTestCase {
         var sync: Observable<Event<Void>> = databaseUpdater.sync()
         XCTAssertNil(try sync.toBlocking().first())
         // Not update. successUsingPreFetchedData
-        let context = ContextMock()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         fetchLimiter.fetchInProcess = false
         var complection = RemoteConfigComplectionMock()
         complection._result = (RemoteConfigFetchAndActivateStatus.successUsingPreFetchedData, nil)
         databaseUpdater = DatabaseUpdater(remoteConfig: RemoteConfig.remoteConfig(), remoteConfigComplection: complection, decoder: JSONDecoderMock(), context: context, fetchLimiter: fetchLimiter)
         sync = databaseUpdater.sync()
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context).isInverted = true
+        
         XCTAssertNil(try sync.toBlocking().first())
-        XCTAssertFalse(context.isSaving)
-        XCTAssertFalse(context.isInsert)
+        
+        waitForExpectations(timeout: 1)
+        
         // Not update. Error
         fetchLimiter.fetchInProcess = false
         complection = RemoteConfigComplectionMock()
         complection._result = (RemoteConfigFetchAndActivateStatus.error, AppError.unknown)
         databaseUpdater = DatabaseUpdater(remoteConfig: RemoteConfig.remoteConfig(), remoteConfigComplection: complection, decoder: JSONDecoderMock(), context: context, fetchLimiter: fetchLimiter)
         sync = databaseUpdater.sync()
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context).isInverted = true
+        
         XCTAssertEqual(try sync.toBlocking().first()?.error?.localizedDescription, AppError.unknown.localizedDescription)
-        XCTAssertFalse(context.isSaving)
-        XCTAssertFalse(context.isInsert)
+        
+        waitForExpectations(timeout: 1)
+        
         // Update
         fetchLimiter.fetchInProcess = false
         complection._result = (RemoteConfigFetchAndActivateStatus.successFetchedFromRemote, nil)
         databaseUpdater = DatabaseUpdater(remoteConfig: RemoteConfig.remoteConfig(), remoteConfigComplection: complection, decoder: JSONDecoderMock(), context: context, fetchLimiter: fetchLimiter)
         sync = databaseUpdater.sync()
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        
         XCTAssertNil(try sync.toBlocking().first())
-        XCTAssertTrue(context.isSaving)
-        XCTAssertTrue(context.isInsert)
+        
+        waitForExpectations(timeout: 1)
     }
     
     // MARK: - Remote config
