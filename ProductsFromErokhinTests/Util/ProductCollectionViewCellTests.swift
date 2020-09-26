@@ -37,6 +37,20 @@ class ProductCollectionViewCellTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    func testAdd() {
+        let product = Product(context: context)
+        product.name = "name"
+        XCTAssertEqual(product.inCart?.count, 0)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        XCTAssertNoThrow(try product.addToCart().get())
+        XCTAssertEqual(product.inCart?.count, 1)
+        waitForExpectations(timeout: 1)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        XCTAssertNoThrow(try product.addToCart().get())
+        XCTAssertEqual(product.inCart?.count, 2)
+        waitForExpectations(timeout: 1)
+    }
+    
     func testBind() {
         let product = Product(context: context)
         product.name = "name"
