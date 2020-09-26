@@ -11,6 +11,8 @@
 		C1665CE1F28CEF08B3D40819 /* Pods_ProductsFromErokhin_ProductsFromErokhinUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 427E07B59CB8A018E86DB397 /* Pods_ProductsFromErokhin_ProductsFromErokhinUITests.framework */; };
 		C39DE96526D98FB517D85559 /* Pods_ProductsFromErokhinTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */; };
 		D71A78CA2519F8E1001B9234 /* CoreDataSourceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71A78C92519F8E1001B9234 /* CoreDataSourceTableView.swift */; };
+		D72F41D0251FA2AF001EE822 /* CoreDataSourceTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41CF251FA2AF001EE822 /* CoreDataSourceTableViewTests.swift */; };
+		D72F41D5251FA348001EE822 /* TableViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D72F41D4251FA348001EE822 /* TableViewMock.swift */; };
 		D73C7DB92500FFC3007062D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D73C7DB82500FFC3007062D9 /* GoogleService-Info.plist */; };
 		D73C7DBE2501060F007062D9 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C7DBD2501060F007062D9 /* StartViewModel.swift */; };
 		D73C7DC12501097E007062D9 /* SwinjectStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C7DC02501097E007062D9 /* SwinjectStoryboard.swift */; };
@@ -110,6 +112,8 @@
 		8E2749B83463305ADEB00F9A /* Pods-ProductsFromErokhin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin/Pods-ProductsFromErokhin.debug.xcconfig"; sourceTree = "<group>"; };
 		B288AC8441DFA8BD9E8EF93C /* Pods-ProductsFromErokhinTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhinTests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhinTests/Pods-ProductsFromErokhinTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D71A78C92519F8E1001B9234 /* CoreDataSourceTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceTableView.swift; sourceTree = "<group>"; };
+		D72F41CF251FA2AF001EE822 /* CoreDataSourceTableViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceTableViewTests.swift; sourceTree = "<group>"; };
+		D72F41D4251FA348001EE822 /* TableViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewMock.swift; sourceTree = "<group>"; };
 		D73C7DB82500FFC3007062D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D73C7DBD2501060F007062D9 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		D73C7DC02501097E007062D9 /* SwinjectStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectStoryboard.swift; sourceTree = "<group>"; };
@@ -395,6 +399,7 @@
 			children = (
 				D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */,
 				D7C0FBBE2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift */,
+				D72F41CF251FA2AF001EE822 /* CoreDataSourceTableViewTests.swift */,
 				D7C0FBE82514DCF4009BC51F /* BindableCellTests.swift */,
 				D7C0FBAB2513E045009BC51F /* AnonymousAuthTests.swift */,
 			);
@@ -408,6 +413,7 @@
 				D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */,
 				D7C0FC1825154199009BC51F /* CollectionViewCellMock.swift */,
 				D7C0FC232515429E009BC51F /* CollectionViewMock.swift */,
+				D72F41D4251FA348001EE822 /* TableViewMock.swift */,
 				D7C0FC3225154559009BC51F /* JSONDecoderMock.swift */,
 				D7C0FC2D25154437009BC51F /* ContextMock.swift */,
 				D7C0FC37251545A0009BC51F /* RemoteConfigComplectionMock.swift */,
@@ -792,6 +798,7 @@
 				D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */,
 				D7C0FC062514FEBE009BC51F /* ProductsTests.swift in Sources */,
 				D7C0FBF82514EC5B009BC51F /* TitlesRemoteTests.swift in Sources */,
+				D72F41D0251FA2AF001EE822 /* CoreDataSourceTableViewTests.swift in Sources */,
 				D7C0FBAC2513E045009BC51F /* AnonymousAuthTests.swift in Sources */,
 				D7C0FC5E251676C5009BC51F /* DatabaseUpdaterMockTests.swift in Sources */,
 				D7C0FC2E25154437009BC51F /* ContextMock.swift in Sources */,
@@ -809,6 +816,7 @@
 				D79579422517251A007AD022 /* StartViewControllerTests.swift in Sources */,
 				D7C0FC592515F1E4009BC51F /* AppRepositoryTests.swift in Sources */,
 				D7C0FB922513C5B2009BC51F /* ObservableType+ExtensionsTests.swift in Sources */,
+				D72F41D5251FA348001EE822 /* TableViewMock.swift in Sources */,
 				D795795C2517BE72007AD022 /* AppRepositoryMockTests.swift in Sources */,
 				D795211124FFBE800094BAFE /* ProductsFromErokhinTests.swift in Sources */,
 				D7C0FC472515E60A009BC51F /* ContextMockTests.swift in Sources */,
