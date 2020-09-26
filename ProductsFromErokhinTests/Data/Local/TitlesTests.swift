@@ -13,10 +13,13 @@ import CoreData
 class TitlesTests: XCTestCase {
 
     func testUpdate() {
-        let context = ContextMock()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let titlesRemote = TitlesRemote(title: "title", img: "img", imgTitle: "imgTitle", productsTitle: "productsTitle", productsTitle2: "productsTitle2")
         let order = 1
         let titles = Titles(context: context)
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context).isInverted = true
+        
         titles.update(from: titlesRemote, order: order)
         XCTAssertEqual(titles.order, Int16(order))
         XCTAssertEqual(titles.title, titlesRemote.title)
@@ -24,6 +27,8 @@ class TitlesTests: XCTestCase {
         XCTAssertEqual(titles.imgTitle, titlesRemote.imgTitle)
         XCTAssertEqual(titles.productsTitle, titlesRemote.productsTitle)
         XCTAssertEqual(titles.productsTitle2, titlesRemote.productsTitle2)
+        
+        waitForExpectations(timeout: 1)
     }
 
 }
