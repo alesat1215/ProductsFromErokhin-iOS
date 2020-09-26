@@ -25,11 +25,12 @@ class OrderedTests: XCTestCase {
     }
     
     func testClearEntity() throws {
-        let context = ContextMock()
-        context.fetchResult = [Product](repeating: Product(context: context), count: 3)
-        XCTAssertFalse(context.isDelete)
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let _ = Product(context: context)
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange, object: context)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context).isInverted = true
         try Product.clearEntity(context: context)
-        XCTAssertTrue(context.isDelete)
+        waitForExpectations(timeout: 1)
     }
 
 }
