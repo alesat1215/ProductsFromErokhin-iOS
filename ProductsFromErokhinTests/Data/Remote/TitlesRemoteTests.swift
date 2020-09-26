@@ -12,8 +12,12 @@ import XCTest
 class TitlesRemoteTests: XCTestCase {
         
     func testManagedObject() {
-        let context = ContextMock()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let titlesRemote = TitlesRemote(title: "title", img: "img", imgTitle: "imgTitle", productsTitle: "productsTitle", productsTitle2: "productsTitle2")
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context).isInverted = true
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange, object: context)
+        
         let titles = titlesRemote.managedObject(context: context) as! Titles
         XCTAssertEqual(titles.order, 0)
         XCTAssertEqual(titles.title, titlesRemote.title)
@@ -21,6 +25,8 @@ class TitlesRemoteTests: XCTestCase {
         XCTAssertEqual(titles.imgTitle, titlesRemote.imgTitle)
         XCTAssertEqual(titles.productsTitle, titlesRemote.productsTitle)
         XCTAssertEqual(titles.productsTitle2, titlesRemote.productsTitle2)
+        
+        waitForExpectations(timeout: 1)
     }
 
 }

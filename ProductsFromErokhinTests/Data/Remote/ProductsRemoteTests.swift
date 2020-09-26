@@ -25,6 +25,10 @@ class ProductsRemoteTests: XCTestCase {
         ]
         let groupRemote = GroupRemote(name: "group", products: productsRemote)
         var productOrder = 0
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context).isInverted = true
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange, object: context)
+        
         let group = groupRemote.managedObject(context: context, groupOrder: 0, productOrder: &productOrder, allInCart: allInCart) as! Group
         
         XCTAssertEqual(productOrder, productsRemote.count)
@@ -36,6 +40,8 @@ class ProductsRemoteTests: XCTestCase {
         XCTAssertEqual(product2.inCart?.count, allInCart.count)
         let product3 = group.products?.filter { ($0 as! Product).name == "product3" }.first as! Product
         XCTAssertEqual(product3.inCart?.count, 0)
+        
+        waitForExpectations(timeout: 1)
     }
 
 }
