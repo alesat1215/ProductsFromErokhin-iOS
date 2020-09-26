@@ -13,7 +13,7 @@ import RxSwift
 class BindableCellTests: XCTestCase {
         
     func testBindCollectionViewCell() throws {
-        let context = ContextMock()
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let model = Product(context: context)
         let cell = BindableCollectionViewCell<Product>()
         cell.bind(model: model)
