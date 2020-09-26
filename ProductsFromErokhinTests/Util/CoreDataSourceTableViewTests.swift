@@ -14,6 +14,7 @@ class CoreDataSourceTableViewTests: XCTestCase {
     
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
+    private var groups = [Group]()
     private var products = [Product]()
     private var dataSourceProducts: CoreDataSourceTableView<Product>!
     private var tableView: TableViewMock!
@@ -21,10 +22,18 @@ class CoreDataSourceTableViewTests: XCTestCase {
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         // Add products to context
+        groups = ["group", "group1", "group2"].enumerated().map {
+            let group = Group(context: context)
+            group.order = Int16($0.offset)
+            group.name = $0.element
+            return group
+        }
+        
         products = ["product", "product1", "product2"].enumerated().map {
             let product = Product(context: context)
             product.order = Int16($0.offset)
             product.name = $0.element
+            product.group = groups[$0.offset]
             return product
         }
         
@@ -103,6 +112,15 @@ class CoreDataSourceTableViewTests: XCTestCase {
         XCTAssertEqual(dataSourceProducts.object(at: IndexPath(item: 0, section: 0)), products.first!)
         XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 0, section: 7)))
         XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 5, section: 0)))
+    }
+    
+    func testProductPositionForGroup() {
+        // Product found
+        XCTAssertEqual(dataSourceProducts.productPositionForGroup(group: groups.first!)?.row, 0)
+        XCTAssertEqual(dataSourceProducts.productPositionForGroup(group: groups[1])?.row, 1)
+        XCTAssertEqual(dataSourceProducts.productPositionForGroup(group: groups[2])?.row, 2)
+        // Product not found
+        XCTAssertNil(dataSourceProducts.productPositionForGroup(group: Group(context: context)))
     }
     
     func testDispose() {
