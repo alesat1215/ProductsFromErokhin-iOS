@@ -18,11 +18,6 @@ class ProductsTests: XCTestCase {
         try Product.clearEntity(context: context)
         try Group.clearEntity(context: context)
     }
-
-//    override func tearDownWithError() throws {
-//        try Product.clearEntity(context: context)
-//        try Group.clearEntity(context: context)
-//    }
     
     // MARK: - Product
     func testProductUpdate() {
@@ -97,6 +92,49 @@ class ProductsTests: XCTestCase {
         
         group.unSelect()
         XCTAssertFalse(group.isSelected)
+        
+        waitForExpectations(timeout: 1)
+    }
+    
+    func testSave() throws {
+        var contextFromBlock: NSManagedObjectContext?
+        
+        // Context error
+        var product = Product(context: NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType))
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context).isInverted = true
+        
+        switch product.save({ contextFromBlock = $0 }) {
+        case .failure(let error):
+            XCTAssertEqual(error.localizedDescription, AppError.context.localizedDescription)
+        default:
+            XCTFail("Must be failure")
+        }
+        XCTAssertNil(contextFromBlock)
+        
+        waitForExpectations(timeout: 1)
+        
+        // Succes when already save
+        product = Product(context: context)
+        product.order = 1
+        try context.save()
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context).isInverted = true
+        
+        XCTAssertNoThrow(try product.save({ contextFromBlock = $0 }).get())
+        XCTAssertEqual(contextFromBlock, context)
+        
+        waitForExpectations(timeout: 1)
+        
+        // Success with saving
+        contextFromBlock = nil
+        product = Product(context: context)
+        product.order = 2
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        
+        XCTAssertNoThrow(try product.save({ contextFromBlock = $0 }).get())
+        XCTAssertEqual(contextFromBlock, context)
         
         waitForExpectations(timeout: 1)
     }
