@@ -13,16 +13,29 @@ import RxCoreData
 
 class CoreDataSourceCollectionViewTests: XCTestCase {
         
-    private let context = ContextMock()
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    private var products = [NSManagedObject]()
+    private var products = [Product]()
     private var dataSource: CoreDataSourceCollectionView<Product>!
     private var collectionView: CollectionViewMock!
     
     override func setUpWithError() throws {
-        context.fetchResult = [Product](repeating: Product(context: context), count: 3)
+        // Add products to context
+        let product = Product(context: context)
+        product.order = 0
+        let product1 = Product(context: context)
+        product1.order = 1
+        let product2 = Product(context: context)
+        product2.order = 2
+        products = [product, product1, product2]
+        
         dataSource = try context.rx.coreDataSource(cellId: "", fetchRequest: Product.fetchRequestWithSort()).toBlocking().first()
         collectionView = CollectionViewMock()
+    }
+    
+    override func tearDownWithError() throws {
+        try Group.clearEntity(context: context)
+        try Product.clearEntity(context: context)
     }
     
     func testCoreDataSource() throws {
@@ -39,7 +52,7 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
     
     func testUICollectionViewDataSource() {
         // Count of items
-        XCTAssertEqual(dataSource.collectionView(collectionView, numberOfItemsInSection: 0), context.fetchResult.count)
+        XCTAssertEqual(dataSource.collectionView(collectionView, numberOfItemsInSection: 0), products.count)
         // Cell for indexPath
         let cell = dataSource.collectionView(collectionView, cellForItemAt: IndexPath(item: 0, section: 0))
         XCTAssertTrue((cell as! CollectionViewCellMock).isBind)
@@ -49,55 +62,48 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
         let fetchRequest = Product.fetchRequestWithSort() as! NSFetchRequest<NSFetchRequestResult>
         let frc: NSFetchedResultsController<NSFetchRequestResult> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
         // Not bind
-        dataSource.controller(frc, didChange: context.fetchResult.first!, at: nil, for: .insert, newIndexPath: nil)
+        dataSource.controller(frc, didChange: products.first!, at: nil, for: .insert, newIndexPath: nil)
         XCTAssertFalse(collectionView.isInsert)
         // Bind
         dataSource.bind(collectionView: collectionView)
         // Insert
-        dataSource.controller(frc, didChange: context.fetchResult.first!, at: nil, for: .insert, newIndexPath: nil)
+        dataSource.controller(frc, didChange: products.first!, at: nil, for: .insert, newIndexPath: nil)
         XCTAssertFalse(collectionView.isInsert)
-        dataSource.controller(frc, didChange: context.fetchResult.first!, at: nil, for: .insert, newIndexPath: .init())
+        dataSource.controller(frc, didChange: products.first!, at: nil, for: .insert, newIndexPath: .init())
         XCTAssertTrue(collectionView.isInsert)
         collectionView.isInsert.toggle()
         // Update
-        dataSource.controller(frc, didChange: context.fetchResult.first!, at: nil, for: .update, newIndexPath: nil)
+        dataSource.controller(frc, didChange: products.first!, at: nil, for: .update, newIndexPath: nil)
         XCTAssertFalse(collectionView.cell.isBind)
-        dataSource.controller(frc, didChange: context.fetchResult.first!, at: .init(), for: .update, newIndexPath: nil)
+        dataSource.controller(frc, didChange: products.first!, at: .init(), for: .update, newIndexPath: nil)
         XCTAssertTrue(collectionView.cell.isBind)
         collectionView.cell.isBind.toggle()
         // Move
-        dataSource.controller(frc, didChange: context.fetchResult.first!, at: nil, for: .move, newIndexPath: nil)
+        dataSource.controller(frc, didChange: products.first!, at: nil, for: .move, newIndexPath: nil)
         XCTAssertFalse(collectionView.isInsert)
         XCTAssertFalse(collectionView.isDelete)
-        dataSource.controller(frc, didChange: context.fetchResult.first!, at: .init(), for: .move, newIndexPath: .init())
+        dataSource.controller(frc, didChange: products.first!, at: .init(), for: .move, newIndexPath: .init())
         XCTAssertTrue(collectionView.isInsert)
         XCTAssertTrue(collectionView.isDelete)
         collectionView.isInsert.toggle()
         collectionView.isDelete.toggle()
         // Delete
-        dataSource.controller(frc, didChange: context.fetchResult.first!, at: nil, for: .delete, newIndexPath: nil)
+        dataSource.controller(frc, didChange: products.first!, at: nil, for: .delete, newIndexPath: nil)
         XCTAssertFalse(collectionView.isDelete)
-        dataSource.controller(frc, didChange: context.fetchResult.first!, at: IndexPath(item: 0, section: 0), for: .delete, newIndexPath: nil)
+        dataSource.controller(frc, didChange: products.first!, at: IndexPath(item: 0, section: 0), for: .delete, newIndexPath: nil)
         XCTAssertTrue(collectionView.isDelete)
         collectionView.isDelete.toggle()
     }
     
     func testObject() {
-        XCTAssertEqual(dataSource.object(at: IndexPath(item: 0, section: 0)), context.fetchResult.first! as? Product)
+        XCTAssertEqual(dataSource.object(at: IndexPath(item: 0, section: 0)), products.first!)
         XCTAssertNil(dataSource.object(at: IndexPath(item: 0, section: 7)))
         XCTAssertNil(dataSource.object(at: IndexPath(item: 5, section: 0)))
     }
     
     func testIndexPath() {
-        XCTAssertNotNil(dataSource.indexPath(for: context.fetchResult.first as! Product))
+        XCTAssertNotNil(dataSource.indexPath(for: products.first!))
         XCTAssertNil(dataSource.indexPath(for: Product(context: context)))
-    }
-    
-    func testDispose() {
-        dataSource.bind(collectionView: collectionView)
-        XCTAssertNotNil(collectionView.dataSource)
-        dataSource.dispose()
-        XCTAssertNil(collectionView.dataSource)
     }
     
     func testSelect() throws {
@@ -125,6 +131,13 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
         waitForExpectations(timeout: 1) { error in
             XCTAssertNil(error, "Save did not occur")
           }
+    }
+    
+    func testDispose() {
+        dataSource.bind(collectionView: collectionView)
+        XCTAssertNotNil(collectionView.dataSource)
+        dataSource.dispose()
+        XCTAssertNil(collectionView.dataSource)
     }
 
 }
