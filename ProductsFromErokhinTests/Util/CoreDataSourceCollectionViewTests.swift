@@ -99,5 +99,32 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
         dataSource.dispose()
         XCTAssertNil(collectionView.dataSource)
     }
+    
+    func testSelect() throws {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        let group = Group(context: context)
+        group.order = 0
+        group.isSelected = true
+        let group1 = Group(context: context)
+        group1.order = 1
+        let group2 = Group(context: context)
+        group2.order = 2
+        
+        let dataSource: CoreDataSourceCollectionView<Group> = try context.rx.coreDataSource(cellId: "group", fetchRequest: Group.fetchRequestWithSort()).toBlocking().first()!
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context) {_ in
+            return true
+        }
+        
+        XCTAssertNoThrow(try dataSource.select(indexPath: IndexPath(item: 1, section: 0)).get())
+        
+        XCTAssertFalse(group.isSelected)
+        XCTAssertTrue(group1.isSelected)
+        
+        waitForExpectations(timeout: 1) { error in
+            XCTAssertNil(error, "Save did not occur")
+          }
+    }
 
 }
