@@ -18,8 +18,27 @@ class TableViewMock: UITableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    let cell = TableViewCellMock()
+    override func dequeueReusableCell(withIdentifier identifier: String, for indexPath: IndexPath) -> UITableViewCell {
+        return cell
+    }
+    
     var isReload = false
     override func reloadData() {
         isReload.toggle()
+    }
+    
+    var isInsert = false
+    override func insertRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation) {
+        isInsert.toggle()
+    }
+    
+    var isDelete = false
+    override func deleteRows(at indexPaths: [IndexPath], with animation: UITableView.RowAnimation) {
+        isDelete.toggle()
+    }
+    
+    override func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
+        cell
     }
 }

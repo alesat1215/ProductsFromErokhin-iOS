@@ -37,11 +37,8 @@ class CollectionViewMock: UICollectionView {
     override func deleteItems(at indexPaths: [IndexPath]) {
         isDelete.toggle()
     }
-    let count = 3
-    override func numberOfItems(inSection section: Int) -> Int {
-        count
-    }
+
     override func cellForItem(at indexPath: IndexPath) -> UICollectionViewCell? {
-        return cell
+        cell
     }
 }

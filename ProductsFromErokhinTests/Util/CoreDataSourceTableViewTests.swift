@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import CoreData
 @testable import ProductsFromErokhin
 
 class CoreDataSourceTableViewTests: XCTestCase {
@@ -29,7 +30,6 @@ class CoreDataSourceTableViewTests: XCTestCase {
         
         dataSourceProducts = try context.rx.coreDataSource(cellId: "product", fetchRequest: Product.fetchRequestWithSort()).toBlocking().first()
         tableView = TableViewMock()
-        tableView.register(TableViewCellMock.self, forCellReuseIdentifier: "product")
     }
 
     override func tearDownWithError() throws {
@@ -60,6 +60,43 @@ class CoreDataSourceTableViewTests: XCTestCase {
         // Cell for indexPath
         let cell = dataSourceProducts.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0))
         XCTAssertTrue((cell as! TableViewCellMock).isBind)
+    }
+    
+    func testNSFetchedResultsControllerDelegate() {
+        let fetchRequest = Product.fetchRequestWithSort() as! NSFetchRequest<NSFetchRequestResult>
+        let frc: NSFetchedResultsController<NSFetchRequestResult> = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        // Not bind
+        dataSourceProducts.controller(frc, didChange: products.first!, at: nil, for: .insert, newIndexPath: nil)
+        XCTAssertFalse(tableView.isInsert)
+        // Bind
+        dataSourceProducts.bind(tableView: tableView)
+        // Insert
+        dataSourceProducts.controller(frc, didChange: products.first!, at: nil, for: .insert, newIndexPath: nil)
+        XCTAssertFalse(tableView.isInsert)
+        dataSourceProducts.controller(frc, didChange: products.first!, at: nil, for: .insert, newIndexPath: .init())
+        XCTAssertTrue(tableView.isInsert)
+        tableView.isInsert.toggle()
+        // Update
+        dataSourceProducts.controller(frc, didChange: products.first!, at: nil, for: .update, newIndexPath: nil)
+        XCTAssertFalse(tableView.cell.isBind)
+        dataSourceProducts.controller(frc, didChange: products.first!, at: .init(), for: .update, newIndexPath: nil)
+        XCTAssertTrue(tableView.cell.isBind)
+        tableView.cell.isBind.toggle()
+        // Move
+        dataSourceProducts.controller(frc, didChange: products.first!, at: nil, for: .move, newIndexPath: nil)
+        XCTAssertFalse(tableView.isInsert)
+        XCTAssertFalse(tableView.isDelete)
+        dataSourceProducts.controller(frc, didChange: products.first!, at: .init(), for: .move, newIndexPath: .init())
+        XCTAssertTrue(tableView.isInsert)
+        XCTAssertTrue(tableView.isDelete)
+        tableView.isInsert.toggle()
+        tableView.isDelete.toggle()
+        // Delete
+        dataSourceProducts.controller(frc, didChange: products.first!, at: nil, for: .delete, newIndexPath: nil)
+        XCTAssertFalse(tableView.isDelete)
+        dataSourceProducts.controller(frc, didChange: products.first!, at: IndexPath(item: 0, section: 0), for: .delete, newIndexPath: nil)
+        XCTAssertTrue(tableView.isDelete)
+        tableView.isDelete.toggle()
     }
 
     func testPerformanceExample() throws {

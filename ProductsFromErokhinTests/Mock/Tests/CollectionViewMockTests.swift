@@ -27,7 +27,6 @@ class CollectionViewMockTests: XCTestCase {
         collectionView.deleteItems(at: [])
         XCTAssertTrue(collectionView.isDelete)
         // Items
-        XCTAssertEqual(collectionView.numberOfItems(inSection: 0), collectionView.count)
         XCTAssertEqual(collectionView.cellForItem(at: .init()), collectionView.cell)
     }
 
