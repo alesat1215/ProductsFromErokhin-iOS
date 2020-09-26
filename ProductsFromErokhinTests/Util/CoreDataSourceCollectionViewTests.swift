@@ -119,18 +119,14 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
         
         let dataSource: CoreDataSourceCollectionView<Group> = try context.rx.coreDataSource(cellId: "group", fetchRequest: Group.fetchRequestWithSort()).toBlocking().first()!
         
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: context) {_ in
-            return true
-        }
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
         
         XCTAssertNoThrow(try dataSource.select(indexPath: IndexPath(item: 1, section: 0)).get())
         
         XCTAssertFalse(group.isSelected)
         XCTAssertTrue(group1.isSelected)
         
-        waitForExpectations(timeout: 1) { error in
-            XCTAssertNil(error, "Save did not occur")
-          }
+        waitForExpectations(timeout: 1)
     }
     
     func testDispose() {
