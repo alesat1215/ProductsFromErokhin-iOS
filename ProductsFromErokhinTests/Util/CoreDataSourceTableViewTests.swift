@@ -104,6 +104,13 @@ class CoreDataSourceTableViewTests: XCTestCase {
         XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 0, section: 7)))
         XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 5, section: 0)))
     }
+    
+    func testDispose() {
+        dataSourceProducts.bind(tableView: tableView)
+        XCTAssertNotNil(tableView.dataSource)
+        dataSourceProducts.dispose()
+        XCTAssertNil(tableView.dataSource)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
