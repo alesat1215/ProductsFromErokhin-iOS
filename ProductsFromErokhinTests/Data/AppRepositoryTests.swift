@@ -20,9 +20,7 @@ class AppRepositoryTests: XCTestCase {
     private var groups = [Group]()
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         updater = DatabaseUpdaterMock()
-//        context = ContextMock()
         products = ["product", "product1", "product2"].enumerated().map {
             let product = Product(context: context)
             product.order = Int16($0.offset)
@@ -44,15 +42,9 @@ class AppRepositoryTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         try Product.clearEntity(context: context)
         try Titles.clearEntity(context: context)
         try Group.clearEntity(context: context)
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
     func testGroups() throws {
@@ -145,15 +137,6 @@ class AppRepositoryTests: XCTestCase {
         XCTAssertTrue(updater.isSync)
         result = resultArray.first { $0.error == nil }?.element
         XCTAssertEqual(result?.tableView(UITableView(frame: .init()), numberOfRowsInSection: 0), products.count)
-    }
-    
-
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 
 }
