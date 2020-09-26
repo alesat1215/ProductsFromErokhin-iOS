@@ -17,6 +17,7 @@ class AppRepositoryTests: XCTestCase {
     private var repository: AppRepository!
     private var products = [Product]()
     private var titles = [Titles]()
+    private var groups = [Group]()
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -33,6 +34,12 @@ class AppRepositoryTests: XCTestCase {
             titles.title = $0
             return titles
         }
+        groups = ["group", "group1", "group2"].enumerated().map {
+            let group = Group(context: context)
+            group.order = Int16($0.offset)
+            group.name = $0.element
+            return group
+        }
         repository = AppRepository(updater: updater, context: context)
     }
 
@@ -40,11 +47,36 @@ class AppRepositoryTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         try Product.clearEntity(context: context)
         try Titles.clearEntity(context: context)
+        try Group.clearEntity(context: context)
     }
 
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testGroups() throws {
+        // Success
+        // Check sequence contains only one element
+        var dataSourceCollectionView: Observable<Event<CoreDataSourceCollectionView<Group>>>?
+        dataSourceCollectionView = repository.groups(cellId: "")
+        XCTAssertThrowsError(try dataSourceCollectionView?.take(2).toBlocking(timeout: 1).toArray())
+        updater.isSync = false
+        // Check that element
+        dataSourceCollectionView = repository.groups(cellId: "")
+        var result = try dataSourceCollectionView?.toBlocking().first()?.element
+        XCTAssertTrue(updater.isSync)
+        XCTAssertEqual(result?.collectionView(CollectionViewMock(), numberOfItemsInSection: 0), products.count)
+        
+        // Sync error
+        updater.isSync = false
+        updater.error = AppError.unknown
+        dataSourceCollectionView = repository.groups(cellId: "")
+        let resultArray = try dataSourceCollectionView!.take(2).toBlocking().toArray()
+        XCTAssertTrue(resultArray.contains { $0.error?.localizedDescription == AppError.unknown.localizedDescription })
+        XCTAssertTrue(updater.isSync)
+        result = resultArray.first { $0.error == nil }?.element
+        XCTAssertEqual(result?.collectionView(CollectionViewMock(), numberOfItemsInSection: 0), products.count)
     }
     
     func testTitles() throws {
