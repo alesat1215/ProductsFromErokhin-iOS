@@ -42,11 +42,25 @@ class ProductCollectionViewCellTests: XCTestCase {
         product.name = "name"
         product.price = 100
         
-        // inCart = 0
+        // inCart == 0
         cell.bind(model: product)
         XCTAssertEqual(cell.name.text, product.name)
         XCTAssertTrue(cell.price.text!.contains(String(product.price)))
         XCTAssertEqual(cell.model, product)
+        XCTAssertEqual(cell.inCart.text, String(product.inCart?.count ?? 0))
+        XCTAssertTrue(cell.inCartMarker.isHidden)
+        XCTAssertTrue(cell._del.isHidden)
+        XCTAssertTrue(cell.inCart.isHidden)
+        // inCart != 0
+        _ = product.addToCart()
+        cell.bind(model: product)
+        XCTAssertEqual(cell.name.text, product.name)
+        XCTAssertTrue(cell.price.text!.contains(String(product.price)))
+        XCTAssertEqual(cell.model, product)
+        XCTAssertEqual(cell.inCart.text, String(product.inCart?.count ?? 0))
+        XCTAssertFalse(cell.inCartMarker.isHidden)
+        XCTAssertFalse(cell._del.isHidden)
+        XCTAssertFalse(cell.inCart.isHidden)
     }
 
     func testExample() throws {
