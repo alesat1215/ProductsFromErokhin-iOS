@@ -55,10 +55,20 @@ class ProductsTests: XCTestCase {
         XCTAssertEqual(product.inCart?.count, 0)
     }
     
+    // MARK: - ProductInCart
     func testFetchRequestWithSortByName() {
         let fetchRequest = ProductInCart.fetchRequestWithSortByName()
         XCTAssertEqual(fetchRequest.sortDescriptors?.first?.key, "name")
         XCTAssertEqual(fetchRequest.sortDescriptors?.first?.ascending, true)
+    }
+    
+    func testClearEntity() throws {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let _ = ProductInCart(context: context)
+        expectation(forNotification: .NSManagedObjectContextObjectsDidChange, object: context)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context).isInverted = true
+        try ProductInCart.clearEntity(context: context)
+        waitForExpectations(timeout: 1)
     }
     
     // MARK: - Group
