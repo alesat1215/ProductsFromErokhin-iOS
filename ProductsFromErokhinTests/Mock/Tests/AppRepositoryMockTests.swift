@@ -19,9 +19,14 @@ class AppRepositoryMockTests: XCTestCase {
     func testProducts() {
         let cellId = "cellId"
         let predicate = NSPredicate()
-        XCTAssertEqual(try repository.products(predicate: predicate, cellId: cellId).toBlocking().first()?.element, repository.productsResult)
-        XCTAssertEqual(repository.cellId, cellId)
-        XCTAssertEqual(repository.predicate, predicate)
+        // CollectionView
+        XCTAssertEqual(try repository.products(predicate: predicate, cellId: cellId).toBlocking().first()?.element, repository.productsResultCollectionView)
+        XCTAssertEqual(repository.cellIdProductsCollectionView, cellId)
+        XCTAssertEqual(repository.predicateProductsCollectionView, predicate)
+        // TableView
+        XCTAssertEqual(try repository.products(predicate: predicate, cellId: cellId).toBlocking().first()?.element, repository.productsResultTableView)
+        XCTAssertEqual(repository.cellIdProductsTableView, cellId)
+        XCTAssertEqual(repository.predicateProductsTableView, predicate)
     }
 
     func testExample() throws {

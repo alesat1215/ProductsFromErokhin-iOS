@@ -25,19 +25,19 @@ class StartViewModelTests: XCTestCase {
     }
     
     func testProducts() {
-        XCTAssertNil(repository.predicate)
-        XCTAssertNil(repository.cellId)
-        XCTAssertEqual(try viewModel.products().toBlocking().first()?.element, repository.productsResult)
-        XCTAssertNotNil(repository.predicate)
-        XCTAssertNotNil(repository.cellId)
+        XCTAssertNil(repository.predicateProductsCollectionView)
+        XCTAssertNil(repository.cellIdProductsCollectionView)
+        XCTAssertEqual(try viewModel.products().toBlocking().first()?.element, repository.productsResultCollectionView)
+        XCTAssertNotNil(repository.predicateProductsCollectionView)
+        XCTAssertNotNil(repository.cellIdProductsCollectionView)
     }
     
     func testProducts2() {
-        XCTAssertNil(repository.predicate)
-        XCTAssertNil(repository.cellId)
-        XCTAssertEqual(try viewModel.products2().toBlocking().first()?.element, repository.productsResult)
-        XCTAssertNotNil(repository.predicate)
-        XCTAssertNotNil(repository.cellId)
+        XCTAssertNil(repository.predicateProductsCollectionView)
+        XCTAssertNil(repository.cellIdProductsCollectionView)
+        XCTAssertEqual(try viewModel.products2().toBlocking().first()?.element, repository.productsResultCollectionView)
+        XCTAssertNotNil(repository.predicateProductsCollectionView)
+        XCTAssertNotNil(repository.cellIdProductsCollectionView)
     }
 
 }

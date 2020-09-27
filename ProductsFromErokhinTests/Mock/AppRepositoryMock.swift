@@ -20,17 +20,36 @@ class AppRepositoryMock: AppRepository {
         super.init(updater: nil, context: nil)
     }
     
+    // MARK: - groups
+    let groupsResult = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
+    var cellIdGroups: String?
+    override func groups(cellId: String) -> Observable<Event<CoreDataSourceCollectionView<Group>>> {
+        self.cellIdGroups = cellId
+        return Observable.just(Event.next(groupsResult))
+    }
+    
+    // MARK: - titles
     lazy var titlesResult = [Titles(context: context)]
     override func titles() -> Observable<Event<[Titles]>> {
         Observable.just(Event.next(titlesResult))
     }
     
-    let productsResult = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
-    var predicate: NSPredicate?
-    var cellId: String?
+    // MARK: - products
+    let productsResultCollectionView = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
+    var predicateProductsCollectionView: NSPredicate?
+    var cellIdProductsCollectionView: String?
     override func products(predicate: NSPredicate? = nil, cellId: String) -> Observable<Event<CoreDataSourceCollectionView<Product>>> {
-        self.predicate = predicate
-        self.cellId = cellId
-        return Observable.just(Event.next(productsResult))
+        self.predicateProductsCollectionView = predicate
+        self.cellIdProductsCollectionView = cellId
+        return Observable.just(Event.next(productsResultCollectionView))
+    }
+    
+    let productsResultTableView = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
+    var predicateProductsTableView: NSPredicate?
+    var cellIdProductsTableView: String?
+    override func products(predicate: NSPredicate? = nil, cellId: String) -> Observable<Event<CoreDataSourceTableView<Product>>> {
+        self.predicateProductsTableView = predicate
+        self.cellIdProductsTableView = cellId
+        return Observable.just(Event.next(productsResultTableView))
     }
 }
