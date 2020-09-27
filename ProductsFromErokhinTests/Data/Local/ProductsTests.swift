@@ -17,6 +17,7 @@ class ProductsTests: XCTestCase {
     override func setUpWithError() throws {
         try Product.clearEntity(context: context)
         try Group.clearEntity(context: context)
+        try ProductInCart.clearEntity(context: context)
     }
     
     // MARK: - Product
