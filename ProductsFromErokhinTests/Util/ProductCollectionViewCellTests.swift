@@ -44,10 +44,33 @@ class ProductCollectionViewCellTests: XCTestCase {
         expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
         XCTAssertNoThrow(try product.addToCart().get())
         XCTAssertEqual(product.inCart?.count, 1)
-        waitForExpectations(timeout: 1)
+        
         expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
         XCTAssertNoThrow(try product.addToCart().get())
         XCTAssertEqual(product.inCart?.count, 2)
+        
+        waitForExpectations(timeout: 1)
+    }
+    
+    func testDel() {
+        let product = Product(context: context)
+        product.name = "name"
+        _ = product.addToCart()
+        _ = product.addToCart()
+        XCTAssertEqual(product.inCart?.count, 2)
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        XCTAssertNoThrow(try product.delFromCart().get())
+        XCTAssertEqual(product.inCart?.count, 1)
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        XCTAssertNoThrow(try product.delFromCart().get())
+        XCTAssertEqual(product.inCart?.count, 0)
+        
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context).isInverted = true
+        XCTAssertNoThrow(try product.delFromCart().get())
+        XCTAssertEqual(product.inCart?.count, 0)
+        
         waitForExpectations(timeout: 1)
     }
     
