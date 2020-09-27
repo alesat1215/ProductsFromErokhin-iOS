@@ -41,4 +41,9 @@ class CollectionViewMock: UICollectionView {
     override func cellForItem(at indexPath: IndexPath) -> UICollectionViewCell? {
         cell
     }
+    
+    var isScroll = false
+    override func scrollToItem(at indexPath: IndexPath, at scrollPosition: UICollectionView.ScrollPosition, animated: Bool) {
+        isScroll.toggle()
+    }
 }

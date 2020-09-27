@@ -67,6 +67,12 @@ class MenuViewControllerTests: XCTestCase {
         XCTAssertEqual(controller.groups.dataSource as! CoreDataSourceCollectionView, dataSource)
         XCTAssertTrue((controller.groups as! CollectionViewMock).isReload)
     }
+    
+    func testSelectGroup() {
+        XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
+        controller.groups.delegate?.collectionView?(controller.groups, didSelectItemAt: IndexPath())
+        XCTAssertTrue((controller.groups as! CollectionViewMock).isScroll)
+    }
 
     func testExample() throws {
         // This is an example of a functional test case.
