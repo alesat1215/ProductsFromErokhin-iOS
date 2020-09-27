@@ -22,6 +22,7 @@
 		D7518DF42520746100C72B1E /* MenuViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518DF32520746100C72B1E /* MenuViewModelTests.swift */; };
 		D7518DFC252078AC00C72B1E /* MenuViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518DFB252078AC00C72B1E /* MenuViewModelMock.swift */; };
 		D7518E01252079D600C72B1E /* MenuViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518E00252079D600C72B1E /* MenuViewModelMockTests.swift */; };
+		D7518E0625207B4C00C72B1E /* MenuViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518E0525207B4C00C72B1E /* MenuViewControllerTests.swift */; };
 		D7877B5E25010F7100244B81 /* ProductsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5D25010F7100244B81 /* ProductsRemote.swift */; };
 		D7877B602501168700244B81 /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5F2501168700244B81 /* AppRepository.swift */; };
 		D7877B632501182200244B81 /* DatabaseUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B622501182200244B81 /* DatabaseUpdater.swift */; };
@@ -127,6 +128,7 @@
 		D7518DF32520746100C72B1E /* MenuViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModelTests.swift; sourceTree = "<group>"; };
 		D7518DFB252078AC00C72B1E /* MenuViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModelMock.swift; sourceTree = "<group>"; };
 		D7518E00252079D600C72B1E /* MenuViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModelMockTests.swift; sourceTree = "<group>"; };
+		D7518E0525207B4C00C72B1E /* MenuViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewControllerTests.swift; sourceTree = "<group>"; };
 		D7877B5D25010F7100244B81 /* ProductsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRemote.swift; sourceTree = "<group>"; };
 		D7877B5F2501168700244B81 /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		D7877B622501182200244B81 /* DatabaseUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdater.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 		D7518DF22520743800C72B1E /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				D7518E0525207B4C00C72B1E /* MenuViewControllerTests.swift */,
 				D7518DF32520746100C72B1E /* MenuViewModelTests.swift */,
 			);
 			path = Menu;
@@ -848,6 +851,7 @@
 				D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */,
 				D7C0FC1925154199009BC51F /* CollectionViewCellMock.swift in Sources */,
 				D7C0FC1325151426009BC51F /* DatabaseUpdaterTests.swift in Sources */,
+				D7518E0625207B4C00C72B1E /* MenuViewControllerTests.swift in Sources */,
 				D7C0FBFE2514EF06009BC51F /* OrderedTests.swift in Sources */,
 				D7C0FBBF2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift in Sources */,
 				D7C0FC38251545A0009BC51F /* RemoteConfigComplectionMock.swift in Sources */,
