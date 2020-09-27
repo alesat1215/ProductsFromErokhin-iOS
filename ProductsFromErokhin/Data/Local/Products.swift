@@ -57,6 +57,18 @@ extension ProductInCart {
         fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
         return fetchRequest
     }
+    /** Remove objects for fetchRequestWithSortByName() result */
+    static func clearEntity(context: NSManagedObjectContext) throws {
+        // Setup request
+        let fetchRequest = self.fetchRequestWithSortByName()
+        fetchRequest.includesPropertyValues = false
+        // Get all objects & remove
+        let fetchResult = try context.fetch(fetchRequest)
+        fetchResult.forEach {
+            context.delete($0)
+        }
+        print("\(fetchResult.count) objects should be removed")
+    }
 }
 
 // MARK: - Group

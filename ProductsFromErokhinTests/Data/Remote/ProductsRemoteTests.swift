@@ -11,8 +11,15 @@ import XCTest
 
 class ProductsRemoteTests: XCTestCase {
     
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    override func tearDownWithError() throws {
+        try Group.clearEntity(context: context)
+        try Product.clearEntity(context: context)
+        try ProductInCart.clearEntity(context: context)
+    }
+    
     func testManagedObject() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let allInCart: [ProductInCart] = ["product2", "product2", "product2"].map {
             let product = ProductInCart(context: context)
             product.setValue($0, forKey: "name")
