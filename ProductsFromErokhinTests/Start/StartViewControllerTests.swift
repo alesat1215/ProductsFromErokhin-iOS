@@ -101,8 +101,8 @@ class StartViewControllerTests: XCTestCase {
         XCTAssertFalse((controller.products as! CollectionViewMock).isReload)
         XCTAssertFalse((controller.products2 as! CollectionViewMock).isReload)
         // Setup dataSource
-        var dataSource = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
-        var dataSource2 = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
+        var dataSource = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
+        var dataSource2 = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
         // Success event
         viewModel.productsResult.accept(Event.next(dataSource))
         viewModel.productsResult2.accept(Event.next(dataSource2))
@@ -111,8 +111,8 @@ class StartViewControllerTests: XCTestCase {
         XCTAssertTrue((controller.products as! CollectionViewMock).isReload)
         XCTAssertTrue((controller.products2 as! CollectionViewMock).isReload)
         
-        dataSource = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
-        dataSource2 = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
+        dataSource = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
+        dataSource2 = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
         (controller.products as! CollectionViewMock).isReload = false
         (controller.products2 as! CollectionViewMock).isReload = false
         viewModel.productsResult.accept(Event.next(dataSource))
@@ -131,8 +131,8 @@ class StartViewControllerTests: XCTestCase {
         XCTAssertFalse((controller.products as! CollectionViewMock).isReload)
         XCTAssertFalse((controller.products2 as! CollectionViewMock).isReload)
         // Success event after error
-        dataSource = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
-        dataSource2 = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
+        dataSource = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
+        dataSource2 = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
         (controller.products as! CollectionViewMock).isReload = false
         (controller.products2 as! CollectionViewMock).isReload = false
         viewModel.productsResult.accept(Event.next(dataSource))

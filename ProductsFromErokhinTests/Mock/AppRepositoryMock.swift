@@ -25,7 +25,7 @@ class AppRepositoryMock: AppRepository {
         Observable.just(Event.next(titlesResult))
     }
     
-    let productsResult = CoreDataSourceMock(fetchRequest: Product.fetchRequestWithSort())
+    let productsResult = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
     var predicate: NSPredicate?
     var cellId: String?
     override func products(predicate: NSPredicate? = nil, cellId: String) -> Observable<Event<CoreDataSourceCollectionView<Product>>> {
