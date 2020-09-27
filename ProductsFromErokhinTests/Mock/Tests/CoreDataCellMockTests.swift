@@ -10,11 +10,13 @@ import XCTest
 @testable import ProductsFromErokhin
 
 class CollectionViewCellMockTests: XCTestCase {
+    
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     func testBind() {
         let cell = CollectionViewCellMock()
         XCTAssertFalse(cell.isBind)
-        cell.bind(model: Product(context: ContextMock()))
+        cell.bind(model: Product(context: context))
         XCTAssertTrue(cell.isBind)
     }
 

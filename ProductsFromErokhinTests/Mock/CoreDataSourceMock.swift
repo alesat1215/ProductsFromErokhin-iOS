@@ -12,7 +12,10 @@ import RxSwift
 @testable import ProductsFromErokhin
 
 class CoreDataSourceMock<T: NSFetchRequestResult>: CoreDataSourceCollectionView<T> {
+    
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     init(fetchRequest: NSFetchRequest<T>) {
-        super.init(observer: AnyObserver(eventHandler: {_ in }), cellId: "", fetchRequest: fetchRequest, managedObjectContext: ContextMock(), sectionNameKeyPath: nil, cacheName: nil)
+        super.init(observer: AnyObserver(eventHandler: {_ in }), cellId: "", fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     }
 }

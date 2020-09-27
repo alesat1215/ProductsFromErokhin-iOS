@@ -72,12 +72,10 @@
 		D7C0FC1925154199009BC51F /* CollectionViewCellMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC1825154199009BC51F /* CollectionViewCellMock.swift */; };
 		D7C0FC242515429E009BC51F /* CollectionViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC232515429E009BC51F /* CollectionViewMock.swift */; };
 		D7C0FC29251543B7009BC51F /* CoreDataCellMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC28251543B7009BC51F /* CoreDataCellMockTests.swift */; };
-		D7C0FC2E25154437009BC51F /* ContextMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC2D25154437009BC51F /* ContextMock.swift */; };
 		D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC3225154559009BC51F /* JSONDecoderMock.swift */; };
 		D7C0FC38251545A0009BC51F /* RemoteConfigComplectionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC37251545A0009BC51F /* RemoteConfigComplectionMock.swift */; };
 		D7C0FC3D2515E14A009BC51F /* CollectionViewMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC3C2515E14A009BC51F /* CollectionViewMockTests.swift */; };
 		D7C0FC422515E40F009BC51F /* JSONDecoderMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC412515E40F009BC51F /* JSONDecoderMockTests.swift */; };
-		D7C0FC472515E60A009BC51F /* ContextMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC462515E60A009BC51F /* ContextMockTests.swift */; };
 		D7C0FC4C2515E866009BC51F /* RemoteConfigComplectionMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC4B2515E866009BC51F /* RemoteConfigComplectionMockTests.swift */; };
 		D7C0FC542515F067009BC51F /* DatabaseUpdaterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC532515F067009BC51F /* DatabaseUpdaterMock.swift */; };
 		D7C0FC592515F1E4009BC51F /* AppRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC582515F1E4009BC51F /* AppRepositoryTests.swift */; };
@@ -181,12 +179,10 @@
 		D7C0FC1825154199009BC51F /* CollectionViewCellMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellMock.swift; sourceTree = "<group>"; };
 		D7C0FC232515429E009BC51F /* CollectionViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewMock.swift; sourceTree = "<group>"; };
 		D7C0FC28251543B7009BC51F /* CoreDataCellMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCellMockTests.swift; sourceTree = "<group>"; };
-		D7C0FC2D25154437009BC51F /* ContextMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMock.swift; sourceTree = "<group>"; };
 		D7C0FC3225154559009BC51F /* JSONDecoderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderMock.swift; sourceTree = "<group>"; };
 		D7C0FC37251545A0009BC51F /* RemoteConfigComplectionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigComplectionMock.swift; sourceTree = "<group>"; };
 		D7C0FC3C2515E14A009BC51F /* CollectionViewMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewMockTests.swift; sourceTree = "<group>"; };
 		D7C0FC412515E40F009BC51F /* JSONDecoderMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderMockTests.swift; sourceTree = "<group>"; };
-		D7C0FC462515E60A009BC51F /* ContextMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMockTests.swift; sourceTree = "<group>"; };
 		D7C0FC4B2515E866009BC51F /* RemoteConfigComplectionMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigComplectionMockTests.swift; sourceTree = "<group>"; };
 		D7C0FC532515F067009BC51F /* DatabaseUpdaterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdaterMock.swift; sourceTree = "<group>"; };
 		D7C0FC582515F1E4009BC51F /* AppRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepositoryTests.swift; sourceTree = "<group>"; };
@@ -421,7 +417,6 @@
 				D7C0FC232515429E009BC51F /* CollectionViewMock.swift */,
 				D72F41D4251FA348001EE822 /* TableViewMock.swift */,
 				D7C0FC3225154559009BC51F /* JSONDecoderMock.swift */,
-				D7C0FC2D25154437009BC51F /* ContextMock.swift */,
 				D7C0FC37251545A0009BC51F /* RemoteConfigComplectionMock.swift */,
 				D7C0FC532515F067009BC51F /* DatabaseUpdaterMock.swift */,
 				D79579272516966B007AD022 /* AppRepositoryMock.swift */,
@@ -470,7 +465,6 @@
 				D7C0FC28251543B7009BC51F /* CoreDataCellMockTests.swift */,
 				D7C0FC3C2515E14A009BC51F /* CollectionViewMockTests.swift */,
 				D7C0FC412515E40F009BC51F /* JSONDecoderMockTests.swift */,
-				D7C0FC462515E60A009BC51F /* ContextMockTests.swift */,
 				D7C0FC4B2515E866009BC51F /* RemoteConfigComplectionMockTests.swift */,
 				D7C0FC5D251676C5009BC51F /* DatabaseUpdaterMockTests.swift */,
 				D795795B2517BE72007AD022 /* AppRepositoryMockTests.swift */,
@@ -809,7 +803,6 @@
 				D72F41D0251FA2AF001EE822 /* CoreDataSourceTableViewTests.swift in Sources */,
 				D7C0FBAC2513E045009BC51F /* AnonymousAuthTests.swift in Sources */,
 				D7C0FC5E251676C5009BC51F /* DatabaseUpdaterMockTests.swift in Sources */,
-				D7C0FC2E25154437009BC51F /* ContextMock.swift in Sources */,
 				D795795225175190007AD022 /* CoreDataSourceMock.swift in Sources */,
 				D7C0FBE92514DCF4009BC51F /* BindableCellTests.swift in Sources */,
 				D7C0FC4C2515E866009BC51F /* RemoteConfigComplectionMockTests.swift in Sources */,
@@ -827,7 +820,6 @@
 				D72F41D5251FA348001EE822 /* TableViewMock.swift in Sources */,
 				D795795C2517BE72007AD022 /* AppRepositoryMockTests.swift in Sources */,
 				D795211124FFBE800094BAFE /* ProductsFromErokhinTests.swift in Sources */,
-				D7C0FC472515E60A009BC51F /* ContextMockTests.swift in Sources */,
 				D7C0FC0E25150772009BC51F /* TitlesTests.swift in Sources */,
 				D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */,
 				D7C0FC1925154199009BC51F /* CollectionViewCellMock.swift in Sources */,

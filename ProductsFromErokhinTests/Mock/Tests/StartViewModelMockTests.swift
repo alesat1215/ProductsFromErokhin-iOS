@@ -12,11 +12,12 @@ import RxSwift
 
 class StartViewModelMockTests: XCTestCase {
     
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private let viewModel = StartViewModelMock()
     private let disposeBag = DisposeBag()
     
     func testTitles() {
-        let titles = [Titles(context: ContextMock())]
+        let titles = [Titles(context: context)]
         var result: [Titles]?
         viewModel.titles().subscribe(onNext: { result = $0.element }).disposed(by: disposeBag)
         viewModel.titlesResult.accept(Event.next(titles))

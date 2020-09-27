@@ -44,6 +44,7 @@ class ProductCollectionViewCellTests: XCTestCase {
         expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
         XCTAssertNoThrow(try product.addToCart().get())
         XCTAssertEqual(product.inCart?.count, 1)
+        waitForExpectations(timeout: 1)
         
         expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
         XCTAssertNoThrow(try product.addToCart().get())
@@ -62,15 +63,16 @@ class ProductCollectionViewCellTests: XCTestCase {
         expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
         XCTAssertNoThrow(try product.delFromCart().get())
         XCTAssertEqual(product.inCart?.count, 1)
+        waitForExpectations(timeout: 1)
         
         expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
         XCTAssertNoThrow(try product.delFromCart().get())
         XCTAssertEqual(product.inCart?.count, 0)
+        waitForExpectations(timeout: 1)
         
         expectation(forNotification: .NSManagedObjectContextDidSave, object: context).isInverted = true
         XCTAssertNoThrow(try product.delFromCart().get())
         XCTAssertEqual(product.inCart?.count, 0)
-        
         waitForExpectations(timeout: 1)
     }
     

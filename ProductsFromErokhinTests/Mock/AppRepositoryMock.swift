@@ -14,11 +14,13 @@ import RxRelay
 
 class AppRepositoryMock: AppRepository {
     
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     init() {
         super.init(updater: nil, context: nil)
     }
     
-    var titlesResult = [Titles(context: ContextMock())]
+    lazy var titlesResult = [Titles(context: context)]
     override func titles() -> Observable<Event<[Titles]>> {
         Observable.just(Event.next(titlesResult))
     }

@@ -14,7 +14,7 @@ class StartViewControllerTests: XCTestCase {
     
     private var controller: StartViewController!
     private var viewModel: StartViewModelMock!
-    private let context = ContextMock()
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     // Outlets
     private var _title: UILabel!
     private var img: UIImageView!
