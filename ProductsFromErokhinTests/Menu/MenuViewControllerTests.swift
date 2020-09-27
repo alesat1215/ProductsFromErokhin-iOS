@@ -38,6 +38,9 @@ class MenuViewControllerTests: XCTestCase {
     }
     
     func testBindGroups() {
+        // Delegate
+        XCTAssertNotNil(groups.delegate)
+        // DataSource
         XCTAssertNil(controller.groups.dataSource)
         XCTAssertFalse((controller.groups as! CollectionViewMock).isReload)
         // Setup dataSource
