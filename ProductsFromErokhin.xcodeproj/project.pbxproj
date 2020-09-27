@@ -20,6 +20,8 @@
 		D73C7DBE2501060F007062D9 /* StartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C7DBD2501060F007062D9 /* StartViewModel.swift */; };
 		D73C7DC12501097E007062D9 /* SwinjectStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C7DC02501097E007062D9 /* SwinjectStoryboard.swift */; };
 		D7518DF42520746100C72B1E /* MenuViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518DF32520746100C72B1E /* MenuViewModelTests.swift */; };
+		D7518DFC252078AC00C72B1E /* MenuViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518DFB252078AC00C72B1E /* MenuViewModelMock.swift */; };
+		D7518E01252079D600C72B1E /* MenuViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518E00252079D600C72B1E /* MenuViewModelMockTests.swift */; };
 		D7877B5E25010F7100244B81 /* ProductsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5D25010F7100244B81 /* ProductsRemote.swift */; };
 		D7877B602501168700244B81 /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5F2501168700244B81 /* AppRepository.swift */; };
 		D7877B632501182200244B81 /* DatabaseUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B622501182200244B81 /* DatabaseUpdater.swift */; };
@@ -123,6 +125,8 @@
 		D73C7DBD2501060F007062D9 /* StartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModel.swift; sourceTree = "<group>"; };
 		D73C7DC02501097E007062D9 /* SwinjectStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwinjectStoryboard.swift; sourceTree = "<group>"; };
 		D7518DF32520746100C72B1E /* MenuViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModelTests.swift; sourceTree = "<group>"; };
+		D7518DFB252078AC00C72B1E /* MenuViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModelMock.swift; sourceTree = "<group>"; };
+		D7518E00252079D600C72B1E /* MenuViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModelMockTests.swift; sourceTree = "<group>"; };
 		D7877B5D25010F7100244B81 /* ProductsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRemote.swift; sourceTree = "<group>"; };
 		D7877B5F2501168700244B81 /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		D7877B622501182200244B81 /* DatabaseUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdater.swift; sourceTree = "<group>"; };
@@ -436,6 +440,7 @@
 				D79579272516966B007AD022 /* AppRepositoryMock.swift */,
 				D795795125175190007AD022 /* CoreDataSourceMock.swift */,
 				D79579562517B500007AD022 /* StartViewModelMock.swift */,
+				D7518DFB252078AC00C72B1E /* MenuViewModelMock.swift */,
 				D7D6EBE82517CD410098ABC7 /* AnonymousAuthMock.swift */,
 				D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */,
 			);
@@ -485,6 +490,7 @@
 				D79579602517C06C007AD022 /* StartViewModelMockTests.swift */,
 				D7B460E72518F73F001ED878 /* AnonymousAuthMockTests.swift */,
 				D7B460EC2518F83A001ED878 /* LoadViewModelMockTests.swift */,
+				D7518E00252079D600C72B1E /* MenuViewModelMockTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -802,12 +808,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D79579282516966B007AD022 /* AppRepositoryMock.swift in Sources */,
+				D7518DFC252078AC00C72B1E /* MenuViewModelMock.swift in Sources */,
 				D72F41ED2520656A001EE822 /* ProductTableViewCellTests.swift in Sources */,
 				D7C0FC542515F067009BC51F /* DatabaseUpdaterMock.swift in Sources */,
 				D7C0FC3D2515E14A009BC51F /* CollectionViewMockTests.swift in Sources */,
 				D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */,
 				D7518DF42520746100C72B1E /* MenuViewModelTests.swift in Sources */,
 				D79579572517B500007AD022 /* StartViewModelMock.swift in Sources */,
+				D7518E01252079D600C72B1E /* MenuViewModelMockTests.swift in Sources */,
 				D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */,
 				D7C0FC242515429E009BC51F /* CollectionViewMock.swift in Sources */,
 				D72F41DA251FA5F2001EE822 /* TableViewCellMock.swift in Sources */,
