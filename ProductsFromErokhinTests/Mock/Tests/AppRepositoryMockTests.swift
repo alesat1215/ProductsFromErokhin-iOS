@@ -11,6 +11,12 @@ import XCTest
 class AppRepositoryMockTests: XCTestCase {
     
     private let repository = AppRepositoryMock()
+    
+    func testGroups() {
+        let cellId = "cellId"
+        XCTAssertEqual(try repository.groups(cellId: cellId).toBlocking().first()?.element, repository.groupsResult)
+        XCTAssertEqual(repository.cellIdGroups, cellId)
+    }
 
     func testTitles() {
         XCTAssertEqual(try repository.titles().toBlocking().first()?.element, repository.titlesResult)
