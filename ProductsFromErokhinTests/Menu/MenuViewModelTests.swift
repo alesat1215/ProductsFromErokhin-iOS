@@ -18,25 +18,17 @@ class MenuViewModelTests: XCTestCase {
         repository = AppRepositoryMock()
         viewModel = MenuViewModel(repository: repository)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
     
     func testGroups() {
         XCTAssertEqual(try viewModel.groups().toBlocking().first()?.element, repository.groupsResult)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testProducts() {
+        XCTAssertNil(repository.predicateProductsTableView)
+        XCTAssertNil(repository.cellIdProductsTableView)
+        XCTAssertEqual(try viewModel.products().toBlocking().first()?.element, repository.productsResultTableView)
+        XCTAssertNil(repository.predicateProductsTableView)
+        XCTAssertNotNil(repository.cellIdProductsTableView)
     }
 
 }
