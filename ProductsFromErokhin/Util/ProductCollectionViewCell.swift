@@ -16,6 +16,7 @@ class ProductCollectionViewCell: BindableCollectionViewCell<Product> {
     @IBOutlet weak var inCartMarker: UIView!
     @IBOutlet weak var _del: UIButton!
     @IBOutlet weak var img: UIImageView!
+    
     /** Add product to cart */
     @IBAction func add(_ sender: UIButton) {
         switch model?.addToCart() {

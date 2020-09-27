@@ -17,6 +17,7 @@ class ProductTableViewCell: BindableTableViewCell<Product> {
     @IBOutlet weak var inCartMarker: UIView!
     @IBOutlet weak var _del: UIButton!
     
+    /** Add product to cart */
     @IBAction func add(_ sender: UIButton) {
         switch model?.addToCart() {
         case .failure(let error):
@@ -25,7 +26,7 @@ class ProductTableViewCell: BindableTableViewCell<Product> {
             print("Product add to cart success")
         }
     }
-    
+    /** Del product from cart */
     @IBAction func del(_ sender: UIButton) {
         switch model?.delFromCart() {
         case .failure(let error):

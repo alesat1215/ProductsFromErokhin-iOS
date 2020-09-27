@@ -1,17 +1,17 @@
 //
-//  ProductCollectionViewCellTests.swift
+//  ProductTableViewCellTests.swift
 //  ProductsFromErokhinTests
 //
-//  Created by Alexander Satunin on 26.09.2020.
+//  Created by Alexander Satunin on 27.09.2020.
 //  Copyright © 2020 Alexander Satunin. All rights reserved.
 //
 
 import XCTest
 @testable import ProductsFromErokhin
 
-class ProductCollectionViewCellTests: XCTestCase {
+class ProductTableViewCellTests: XCTestCase {
     
-    private var cell: ProductCollectionViewCell!
+    private var cell: ProductTableViewCell!
     
     private let _name = UILabel()
     private let price = UILabel()
@@ -23,7 +23,7 @@ class ProductCollectionViewCellTests: XCTestCase {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func setUpWithError() throws {
-        cell = ProductCollectionViewCell(frame: .init())
+        cell = ProductTableViewCell(frame: .init())
         cell.name = _name
         cell.price = price
         cell.inCart = inCart
