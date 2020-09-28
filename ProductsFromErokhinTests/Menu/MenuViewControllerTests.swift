@@ -32,10 +32,6 @@ class MenuViewControllerTests: XCTestCase {
         
         controller.viewDidLoad()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
     
     func testBindGroups() {
         // Delegate
@@ -236,17 +232,50 @@ class MenuViewControllerTests: XCTestCase {
         XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
         XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testEnableSelectGroupByScroll() {
+        let groupDataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
+        let productsDataSource = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
+        let product = Product(context: context)
+        
+        // Not select when product scroll by select group (tabSelected == true)
+        (controller.products as! TableViewMock).indexPathsForVisibleRowsResult = [IndexPath()]
+        product.group = Group(context: context)
+        product.group?.isSelected = false
+        productsDataSource.objectResult = product
+        groupDataSource.objectResult = product.group
+        groupDataSource.indexPathResult = IndexPath()
+        
+        viewModel.groupsResult.accept(Event.next(groupDataSource))
+        viewModel.productsResult.accept(Event.next(productsDataSource))
+        
+        // Disable select group by scroll products
+        controller.groups.delegate?.collectionView?(controller.groups, didSelectItemAt: IndexPath())
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        (controller.groups as! CollectionViewMock).isScroll = false
+        (controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected = false
+        // Scroll
+        controller.products.delegate?.tableView?(controller.products, willDisplay: TableViewCellMock(), forRowAt: IndexPath())
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
+        XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
+        
+        // Enable select group by scroll products
+        controller.products.delegate?.scrollViewWillBeginDragging?(controller.products)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        // Scroll
+        controller.products.delegate?.tableView?(controller.products, willDisplay: TableViewCellMock(), forRowAt: IndexPath())
+        
+        XCTAssertTrue((controller.groups as! CollectionViewMock).isScroll)
+        XCTAssertTrue((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
     }
 
 }
