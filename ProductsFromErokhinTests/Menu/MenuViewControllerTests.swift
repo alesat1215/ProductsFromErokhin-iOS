@@ -69,9 +69,15 @@ class MenuViewControllerTests: XCTestCase {
     }
     
     func testSelectGroup() {
+        let groupDataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
+        viewModel.groupsResult.accept(Event.next(groupDataSource))
         XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
+        XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
+        
         controller.groups.delegate?.collectionView?(controller.groups, didSelectItemAt: IndexPath())
+        
         XCTAssertTrue((controller.groups as! CollectionViewMock).isScroll)
+        XCTAssertTrue((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
     }
 
     func testExample() throws {

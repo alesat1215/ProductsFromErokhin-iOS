@@ -99,10 +99,15 @@ class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollect
             print("Unknown type of change")
         }
     }
-
-}
-
-extension CoreDataSourceCollectionView {
+    
+    /** Select group for indexPath after unselect previous */
+    func select(indexPath: IndexPath) -> Result<Void, Error> where T == Group {
+        // Uselect previous group
+        frc.fetchedObjects?.first { $0.isSelected }?.unSelect()
+        // Select group for indexPath
+        return object(at: indexPath)?.select() ?? .success(())
+    }
+    
     /** - Returns: Object for indexPath */
     func object(at indexPath: IndexPath) -> T? {
         var result: T?
@@ -113,21 +118,28 @@ extension CoreDataSourceCollectionView {
         }
         return result
     }
+
+}
+
+extension CoreDataSourceCollectionView {
+    
     /** - Returns: IndexPath for object */
     func indexPath(for object: T) -> IndexPath? {
         frc.indexPath(forObject: object)
     }
+    
+    
 }
 
-extension CoreDataSourceCollectionView where T == Group {
-    /** Select group for indexPath after unselect previous */
-    func select(indexPath: IndexPath) -> Result<Void, Error> {
-        // Uselect previous group
-        frc.fetchedObjects?.first { $0.isSelected }?.unSelect()
-        // Select group for indexPath
-        return object(at: indexPath)?.select() ?? .success(())
-    }
-}
+//extension CoreDataSourceCollectionView where T == Group {
+//    /** Select group for indexPath after unselect previous */
+//    func select(indexPath: IndexPath) -> Result<Void, Error> {
+//        // Uselect previous group
+//        frc.fetchedObjects?.first { $0.isSelected }?.unSelect()
+//        // Select group for indexPath
+//        return object(at: indexPath)?.select() ?? .success(())
+//    }
+//}
 
 // MARK: - Rx
 extension CoreDataSourceCollectionView: Disposable {

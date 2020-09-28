@@ -100,6 +100,14 @@ class CoreDataSourceTableView<T: NSFetchRequestResult>: NSObject, UITableViewDat
         }
     }
     
+    /** - Returns: IndexPath for first product with group */
+    func productPositionForGroup(group: Group) -> IndexPath? where T == Product {
+        if let product = frc.fetchedObjects?.first(where: { $0.group == group }) {
+            return frc.indexPath(forObject: product)
+        }
+        return nil
+    }
+    
 }
 
 extension CoreDataSourceTableView {
@@ -114,15 +122,15 @@ extension CoreDataSourceTableView {
     }
 }
 
-extension CoreDataSourceTableView where T == Product {
-    /** - Returns: IndexPath for first product with group */
-    func productPositionForGroup(group: Group) -> IndexPath? {
-        if let product = frc.fetchedObjects?.first(where: { $0.group == group }) {
-            return frc.indexPath(forObject: product)
-        }
-        return nil
-    }
-}
+//extension CoreDataSourceTableView where T == Product {
+//    /** - Returns: IndexPath for first product with group */
+//    func productPositionForGroup(group: Group) -> IndexPath? {
+//        if let product = frc.fetchedObjects?.first(where: { $0.group == group }) {
+//            return frc.indexPath(forObject: product)
+//        }
+//        return nil
+//    }
+//}
 
 // MARK: - Rx
 extension CoreDataSourceTableView: Disposable {
