@@ -49,4 +49,9 @@ class CoreDataSourceTableViewMock<T: NSFetchRequestResult>: CoreDataSourceTableV
     override func productPositionForGroup(group: Group) -> IndexPath? where T == Product {
         indexPathResult
     }
+    
+    var objectResult: T?
+    override func object(at indexPath: IndexPath) -> T? {
+        objectResult
+    }
 }

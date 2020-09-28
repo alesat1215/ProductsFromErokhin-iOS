@@ -144,6 +144,23 @@ class MenuViewControllerTests: XCTestCase {
         XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
         XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
         
+        // Not select group. productIndexPath found, group found but already selected
+        (controller.products as! TableViewMock).indexPathsForVisibleRowsResult = [IndexPath()]
+        let product = Product(context: context)
+        product.group = Group(context: context)
+        product.group?.isSelected = true
+        productsDataSource.objectResult = product
+        
+        viewModel.groupsResult.accept(Event.next(groupDataSource))
+        viewModel.productsResult.accept(Event.next(productsDataSource))
+        XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
+        XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
+        
+        controller.products.delegate?.tableView?(controller.products, willDisplay: TableViewCellMock(), forRowAt: IndexPath())
+        
+        XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
+        XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
+        
         // Not select when product scroll by select group (tabSelected == true)
         
     }

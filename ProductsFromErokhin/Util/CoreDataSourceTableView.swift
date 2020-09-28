@@ -108,9 +108,7 @@ class CoreDataSourceTableView<T: NSFetchRequestResult>: NSObject, UITableViewDat
         return nil
     }
     
-}
-
-extension CoreDataSourceTableView {
+    /** - Returns: Object for IndexPath */
     func object(at indexPath: IndexPath) -> T? {
         var result: T?
         if frc.sections?.indices.contains(indexPath.section) ?? false,
@@ -120,7 +118,20 @@ extension CoreDataSourceTableView {
         }
         return result
     }
+    
 }
+
+//extension CoreDataSourceTableView {
+//    func object(at indexPath: IndexPath) -> T? {
+//        var result: T?
+//        if frc.sections?.indices.contains(indexPath.section) ?? false,
+//           let numberOfObjects = frc.sections?[indexPath.section].numberOfObjects, numberOfObjects > indexPath.item
+//        {
+//            result = frc.object(at: indexPath)
+//        }
+//        return result
+//    }
+//}
 
 //extension CoreDataSourceTableView where T == Product {
 //    /** - Returns: IndexPath for first product with group */
