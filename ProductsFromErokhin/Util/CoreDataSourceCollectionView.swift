@@ -126,23 +126,6 @@ class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollect
 
 }
 
-//extension CoreDataSourceCollectionView {
-//    
-//    
-//    
-//    
-//}
-
-//extension CoreDataSourceCollectionView where T == Group {
-//    /** Select group for indexPath after unselect previous */
-//    func select(indexPath: IndexPath) -> Result<Void, Error> {
-//        // Uselect previous group
-//        frc.fetchedObjects?.first { $0.isSelected }?.unSelect()
-//        // Select group for indexPath
-//        return object(at: indexPath)?.select() ?? .success(())
-//    }
-//}
-
 // MARK: - Rx
 extension CoreDataSourceCollectionView: Disposable {
     func dispose() {
