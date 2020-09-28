@@ -26,6 +26,7 @@
 		D7518E0E25220D5700C72B1E /* CoreDataSourceTableViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518E0D25220D5700C72B1E /* CoreDataSourceTableViewMock.swift */; };
 		D7518E1625220EEF00C72B1E /* CoreDataSourceCollectionViewMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518E1525220EEF00C72B1E /* CoreDataSourceCollectionViewMockTests.swift */; };
 		D7518E1B2522121400C72B1E /* CoreDataSourceTableViewMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518E1A2522121400C72B1E /* CoreDataSourceTableViewMockTests.swift */; };
+		D7518E202522147600C72B1E /* TableViewMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518E1F2522147600C72B1E /* TableViewMockTests.swift */; };
 		D7877B5E25010F7100244B81 /* ProductsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5D25010F7100244B81 /* ProductsRemote.swift */; };
 		D7877B602501168700244B81 /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5F2501168700244B81 /* AppRepository.swift */; };
 		D7877B632501182200244B81 /* DatabaseUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B622501182200244B81 /* DatabaseUpdater.swift */; };
@@ -135,6 +136,7 @@
 		D7518E0D25220D5700C72B1E /* CoreDataSourceTableViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceTableViewMock.swift; sourceTree = "<group>"; };
 		D7518E1525220EEF00C72B1E /* CoreDataSourceCollectionViewMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceCollectionViewMockTests.swift; sourceTree = "<group>"; };
 		D7518E1A2522121400C72B1E /* CoreDataSourceTableViewMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceTableViewMockTests.swift; sourceTree = "<group>"; };
+		D7518E1F2522147600C72B1E /* TableViewMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewMockTests.swift; sourceTree = "<group>"; };
 		D7877B5D25010F7100244B81 /* ProductsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRemote.swift; sourceTree = "<group>"; };
 		D7877B5F2501168700244B81 /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		D7877B622501182200244B81 /* DatabaseUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdater.swift; sourceTree = "<group>"; };
@@ -493,6 +495,7 @@
 				D7C0FBB92513E5AE009BC51F /* AuthComplectionMockTests.swift */,
 				D7C0FC28251543B7009BC51F /* CoreDataCellMockTests.swift */,
 				D7C0FC3C2515E14A009BC51F /* CollectionViewMockTests.swift */,
+				D7518E1F2522147600C72B1E /* TableViewMockTests.swift */,
 				D7C0FC412515E40F009BC51F /* JSONDecoderMockTests.swift */,
 				D7C0FC4B2515E866009BC51F /* RemoteConfigComplectionMockTests.swift */,
 				D7C0FC5D251676C5009BC51F /* DatabaseUpdaterMockTests.swift */,
@@ -868,6 +871,7 @@
 				D7C0FBBF2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift in Sources */,
 				D7C0FC38251545A0009BC51F /* RemoteConfigComplectionMock.swift in Sources */,
 				D7C0FBF02514E042009BC51F /* ProductsRemoteTests.swift in Sources */,
+				D7518E202522147600C72B1E /* TableViewMockTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
