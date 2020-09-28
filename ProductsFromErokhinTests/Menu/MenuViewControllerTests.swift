@@ -128,6 +128,9 @@ class MenuViewControllerTests: XCTestCase {
         
         controller.products.delegate?.tableView?(controller.products, willDisplay: TableViewCellMock(), forRowAt: IndexPath())
         
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
         XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
         XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
         
@@ -140,6 +143,9 @@ class MenuViewControllerTests: XCTestCase {
         XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
         
         controller.products.delegate?.tableView?(controller.products, willDisplay: TableViewCellMock(), forRowAt: IndexPath())
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
         
         XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
         XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
@@ -158,6 +164,9 @@ class MenuViewControllerTests: XCTestCase {
         
         controller.products.delegate?.tableView?(controller.products, willDisplay: TableViewCellMock(), forRowAt: IndexPath())
         
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
         XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
         XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
         
@@ -173,8 +182,32 @@ class MenuViewControllerTests: XCTestCase {
         
         controller.products.delegate?.tableView?(controller.products, willDisplay: TableViewCellMock(), forRowAt: IndexPath())
         
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
         XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
         XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
+        
+        // Select group. productIndexPath found, group found, group not selected, groupIndexPath found
+        (controller.products as! TableViewMock).indexPathsForVisibleRowsResult = [IndexPath()]
+        product.group = Group(context: context)
+        product.group?.isSelected = false
+        productsDataSource.objectResult = product
+        groupDataSource.objectResult = product.group
+        groupDataSource.indexPathResult = IndexPath()
+        
+        viewModel.groupsResult.accept(Event.next(groupDataSource))
+        viewModel.productsResult.accept(Event.next(productsDataSource))
+        XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
+        XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
+        
+        controller.products.delegate?.tableView?(controller.products, willDisplay: TableViewCellMock(), forRowAt: IndexPath())
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertTrue((controller.groups as! CollectionViewMock).isScroll)
+        XCTAssertTrue((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
         
         // Not select when product scroll by select group (tabSelected == true)
         
