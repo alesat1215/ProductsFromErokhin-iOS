@@ -1,5 +1,5 @@
 //
-//  CoreDataCellMockTests.swift
+//  CollectionViewCellMockTests.swift
 //  ProductsFromErokhinTests
 //
 //  Created by Alexander Satunin on 18.09.2020.
