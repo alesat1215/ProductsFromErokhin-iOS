@@ -41,4 +41,9 @@ class TableViewMock: UITableView {
     override func cellForRow(at indexPath: IndexPath) -> UITableViewCell? {
         cell
     }
+    
+    var isScroll = false
+    override func scrollToRow(at indexPath: IndexPath, at scrollPosition: UITableView.ScrollPosition, animated: Bool) {
+        isScroll.toggle()
+    }
 }

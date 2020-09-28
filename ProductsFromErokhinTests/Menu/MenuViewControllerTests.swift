@@ -70,7 +70,11 @@ class MenuViewControllerTests: XCTestCase {
     
     func testSelectGroup() {
         let groupDataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
+//        groupDataSource.objectResult = Group(context: context)
+        let productsDataSource = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
+//        productsDataSource.indexPathResult = IndexPath()
         viewModel.groupsResult.accept(Event.next(groupDataSource))
+        viewModel.productsResult.accept(Event.next(productsDataSource))
         XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
         XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
         
@@ -78,6 +82,7 @@ class MenuViewControllerTests: XCTestCase {
         
         XCTAssertTrue((controller.groups as! CollectionViewMock).isScroll)
         XCTAssertTrue((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
+        XCTAssertTrue((controller.products as! TableViewMock).isScroll)
     }
 
     func testExample() throws {
