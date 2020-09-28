@@ -70,13 +70,44 @@ class MenuViewControllerTests: XCTestCase {
     
     func testSelectGroup() {
         let groupDataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
-//        groupDataSource.objectResult = Group(context: context)
         let productsDataSource = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
-//        productsDataSource.indexPathResult = IndexPath()
+        
+        // Not found Group at IndexPath & product IndexPath for Group
         viewModel.groupsResult.accept(Event.next(groupDataSource))
         viewModel.productsResult.accept(Event.next(productsDataSource))
         XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
         XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
+        XCTAssertFalse((controller.products as! TableViewMock).isScroll)
+        
+        controller.groups.delegate?.collectionView?(controller.groups, didSelectItemAt: IndexPath())
+        
+        XCTAssertTrue((controller.groups as! CollectionViewMock).isScroll)
+        XCTAssertTrue((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
+        XCTAssertFalse((controller.products as! TableViewMock).isScroll)
+        
+        // Found Group at IndexPath but not found product IndexPath for Group
+        (controller.groups as! CollectionViewMock).isScroll = false
+        (controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected = false
+        (controller.products as! TableViewMock).isScroll = false
+        
+        groupDataSource.objectResult = Group(context: context)
+        
+        viewModel.groupsResult.accept(Event.next(groupDataSource))
+        viewModel.productsResult.accept(Event.next(productsDataSource))
+        
+        controller.groups.delegate?.collectionView?(controller.groups, didSelectItemAt: IndexPath())
+        
+        XCTAssertTrue((controller.groups as! CollectionViewMock).isScroll)
+        XCTAssertTrue((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
+        XCTAssertFalse((controller.products as! TableViewMock).isScroll)
+        
+        // Found Group at IndexPath & product IndexPath for Group
+        (controller.groups as! CollectionViewMock).isScroll = false
+        (controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected = false
+        (controller.products as! TableViewMock).isScroll = false
+        
+        groupDataSource.objectResult = Group(context: context)
+        productsDataSource.indexPathResult = IndexPath()
         
         controller.groups.delegate?.collectionView?(controller.groups, didSelectItemAt: IndexPath())
         
