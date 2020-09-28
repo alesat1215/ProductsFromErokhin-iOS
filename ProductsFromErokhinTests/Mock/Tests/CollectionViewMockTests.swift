@@ -28,6 +28,10 @@ class CollectionViewMockTests: XCTestCase {
         XCTAssertTrue(collectionView.isDelete)
         // Items
         XCTAssertEqual(collectionView.cellForItem(at: .init()), collectionView.cell)
+        // Scroll
+        XCTAssertFalse(collectionView.isScroll)
+        collectionView.scrollToItem(at: IndexPath(), at: .bottom, animated: true)
+        XCTAssertTrue(collectionView.isScroll)
     }
 
 }
