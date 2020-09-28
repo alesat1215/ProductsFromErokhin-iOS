@@ -30,6 +30,11 @@ class CoreDataSourceCollectionViewMock<T: NSFetchRequestResult>: CoreDataSourceC
     override func object(at indexPath: IndexPath) -> T? {
         objectResult
     }
+    
+    var indexPathResult: IndexPath?
+    override func indexPath(for object: T) -> IndexPath? {
+        indexPathResult
+    }
 }
 
 class CoreDataSourceTableViewMock<T: NSFetchRequestResult>: CoreDataSourceTableView<T> {

@@ -115,6 +115,25 @@ class MenuViewControllerTests: XCTestCase {
         XCTAssertTrue((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
         XCTAssertTrue((controller.products as! TableViewMock).isScroll)
     }
+    
+    func testSelectGroupWhenScrollProducts() {
+        let groupDataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
+        let productsDataSource = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
+        
+        // Not select group. productIndexPath, group, groupIndexPath not found
+        viewModel.groupsResult.accept(Event.next(groupDataSource))
+        viewModel.productsResult.accept(Event.next(productsDataSource))
+        XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
+        XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
+        
+        controller.products.delegate?.tableView?(controller.products, willDisplay: TableViewCellMock(), forRowAt: IndexPath())
+        
+        XCTAssertFalse((controller.groups as! CollectionViewMock).isScroll)
+        XCTAssertFalse((controller.groups.dataSource as! CoreDataSourceCollectionViewMock<Group>).isSelected)
+        
+        // Not select when product scroll by select group (tabSelected == true)
+        
+    }
 
     func testExample() throws {
         // This is an example of a functional test case.

@@ -118,18 +118,20 @@ class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollect
         }
         return result
     }
-
-}
-
-extension CoreDataSourceCollectionView {
     
     /** - Returns: IndexPath for object */
     func indexPath(for object: T) -> IndexPath? {
         frc.indexPath(forObject: object)
     }
-    
-    
+
 }
+
+//extension CoreDataSourceCollectionView {
+//    
+//    
+//    
+//    
+//}
 
 //extension CoreDataSourceCollectionView where T == Group {
 //    /** Select group for indexPath after unselect previous */
