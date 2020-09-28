@@ -503,12 +503,12 @@
 				D7C0FC4B2515E866009BC51F /* RemoteConfigComplectionMockTests.swift */,
 				D7C0FC5D251676C5009BC51F /* DatabaseUpdaterMockTests.swift */,
 				D795795B2517BE72007AD022 /* AppRepositoryMockTests.swift */,
-				D79579602517C06C007AD022 /* StartViewModelMockTests.swift */,
 				D7518E1525220EEF00C72B1E /* CoreDataSourceCollectionViewMockTests.swift */,
 				D7518E1A2522121400C72B1E /* CoreDataSourceTableViewMockTests.swift */,
+				D79579602517C06C007AD022 /* StartViewModelMockTests.swift */,
+				D7518E00252079D600C72B1E /* MenuViewModelMockTests.swift */,
 				D7B460E72518F73F001ED878 /* AnonymousAuthMockTests.swift */,
 				D7B460EC2518F83A001ED878 /* LoadViewModelMockTests.swift */,
-				D7518E00252079D600C72B1E /* MenuViewModelMockTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
