@@ -1,5 +1,5 @@
 //
-//  CoreDataSourceMock.swift
+//  CoreDataSourceCollectionViewMock.swift
 //  ProductsFromErokhinTests
 //
 //  Created by Alexander Satunin on 20.09.2020.
@@ -37,21 +37,4 @@ class CoreDataSourceCollectionViewMock<T: NSFetchRequestResult>: CoreDataSourceC
     }
 }
 
-class CoreDataSourceTableViewMock<T: NSFetchRequestResult>: CoreDataSourceTableView<T> {
-    
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    init(fetchRequest: NSFetchRequest<T>) {
-        super.init(observer: AnyObserver(eventHandler: {_ in }), cellId: "", fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-    }
-    
-    var indexPathResult: IndexPath?
-    override func productPositionForGroup(group: Group) -> IndexPath? where T == Product {
-        indexPathResult
-    }
-    
-    var objectResult: T?
-    override func object(at indexPath: IndexPath) -> T? {
-        objectResult
-    }
-}
+
