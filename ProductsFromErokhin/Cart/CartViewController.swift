@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class CartViewController: UIViewController {
     
@@ -15,11 +16,24 @@ class CartViewController: UIViewController {
     private let productsSegueId = "productsSegueId"
     
     var viewModel: CartViewModel?
+    
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        bindProducts()
+    }
+    
+    private func bindProducts() {
+        // Set dataSource for products
+        viewModel?.products()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .observeOn(MainScheduler.instance)
+            .flatMapError { print("Products error: \($0.localizedDescription)") }
+            .subscribe(onNext: { [weak self] in
+                $0.bind(tableView: self?.products)
+            }).disposed(by: disposeBag)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -17,6 +17,6 @@ class CartViewModel {
     }
     
     func products() -> Observable<Event<CoreDataSourceTableView<Product>>> {
-        repository.products(predicate: NSPredicate(format: "inCart.count != %@", 0), cellId: "product")
+        repository.products(predicate: NSPredicate(format: "inCart.@count != 0"), cellId: "product")
     }
 }
