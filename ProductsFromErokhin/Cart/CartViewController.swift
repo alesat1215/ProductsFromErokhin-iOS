@@ -14,7 +14,7 @@ class CartViewController: UIViewController {
     
     private let productsSegueId = "productsSegueId"
     
-    var viewModel: MenuViewModel?
+    var viewModel: CartViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -47,6 +47,15 @@ extension SwinjectStoryboard {
                 repository: r.resolve(AppRepository.self)
             )
         }
+        // MARK: - Cart
+        defaultContainer.storyboardInitCompleted(CartViewController.self) { r, c in
+            c.viewModel = r.resolve(CartViewModel.self)
+        }
+        defaultContainer.register(CartViewModel.self) { r in
+            CartViewModel(
+                repository: r.resolve(AppRepository.self)
+            )
+        }
         // MARK: - Repository
         defaultContainer.register(AppRepository.self) { r in
             AppRepository(

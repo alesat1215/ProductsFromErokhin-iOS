@@ -250,18 +250,80 @@
         <!--Cart-->
         <scene sceneID="2RX-RM-sGQ">
             <objects>
-                <viewController id="bdq-y3-7Vi" sceneMemberID="viewController">
+                <viewController id="bdq-y3-7Vi" customClass="CartViewController" customModule="ProductsFromErokhin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Opy-wM-cbN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1x-ff-d6h">
+                                <rect key="frame" x="0.0" y="88" width="414" height="620.66666666666663"/>
+                                <connections>
+                                    <segue destination="w1y-CW-JGL" kind="embed" identifier="productsSegueId" id="Ao1-Hk-ydd"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRI-D4-hg7">
+                                <rect key="frame" x="8" y="771" width="398" height="34"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Send"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fa0-Ea-d0D" userLabel="Total container">
+                                <rect key="frame" x="8" y="739" width="398" height="24"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkj-wM-jDJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="51.333333333333336" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iky-gb-SnE">
+                                        <rect key="frame" x="59.333333333333343" y="0.0" width="338.66666666666663" height="24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vW4-pR-eA2" userLabel="Order Warning Container">
+                                <rect key="frame" x="8" y="716.66666666666663" width="398" height="14.333333333333371"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwN-ML-4lZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="14.333333333333334"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="BLP-oZ-Rlo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BLP-oZ-Rlo" firstAttribute="bottom" secondItem="sRI-D4-hg7" secondAttribute="bottom" constant="8" id="1cm-BY-B3O"/>
+                            <constraint firstItem="BLP-oZ-Rlo" firstAttribute="trailing" secondItem="sRI-D4-hg7" secondAttribute="trailing" constant="8" id="5e4-h9-rBL"/>
+                            <constraint firstItem="BLP-oZ-Rlo" firstAttribute="trailing" secondItem="E1x-ff-d6h" secondAttribute="trailing" id="F3c-Gf-cRD"/>
+                            <constraint firstItem="BLP-oZ-Rlo" firstAttribute="trailing" secondItem="Fa0-Ea-d0D" secondAttribute="trailing" constant="8" id="FWm-DL-7xA"/>
+                            <constraint firstItem="sRI-D4-hg7" firstAttribute="top" secondItem="Fa0-Ea-d0D" secondAttribute="bottom" constant="8" symbolic="YES" id="LvA-Yt-ZAr"/>
+                            <constraint firstItem="Fa0-Ea-d0D" firstAttribute="top" secondItem="vW4-pR-eA2" secondAttribute="bottom" constant="8" id="SWQ-5F-m92"/>
+                            <constraint firstItem="vW4-pR-eA2" firstAttribute="leading" secondItem="BLP-oZ-Rlo" secondAttribute="leading" constant="8" id="WvT-9C-jvs"/>
+                            <constraint firstItem="E1x-ff-d6h" firstAttribute="top" secondItem="BLP-oZ-Rlo" secondAttribute="top" id="XKw-GR-Y0E"/>
+                            <constraint firstItem="E1x-ff-d6h" firstAttribute="leading" secondItem="BLP-oZ-Rlo" secondAttribute="leading" id="eXs-7h-bf9"/>
+                            <constraint firstItem="vW4-pR-eA2" firstAttribute="top" secondItem="E1x-ff-d6h" secondAttribute="bottom" constant="8" id="fW1-UT-Ms8"/>
+                            <constraint firstItem="sRI-D4-hg7" firstAttribute="leading" secondItem="BLP-oZ-Rlo" secondAttribute="leading" constant="8" id="ptH-Bf-23F"/>
+                            <constraint firstItem="Fa0-Ea-d0D" firstAttribute="leading" secondItem="BLP-oZ-Rlo" secondAttribute="leading" constant="8" id="x5j-a7-Xmm"/>
+                            <constraint firstItem="BLP-oZ-Rlo" firstAttribute="trailing" secondItem="vW4-pR-eA2" secondAttribute="trailing" constant="8" id="xeu-6e-pg6"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" tag="2" title="Cart" image="cart.fill" catalog="system" id="lsJ-5R-aWA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cg-uK-cUW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="752" y="1001"/>
+            <point key="canvasLocation" x="750.72463768115949" y="1000.4464285714286"/>
         </scene>
         <!--Load View Controller-->
         <scene sceneID="VAL-7R-h3q">
@@ -389,7 +451,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8fn-iQ-bu2">
                                                             <rect key="frame" x="154" y="103.33333333333333" width="85.666666666666686" height="31.333333333333329"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-SW-1Bf">
+                                                                <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-SW-1Bf">
                                                                     <rect key="frame" x="0.0" y="0.0" width="32" height="31.333333333333332"/>
                                                                     <state key="normal" image="minus.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
@@ -398,13 +460,13 @@
                                                                         <action selector="del:" destination="0BG-3j-ti1" eventType="touchUpInside" id="XoM-UO-1m6"/>
                                                                     </connections>
                                                                 </button>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8F-k9-pR8">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8F-k9-pR8">
                                                                     <rect key="frame" x="37" y="0.0" width="11.666666666666664" height="31.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djJ-na-YXs">
+                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djJ-na-YXs">
                                                                     <rect key="frame" x="53.666666666666657" y="0.0" width="32" height="31.333333333333332"/>
                                                                     <state key="normal" image="plus.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
@@ -502,7 +564,7 @@
             <objects>
                 <viewController id="w1y-CW-JGL" userLabel="Products V" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ORo-fY-Exf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="676"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="620.66666666666663"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -664,10 +726,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqM-DE-pSw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1489.8550724637682" y="359.59821428571428"/>
+            <point key="canvasLocation" x="1607" y="701"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Ao1-Hk-ydd"/>
         <segue reference="33c-xM-IQG"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -682,6 +745,9 @@
         </systemColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
