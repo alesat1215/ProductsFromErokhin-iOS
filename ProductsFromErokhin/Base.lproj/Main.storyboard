@@ -247,6 +247,22 @@
             </objects>
             <point key="canvasLocation" x="749.27536231884062" y="359.59821428571428"/>
         </scene>
+        <!--Cart-->
+        <scene sceneID="2RX-RM-sGQ">
+            <objects>
+                <viewController id="bdq-y3-7Vi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Opy-wM-cbN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="BLP-oZ-Rlo"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" tag="2" title="Cart" image="cart.fill" catalog="system" id="lsJ-5R-aWA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Cg-uK-cUW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="752" y="1001"/>
+        </scene>
         <!--Load View Controller-->
         <scene sceneID="VAL-7R-h3q">
             <objects>
@@ -277,16 +293,26 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="HFl-DC-Px1"/>
+                <tabBarController id="49e-Tb-3d3" customClass="TabBarController" customModule="ProductsFromErokhin" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="HFl-DC-Px1">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="WJY-pc-4Gs">
+                            <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zdk-tR-XN2">
+                                <rect key="frame" x="375" y="11" width="19" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="trash.fill" catalog="system"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
+                        <outlet property="clearCart" destination="Zdk-tR-XN2" id="oGp-PP-wwS"/>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="bdq-y3-7Vi" kind="relationship" relationship="viewControllers" id="aIL-gJ-M0E"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -645,10 +671,12 @@
         <segue reference="33c-xM-IQG"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="first" width="30" height="30"/>
         <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="121"/>
         <image name="second" width="30" height="30"/>
+        <image name="trash.fill" catalog="system" width="121" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
