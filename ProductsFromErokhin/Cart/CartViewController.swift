@@ -12,6 +12,8 @@ import RxSwift
 class CartViewController: UIViewController {
     
     weak var products: UITableView!
+    @IBOutlet weak var orderWarning: UILabel!
+    @IBOutlet weak var resultSum: UILabel!
     
     private let productsSegueId = "productsSegueId"
     
