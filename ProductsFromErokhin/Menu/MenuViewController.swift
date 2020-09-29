@@ -15,6 +15,8 @@ class MenuViewController: UIViewController {
     @IBOutlet weak var groups: UICollectionView!
     weak var products: UITableView!
     
+    private let productsSegueId = "productsSegueId"
+    
     var viewModel: MenuViewModel?
     /** For check scroll by group select */
     private var tabSelected = false
@@ -88,7 +90,7 @@ class MenuViewController: UIViewController {
 
     // Set otlets for products
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "productsSegueId" {
+        if segue.identifier == productsSegueId {
             products = segue.destination.view as? UITableView
         }
     }

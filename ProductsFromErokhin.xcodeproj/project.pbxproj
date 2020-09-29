@@ -95,6 +95,8 @@
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
+		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
+		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -213,6 +215,8 @@
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -351,6 +355,7 @@
 				D7B4B5312512424E00BA07CB /* Load */,
 				D795212924FFD0F50094BAFE /* Start */,
 				D7B460F725191454001ED878 /* Menu */,
+				D7E293932523878D00EA2845 /* Cart */,
 				D7877B612501180F00244B81 /* Util */,
 				D7877B5C25010F4900244B81 /* Data */,
 				D73C7DBF25010953007062D9 /* DI */,
@@ -523,6 +528,15 @@
 				D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */,
 			);
 			path = Load;
+			sourceTree = "<group>";
+		};
+		D7E293932523878D00EA2845 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				D7E293942523882E00EA2845 /* CartViewController.swift */,
+				D7E2939C2523886300EA2845 /* CartViewModel.swift */,
+			);
+			path = Cart;
 			sourceTree = "<group>";
 		};
 		F4D9130A77E7626254C8A195 /* Frameworks */ = {
@@ -800,6 +814,7 @@
 				D73C7DBE2501060F007062D9 /* StartViewModel.swift in Sources */,
 				D7877B782504B05D00244B81 /* Ordered.swift in Sources */,
 				D73C7DC12501097E007062D9 /* SwinjectStoryboard.swift in Sources */,
+				D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */,
 				D7B4B5352512429900BA07CB /* LoadViewModel.swift in Sources */,
 				D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */,
 				D7B4B52A250E542100BA07CB /* CoreDataSourceCollectionView.swift in Sources */,
@@ -819,6 +834,7 @@
 				D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */,
 				D7B4614725193A1F001ED878 /* MenuViewModel.swift in Sources */,
 				D795796E2517C900007AD022 /* FirebaseStorageReference.swift in Sources */,
+				D7E293952523882E00EA2845 /* CartViewController.swift in Sources */,
 				D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */,
 				D7B4B52E2510C5BD00BA07CB /* BindableCells.swift in Sources */,
 				D71A78CA2519F8E1001B9234 /* CoreDataSourceTableView.swift in Sources */,
