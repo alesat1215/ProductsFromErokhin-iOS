@@ -10,6 +10,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="5EA-Lf-e00">
+            <objects>
+                <navigationController id="6zn-Lp-oPf" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="7CP-Yd-VrL"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oM2-s8-ua4">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="49e-Tb-3d3" kind="relationship" relationship="rootViewController" id="of9-Df-BXJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Md-FI-JTZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-683" y="1"/>
+        </scene>
         <!--Start-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
@@ -19,10 +36,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WNf-At-51y">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cSv-rU-gqT">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ttu-aQ-jH5">
                                                 <rect key="frame" x="16" y="8" width="382" height="29"/>
@@ -80,7 +97,7 @@
                                                 </connections>
                                             </containerView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products title 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUd-Vn-rCM">
-                                                <rect key="frame" x="16" y="447.66666666666669" width="382" height="29"/>
+                                                <rect key="frame" x="16" y="447.66666666666663" width="382" height="29"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -163,7 +180,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MHg-uA-Dhf">
-                                <rect key="frame" x="0.0" y="44" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="49"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="F5z-ub-ZBS"/>
@@ -203,7 +220,7 @@
                                 </cells>
                             </collectionView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7x7-IU-lEF">
-                                <rect key="frame" x="0.0" y="93" width="414" height="720"/>
+                                <rect key="frame" x="0.0" y="137" width="414" height="676"/>
                                 <connections>
                                     <segue destination="w1y-CW-JGL" kind="embed" identifier="productsSegueId" id="qAC-th-L4l"/>
                                 </connections>
@@ -221,7 +238,7 @@
                             <constraint firstItem="XGt-iE-nDM" firstAttribute="trailing" secondItem="7x7-IU-lEF" secondAttribute="trailing" id="tel-Iv-QPp"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Menu" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Menu" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="groups" destination="MHg-uA-Dhf" id="SuG-q5-xXE"/>
                     </connections>
@@ -250,12 +267,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="49e-Tb-3d3" kind="presentation" identifier="toStart" modalPresentationStyle="fullScreen" id="oTT-P9-2gv"/>
+                        <segue destination="6zn-Lp-oPf" kind="presentation" identifier="toStart" modalPresentationStyle="fullScreen" id="Upv-8P-4Xc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCq-9b-usB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-894" y="-3"/>
+            <point key="canvasLocation" x="-1381" y="1"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -459,7 +476,7 @@
             <objects>
                 <viewController id="w1y-CW-JGL" userLabel="Products V" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ORo-fY-Exf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="720"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="676"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
