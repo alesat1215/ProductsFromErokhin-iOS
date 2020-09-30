@@ -70,8 +70,15 @@ class AppRepository {
         ])
     }
     /**
+    Get products from database
+    - returns: Observable array with products
+    */
+    func products(predicate: NSPredicate? = nil) -> Observable<[Product]> {
+        context.rx.entities(fetchRequest: Product.fetchRequestWithSort(predicate: predicate))
+    }
+    /**
     Get orderWarning from database & update it if needed
-    - returns: Observable dataSource with products for table view
+    - returns: Observable array with orderWarning
     */
     func orderWarning() -> Observable<Event<[OrderWarning]>> {
         Observable.merge([

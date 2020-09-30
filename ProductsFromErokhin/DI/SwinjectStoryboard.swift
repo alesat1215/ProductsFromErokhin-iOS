@@ -29,6 +29,15 @@ extension SwinjectStoryboard {
                 anonymousAuth: r.resolve(AnonymousAuth.self)
             )
         }
+        // MARK: - TabBar
+        defaultContainer.storyboardInitCompleted(TabBarController.self) { r, c in
+            c.viewModel = r.resolve(TabBarViewModel.self)
+        }
+        defaultContainer.register(TabBarViewModel.self) { r in
+            TabBarViewModel(
+                repository: r.resolve(AppRepository.self)
+            )
+        }
         // MARK: - Start
         defaultContainer.storyboardInitCompleted(StartViewController.self) { r, c in
             c.viewModel = r.resolve(StartViewModel.self)

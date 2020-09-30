@@ -99,6 +99,7 @@
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
 		D7E293A22524843400EA2845 /* OrderWarningRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293A12524843400EA2845 /* OrderWarningRemote.swift */; };
 		D7E293A7252485AB00EA2845 /* OrderWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293A6252485AB00EA2845 /* OrderWarning.swift */; };
+		D7E293AD2524A12B00EA2845 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293AC2524A12B00EA2845 /* TabBarViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -221,6 +222,7 @@
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		D7E293A12524843400EA2845 /* OrderWarningRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderWarningRemote.swift; sourceTree = "<group>"; };
 		D7E293A6252485AB00EA2845 /* OrderWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderWarning.swift; sourceTree = "<group>"; };
+		D7E293AC2524A12B00EA2845 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -307,7 +309,6 @@
 				D7B4613E25193472001ED878 /* ProductTableViewCell.swift */,
 				D7B4B52F2512262100BA07CB /* AnonymousAuth.swift */,
 				D795796D2517C900007AD022 /* FirebaseStorageReference.swift */,
-				D7E2938E2523855100EA2845 /* TabBarController.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -358,6 +359,7 @@
 		D79520F324FFBE7E0094BAFE /* ProductsFromErokhin */ = {
 			isa = PBXGroup;
 			children = (
+				D7E293AB2524A10500EA2845 /* TabBar */,
 				D7B4B5312512424E00BA07CB /* Load */,
 				D795212924FFD0F50094BAFE /* Start */,
 				D7B460F725191454001ED878 /* Menu */,
@@ -543,6 +545,15 @@
 				D7E2939C2523886300EA2845 /* CartViewModel.swift */,
 			);
 			path = Cart;
+			sourceTree = "<group>";
+		};
+		D7E293AB2524A10500EA2845 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				D7E2938E2523855100EA2845 /* TabBarController.swift */,
+				D7E293AC2524A12B00EA2845 /* TabBarViewModel.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		F4D9130A77E7626254C8A195 /* Frameworks */ = {
@@ -845,6 +856,7 @@
 				D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */,
 				D7B4B52E2510C5BD00BA07CB /* BindableCells.swift in Sources */,
 				D71A78CA2519F8E1001B9234 /* CoreDataSourceTableView.swift in Sources */,
+				D7E293AD2524A12B00EA2845 /* TabBarViewModel.swift in Sources */,
 				D7E293A7252485AB00EA2845 /* OrderWarning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
