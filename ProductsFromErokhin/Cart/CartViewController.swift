@@ -17,7 +17,7 @@ class CartViewController: UIViewController {
     
     private let productsSegueId = "productsSegueId"
     
-    var viewModel: CartViewModel?
+    var viewModel: CartViewModel? // di
     
     private let disposeBag = DisposeBag()
 
