@@ -6,6 +6,11 @@
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" inverseName="group" inverseEntity="Product"/>
     </entity>
+    <entity name="OrderWarning" representedClassName="OrderWarning" syncable="YES" codeGenerationType="class">
+        <attribute name="groups" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Product" representedClassName="Product" syncable="YES" codeGenerationType="class">
         <attribute name="consist" optional="YES" attributeType="String"/>
         <attribute name="img" optional="YES" attributeType="String"/>
@@ -34,5 +39,6 @@
         <element name="Product" positionX="-431.8671875" positionY="-9.4609375" width="128" height="178"/>
         <element name="ProductInCart" positionX="-140.65625" positionY="-18.96484375" width="128" height="73"/>
         <element name="Titles" positionX="-414" positionY="63" width="128" height="133"/>
+        <element name="OrderWarning" positionX="-414" positionY="63" width="128" height="88"/>
     </elements>
 </model>

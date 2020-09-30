@@ -26,6 +26,7 @@ class CartViewController: UIViewController {
 
         bindProducts()
         bindResult()
+        bindWarning()
     }
     
     private func bindProducts() {
@@ -40,10 +41,27 @@ class CartViewController: UIViewController {
     }
     
     private func bindResult() {
+        // Set sum for order
         viewModel?.totalInCart()
             .observeOn(MainScheduler.instance)
             .map { "\($0) P" }
             .bind(to: resultSum.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindWarning() {
+        // Setup visible of warning
+        viewModel?.withWarning()
+            .observeOn(MainScheduler.instance)
+            .bind(to: orderWarning.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        // Set text of warning
+        viewModel?.warning()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .observeOn(MainScheduler.instance)
+            .flatMapError { print("Products error: \($0.localizedDescription)") }
+            .bind(to: orderWarning.rx.text)
             .disposed(by: disposeBag)
     }
     

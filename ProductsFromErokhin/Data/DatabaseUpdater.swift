@@ -74,6 +74,7 @@ class DatabaseUpdater {
     private func update() throws {
         try updateProducts()
         try updateTitles()
+        try updateOrderWarning()
         // Save result
         if context.hasChanges {
             try context.save()
@@ -102,6 +103,15 @@ class DatabaseUpdater {
         context.insert(titles.managedObject(context: context))
     }
     
+    private func updateOrderWarning() throws {
+        // Get orderWarning from remote data
+        let orderWarning: OrderWarningRemote = try remoteData(key: .orderWarning)
+        // Delete all orderWarnings from database
+        try OrderWarning.clearEntity(context: context)
+        // Create orderWarning entity from remote
+        context.insert(orderWarning.managedObject(context: context))
+    }
+    
     /** Get data from remote config & decode it from JSON */
     private func remoteData<T: Codable>(key: RemoteDataKeys) throws -> T {
         try decoder.decode(T.self, from: remoteConfig[key.rawValue].dataValue)
@@ -112,7 +122,7 @@ class DatabaseUpdater {
 // MARK: - Remote config
 /** Keys for remote config parameters */
 fileprivate enum RemoteDataKeys: String {
-    case products, titles
+    case products, titles, orderWarning = "order_warning"
 }
 
 /** Completion handler for fetchAndActivate with observable result */

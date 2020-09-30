@@ -69,5 +69,15 @@ class AppRepository {
             updater.sync()
         ])
     }
+    /**
+    Get orderWarning from database & update it if needed
+    - returns: Observable dataSource with products for table view
+    */
+    func orderWarning() -> Observable<Event<[OrderWarning]>> {
+        Observable.merge([
+            context.rx.entities(fetchRequest: OrderWarning.fetchRequestWithSort()).materialize(),
+            updater.sync()
+        ])
+    }
     
 }

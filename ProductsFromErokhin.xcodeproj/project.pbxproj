@@ -97,6 +97,8 @@
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
+		D7E293A22524843400EA2845 /* OrderWarningRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293A12524843400EA2845 /* OrderWarningRemote.swift */; };
+		D7E293A7252485AB00EA2845 /* OrderWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293A6252485AB00EA2845 /* OrderWarning.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -217,6 +219,8 @@
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		D7E293A12524843400EA2845 /* OrderWarningRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderWarningRemote.swift; sourceTree = "<group>"; };
+		D7E293A6252485AB00EA2845 /* OrderWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderWarning.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -313,6 +317,7 @@
 			children = (
 				D7877B7F250809F300244B81 /* Products.swift */,
 				D7B4B521250A7AF700BA07CB /* Titles.swift */,
+				D7E293A6252485AB00EA2845 /* OrderWarning.swift */,
 				D7877B772504B05D00244B81 /* Ordered.swift */,
 			);
 			path = Local;
@@ -323,6 +328,7 @@
 			children = (
 				D7877B5D25010F7100244B81 /* ProductsRemote.swift */,
 				D7B4B51F250A774100BA07CB /* TitlesRemote.swift */,
+				D7E293A12524843400EA2845 /* OrderWarningRemote.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -816,6 +822,7 @@
 				D73C7DC12501097E007062D9 /* SwinjectStoryboard.swift in Sources */,
 				D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */,
 				D7B4B5352512429900BA07CB /* LoadViewModel.swift in Sources */,
+				D7E293A22524843400EA2845 /* OrderWarningRemote.swift in Sources */,
 				D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */,
 				D7B4B52A250E542100BA07CB /* CoreDataSourceCollectionView.swift in Sources */,
 				D795210124FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld in Sources */,
@@ -838,6 +845,7 @@
 				D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */,
 				D7B4B52E2510C5BD00BA07CB /* BindableCells.swift in Sources */,
 				D71A78CA2519F8E1001B9234 /* CoreDataSourceTableView.swift in Sources */,
+				D7E293A7252485AB00EA2845 /* OrderWarning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,4 +37,20 @@ class CartViewModel {
     func totalInCart() -> Observable<Int> {
         _products.map { $0.map { $0.priceSumInCart() }.reduce(0, +) }
     }
+    
+    private lazy var orderWarning = repository.orderWarning()
+    
+    func warning() -> Observable<Event<String>> {
+        orderWarning.dematerialize().map { $0.first?.text ?? "" }.materialize()
+    }
+    
+    func withWarning() -> Observable<Bool> {
+        orderWarning.dematerialize()
+            .compactMap { $0.first?.groups }
+            .flatMap { [weak self] groups -> Observable<Bool> in
+                self?._products.map { products in
+                    products.first { groups.contains($0.group?.name ?? "") } == nil
+                } ?? Observable.empty()
+            }
+    }
 }
