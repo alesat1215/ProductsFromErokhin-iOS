@@ -50,6 +50,13 @@ extension Product {
     }
 }
 
+extension Product {
+    /** - Returns: Total sum of price for products in cart */
+    func priceSumInCart() -> Int {
+        Int(price) * (inCart?.count ?? 0)
+    }
+}
+
 extension ProductInCart {
     /** Request for all entitys sorded by name */
     static func fetchRequestWithSortByName() -> NSFetchRequest<ProductInCart> {

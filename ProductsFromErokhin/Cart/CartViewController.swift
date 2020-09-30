@@ -25,6 +25,7 @@ class CartViewController: UIViewController {
         super.viewDidLoad()
 
         bindProducts()
+        bindResult()
     }
     
     private func bindProducts() {
@@ -36,6 +37,14 @@ class CartViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 $0.bind(tableView: self?.products)
             }).disposed(by: disposeBag)
+    }
+    
+    private func bindResult() {
+        viewModel?.totalInCart()
+            .observeOn(MainScheduler.instance)
+            .map { "\($0) P" }
+            .bind(to: resultSum.rx.text)
+            .disposed(by: disposeBag)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

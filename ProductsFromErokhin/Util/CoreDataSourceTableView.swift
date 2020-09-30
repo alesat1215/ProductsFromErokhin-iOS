@@ -18,6 +18,8 @@ class CoreDataSourceTableView<T: NSFetchRequestResult>: NSObject, UITableViewDat
     private let frc: NSFetchedResultsController<T>
     private let cellId: String
     private weak var tableView: UITableView?
+    /** Invoke when bind or data was changed */
+    var currentData: (([T]) -> ())?
     
     init(
         observer: Observer,
@@ -51,6 +53,7 @@ class CoreDataSourceTableView<T: NSFetchRequestResult>: NSObject, UITableViewDat
         self.tableView = tableView
         self.tableView?.dataSource = self
         self.tableView?.reloadData()
+        sendData()
     }
     
     // MARK: - UITableViewDataSource
@@ -100,6 +103,10 @@ class CoreDataSourceTableView<T: NSFetchRequestResult>: NSObject, UITableViewDat
         }
     }
     
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        sendData()
+    }
+    
     /** - Returns: IndexPath for first product with group */
     func productPositionForGroup(group: Group) -> IndexPath? where T == Product {
         if let product = frc.fetchedObjects?.first(where: { $0.group == group }) {
@@ -119,6 +126,13 @@ class CoreDataSourceTableView<T: NSFetchRequestResult>: NSObject, UITableViewDat
         return result
     }
     
+    /** Send current data to func */
+    private func sendData() {
+        frc.managedObjectContext.perform { [weak self] in
+            self?.currentData?(self?.frc.fetchedObjects ?? [])
+        }
+    }
+    
 }
 
 // MARK: - Rx
@@ -126,5 +140,6 @@ extension CoreDataSourceTableView: Disposable {
     func dispose() {
         frc.delegate = nil
         tableView?.dataSource = nil
+        currentData = nil
     }
 }

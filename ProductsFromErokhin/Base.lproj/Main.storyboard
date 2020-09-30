@@ -256,13 +256,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1x-ff-d6h">
-                                <rect key="frame" x="0.0" y="96" width="414" height="612.66666666666663"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="604.66666666666663"/>
                                 <connections>
                                     <segue destination="w1y-CW-JGL" kind="embed" identifier="productsSegueId" id="Ao1-Hk-ydd"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRI-D4-hg7">
-                                <rect key="frame" x="8" y="771" width="398" height="34"/>
+                                <rect key="frame" x="8" y="763" width="398" height="34"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Send"/>
@@ -273,7 +273,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fa0-Ea-d0D" userLabel="Result container">
-                                <rect key="frame" x="8" y="739" width="398" height="24"/>
+                                <rect key="frame" x="8" y="731" width="398" height="24"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkj-wM-jDJ">
                                         <rect key="frame" x="0.0" y="0.0" width="52.333333333333336" height="24"/>
@@ -290,7 +290,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vW4-pR-eA2" userLabel="Order Warning Container">
-                                <rect key="frame" x="8" y="716.66666666666663" width="398" height="14.333333333333371"/>
+                                <rect key="frame" x="8" y="708.66666666666663" width="398" height="14.333333333333371"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NwN-ML-4lZ">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="14.333333333333334"/>
@@ -304,7 +304,7 @@
                         <viewLayoutGuide key="safeArea" id="BLP-oZ-Rlo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="BLP-oZ-Rlo" firstAttribute="bottom" secondItem="sRI-D4-hg7" secondAttribute="bottom" constant="8" id="1cm-BY-B3O"/>
+                            <constraint firstItem="BLP-oZ-Rlo" firstAttribute="bottom" secondItem="sRI-D4-hg7" secondAttribute="bottom" constant="16" id="1cm-BY-B3O"/>
                             <constraint firstItem="BLP-oZ-Rlo" firstAttribute="trailing" secondItem="sRI-D4-hg7" secondAttribute="trailing" constant="8" id="5e4-h9-rBL"/>
                             <constraint firstItem="BLP-oZ-Rlo" firstAttribute="trailing" secondItem="E1x-ff-d6h" secondAttribute="trailing" id="F3c-Gf-cRD"/>
                             <constraint firstItem="BLP-oZ-Rlo" firstAttribute="trailing" secondItem="Fa0-Ea-d0D" secondAttribute="trailing" constant="8" id="FWm-DL-7xA"/>
@@ -568,7 +568,7 @@
             <objects>
                 <viewController id="w1y-CW-JGL" userLabel="Products V" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ORo-fY-Exf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="612.66666666666663"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="604.66666666666663"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
@@ -635,7 +635,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fNG-f9-Ozo">
                                                     <rect key="frame" x="224.33333333333334" y="103.33333333333333" width="85.666666666666657" height="31.333333333333329"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agz-Gt-DiK">
+                                                        <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agz-Gt-DiK">
                                                             <rect key="frame" x="0.0" y="0.0" width="32" height="31.333333333333332"/>
                                                             <state key="normal" image="minus.circle.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
@@ -644,13 +644,13 @@
                                                                 <action selector="del:" destination="mLH-GH-LyA" eventType="touchUpInside" id="73h-oG-Yih"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcW-sC-1gw">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcW-sC-1gw">
                                                             <rect key="frame" x="36.999999999999972" y="0.0" width="11.666666666666664" height="31.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDP-VW-dMN">
+                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDP-VW-dMN">
                                                             <rect key="frame" x="53.666666666666657" y="0.0" width="32" height="31.333333333333332"/>
                                                             <state key="normal" image="plus.circle.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
