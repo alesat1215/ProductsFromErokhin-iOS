@@ -86,5 +86,17 @@ class AppRepository {
             updater.sync()
         ])
     }
+    /** Clear ProductInCart entity & save context */
+    func clearCart() -> Result<Void, Error> {
+        do {
+            try ProductInCart.clearEntity(context: context)
+            if context.hasChanges {
+                try context.save()
+            }
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
+    }
     
 }

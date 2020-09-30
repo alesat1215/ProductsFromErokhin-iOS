@@ -16,8 +16,15 @@ class TabBarViewModel {
         self.repository = repository
     }
     
-    func inCartCount() -> Observable<String> {
+    func inCartCount() -> Observable<String?> {
         repository.products(predicate: NSPredicate(format: "inCart.@count != 0"))
-            .map { String($0.count) }
+            .map {
+                if $0.isEmpty { return nil }
+                return String($0.count)
+            }
+    }
+    
+    func clearCart() -> Result<Void, Error> {
+        repository.clearCart()
     }
 }

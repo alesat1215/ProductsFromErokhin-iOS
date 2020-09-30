@@ -40,6 +40,17 @@ class TabBarController: UITabBarController {
             .disposed(by: disposeBag)
     }
     
+    private func bindClearCart() {
+        clearCart.rx.tap.subscribe(onNext: { [weak self] in
+            switch self?.viewModel?.clearCart() {
+            case .failure(let error):
+                print("Clear cart error: \(error.localizedDescription)")
+            default:
+                print("Clear cart success")
+            }
+        }).disposed(by: disposeBag)
+    }
+    
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         clearCart.isHidden = item.tag != cartTag
     }
