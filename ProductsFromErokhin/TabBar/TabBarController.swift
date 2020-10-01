@@ -22,26 +22,36 @@ class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        bindCartBadge()
-        bindClearCart()
+        bindCartCount()
+        setupClearCartAction()
     }
-    /** Find item for cart & bind in cart count to it */
-    func bindCartBadge() {
-        // Find item
+    /** Find item for cart & bind in cart count to it. Setup enable clear cart button */
+    func bindCartCount() {
+        // Find tab bar item with cart
         guard let cartItem = tabBar.items?.first(where: { $0.tag == cartTag }) else {
             print("Cart item not found")
             return
         }
-        // Bind value
-        viewModel?.inCartCount()
+        
+        let inCartCount = viewModel?.inCartCount()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .catchErrorJustReturn("")
+            .share()
+        
+        // Bind badge value
+        inCartCount?
             .bind(to: cartItem.rx.badgeValue)
+            .disposed(by: disposeBag)
+        
+        // Clear cart enable
+        inCartCount?.map { $0 != nil }
+            .bind(to: clearCart.rx.isEnabled)
             .disposed(by: disposeBag)
     }
     
-    private func bindClearCart() {
+    /** Setup action for clear cart button */
+    private func setupClearCartAction() {
         clearCart.rx.tap
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
@@ -62,16 +72,5 @@ class TabBarController: UITabBarController {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         clearCart.isHidden = item.tag != cartTag
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

@@ -71,12 +71,10 @@ extension ProductInCart {
         fetchRequest.includesPropertyValues = false
         // Get all objects & remove
         let fetchResult = try context.fetch(fetchRequest)
-        context.perform {
-            fetchResult.forEach {
-                context.delete($0)
-            }
-            print("\(fetchResult.count) objects should be removed")
+        fetchResult.forEach {
+            context.delete($0)
         }
+        print("\(fetchResult.count) objects should be removed")
     }
 }
 
