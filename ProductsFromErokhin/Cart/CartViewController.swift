@@ -46,6 +46,7 @@ class CartViewController: UIViewController {
     private func bindResult() {
         
         let totalInCart = viewModel?.totalInCart()
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .share()
         
