@@ -89,10 +89,10 @@ class CartViewController: UIViewController {
             }
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: {
-                print($0)
-            }, onError: {
-                print("Send error: \($0.localizedDescription)")
+            .flatMap { [weak self] in
+                self?.rx.activity(activityItems: [$0]) ?? Observable.empty()
+            }.subscribe(onNext: {
+                print("Complete: \($0.0), Error: \($0.1?.localizedDescription)")
             }).disposed(by: disposeBag)
     }
     
