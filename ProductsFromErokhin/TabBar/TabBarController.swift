@@ -23,6 +23,7 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
 
         bindCartBadge()
+        bindClearCart()
     }
     /** Find item for cart & bind in cart count to it */
     func bindCartBadge() {
@@ -41,14 +42,21 @@ class TabBarController: UITabBarController {
     }
     
     private func bindClearCart() {
-        clearCart.rx.tap.subscribe(onNext: { [weak self] in
-            switch self?.viewModel?.clearCart() {
-            case .failure(let error):
-                print("Clear cart error: \(error.localizedDescription)")
-            default:
-                print("Clear cart success")
-            }
-        }).disposed(by: disposeBag)
+        clearCart.rx.tap
+            .asDriver()
+            .throttle(RxTimeInterval.seconds(1))
+            .asObservable()
+            .observeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
+            .compactMap { [weak self] in return self?.viewModel?.clearCart() }
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: {
+                switch $0 {
+                case .failure(let error):
+                    print("Clear cart error: \(error.localizedDescription)")
+                default:
+                    print("Clear cart success")
+                }
+            }).disposed(by: disposeBag)
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
