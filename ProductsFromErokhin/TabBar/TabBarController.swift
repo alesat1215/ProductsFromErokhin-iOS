@@ -14,7 +14,7 @@ class TabBarController: UITabBarController {
 
     @IBOutlet weak var clearCart: UIButton!
     
-    var viewModel: TabBarViewModel? // di
+    var viewModel: CartViewModel? // di
     /** Tag for cart */
     private let cartTag = 2
     

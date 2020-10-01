@@ -323,6 +323,7 @@
                     <connections>
                         <outlet property="orderWarning" destination="NwN-ML-4lZ" id="95O-s7-3tS"/>
                         <outlet property="resultSum" destination="Iky-gb-SnE" id="nn8-WB-Lm2"/>
+                        <outlet property="send" destination="sRI-D4-hg7" id="SNo-3A-bKm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Cg-uK-cUW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

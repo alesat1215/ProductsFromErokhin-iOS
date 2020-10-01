@@ -15,6 +15,7 @@ class CartViewController: UIViewController {
     @IBOutlet weak var orderWarning: UILabel!
     @IBOutlet weak var resultSum: UILabel!
     
+    @IBOutlet weak var send: UIButton!
     private let productsSegueId = "productsSegueId"
     
     var viewModel: CartViewModel? // di
@@ -27,6 +28,7 @@ class CartViewController: UIViewController {
         bindProducts()
         bindResult()
         bindWarning()
+        setupSendAction()
     }
     
     private func bindProducts() {
@@ -63,6 +65,23 @@ class CartViewController: UIViewController {
             .flatMapError { print("Products error: \($0.localizedDescription)") }
             .bind(to: orderWarning.rx.text)
             .disposed(by: disposeBag)
+    }
+    
+    private func setupSendAction() {
+        send.rx.tap
+            .asDriver()
+            .throttle(RxTimeInterval.seconds(1))
+            .asObservable()
+            .flatMapLatest { [weak self] in
+                self?.viewModel?.message() ?? Observable.empty()
+            }
+            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: {
+                print($0)
+            }, onError: {
+                print("Send error: \($0.localizedDescription)")
+            }).disposed(by: disposeBag)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

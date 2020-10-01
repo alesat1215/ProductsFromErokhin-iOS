@@ -55,6 +55,10 @@ extension Product {
     func priceSumInCart() -> Int {
         Int(price) * (inCart?.count ?? 0)
     }
+    /** - Returns: text for order with: name  price * count = sum */
+    func textForOrder() -> String {
+        "\(name ?? "") \(price) * \(inCart?.count ?? 0) = \(priceSumInCart())"
+    }
 }
 
 extension ProductInCart {
