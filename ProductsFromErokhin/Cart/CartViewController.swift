@@ -14,8 +14,8 @@ class CartViewController: UIViewController {
     weak var products: UITableView!
     @IBOutlet weak var orderWarning: UILabel!
     @IBOutlet weak var resultSum: UILabel!
-    
     @IBOutlet weak var send: UIButton!
+    
     private let productsSegueId = "productsSegueId"
     
     var viewModel: CartViewModel? // di
@@ -42,12 +42,23 @@ class CartViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
     
+    /** Set sum for order & setup send enabling */
     private func bindResult() {
-        // Set sum for order
-        viewModel?.totalInCart()
+        
+        let totalInCart = viewModel?.totalInCart()
             .observeOn(MainScheduler.instance)
+            .share()
+        
+        // Set sum for order
+        totalInCart?
             .map { "\($0) P" }
             .bind(to: resultSum.rx.text)
+            .disposed(by: disposeBag)
+        
+        // Send enable
+        totalInCart?
+            .map { $0 > 0 }
+            .bind(to: send.rx.isEnabled)
             .disposed(by: disposeBag)
     }
     
