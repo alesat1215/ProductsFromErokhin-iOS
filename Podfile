@@ -11,6 +11,7 @@ target 'ProductsFromErokhin' do
   pod 'RxCocoa', '~> 5'
   pod 'RxRelay', '~> 5'
   pod "RxCoreData", "~> 1.0.0"
+  pod 'RxUIAlert'
   # Firebase
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'

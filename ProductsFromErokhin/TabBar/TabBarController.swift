@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxUIAlert
 
 class TabBarController: UITabBarController {
 
@@ -56,15 +57,31 @@ class TabBarController: UITabBarController {
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
+            .flatMapLatest { [weak self] _ in
+                // Setup alert for clear cart
+                self?.rx.alert(
+                    title: nil, message: "Are you sure you want to clear cart?",
+                    actions: [
+                        AlertAction(title: "CANCEL", style: .cancel),
+                        AlertAction(title: "OK", type: 1, style: .destructive)
+                    ]
+                ) ?? Observable.empty()
+            }
             .observeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
-            .compactMap { [weak self] in return self?.viewModel?.clearCart() }
+            .map { [weak self] action -> Result<Void, Error> in
+                // For OK action clear cart
+                if action.index == 1 {
+                    print("Clear cart success")
+                    return self?.viewModel?.clearCart() ?? Result.success(())
+                } else { return Result.success(()) }
+            }
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: {
                 switch $0 {
                 case .failure(let error):
                     print("Clear cart error: \(error.localizedDescription)")
                 default:
-                    print("Clear cart success")
+                    break
                 }
             }).disposed(by: disposeBag)
     }
