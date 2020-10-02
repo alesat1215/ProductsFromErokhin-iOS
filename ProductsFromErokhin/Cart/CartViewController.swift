@@ -80,19 +80,23 @@ class CartViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
+    /** Create order message, select messenger, send & clear cart after */
     private func setupSendAction() {
         send.rx.tap
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
+            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .flatMapLatest { [weak self] in
+                // Create message for order
                 self?.viewModel?.message() ?? Observable.empty()
             }
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMap { [weak self] in
+                // Show select messenger for send order
                 self?.rx.activity(activityItems: [$0]) ?? Observable.empty()
             }.flatMap { [weak self] result -> Observable<Bool> in
+                // For error result show alert with error
                 if let error = result.1 {
                     return self?.rx.alert(
                         title: nil,
@@ -100,17 +104,19 @@ class CartViewController: UIViewController {
                         actions: [AlertAction(title: "OK", style: .default)]
                     ).map { _ in false } ?? Observable.empty()
                 }
+                // For success result send it status
                 return Observable.just(result.0)
             }.subscribe(onNext: { [weak self] in
+                // For success send order clear cart
                 if $0 {
-                    _ = self?.viewModel?.clearCart()
-                    print("Clear cart after send")
+                    switch self?.viewModel?.clearCart() {
+                    case .failure(let error):
+                        print("Clear cart error: \(error)")
+                    default:
+                        print("Clear cart after send")
+                    }
                 }
             }).disposed(by: disposeBag)
-//            .subscribe(onNext: {
-////                print("Complete: \($0.0), Error: \($0.1?.localizedDescription)")
-//                print("Compete: \($0)")
-//            }).disposed(by: disposeBag)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
