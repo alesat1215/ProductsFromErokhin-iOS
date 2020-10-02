@@ -103,17 +103,30 @@ class CartViewController: UIViewController {
                 }
                 // For success result send it status
                 return Observable.just(result.0)
-            }.subscribe(onNext: { [weak self] in
-                // For success send order clear cart
-                if $0 {
+            }.flatMap { [weak self] result -> Observable<Void> in
+                if result {
                     switch self?.viewModel?.clearCart() {
                     case .failure(let error):
-                        print("Clear cart error: \(error)")
+                        return self?.rx.showMessage(error.localizedDescription, withEvent: false) ?? Observable.empty()
                     default:
-                        print("Clear cart after send")
+                        return Observable.just(())
                     }
                 }
+                return Observable.empty()
+            }.subscribe(onNext: {
+                print("Clear cart after send")
             }).disposed(by: disposeBag)
+//            .subscribe(onNext: { [weak self] in
+//                // For success send order clear cart
+//                if $0 {
+//                    switch self?.viewModel?.clearCart() {
+//                    case .failure(let error):
+//                        print("Clear cart error: \(error)")
+//                    default:
+//                        print("Clear cart after send")
+//                    }
+//                }
+//            }).disposed(by: disposeBag)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -34,11 +34,12 @@ extension Reactive where Base: UIViewController {
 }
 
 extension Reactive where Base: UIViewController {
-    /** Show alert with text & OK button */
-    public func showMessage(_ text: String) -> Observable<Void> {
-        alert(title: nil,
+    /** Show alert with text & OK button. For withEvent == false result is Observable.empty() */
+    public func showMessage(_ text: String, withEvent: Bool = true) -> Observable<Void> {
+        let _alert = alert(title: nil,
               message: text,
               actions: [AlertAction(title: "OK", style: .default)]
         ).map { _ in () }
+        return withEvent ? _alert : _alert.flatMap { Observable.empty() }
     }
 }
