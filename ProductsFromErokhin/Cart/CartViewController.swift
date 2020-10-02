@@ -98,11 +98,13 @@ class CartViewController: UIViewController {
             }.flatMap { [weak self] result -> Observable<Bool> in
                 // For error result show alert with error
                 if let error = result.1 {
-                    return self?.rx.alert(
-                        title: nil,
-                        message: error.localizedDescription,
-                        actions: [AlertAction(title: "OK", style: .default)]
-                    ).map { _ in false } ?? Observable.empty()
+//                    return self?.rx.alert(
+//                        title: nil,
+//                        message: error.localizedDescription,
+//                        actions: [AlertAction(title: "OK", style: .default)]
+//                    ).map { _ in false } ?? Observable.empty()
+                    return self?.rx.showMessage(error.localizedDescription)
+                        .map { false } ?? Observable.empty()
                 }
                 // For success result send it status
                 return Observable.just(result.0)
