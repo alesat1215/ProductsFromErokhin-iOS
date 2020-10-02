@@ -98,5 +98,15 @@ class AppRepository {
             return .failure(error)
         }
     }
+    /**
+    Get sellerContacts from database & update it if needed
+    - returns: Observable array with sellerContacts
+    */
+    func sellerContacts() -> Observable<Event<[SellerContacts]>> {
+        Observable.merge([
+            context.rx.entities(fetchRequest: SellerContacts.fetchRequestWithSort()).materialize(),
+            updater.sync()
+        ])
+    }
     
 }

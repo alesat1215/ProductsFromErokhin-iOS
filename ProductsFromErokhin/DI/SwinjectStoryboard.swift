@@ -12,6 +12,7 @@ import FirebaseRemoteConfig
 import FirebaseAuth
 import FirebaseStorage
 import CoreData
+import Contacts
 
 extension SwinjectStoryboard {
     public static func setup() {
@@ -62,9 +63,14 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(CartViewModel.self) { r in
             CartViewModel(
-                repository: r.resolve(AppRepository.self)
+                repository: r.resolve(AppRepository.self),
+                contactStore: r.resolve(CNContactStore.self)
             )
         }.inObjectScope(.weak)
+        defaultContainer.register(CNContactStore.self) { _ in
+            CNContactStore()
+        }.inObjectScope(.container)
+        
         // MARK: - Repository
         defaultContainer.register(AppRepository.self) { r in
             AppRepository(

@@ -26,6 +26,11 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="inCart" inverseEntity="Product"/>
     </entity>
+    <entity name="SellerContacts" representedClassName="SellerContacts" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Titles" representedClassName="Titles" syncable="YES" codeGenerationType="class">
         <attribute name="img" optional="YES" attributeType="String"/>
         <attribute name="imgTitle" optional="YES" attributeType="String"/>
@@ -36,9 +41,10 @@
     </entity>
     <elements>
         <element name="Group" positionX="-622.515625" positionY="34.71484375" width="128" height="103"/>
+        <element name="OrderWarning" positionX="-414" positionY="63" width="128" height="88"/>
         <element name="Product" positionX="-431.8671875" positionY="-9.4609375" width="128" height="178"/>
         <element name="ProductInCart" positionX="-140.65625" positionY="-18.96484375" width="128" height="73"/>
         <element name="Titles" positionX="-414" positionY="63" width="128" height="133"/>
-        <element name="OrderWarning" positionX="-414" positionY="63" width="128" height="88"/>
+        <element name="SellerContacts" positionX="-405" positionY="72" width="128" height="88"/>
     </elements>
 </model>

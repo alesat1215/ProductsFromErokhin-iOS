@@ -9,12 +9,15 @@
 import Foundation
 import RxSwift
 import RxRelay
+import Contacts
 
 class CartViewModel {
     private let repository: AppRepository! // di
+    private let contactStore: CNContactStore! // di
     
-    init(repository: AppRepository?) {
+    init(repository: AppRepository?, contactStore: CNContactStore?) {
         self.repository = repository
+        self.contactStore = contactStore
     }
     
     /** Current products in dataSource */
@@ -66,6 +69,42 @@ class CartViewModel {
                 self?.__products.map { products in
                     products.first { groups.contains($0.group?.name ?? "") } == nil
                 } ?? Observable.empty()
+            }
+    }
+    
+    /** - Returns: Phone for order */
+    func phoneForOrder() -> Observable<Event<String>> {
+        repository.sellerContacts().dematerialize().compactMap {
+            $0.first?.phone
+        }.materialize().take(1)
+    }
+    
+    /** Find phone for order in contacts. Add it if needed */
+    func checkContact(phone: String) -> Observable<Void> {
+        contactStore.rx.requestAccess(for: .contacts)
+            .flatMap { [weak self] access -> Observable<Void> in
+                if access {
+                    // Find contact by phone
+                    let predicate = CNContact.predicateForContacts(matching: CNPhoneNumber(stringValue: phone))
+                    return self?.contactStore.rx.unifiedContacts(
+                        matching: predicate,
+                        keysToFetch: [CNContactGivenNameKey] as [CNKeyDescriptor]
+                    ).flatMap { contacts -> Observable<Void> in
+                        // If not found add
+                        if contacts.isEmpty {
+                            // Create a new contact
+                            let newContact = CNMutableContact()
+                            newContact.givenName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+                            newContact.phoneNumbers = [CNLabeledValue(label: nil, value: CNPhoneNumber(stringValue: phone))]
+                            // Save the contact
+                            let saveRequest = CNSaveRequest()
+                            saveRequest.add(newContact, toContainerWithIdentifier: nil)
+                            try self?.contactStore.execute(saveRequest)
+                        }
+                        return Observable.just(())
+                    } ?? Observable.empty()
+                }
+                return Observable.just(())
             }
     }
 }

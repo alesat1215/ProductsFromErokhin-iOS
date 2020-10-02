@@ -102,6 +102,8 @@
 		D7E293AD2524A12B00EA2845 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293AC2524A12B00EA2845 /* TabBarViewModel.swift */; };
 		D7E293D525265B4000EA2845 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293D425265B4000EA2845 /* UIViewController+Rx.swift */; };
 		D7E293FD25275D1B00EA2845 /* Contacts+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293FC25275D1B00EA2845 /* Contacts+Rx.swift */; };
+		D7E29402252771C900EA2845 /* SellerContactsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E29401252771C900EA2845 /* SellerContactsRemote.swift */; };
+		D7E2940A2527737000EA2845 /* SellerContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E294092527737000EA2845 /* SellerContacts.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +229,8 @@
 		D7E293AC2524A12B00EA2845 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		D7E293D425265B4000EA2845 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		D7E293FC25275D1B00EA2845 /* Contacts+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contacts+Rx.swift"; sourceTree = "<group>"; };
+		D7E29401252771C900EA2845 /* SellerContactsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerContactsRemote.swift; sourceTree = "<group>"; };
+		D7E294092527737000EA2845 /* SellerContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerContacts.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -326,6 +330,7 @@
 				D7B4B521250A7AF700BA07CB /* Titles.swift */,
 				D7E293A6252485AB00EA2845 /* OrderWarning.swift */,
 				D7877B772504B05D00244B81 /* Ordered.swift */,
+				D7E294092527737000EA2845 /* SellerContacts.swift */,
 			);
 			path = Local;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 				D7877B5D25010F7100244B81 /* ProductsRemote.swift */,
 				D7B4B51F250A774100BA07CB /* TitlesRemote.swift */,
 				D7E293A12524843400EA2845 /* OrderWarningRemote.swift */,
+				D7E29401252771C900EA2845 /* SellerContactsRemote.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -844,6 +850,7 @@
 				D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */,
 				D7B4B52A250E542100BA07CB /* CoreDataSourceCollectionView.swift in Sources */,
 				D795210124FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld in Sources */,
+				D7E29402252771C900EA2845 /* SellerContactsRemote.swift in Sources */,
 				D7B4B5332512428000BA07CB /* LoadViewController.swift in Sources */,
 				D7877B5E25010F7100244B81 /* ProductsRemote.swift in Sources */,
 				D7B4613F25193472001ED878 /* ProductTableViewCell.swift in Sources */,
@@ -865,6 +872,7 @@
 				D7B4B52E2510C5BD00BA07CB /* BindableCells.swift in Sources */,
 				D71A78CA2519F8E1001B9234 /* CoreDataSourceTableView.swift in Sources */,
 				D7E293AD2524A12B00EA2845 /* TabBarViewModel.swift in Sources */,
+				D7E2940A2527737000EA2845 /* SellerContacts.swift in Sources */,
 				D7E293A7252485AB00EA2845 /* OrderWarning.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
