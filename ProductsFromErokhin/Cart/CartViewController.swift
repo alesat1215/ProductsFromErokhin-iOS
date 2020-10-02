@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxUIAlert
 
 class CartViewController: UIViewController {
     
@@ -91,9 +92,25 @@ class CartViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .flatMap { [weak self] in
                 self?.rx.activity(activityItems: [$0]) ?? Observable.empty()
-            }.subscribe(onNext: {
-                print("Complete: \($0.0), Error: \($0.1?.localizedDescription)")
+            }.flatMap { [weak self] result -> Observable<Bool> in
+                if let error = result.1 {
+                    return self?.rx.alert(
+                        title: nil,
+                        message: error.localizedDescription,
+                        actions: [AlertAction(title: "OK", style: .default)]
+                    ).map { _ in false } ?? Observable.empty()
+                }
+                return Observable.just(result.0)
+            }.subscribe(onNext: { [weak self] in
+                if $0 {
+                    _ = self?.viewModel?.clearCart()
+                    print("Clear cart after send")
+                }
             }).disposed(by: disposeBag)
+//            .subscribe(onNext: {
+////                print("Complete: \($0.0), Error: \($0.1?.localizedDescription)")
+//                print("Compete: \($0)")
+//            }).disposed(by: disposeBag)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
