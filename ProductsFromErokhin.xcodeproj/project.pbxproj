@@ -101,6 +101,7 @@
 		D7E293A7252485AB00EA2845 /* OrderWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293A6252485AB00EA2845 /* OrderWarning.swift */; };
 		D7E293AD2524A12B00EA2845 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293AC2524A12B00EA2845 /* TabBarViewModel.swift */; };
 		D7E293D525265B4000EA2845 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293D425265B4000EA2845 /* UIViewController+Rx.swift */; };
+		D7E293FD25275D1B00EA2845 /* Contacts+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293FC25275D1B00EA2845 /* Contacts+Rx.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -225,6 +226,7 @@
 		D7E293A6252485AB00EA2845 /* OrderWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderWarning.swift; sourceTree = "<group>"; };
 		D7E293AC2524A12B00EA2845 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		D7E293D425265B4000EA2845 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
+		D7E293FC25275D1B00EA2845 /* Contacts+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contacts+Rx.swift"; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -312,6 +314,7 @@
 				D7B4B52F2512262100BA07CB /* AnonymousAuth.swift */,
 				D795796D2517C900007AD022 /* FirebaseStorageReference.swift */,
 				D7E293D425265B4000EA2845 /* UIViewController+Rx.swift */,
+				D7E293FC25275D1B00EA2845 /* Contacts+Rx.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7E293FD25275D1B00EA2845 /* Contacts+Rx.swift in Sources */,
 				D7877B602501168700244B81 /* AppRepository.swift in Sources */,
 				D7877B632501182200244B81 /* DatabaseUpdater.swift in Sources */,
 				D79520FB24FFBE7E0094BAFE /* MenuViewController.swift in Sources */,

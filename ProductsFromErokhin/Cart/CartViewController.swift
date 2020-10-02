@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxUIAlert
+import Contacts
 
 class CartViewController: UIViewController {
     
@@ -87,6 +88,9 @@ class CartViewController: UIViewController {
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
             .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .flatMapLatest { [weak self] in
+                self?.checkContact() ?? Observable.empty()
+            }
             // Create message for order
             .flatMapLatest { [weak self] in
                 self?.viewModel?.message() ?? Observable.empty()
@@ -122,6 +126,31 @@ class CartViewController: UIViewController {
             }.subscribe(onNext: {
                 print("Clear cart after send")
             }).disposed(by: disposeBag)
+    }
+    
+    private func checkContact() -> Observable<Void> {
+        let store = CNContactStore()
+        return store.rx.requestAccess(for: .contacts)
+            .flatMap { access -> Observable<Void> in
+                if access {
+                    // Find contact
+                    return store.rx.unifiedContacts(matching: CNContact.predicateForContacts(matching: CNPhoneNumber(stringValue: "+79021228236")), keysToFetch: [CNContactGivenNameKey] as [CNKeyDescriptor])
+                        .flatMap { contacts -> Observable<Void> in
+                            if contacts.isEmpty {
+                                // Create a new contact
+                                let newContact = CNMutableContact()
+                                newContact.givenName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+                                newContact.phoneNumbers = [CNLabeledValue(label: nil, value: CNPhoneNumber(stringValue: "+79021228236"))]
+                                // Save the contact
+                                let saveRequest = CNSaveRequest()
+                                saveRequest.add(newContact, toContainerWithIdentifier: nil)
+                                try store.execute(saveRequest)
+                            }
+                            return Observable.just(())
+                        }
+                }
+                return Observable.just(())
+            }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
