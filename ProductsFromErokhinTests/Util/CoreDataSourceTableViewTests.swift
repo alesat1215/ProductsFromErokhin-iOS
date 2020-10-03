@@ -102,16 +102,13 @@ class CoreDataSourceTableViewTests: XCTestCase {
         tableView.isDelete.toggle()
         // Delete
         dataSourceProducts.controller(frc, didChange: products.first!, at: nil, for: .delete, newIndexPath: nil)
-        XCTAssertFalse(tableView.isDelete)
+//        XCTAssertFalse(tableView.isDelete)
+        tableView.isReload = false
         dataSourceProducts.controller(frc, didChange: products.first!, at: IndexPath(item: 0, section: 0), for: .delete, newIndexPath: nil)
-        XCTAssertTrue(tableView.isDelete)
-        tableView.isDelete.toggle()
-    }
-    
-    func testObject() {
-        XCTAssertEqual(dataSourceProducts.object(at: IndexPath(item: 0, section: 0)), products.first!)
-        XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 0, section: 7)))
-        XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 5, section: 0)))
+//        XCTAssertTrue(tableView.isDelete)
+//        tableView.isDelete.toggle()
+        XCTAssertTrue(tableView.isReload)
+        tableView.isReload.toggle()
     }
     
     func testProductPositionForGroup() {
@@ -121,6 +118,12 @@ class CoreDataSourceTableViewTests: XCTestCase {
         XCTAssertEqual(dataSourceProducts.productPositionForGroup(group: groups[2])?.row, 2)
         // Product not found
         XCTAssertNil(dataSourceProducts.productPositionForGroup(group: Group(context: context)))
+    }
+    
+    func testObject() {
+        XCTAssertEqual(dataSourceProducts.object(at: IndexPath(item: 0, section: 0)), products.first!)
+        XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 0, section: 7)))
+        XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 5, section: 0)))
     }
     
     func testDispose() {

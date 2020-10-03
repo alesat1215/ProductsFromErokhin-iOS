@@ -105,17 +105,6 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
         collectionView.isDelete.toggle()
     }
     
-    func testObject() {
-        XCTAssertEqual(dataSourceProducts.object(at: IndexPath(item: 0, section: 0)), products.first!)
-        XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 0, section: 7)))
-        XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 5, section: 0)))
-    }
-    
-    func testIndexPath() {
-        XCTAssertNotNil(dataSourceProducts.indexPath(for: products.first!))
-        XCTAssertNil(dataSourceProducts.indexPath(for: Product(context: context)))
-    }
-    
     func testSelect() throws {
         groups.first?.isSelected = true
         
@@ -127,6 +116,17 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
         XCTAssertTrue(groups[1].isSelected)
         
         waitForExpectations(timeout: 1)
+    }
+    
+    func testObject() {
+        XCTAssertEqual(dataSourceProducts.object(at: IndexPath(item: 0, section: 0)), products.first!)
+        XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 0, section: 7)))
+        XCTAssertNil(dataSourceProducts.object(at: IndexPath(item: 5, section: 0)))
+    }
+    
+    func testIndexPath() {
+        XCTAssertNotNil(dataSourceProducts.indexPath(for: products.first!))
+        XCTAssertNil(dataSourceProducts.indexPath(for: Product(context: context)))
     }
     
     func testDispose() {
