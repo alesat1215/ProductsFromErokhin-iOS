@@ -49,13 +49,49 @@ class UIViewController_RxTests: XCTestCase {
     func testShowMessageWithEvent() throws {
         XCTAssertNil(controller.presentedViewController)
         let disposeBag = DisposeBag()
+        var result: Void?
         controller.rx.showMessage("").subscribe(onNext: {
+            result = $0
         }).disposed(by: disposeBag)
         XCTAssertNotNil(controller.presentedViewController)
         let alertController = controller.presentedViewController as! UIAlertController
         XCTAssertEqual(alertController.actions.count, 1)
         XCTAssertEqual(alertController.actions.first?.style, .default)
         XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertNil(result)
+        // Trigger action
+        let action = alertController.actions.first!
+        typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
+        let block = action.value(forKey: "handler")
+        let blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        let handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        // Check result
+        XCTAssertNotNil(result)
+    }
+    
+    func testShowMessageWithoutEvent() throws {
+        XCTAssertNil(controller.presentedViewController)
+        let disposeBag = DisposeBag()
+        var result: Void?
+        controller.rx.showMessage("", withEvent: false).subscribe(onNext: {
+            result = $0
+        }).disposed(by: disposeBag)
+        XCTAssertNotNil(controller.presentedViewController)
+        let alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertNil(result)
+        // Trigger action
+        let action = alertController.actions.first!
+        typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
+        let block = action.value(forKey: "handler")
+        let blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        let handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        // Check result
+        XCTAssertNil(result)
     }
 
     func testExample() throws {
