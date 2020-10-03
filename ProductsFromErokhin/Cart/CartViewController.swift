@@ -90,8 +90,70 @@ class CartViewController: UIViewController {
             .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             // Get phone for order
             .flatMapLatest { [weak self] in
-                self?.viewModel?.phoneForOrder() ?? Observable.empty()
-            }.observeOn(MainScheduler.instance)
+                self?.phoneForOrder() ?? Observable.empty()
+            }
+//            .flatMapLatest { [weak self] in
+//                self?.viewModel?.phoneForOrder() ?? Observable.empty()
+//            }
+//            .observeOn(MainScheduler.instance)
+//            // Show message for error
+//            .flatMapError { [weak self] in
+//                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
+//            }.observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            // Check phone in contacts
+//            .flatMap { [weak self] in
+//                self?.viewModel?.checkContact(phone: $0) ?? Observable.empty()
+//            }
+            // Send order
+            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .flatMap { [weak self] in
+                self?.sendOrder() ?? Observable.empty()
+            }
+//            .flatMapLatest { [weak self] in
+//                self?.viewModel?.message() ?? Observable.empty()
+//            }.observeOn(MainScheduler.instance)
+//            // Show select messenger for send order
+//            .flatMap { [weak self] in
+//                self?.rx.activity(activityItems: [$0]) ?? Observable.empty()
+//            }.flatMap { [weak self] result -> Observable<Bool> in
+//                // For error result show alert with error
+//                if let error = result.1 {
+//                    return self?.rx.showMessage(error.localizedDescription)
+//                        .map { false } ?? Observable.empty()
+//                }
+//                // For success result send it status
+//                return Observable.just(result.0)
+//            }.observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            // Clear cart for complete
+            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .flatMap { [weak self] in
+                self?.clearCart($0) ?? Observable.empty()
+            }
+//            .flatMap { [weak self] complete -> Observable<Result<Void, Error>> in
+//                guard let viewModel = self?.viewModel, complete else {
+//                    return Observable.empty()
+//                }
+//                return Observable.just(viewModel.clearCart())
+//            }.observeOn(MainScheduler.instance)
+//            // Check result for clear cart. If need show error
+//            .flatMap { [weak self] result -> Observable<Void> in
+//                switch result {
+//                case .failure(let error):
+//                    // Show error
+//                    return self?.rx.showMessage(error.localizedDescription, withEvent: false) ?? Observable.empty()
+//                default:
+//                    return Observable.just(())
+//                }
+//            }
+            .subscribe(onNext: {
+                print("Clear cart after send")
+            }).disposed(by: disposeBag)
+    }
+    /** Get phone for order & add it to contacts if needed */
+    private func phoneForOrder() -> Observable<Void> {
+        // Get phone for order
+        (viewModel?.phoneForOrder() ?? Observable.empty())
+            .observeOn(MainScheduler.instance)
             // Show message for error
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
@@ -100,10 +162,12 @@ class CartViewController: UIViewController {
             .flatMap { [weak self] in
                 self?.viewModel?.checkContact(phone: $0) ?? Observable.empty()
             }
-            // Create message for order
-            .flatMapLatest { [weak self] in
-                self?.viewModel?.message() ?? Observable.empty()
-            }.observeOn(MainScheduler.instance)
+    }
+    /** Send order & return state of complete */
+    private func sendOrder() -> Observable<Bool> {
+        // Create message for order
+        (viewModel?.message() ?? Observable.empty())
+            .observeOn(MainScheduler.instance)
             // Show select messenger for send order
             .flatMap { [weak self] in
                 self?.rx.activity(activityItems: [$0]) ?? Observable.empty()
@@ -115,14 +179,17 @@ class CartViewController: UIViewController {
                 }
                 // For success result send it status
                 return Observable.just(result.0)
-            }.observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
-            // Clear cart for complete
-            .flatMap { [weak self] complete -> Observable<Result<Void, Error>> in
-                guard let viewModel = self?.viewModel, complete else {
-                    return Observable.empty()
-                }
-                return Observable.just(viewModel.clearCart())
-            }.observeOn(MainScheduler.instance)
+            }
+    }
+    /** Clear cart for complete */
+    private func clearCart(_ complete: Bool) -> Observable<Void> {
+        // Check comlete for send
+        guard let viewModel = viewModel, complete else {
+            return Observable.empty()
+        }
+        // Clear cart for complete
+        return Observable.just(viewModel.clearCart())
+            .observeOn(MainScheduler.instance)
             // Check result for clear cart. If need show error
             .flatMap { [weak self] result -> Observable<Void> in
                 switch result {
@@ -132,9 +199,7 @@ class CartViewController: UIViewController {
                 default:
                     return Observable.just(())
                 }
-            }.subscribe(onNext: {
-                print("Clear cart after send")
-            }).disposed(by: disposeBag)
+            }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
