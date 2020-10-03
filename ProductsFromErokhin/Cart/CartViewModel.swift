@@ -19,10 +19,12 @@ class CartViewModel {
         self.repository = repository
         self.contactStore = contactStore
     }
+        
+    // MARK: - Products
+    /** Observable [Product] for cart methods */
+    private lazy var __products = repository.products(predicate: NSPredicate(format: "inCart.@count != 0")).share(replay: 1, scope: .forever)
     
-    /** Current products in dataSource */
-//    private let _products = ReplaySubject<[Product]>.create(bufferSize: 1)
-    
+    /** DataSource with products */
     func products() -> Observable<Event<CoreDataSourceTableView<Product>>> {
         repository.products(
             predicate: NSPredicate(format: "inCart.@count != 0"),
@@ -30,8 +32,7 @@ class CartViewModel {
         )
     }
     
-    private lazy var __products = repository.products(predicate: NSPredicate(format: "inCart.@count != 0")).share(replay: 1, scope: .forever)
-    
+    // MARK: - Cart
     /** Sum for order */
     func totalInCart() -> Observable<Int> {
         __products.map { $0.map { $0.priceSumInCart() }.reduce(0, +) }
@@ -44,24 +45,26 @@ class CartViewModel {
         let sum = totalInCart().take(1).map { "Total: \($0) rub." }
         return Observable.zip(order, sum).map { $0.0 + $0.1 }
     }
-    
+    /** Count of products in cart */
     func inCartCount() -> Observable<String?> {
         __products.map {
             if $0.isEmpty { return nil }
             return String($0.count)
         }
     }
-    
+    /** Remove all products from cart */
     func clearCart() -> Result<Void, Error> {
         repository.clearCart()
     }
     
+    // MARK: - Order warning
     private lazy var orderWarning = repository.orderWarning()
     
+    /** Warning text for order */
     func warning() -> Observable<Event<String>> {
         orderWarning.dematerialize().map { $0.first?.text ?? "" }.materialize()
     }
-    
+    /** Check need the warning for order */
     func withWarning() -> Observable<Bool> {
         orderWarning.dematerialize()
             .compactMap { $0.first?.groups }
@@ -72,6 +75,7 @@ class CartViewModel {
             }
     }
     
+    // MARK: - Phone
     /** - Returns: Phone for order */
     func phoneForOrder() -> Observable<Event<String>> {
         repository.sellerContacts().dematerialize().compactMap {
@@ -84,27 +88,39 @@ class CartViewModel {
         contactStore.rx.requestAccess(for: .contacts)
             .flatMap { [weak self] access -> Observable<Void> in
                 if access {
-                    // Find contact by phone
-                    let predicate = CNContact.predicateForContacts(matching: CNPhoneNumber(stringValue: phone))
-                    return self?.contactStore.rx.unifiedContacts(
-                        matching: predicate,
-                        keysToFetch: [CNContactGivenNameKey] as [CNKeyDescriptor]
-                    ).flatMap { contacts -> Observable<Void> in
-                        // If not found add
-                        if contacts.isEmpty {
-                            // Create a new contact
-                            let newContact = CNMutableContact()
-                            newContact.givenName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
-                            newContact.phoneNumbers = [CNLabeledValue(label: nil, value: CNPhoneNumber(stringValue: phone))]
-                            // Save the contact
-                            let saveRequest = CNSaveRequest()
-                            saveRequest.add(newContact, toContainerWithIdentifier: nil)
-                            try self?.contactStore.execute(saveRequest)
-                        }
-                        return Observable.just(())
-                    } ?? Observable.empty()
+                    // Find contact by phone & add it if not found
+                    return self?.findContact(phone)
+                        .flatMap { contacts -> Observable<Void> in
+                            // If not found add
+                            if contacts.isEmpty {
+                                try self?.addContact(phone)
+                            }
+                            return Observable.just(())
+                        } ?? Observable.empty()
                 }
                 return Observable.just(())
             }
+    }
+    
+    /** Find contact by phone */
+    private func findContact(_ phone: String) -> Observable<[CNContact]> {
+        // Predicate by phone
+        let predicate = CNContact.predicateForContacts(matching: CNPhoneNumber(stringValue: phone))
+        // Find contacts with predicate
+        return contactStore.rx.unifiedContacts(
+            matching: predicate,
+            keysToFetch: [CNContactGivenNameKey] as [CNKeyDescriptor]
+        )
+    }
+    /** Add contact with app name & phone number */
+    private func addContact(_ phone: String) throws {
+        // Create a new contact
+        let newContact = CNMutableContact()
+        newContact.givenName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+        newContact.phoneNumbers = [CNLabeledValue(label: nil, value: CNPhoneNumber(stringValue: phone))]
+        // Save the contact
+        let saveRequest = CNSaveRequest()
+        saveRequest.add(newContact, toContainerWithIdentifier: nil)
+        try contactStore.execute(saveRequest)
     }
 }
