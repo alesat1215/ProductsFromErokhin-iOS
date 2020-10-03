@@ -90,9 +90,11 @@ class CartViewController: UIViewController {
             .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .flatMapLatest { [weak self] in
                 self?.viewModel?.phoneForOrder() ?? Observable.empty()
-            }.flatMapError {
-                print("Phone for order error: \($0.localizedDescription)")
-            }.flatMap { [weak self] in
+            }
+            .flatMapError { [weak self] in
+                return self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
+            }
+            .flatMap { [weak self] in
                 self?.viewModel?.checkContact(phone: $0) ?? Observable.empty()
             }
             // Create message for order

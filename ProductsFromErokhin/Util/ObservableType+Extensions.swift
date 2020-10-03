@@ -28,4 +28,21 @@ extension ObservableType where Element: EventConvertible {
             }
         }
     }
+    /**
+     Dematerilize Observable`<Event<Element>>` without error. For error event run handler & return empty observable.
+     - parameter handler: handler for error.
+     - returns: An observable sequence without error.
+     */
+    func flatMapError<T>(_ handler: ((_ error: Error) -> Observable<T>)? = nil) -> Observable<Element.Element> {
+        flatMap { element -> Observable<Element.Element> in
+            switch element.event {
+            case .error(let error):
+                return handler?(error).flatMap { _ in Observable<Element.Element>.empty() } ?? Observable.empty()
+            case .next(let element):
+                return Observable.just(element)
+            default:
+                return Observable.empty()
+            }
+        }
+    }
 }
