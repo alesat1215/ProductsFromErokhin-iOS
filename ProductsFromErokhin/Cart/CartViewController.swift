@@ -88,12 +88,15 @@ class CartViewController: UIViewController {
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
             .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            // Get phone for order
             .flatMapLatest { [weak self] in
                 self?.viewModel?.phoneForOrder() ?? Observable.empty()
-            }
+            }.observeOn(MainScheduler.instance)
+            // Show message for error
             .flatMapError { [weak self] in
-                return self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
-            }
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
+            }.observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            // Check phone in contacts
             .flatMap { [weak self] in
                 self?.viewModel?.checkContact(phone: $0) ?? Observable.empty()
             }
