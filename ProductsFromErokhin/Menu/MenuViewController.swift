@@ -88,7 +88,7 @@ class MenuViewController: UIViewController {
             }).disposed(by: disposeBag)
     }
 
-    // Set otlets for products
+    // Set otlet for products
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == productsSegueId {
             products = segue.destination.view as? UITableView

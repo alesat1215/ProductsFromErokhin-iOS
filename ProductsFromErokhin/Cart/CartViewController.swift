@@ -32,7 +32,18 @@ class CartViewController: UIViewController {
         bindWarning()
         setupSendAction()
     }
-    
+    // Set outlet for products
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == productsSegueId {
+            products = segue.destination.view as? UITableView
+        }
+    }
+
+}
+
+// MARK: - Bind
+extension CartViewController {
+    /** Set dataSorce for products */
     private func bindProducts() {
         // Set dataSource for products
         viewModel?.products()
@@ -64,7 +75,7 @@ class CartViewController: UIViewController {
             .bind(to: send.rx.isEnabled)
             .disposed(by: disposeBag)
     }
-    
+    /** Set text & setup visible for orderWarning */
     private func bindWarning() {
         // Setup visible of warning
         viewModel?.withWarning()
@@ -80,71 +91,32 @@ class CartViewController: UIViewController {
             .bind(to: orderWarning.rx.text)
             .disposed(by: disposeBag)
     }
-    
+}
+
+// MARK: - Send
+extension CartViewController {
     /** Create order message, select messenger, send & clear cart after */
     private func setupSendAction() {
         send.rx.tap
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
-            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             // Get phone for order
+            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .flatMapLatest { [weak self] in
                 self?.phoneForOrder() ?? Observable.empty()
             }
-//            .flatMapLatest { [weak self] in
-//                self?.viewModel?.phoneForOrder() ?? Observable.empty()
-//            }
-//            .observeOn(MainScheduler.instance)
-//            // Show message for error
-//            .flatMapError { [weak self] in
-//                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
-//            }.observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
-//            // Check phone in contacts
-//            .flatMap { [weak self] in
-//                self?.viewModel?.checkContact(phone: $0) ?? Observable.empty()
-//            }
             // Send order
             .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .flatMap { [weak self] in
                 self?.sendOrder() ?? Observable.empty()
             }
-//            .flatMapLatest { [weak self] in
-//                self?.viewModel?.message() ?? Observable.empty()
-//            }.observeOn(MainScheduler.instance)
-//            // Show select messenger for send order
-//            .flatMap { [weak self] in
-//                self?.rx.activity(activityItems: [$0]) ?? Observable.empty()
-//            }.flatMap { [weak self] result -> Observable<Bool> in
-//                // For error result show alert with error
-//                if let error = result.1 {
-//                    return self?.rx.showMessage(error.localizedDescription)
-//                        .map { false } ?? Observable.empty()
-//                }
-//                // For success result send it status
-//                return Observable.just(result.0)
-//            }.observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             // Clear cart for complete
             .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .flatMap { [weak self] in
                 self?.clearCart($0) ?? Observable.empty()
             }
-//            .flatMap { [weak self] complete -> Observable<Result<Void, Error>> in
-//                guard let viewModel = self?.viewModel, complete else {
-//                    return Observable.empty()
-//                }
-//                return Observable.just(viewModel.clearCart())
-//            }.observeOn(MainScheduler.instance)
-//            // Check result for clear cart. If need show error
-//            .flatMap { [weak self] result -> Observable<Void> in
-//                switch result {
-//                case .failure(let error):
-//                    // Show error
-//                    return self?.rx.showMessage(error.localizedDescription, withEvent: false) ?? Observable.empty()
-//                default:
-//                    return Observable.just(())
-//                }
-//            }
+            // Print if clean cart
             .subscribe(onNext: {
                 print("Clear cart after send")
             }).disposed(by: disposeBag)
@@ -201,11 +173,4 @@ class CartViewController: UIViewController {
                 }
             }
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == productsSegueId {
-            products = segue.destination.view as? UITableView
-        }
-    }
-
 }
