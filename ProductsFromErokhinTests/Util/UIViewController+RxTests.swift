@@ -45,6 +45,18 @@ class UIViewController_RxTests: XCTestCase {
         XCTAssertTrue(result!.0)
         XCTAssertEqual(result?.1?.localizedDescription, AppError.unknown.localizedDescription)
     }
+    
+    func testShowMessageWithEvent() throws {
+        XCTAssertNil(controller.presentedViewController)
+        let disposeBag = DisposeBag()
+        controller.rx.showMessage("").subscribe(onNext: {
+        }).disposed(by: disposeBag)
+        XCTAssertNotNil(controller.presentedViewController)
+        let alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+    }
 
     func testExample() throws {
         // This is an example of a functional test case.
