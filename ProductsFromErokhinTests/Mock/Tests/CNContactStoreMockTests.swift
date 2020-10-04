@@ -35,5 +35,17 @@ class CNContactStoreMockTests: XCTestCase {
         store.unifiedContactsResultThrow = AppError.unknown
         XCTAssertThrowsError(try store.unifiedContacts(matching: predicate, keysToFetch: []))
     }
+    
+    func testExecute() {
+        // Success
+        XCTAssertFalse(store.isExecute)
+        XCTAssertNoThrow(try store.execute(CNSaveRequest()))
+        XCTAssertTrue(store.isExecute)
+        // Error
+        store.isExecute = false
+        store.executeError = AppError.unknown
+        XCTAssertThrowsError(try store.execute(CNSaveRequest()))
+        XCTAssertTrue(store.isExecute)
+    }
 
 }
