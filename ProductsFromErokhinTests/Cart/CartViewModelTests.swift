@@ -49,8 +49,6 @@ class CartViewModelTests: XCTestCase {
         products = [product1, product2, product3]
         
         repository = AppRepositoryMock()
-        repository.productResult = products
-        
         viewModel = CartViewModel(repository: repository, contactStore: CNContactStoreMock())
     }
 
@@ -72,15 +70,26 @@ class CartViewModelTests: XCTestCase {
     }
     
     func testTotalInCart() {
+        repository.productResult = products
         XCTAssertEqual(try viewModel.totalInCart().toBlocking().first(), 60)
     }
     
     func testMessage() throws {
+        repository.productResult = products
         let result = try viewModel.message().toBlocking().first()
         products.forEach {
             XCTAssertTrue(result!.contains($0.textForOrder()))
         }
         XCTAssertTrue(result!.contains("60"))
+    }
+    
+    func testInCartCountEmpty() {
+        XCTAssertNil(try viewModel.inCartCount().toBlocking().first()!)
+    }
+    
+    func testInCartCountNotEmpty() {
+        repository.productResult = products
+        XCTAssertEqual(try viewModel.inCartCount().toBlocking().first()!, String(products.count))
     }
 
     func testPerformanceExample() throws {
