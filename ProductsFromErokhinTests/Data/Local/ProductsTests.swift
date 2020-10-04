@@ -64,6 +64,16 @@ class ProductsTests: XCTestCase {
         XCTAssertEqual(product.priceSumInCart(), 200)
     }
     
+    func testTextForOrder() {
+        let product = Product(context: context)
+        product.name = "product"
+        product.price = 100
+        _ = product.addToCart()
+        _ = product.addToCart()
+        let mustBe = "product 100 * 2 = 200"
+        XCTAssertEqual(product.textForOrder(), mustBe)
+    }
+    
     // MARK: - ProductInCart
     func testFetchRequestWithSortByName() {
         let fetchRequest = ProductInCart.fetchRequestWithSortByName()
