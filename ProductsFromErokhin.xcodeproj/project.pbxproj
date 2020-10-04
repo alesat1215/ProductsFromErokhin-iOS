@@ -107,6 +107,7 @@
 		D7E2942F2528DFEF00EA2845 /* UIViewController+RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2942E2528DFEF00EA2845 /* UIViewController+RxTests.swift */; };
 		D7E294342528F71D00EA2845 /* Contacts+RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E294332528F71D00EA2845 /* Contacts+RxTests.swift */; };
 		D7E294392528F7E800EA2845 /* CNContactStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E294382528F7E800EA2845 /* CNContactStoreMock.swift */; };
+		D7E2943E2529BB2B00EA2845 /* CNContactStoreMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2943D2529BB2B00EA2845 /* CNContactStoreMockTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -237,6 +238,7 @@
 		D7E2942E2528DFEF00EA2845 /* UIViewController+RxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+RxTests.swift"; sourceTree = "<group>"; };
 		D7E294332528F71D00EA2845 /* Contacts+RxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contacts+RxTests.swift"; sourceTree = "<group>"; };
 		D7E294382528F7E800EA2845 /* CNContactStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNContactStoreMock.swift; sourceTree = "<group>"; };
+		D7E2943D2529BB2B00EA2845 /* CNContactStoreMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNContactStoreMockTests.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -546,6 +548,7 @@
 				D7518E00252079D600C72B1E /* MenuViewModelMockTests.swift */,
 				D7B460E72518F73F001ED878 /* AnonymousAuthMockTests.swift */,
 				D7B460EC2518F83A001ED878 /* LoadViewModelMockTests.swift */,
+				D7E2943D2529BB2B00EA2845 /* CNContactStoreMockTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -907,6 +910,7 @@
 				D72F41DA251FA5F2001EE822 /* TableViewCellMock.swift in Sources */,
 				D7B460ED2518F83A001ED878 /* LoadViewModelMockTests.swift in Sources */,
 				D7518E0E25220D5700C72B1E /* CoreDataSourceTableViewMock.swift in Sources */,
+				D7E2943E2529BB2B00EA2845 /* CNContactStoreMockTests.swift in Sources */,
 				D7518E1625220EEF00C72B1E /* CoreDataSourceCollectionViewMockTests.swift in Sources */,
 				D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */,
 				D7C0FC062514FEBE009BC51F /* ProductsTests.swift in Sources */,
