@@ -27,4 +27,14 @@ class CNContactStoreMock: CNContactStore {
         }
         throw error
     }
+    
+    var isExecute = false
+    var executeError: Error?
+    override func execute(_ saveRequest: CNSaveRequest) throws {
+        isExecute.toggle()
+        guard let error = executeError else {
+            return
+        }
+        throw error
+    }
 }

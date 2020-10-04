@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import RxSwift
+import Contacts
 @testable import ProductsFromErokhin
 
 class CartViewModelTests: XCTestCase {
@@ -15,6 +17,7 @@ class CartViewModelTests: XCTestCase {
     
     private var repository: AppRepositoryMock!
     private var viewModel: CartViewModel!
+    private var contactStore: CNContactStoreMock!
     private var products = [Product]()
     private var orderWarning = [OrderWarning]()
     private var sellerContacts = [SellerContacts]()
@@ -65,7 +68,8 @@ class CartViewModelTests: XCTestCase {
         }()
         
         repository = AppRepositoryMock()
-        viewModel = CartViewModel(repository: repository, contactStore: CNContactStoreMock())
+        contactStore = CNContactStoreMock()
+        viewModel = CartViewModel(repository: repository, contactStore: contactStore)
     }
 
     override func tearDownWithError() throws {
@@ -137,6 +141,81 @@ class CartViewModelTests: XCTestCase {
     func testPhoneForOrder() {
         repository.sellerContactsResult = sellerContacts
         XCTAssertEqual(try viewModel.phoneForOrder().dematerialize().toBlocking().first(), sellerContacts.first?.phone)
+    }
+    
+    func testCheckContact() {
+        let disposeBag = DisposeBag()
+        // Doesn't access
+        XCTAssertNil(contactStore.predicate)
+        XCTAssertNil(contactStore.keys)
+        var result: Void?
+        var error: Error?
+        
+        viewModel.checkContact(phone: "").subscribe(onNext: {
+            result = $0
+        }, onError: { error = $0 })
+        .disposed(by: disposeBag)
+        
+        contactStore.completionHandler?(false, nil)
+        XCTAssertNotNil(result)
+        XCTAssertNil(error)
+        XCTAssertNil(contactStore.predicate)
+        XCTAssertNil(contactStore.keys)
+        XCTAssertFalse(contactStore.isExecute)
+        
+        // Access & find contact
+        result = nil
+        contactStore.unifiedContactsResult = [CNContact()]
+        
+        viewModel.checkContact(phone: "").subscribe(onNext: {
+            result = $0
+        }, onError: { error = $0 })
+        .disposed(by: disposeBag)
+        
+        contactStore.completionHandler?(true, nil)
+        XCTAssertNotNil(result)
+        XCTAssertNil(error)
+        XCTAssertNotNil(contactStore.predicate)
+        XCTAssertNotNil(contactStore.keys)
+        XCTAssertFalse(contactStore.isExecute)
+        
+        // Access, not find, add contact
+        result = nil
+        contactStore.unifiedContactsResult = []
+        contactStore.predicate = nil
+        contactStore.keys = nil
+        
+        viewModel.checkContact(phone: "").subscribe(onNext: {
+            result = $0
+        }, onError: { error = $0 })
+        .disposed(by: disposeBag)
+        
+        contactStore.completionHandler?(true, nil)
+        XCTAssertNotNil(result)
+        XCTAssertNil(error)
+        XCTAssertNotNil(contactStore.predicate)
+        XCTAssertNotNil(contactStore.keys)
+        XCTAssertTrue(contactStore.isExecute)
+        
+        // Access, not find, error when add contact
+        result = nil
+        contactStore.unifiedContactsResult = []
+        contactStore.predicate = nil
+        contactStore.keys = nil
+        contactStore.isExecute = false
+        contactStore.executeError = AppError.unknown
+        
+        viewModel.checkContact(phone: "").subscribe(onNext: {
+            result = $0
+        }, onError: { error = $0 })
+        .disposed(by: disposeBag)
+        
+        contactStore.completionHandler?(true, nil)
+        XCTAssertNil(result)
+        XCTAssertNotNil(error)
+        XCTAssertNotNil(contactStore.predicate)
+        XCTAssertNotNil(contactStore.keys)
+        XCTAssertTrue(contactStore.isExecute)
     }
 
     func testPerformanceExample() throws {
