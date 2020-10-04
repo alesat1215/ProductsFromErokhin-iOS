@@ -32,6 +32,9 @@ class Contacts_RxTests: XCTestCase {
         XCTAssertFalse(result)
         store.completionHandler?(true, nil)
         XCTAssertTrue(result)
+        // Check that sequence is completed & result not changed
+        store.completionHandler?(false, nil)
+        XCTAssertTrue(result)
     }
 
     func testExample() throws {
