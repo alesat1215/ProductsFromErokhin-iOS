@@ -18,6 +18,7 @@ class AppRepositoryTests: XCTestCase {
     private var products = [Product]()
     private var titles = [Titles]()
     private var groups = [Group]()
+    private var orderWarnings = [OrderWarning]()
 
     override func setUpWithError() throws {
         updater = DatabaseUpdaterMock()
@@ -38,6 +39,13 @@ class AppRepositoryTests: XCTestCase {
             group.name = $0.element
             return group
         }
+        orderWarnings = ["warning"].enumerated().map {
+            let orderWarning = OrderWarning(context: context)
+            orderWarning.order = Int16($0.offset)
+            orderWarning.text = $0.element
+            return orderWarning
+        }
+        
         repository = AppRepository(updater: updater, context: context)
     }
 
@@ -137,6 +145,30 @@ class AppRepositoryTests: XCTestCase {
         XCTAssertTrue(updater.isSync)
         result = resultArray.first { $0.error == nil }?.element
         XCTAssertEqual(result?.tableView(UITableView(frame: .init()), numberOfRowsInSection: 0), products.count)
+    }
+    
+    func testProducts() {
+        XCTAssertEqual(try repository.products().take(1).toBlocking().first(), products)
+    }
+    
+    func testOrderWarning() throws {
+        // Success
+        // Check sequence contains only one element
+        XCTAssertThrowsError(try repository.orderWarning().take(2).toBlocking(timeout: 1).toArray())
+        updater.isSync = false
+        // Check that element
+        var result = try repository.orderWarning().toBlocking().first()?.element
+        XCTAssertTrue(updater.isSync)
+        XCTAssertEqual(result?.count, orderWarnings.count)
+    
+        // Sync error
+        updater.isSync = false
+        updater.error = AppError.unknown
+        let resultArray = try repository.orderWarning().take(2).toBlocking().toArray()
+        XCTAssertTrue(resultArray.contains { $0.error?.localizedDescription == AppError.unknown.localizedDescription })
+        XCTAssertTrue(updater.isSync)
+        result = resultArray.first { $0.error == nil }?.element
+        XCTAssertEqual(result?.count, orderWarnings.count)
     }
 
 }
