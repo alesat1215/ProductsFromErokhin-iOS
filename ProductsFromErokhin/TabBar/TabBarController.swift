@@ -68,23 +68,42 @@ class TabBarController: UITabBarController {
                 ) ?? Observable.empty()
             }
             .observeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
-            .map { [weak self] action -> Result<Void, Error> in
+            .flatMap { [weak self] action -> Observable<Result<Void, Error>> in
+                guard let viewModel = self?.viewModel, action.index == 1 else {
+                    return Observable.empty()
+                }
                 // For OK action clear cart
-                if action.index == 1 {
-                    print("Clear cart success")
-                    return self?.viewModel?.clearCart() ?? Result.success(())
-                } else { return Result.success(()) }
+                return Observable.just(viewModel.clearCart())
+//                if action.index == 1 {
+//                    print("Clear cart success")
+//                    return self?.viewModel?.clearCart() ?? Result.success(())
+//                } else { return Result.success(()) }
             }
             .observeOn(MainScheduler.instance)
-            .subscribe(onNext: {
-                switch $0 {
+            .flatMap { [weak self] result -> Observable<Void> in
+                switch result {
                 case .failure(let error):
-                    print("Clear cart error: \(error.localizedDescription)")
+                    print("Clear cart error: \(error)")
+                    return self?.rx.showMessage(error.localizedDescription, withEvent: false) ?? Observable.empty()
                 default:
-                    break
+                    return Observable.just(())
                 }
+            }.subscribe(onNext: {
+                print("Clear cart success")
             }).disposed(by: disposeBag)
+//            .subscribe(onNext: {
+//                switch $0 {
+//                case .failure(let error):
+//                    print("Clear cart error: \(error.localizedDescription)")
+//                default:
+//                    break
+//                }
+//            }).disposed(by: disposeBag)
     }
+    
+//    private func clearCartAction() -> Observable<Result<Void, Error>> {
+//
+//    }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         clearCart.isHidden = item.tag != cartTag
