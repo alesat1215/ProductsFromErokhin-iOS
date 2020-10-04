@@ -99,7 +99,6 @@
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
 		D7E293A22524843400EA2845 /* OrderWarningRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293A12524843400EA2845 /* OrderWarningRemote.swift */; };
 		D7E293A7252485AB00EA2845 /* OrderWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293A6252485AB00EA2845 /* OrderWarning.swift */; };
-		D7E293AD2524A12B00EA2845 /* TabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293AC2524A12B00EA2845 /* TabBarViewModel.swift */; };
 		D7E293D525265B4000EA2845 /* UIViewController+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293D425265B4000EA2845 /* UIViewController+Rx.swift */; };
 		D7E293FD25275D1B00EA2845 /* Contacts+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293FC25275D1B00EA2845 /* Contacts+Rx.swift */; };
 		D7E29402252771C900EA2845 /* SellerContactsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E29401252771C900EA2845 /* SellerContactsRemote.swift */; };
@@ -234,7 +233,6 @@
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 		D7E293A12524843400EA2845 /* OrderWarningRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderWarningRemote.swift; sourceTree = "<group>"; };
 		D7E293A6252485AB00EA2845 /* OrderWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderWarning.swift; sourceTree = "<group>"; };
-		D7E293AC2524A12B00EA2845 /* TabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewModel.swift; sourceTree = "<group>"; };
 		D7E293D425265B4000EA2845 /* UIViewController+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Rx.swift"; sourceTree = "<group>"; };
 		D7E293FC25275D1B00EA2845 /* Contacts+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contacts+Rx.swift"; sourceTree = "<group>"; };
 		D7E29401252771C900EA2845 /* SellerContactsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerContactsRemote.swift; sourceTree = "<group>"; };
@@ -587,7 +585,6 @@
 			isa = PBXGroup;
 			children = (
 				D7E2938E2523855100EA2845 /* TabBarController.swift */,
-				D7E293AC2524A12B00EA2845 /* TabBarViewModel.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -895,7 +892,6 @@
 				D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */,
 				D7B4B52E2510C5BD00BA07CB /* BindableCells.swift in Sources */,
 				D71A78CA2519F8E1001B9234 /* CoreDataSourceTableView.swift in Sources */,
-				D7E293AD2524A12B00EA2845 /* TabBarViewModel.swift in Sources */,
 				D7E2940A2527737000EA2845 /* SellerContacts.swift in Sources */,
 				D7E293A7252485AB00EA2845 /* OrderWarning.swift in Sources */,
 			);
