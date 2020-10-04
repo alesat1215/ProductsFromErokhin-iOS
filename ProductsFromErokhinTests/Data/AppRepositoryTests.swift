@@ -20,6 +20,7 @@ class AppRepositoryTests: XCTestCase {
     private var groups = [Group]()
     private var orderWarnings = [OrderWarning]()
     private var productsInCart = [ProductInCart]()
+    private var sellerContacts = [SellerContacts]()
 
     override func setUpWithError() throws {
         updater = DatabaseUpdaterMock()
@@ -50,6 +51,12 @@ class AppRepositoryTests: XCTestCase {
             let productInCart = ProductInCart(context: context)
             productInCart.name = $0.element
             return productInCart
+        }
+        sellerContacts = ["phone"].enumerated().map {
+            let sellerContact = SellerContacts(context: context)
+            sellerContact.order = Int16($0.offset)
+            sellerContact.phone = $0.element
+            return sellerContact
         }
         
         repository = AppRepository(updater: updater, context: context)
@@ -183,6 +190,26 @@ class AppRepositoryTests: XCTestCase {
         XCTAssertNoThrow(try repository.clearCart().get())
         
         waitForExpectations(timeout: 1)
+    }
+    
+    func testSellerContacts() throws {
+        // Success
+        // Check sequence contains only one element
+        XCTAssertThrowsError(try repository.sellerContacts().take(2).toBlocking(timeout: 1).toArray())
+        updater.isSync = false
+        // Check that element
+        var result = try repository.sellerContacts().toBlocking().first()?.element
+        XCTAssertTrue(updater.isSync)
+        XCTAssertEqual(result?.count, sellerContacts.count)
+    
+        // Sync error
+        updater.isSync = false
+        updater.error = AppError.unknown
+        let resultArray = try repository.sellerContacts().take(2).toBlocking().toArray()
+        XCTAssertTrue(resultArray.contains { $0.error?.localizedDescription == AppError.unknown.localizedDescription })
+        XCTAssertTrue(updater.isSync)
+        result = resultArray.first { $0.error == nil }?.element
+        XCTAssertEqual(result?.count, sellerContacts.count)
     }
 
 }
