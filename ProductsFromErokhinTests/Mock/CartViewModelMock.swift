@@ -22,7 +22,9 @@ class CartViewModelMock: CartViewModel {
     }
     
     var clearCartResult: Result<Void, Error> = .success(())
+    var isClearCart = false
     override func clearCart() -> Result<Void, Error> {
-        clearCartResult
+        isClearCart.toggle()
+        return clearCartResult
     }
 }
