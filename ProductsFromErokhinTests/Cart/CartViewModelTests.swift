@@ -110,6 +110,21 @@ class CartViewModelTests: XCTestCase {
         repository.orderWarningResult = orderWarning
         XCTAssertEqual(try viewModel.warning().dematerialize().toBlocking().first(), orderWarning.first?.text)
     }
+    
+    func testWithoutWarningTrue() {
+        repository.productResult = products
+        repository.orderWarningResult = orderWarning
+        XCTAssertTrue(try viewModel.withoutWarning().toBlocking().first()!)
+    }
+    
+    func testWithoutWarningFalse() {
+        let group = Group(context: context)
+        group.name = "group"
+        products.first?.group = group
+        repository.productResult = products
+        repository.orderWarningResult = orderWarning
+        XCTAssertFalse(try viewModel.withoutWarning().toBlocking().first()!)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.

@@ -78,7 +78,7 @@ extension CartViewController {
     /** Set text & setup visible for orderWarning */
     private func bindWarning() {
         // Setup visible of warning
-        viewModel?.withWarning()
+        viewModel?.withoutWarning()
             .observeOn(MainScheduler.instance)
             .bind(to: orderWarning.rx.isHidden)
             .disposed(by: disposeBag)

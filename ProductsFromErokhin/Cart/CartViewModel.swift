@@ -65,7 +65,7 @@ class CartViewModel {
         orderWarning.dematerialize().map { $0.first?.text ?? "" }.materialize()
     }
     /** Check need the warning for order */
-    func withWarning() -> Observable<Bool> {
+    func withoutWarning() -> Observable<Bool> {
         orderWarning.dematerialize()
             .compactMap { $0.first?.groups }
             .flatMap { [weak self] groups -> Observable<Bool> in
