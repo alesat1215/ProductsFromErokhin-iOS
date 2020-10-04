@@ -57,45 +57,45 @@ class TabBarController: UITabBarController {
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
-            // Setup alert for clear cart
             .flatMapLatest { [weak self] _ in
-                self?.rx.alert(
-                    title: nil, message: "Are you sure you want to clear cart?",
-                    actions: [
-                        AlertAction(title: "CANCEL", style: .cancel),
-                        AlertAction(title: "OK", type: 1, style: .destructive)
-                    ]
-                ) ?? Observable.empty()
-            }
-            // For OK action clear cart
-            .observeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
-            .flatMap { [weak self] action -> Observable<Result<Void, Error>> in
-                guard let viewModel = self?.viewModel, action.index == 1 else {
-                    return Observable.empty()
-                }
-                return Observable.just(viewModel.clearCart())
-            }
-            // Show message for clear cart error
-            .observeOn(MainScheduler.instance)
-            .flatMap { [weak self] result -> Observable<Void> in
-                switch result {
-                case .failure(let error):
-                    print("Clear cart error: \(error)")
-                    return self?.rx.showMessage(error.localizedDescription, withEvent: false) ?? Observable.empty()
-                default:
-                    return Observable.just(())
-                }
-            }
-            // Log success result
-            .subscribe(onNext: {
+                self?.clearCartAction() ?? Observable.empty()
+            }.subscribe(onNext: {
                 print("Clear cart success")
             }).disposed(by: disposeBag)
     }
     
-//    private func clearCartAction() -> Observable<Result<Void, Error>> {
-//
-//    }
+    /** Show alert with question. For OK answer clear cart */
+    private func clearCartAction() -> Observable<Void> {
+        // Show question for clear cart
+        rx.alert(
+            title: nil, message: "Are you sure you want to clear cart?",
+            actions: [
+                AlertAction(title: "CANCEL", style: .cancel),
+                AlertAction(title: "OK", type: 1, style: .destructive)
+            ]
+        )
+        // For OK action clear cart
+        .observeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
+        .flatMap { [weak self] action -> Observable<Result<Void, Error>> in
+            guard let viewModel = self?.viewModel, action.index == 1 else {
+                return Observable.empty()
+            }
+            return Observable.just(viewModel.clearCart())
+        }
+        // Show message for clear cart error
+        .observeOn(MainScheduler.instance)
+        .flatMap { [weak self] result -> Observable<Void> in
+            switch result {
+            case .failure(let error):
+                print("Clear cart error: \(error)")
+                return self?.rx.showMessage(error.localizedDescription, withEvent: false) ?? Observable.empty()
+            default:
+                return Observable.just(())
+            }
+        }
+    }
     
+    /** Clear cart visible only for cart controller */
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         clearCart.isHidden = item.tag != cartTag
     }
