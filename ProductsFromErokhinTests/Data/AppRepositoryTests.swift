@@ -19,6 +19,7 @@ class AppRepositoryTests: XCTestCase {
     private var titles = [Titles]()
     private var groups = [Group]()
     private var orderWarnings = [OrderWarning]()
+    private var productsInCart = [ProductInCart]()
 
     override func setUpWithError() throws {
         updater = DatabaseUpdaterMock()
@@ -44,6 +45,11 @@ class AppRepositoryTests: XCTestCase {
             orderWarning.order = Int16($0.offset)
             orderWarning.text = $0.element
             return orderWarning
+        }
+        productsInCart = ["product", "product1", "product2"].enumerated().map {
+            let productInCart = ProductInCart(context: context)
+            productInCart.name = $0.element
+            return productInCart
         }
         
         repository = AppRepository(updater: updater, context: context)
@@ -169,6 +175,14 @@ class AppRepositoryTests: XCTestCase {
         XCTAssertTrue(updater.isSync)
         result = resultArray.first { $0.error == nil }?.element
         XCTAssertEqual(result?.count, orderWarnings.count)
+    }
+    
+    func testClearCart() {
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        
+        XCTAssertNoThrow(try repository.clearCart().get())
+        
+        waitForExpectations(timeout: 1)
     }
 
 }
