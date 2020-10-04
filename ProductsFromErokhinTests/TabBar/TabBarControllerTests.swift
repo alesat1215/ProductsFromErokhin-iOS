@@ -35,15 +35,6 @@ class TabBarControllerTests: XCTestCase {
         
         controller.viewDidLoad()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
     
     func testBindCartCount() {
         // Badge is empty, clearCart disabled
@@ -64,6 +55,10 @@ class TabBarControllerTests: XCTestCase {
         // Tap clearCart than tap CANCEL button
         XCTAssertNil(controller.presentedViewController)
         controller.clearCart.sendActions(for: .touchUpInside)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
         XCTAssertNotNil(controller.presentedViewController)
         let alertController = controller.presentedViewController as! UIAlertController
         XCTAssertEqual(alertController.actions.count, 2)
@@ -134,12 +129,36 @@ class TabBarControllerTests: XCTestCase {
         
         XCTAssertNil(controller.presentedViewController)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testSetupClearCartAction() {
+        // Tap clearCart than tap OK button
+        XCTAssertNil(controller.presentedViewController)
+        controller.clearCart.sendActions(for: .touchUpInside)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.presentedViewController)
+        let alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 2)
+        XCTAssertEqual(alertController.actions.first?.style, .cancel)
+        XCTAssertEqual(alertController.actions.first?.title, "CANCEL")
+        XCTAssertEqual(alertController.actions[1].style, .destructive)
+        XCTAssertEqual(alertController.actions[1].title, "OK")
+        XCTAssertFalse(viewModel.isClearCart)
+        // Trigger action OK
+        let action = alertController.actions[1]
+        typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
+        let block = action.value(forKey: "handler")
+        let blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        let handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertTrue(viewModel.isClearCart)
     }
 
 }
