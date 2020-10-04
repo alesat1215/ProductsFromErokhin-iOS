@@ -14,4 +14,17 @@ class CNContactStoreMock: CNContactStore {
     override func requestAccess(for entityType: CNEntityType, completionHandler: @escaping (Bool, Error?) -> Void) {
         self.completionHandler = completionHandler
     }
+    
+    var predicate: NSPredicate?
+    var keys: [CNKeyDescriptor]?
+    var unifiedContactsResult = [CNContact]()
+    var unifiedContactsResultThrow: Error?
+    override func unifiedContacts(matching predicate: NSPredicate, keysToFetch keys: [CNKeyDescriptor]) throws -> [CNContact] {
+        self.predicate = predicate
+        self.keys = keys
+        guard let error = unifiedContactsResultThrow else {
+            return unifiedContactsResult
+        }
+        throw error
+    }
 }
