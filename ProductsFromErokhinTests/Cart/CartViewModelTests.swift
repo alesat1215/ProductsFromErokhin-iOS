@@ -11,6 +11,8 @@ import XCTest
 
 class CartViewModelTests: XCTestCase {
     
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     private var repository: AppRepositoryMock!
     private var viewModel: CartViewModel!
 
@@ -34,6 +36,40 @@ class CartViewModelTests: XCTestCase {
         XCTAssertEqual(try viewModel.products().toBlocking().first()?.element, repository.productsResultTableView)
         XCTAssertNotNil(repository.predicateProductsTableView)
         XCTAssertNotNil(repository.cellIdProductsTableView)
+    }
+    
+    func testTotalInCart() {
+        // Product with sum 10 * 1
+        let product1 = { () -> Product in
+            let product = Product(context: self.context)
+            product.name = "product1"
+            product.price = 10
+            _ = product.addToCart()
+            return product
+        }()
+        // Product with sum 10 * 2
+        let product2 = { () -> Product in
+            let product = Product(context: self.context)
+            product.name = "product2"
+            product.price = 10
+            _ = product.addToCart()
+            _ = product.addToCart()
+            return product
+        }()
+        // Product with sum 10 * 3
+        let product3 = { () -> Product in
+            let product = Product(context: self.context)
+            product.name = "product2"
+            product.price = 10
+            _ = product.addToCart()
+            _ = product.addToCart()
+            _ = product.addToCart()
+            return product
+        }()
+        // Products with total sum == 60
+        let products = [product1, product2, product3]
+        repository.productResult = products
+        XCTAssertEqual(try viewModel.totalInCart().toBlocking().first(), 60)
     }
 
     func testPerformanceExample() throws {
