@@ -43,6 +43,10 @@ class AppRepositoryMockTests: XCTestCase {
         XCTAssertNoThrow(try repository.clearCart().get())
         XCTAssertTrue(repository.isClearCart)
     }
+    
+    func testOrderWarning() {
+        XCTAssertEqual(try repository.orderWarning().toBlocking().first()?.element, repository.orderWarningResult)
+    }
 
     func testExample() throws {
         // This is an example of a functional test case.
