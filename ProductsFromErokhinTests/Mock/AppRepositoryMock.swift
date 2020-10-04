@@ -65,4 +65,9 @@ class AppRepositoryMock: AppRepository {
         isClearCart.toggle()
         return .success(())
     }
+    
+    var orderWarningResult = [OrderWarning]()
+    override func orderWarning() -> Observable<Event<[OrderWarning]>> {
+        Observable.just(Event.next(orderWarningResult))
+    }
 }
