@@ -74,6 +74,14 @@ class CartViewModelTests: XCTestCase {
     func testTotalInCart() {
         XCTAssertEqual(try viewModel.totalInCart().toBlocking().first(), 60)
     }
+    
+    func testMessage() throws {
+        let result = try viewModel.message().toBlocking().first()
+        products.forEach {
+            XCTAssertTrue(result!.contains($0.textForOrder()))
+        }
+        XCTAssertTrue(result!.contains("60"))
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
