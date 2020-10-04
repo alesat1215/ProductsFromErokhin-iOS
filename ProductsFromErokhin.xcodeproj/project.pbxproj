@@ -105,6 +105,8 @@
 		D7E29402252771C900EA2845 /* SellerContactsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E29401252771C900EA2845 /* SellerContactsRemote.swift */; };
 		D7E2940A2527737000EA2845 /* SellerContacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E294092527737000EA2845 /* SellerContacts.swift */; };
 		D7E2942F2528DFEF00EA2845 /* UIViewController+RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2942E2528DFEF00EA2845 /* UIViewController+RxTests.swift */; };
+		D7E294342528F71D00EA2845 /* Contacts+RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E294332528F71D00EA2845 /* Contacts+RxTests.swift */; };
+		D7E294392528F7E800EA2845 /* CNContactStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E294382528F7E800EA2845 /* CNContactStoreMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -233,6 +235,8 @@
 		D7E29401252771C900EA2845 /* SellerContactsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerContactsRemote.swift; sourceTree = "<group>"; };
 		D7E294092527737000EA2845 /* SellerContacts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellerContacts.swift; sourceTree = "<group>"; };
 		D7E2942E2528DFEF00EA2845 /* UIViewController+RxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+RxTests.swift"; sourceTree = "<group>"; };
+		D7E294332528F71D00EA2845 /* Contacts+RxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contacts+RxTests.swift"; sourceTree = "<group>"; };
+		D7E294382528F7E800EA2845 /* CNContactStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CNContactStoreMock.swift; sourceTree = "<group>"; };
 		ED5C1D0B27B262121C0EBFCB /* Pods_ProductsFromErokhinTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductsFromErokhinTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5AB7566D8BB3EFE405FFAB0 /* Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; path = "Target Support Files/Pods-ProductsFromErokhin-ProductsFromErokhinUITests/Pods-ProductsFromErokhin-ProductsFromErokhinUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -465,6 +469,7 @@
 				D72F41EC2520656A001EE822 /* ProductTableViewCellTests.swift */,
 				D7C0FBAB2513E045009BC51F /* AnonymousAuthTests.swift */,
 				D7E2942E2528DFEF00EA2845 /* UIViewController+RxTests.swift */,
+				D7E294332528F71D00EA2845 /* Contacts+RxTests.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -488,6 +493,7 @@
 				D7518DFB252078AC00C72B1E /* MenuViewModelMock.swift */,
 				D7D6EBE82517CD410098ABC7 /* AnonymousAuthMock.swift */,
 				D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */,
+				D7E294382528F7E800EA2845 /* CNContactStoreMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -887,11 +893,13 @@
 				D79579282516966B007AD022 /* AppRepositoryMock.swift in Sources */,
 				D7518E2B252217CD00C72B1E /* TableViewCellMockTests.swift in Sources */,
 				D7518DFC252078AC00C72B1E /* MenuViewModelMock.swift in Sources */,
+				D7E294342528F71D00EA2845 /* Contacts+RxTests.swift in Sources */,
 				D72F41ED2520656A001EE822 /* ProductTableViewCellTests.swift in Sources */,
 				D7C0FC542515F067009BC51F /* DatabaseUpdaterMock.swift in Sources */,
 				D7C0FC3D2515E14A009BC51F /* CollectionViewMockTests.swift in Sources */,
 				D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */,
 				D7518DF42520746100C72B1E /* MenuViewModelTests.swift in Sources */,
+				D7E294392528F7E800EA2845 /* CNContactStoreMock.swift in Sources */,
 				D79579572517B500007AD022 /* StartViewModelMock.swift in Sources */,
 				D7518E01252079D600C72B1E /* MenuViewModelMockTests.swift in Sources */,
 				D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */,
