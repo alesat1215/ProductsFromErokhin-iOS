@@ -71,15 +71,6 @@ class CartViewModelTests: XCTestCase {
         contactStore = CNContactStoreMock()
         viewModel = CartViewModel(repository: repository, contactStore: contactStore)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
     
     func testProducts() {
         XCTAssertNil(repository.predicateProductsTableView)
@@ -216,13 +207,6 @@ class CartViewModelTests: XCTestCase {
         XCTAssertNotNil(contactStore.predicate)
         XCTAssertNotNil(contactStore.keys)
         XCTAssertTrue(contactStore.isExecute)
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 
 }
