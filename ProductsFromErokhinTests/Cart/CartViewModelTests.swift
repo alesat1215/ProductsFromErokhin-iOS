@@ -15,30 +15,9 @@ class CartViewModelTests: XCTestCase {
     
     private var repository: AppRepositoryMock!
     private var viewModel: CartViewModel!
+    private var products = [Product]()
 
     override func setUpWithError() throws {
-        repository = AppRepositoryMock()
-        viewModel = CartViewModel(repository: repository, contactStore: CNContactStoreMock())
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testProducts() {
-        XCTAssertNil(repository.predicateProductsTableView)
-        XCTAssertNil(repository.cellIdProductsTableView)
-        XCTAssertEqual(try viewModel.products().toBlocking().first()?.element, repository.productsResultTableView)
-        XCTAssertNotNil(repository.predicateProductsTableView)
-        XCTAssertNotNil(repository.cellIdProductsTableView)
-    }
-    
-    func testTotalInCart() {
         // Product with sum 10 * 1
         let product1 = { () -> Product in
             let product = Product(context: self.context)
@@ -67,8 +46,32 @@ class CartViewModelTests: XCTestCase {
             return product
         }()
         // Products with total sum == 60
-        let products = [product1, product2, product3]
+        products = [product1, product2, product3]
+        
+        repository = AppRepositoryMock()
         repository.productResult = products
+        
+        viewModel = CartViewModel(repository: repository, contactStore: CNContactStoreMock())
+    }
+
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+
+    func testExample() throws {
+        // This is an example of a functional test case.
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func testProducts() {
+        XCTAssertNil(repository.predicateProductsTableView)
+        XCTAssertNil(repository.cellIdProductsTableView)
+        XCTAssertEqual(try viewModel.products().toBlocking().first()?.element, repository.productsResultTableView)
+        XCTAssertNotNil(repository.predicateProductsTableView)
+        XCTAssertNotNil(repository.cellIdProductsTableView)
+    }
+    
+    func testTotalInCart() {
         XCTAssertEqual(try viewModel.totalInCart().toBlocking().first(), 60)
     }
 
