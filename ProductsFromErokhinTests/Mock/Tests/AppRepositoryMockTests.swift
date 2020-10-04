@@ -33,6 +33,9 @@ class AppRepositoryMockTests: XCTestCase {
         XCTAssertEqual(try repository.products(predicate: predicate, cellId: cellId).toBlocking().first()?.element, repository.productsResultTableView)
         XCTAssertEqual(repository.cellIdProductsTableView, cellId)
         XCTAssertEqual(repository.predicateProductsTableView, predicate)
+        // [Product]
+        XCTAssertEqual(try repository.products(predicate: predicate).toBlocking().first(), repository.productResult)
+        XCTAssertEqual(repository.predicateProducts, predicate)
     }
 
     func testExample() throws {

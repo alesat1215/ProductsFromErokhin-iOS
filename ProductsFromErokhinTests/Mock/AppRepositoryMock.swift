@@ -60,6 +60,7 @@ class AppRepositoryMock: AppRepository {
         return Observable.just(productResult)
     }
     
+    // MARK: - cart
     var isClearCart = false
     override func clearCart() -> Result<Void, Error> {
         isClearCart.toggle()
