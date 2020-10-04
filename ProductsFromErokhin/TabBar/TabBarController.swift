@@ -57,8 +57,8 @@ class TabBarController: UITabBarController {
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
+            // Setup alert for clear cart
             .flatMapLatest { [weak self] _ in
-                // Setup alert for clear cart
                 self?.rx.alert(
                     title: nil, message: "Are you sure you want to clear cart?",
                     actions: [
@@ -67,18 +67,15 @@ class TabBarController: UITabBarController {
                     ]
                 ) ?? Observable.empty()
             }
+            // For OK action clear cart
             .observeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
             .flatMap { [weak self] action -> Observable<Result<Void, Error>> in
                 guard let viewModel = self?.viewModel, action.index == 1 else {
                     return Observable.empty()
                 }
-                // For OK action clear cart
                 return Observable.just(viewModel.clearCart())
-//                if action.index == 1 {
-//                    print("Clear cart success")
-//                    return self?.viewModel?.clearCart() ?? Result.success(())
-//                } else { return Result.success(()) }
             }
+            // Show message for clear cart error
             .observeOn(MainScheduler.instance)
             .flatMap { [weak self] result -> Observable<Void> in
                 switch result {
@@ -88,17 +85,11 @@ class TabBarController: UITabBarController {
                 default:
                     return Observable.just(())
                 }
-            }.subscribe(onNext: {
+            }
+            // Log success result
+            .subscribe(onNext: {
                 print("Clear cart success")
             }).disposed(by: disposeBag)
-//            .subscribe(onNext: {
-//                switch $0 {
-//                case .failure(let error):
-//                    print("Clear cart error: \(error.localizedDescription)")
-//                default:
-//                    break
-//                }
-//            }).disposed(by: disposeBag)
     }
     
 //    private func clearCartAction() -> Observable<Result<Void, Error>> {
