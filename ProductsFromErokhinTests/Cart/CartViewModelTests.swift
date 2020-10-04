@@ -91,6 +91,12 @@ class CartViewModelTests: XCTestCase {
         repository.productResult = products
         XCTAssertEqual(try viewModel.inCartCount().toBlocking().first()!, String(products.count))
     }
+    
+    func testClearCart() {
+        XCTAssertFalse(repository.isClearCart)
+        XCTAssertNoThrow(try viewModel.clearCart().get())
+        XCTAssertTrue(repository.isClearCart)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
