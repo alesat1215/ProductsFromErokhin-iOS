@@ -21,9 +21,6 @@ class CartViewModel {
     }
         
     // MARK: - Products
-    /** Observable [Product] for cart methods */
-    private lazy var __products = repository.products(predicate: NSPredicate(format: "inCart.@count != 0")).share(replay: 1, scope: .forever)
-    
     /** DataSource with products */
     func products() -> Observable<Event<CoreDataSourceTableView<Product>>> {
         repository.products(
@@ -31,6 +28,9 @@ class CartViewModel {
             cellId: "product"
         )
     }
+    
+    /** Observable [Product] for cart methods */
+    private lazy var __products = repository.products(predicate: NSPredicate(format: "inCart.@count != 0")).share(replay: 1, scope: .forever)
     
     // MARK: - Cart
     /** Sum for order */

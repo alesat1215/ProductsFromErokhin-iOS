@@ -52,4 +52,17 @@ class AppRepositoryMock: AppRepository {
         self.cellIdProductsTableView = cellId
         return Observable.just(Event.next(productsResultTableView))
     }
+    
+    var productResult = [Product]()
+    var predicateProducts: NSPredicate?
+    override func products(predicate: NSPredicate? = nil) -> Observable<[Product]> {
+        self.predicateProducts = predicate
+        return Observable.just(productResult)
+    }
+    
+    var isClearCart = false
+    override func clearCart() -> Result<Void, Error> {
+        isClearCart.toggle()
+        return .success(())
+    }
 }
