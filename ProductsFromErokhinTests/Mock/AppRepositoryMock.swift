@@ -70,4 +70,9 @@ class AppRepositoryMock: AppRepository {
     override func orderWarning() -> Observable<Event<[OrderWarning]>> {
         Observable.just(Event.next(orderWarningResult))
     }
+    
+    var sellerContactsResult = [SellerContacts]()
+    override func sellerContacts() -> Observable<Event<[SellerContacts]>> {
+        Observable.just(Event.next(sellerContactsResult))
+    }
 }

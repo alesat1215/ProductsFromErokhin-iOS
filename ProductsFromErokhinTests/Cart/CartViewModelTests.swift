@@ -17,6 +17,7 @@ class CartViewModelTests: XCTestCase {
     private var viewModel: CartViewModel!
     private var products = [Product]()
     private var orderWarning = [OrderWarning]()
+    private var sellerContacts = [SellerContacts]()
 
     override func setUpWithError() throws {
         // Product with sum 10 * 1
@@ -54,6 +55,13 @@ class CartViewModelTests: XCTestCase {
             warning.text = "text"
             warning.groups = ["group"]
             return [warning]
+        }()
+        
+        sellerContacts = { () -> [SellerContacts] in
+            let contact = SellerContacts(context: context)
+            contact.phone = "phone"
+            contact.address = "address"
+            return [contact]
         }()
         
         repository = AppRepositoryMock()
@@ -124,6 +132,11 @@ class CartViewModelTests: XCTestCase {
         repository.productResult = products
         repository.orderWarningResult = orderWarning
         XCTAssertFalse(try viewModel.withoutWarning().toBlocking().first()!)
+    }
+    
+    func testPhoneForOrder() {
+        repository.sellerContactsResult = sellerContacts
+        XCTAssertEqual(try viewModel.phoneForOrder().dematerialize().toBlocking().first(), sellerContacts.first?.phone)
     }
 
     func testPerformanceExample() throws {
