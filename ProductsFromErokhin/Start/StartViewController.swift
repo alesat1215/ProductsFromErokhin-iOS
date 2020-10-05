@@ -40,7 +40,9 @@ class StartViewController: UIViewController {
         viewModel?.titles()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
-            .flatMapError { print("Products error: \($0.localizedDescription)") }
+            .flatMapError { [weak self] in
+                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+            }
             .map { $0.first }
             .subscribe(onNext: { [weak self] in
                 self?._title.text = $0?.title
@@ -57,21 +59,23 @@ class StartViewController: UIViewController {
         viewModel?.products()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
-            .flatMapError { print("Products error: \($0.localizedDescription)") }
-            .subscribe(
+            .flatMapError { [weak self] in
+                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+            }.subscribe(
                 onNext: { [weak self] in
                     $0.bind(collectionView: self?.products)
-            }).disposed(by: disposeBag)
+                }).disposed(by: disposeBag)
         
         // products2
         viewModel?.products2()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
-            .flatMapError { print("Products error: \($0.localizedDescription)") }
-            .subscribe(
+            .flatMapError { [weak self] in
+                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+            }.subscribe(
                 onNext: { [weak self] in
                     $0.bind(collectionView: self?.products2)
-            }).disposed(by: disposeBag)
+                }).disposed(by: disposeBag)
     }
     
     // Set otlets for products
