@@ -47,37 +47,56 @@ class MenuViewControllerTests: XCTestCase {
     }
     
     func testBindGroups() {
-        // Delegate
-        XCTAssertNotNil(groups.delegate)
-        // DataSource
+        // Error. Show message
         XCTAssertNil(controller.groups.dataSource)
         XCTAssertFalse((controller.groups as! CollectionViewMock).isReload)
-        // Setup dataSource
-        var dataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
-        // Success event
-        viewModel.groupsResult.accept(Event.next(dataSource))
-        XCTAssertEqual(controller.groups.dataSource as! CoreDataSourceCollectionView, dataSource)
-        XCTAssertTrue((controller.groups as! CollectionViewMock).isReload)
+        XCTAssertNil(controller.presentedViewController)
         
-        dataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
-        (controller.groups as! CollectionViewMock).isReload = false
-        viewModel.groupsResult.accept(Event.next(dataSource))
-        XCTAssertEqual(controller.groups.dataSource as! CoreDataSourceCollectionView, dataSource)
-        XCTAssertTrue((controller.groups as! CollectionViewMock).isReload)
-        // Error event
-        (controller.groups as! CollectionViewMock).isReload = false
         viewModel.groupsResult.accept(Event.error(AppError.unknown))
-        XCTAssertEqual(controller.groups.dataSource as! CoreDataSourceCollectionView, dataSource)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.presentedViewController)
+        let alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertNil(controller.groups.dataSource)
         XCTAssertFalse((controller.groups as! CollectionViewMock).isReload)
-        // Success event after error
-        dataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
-        (controller.groups as! CollectionViewMock).isReload = false
+        
+        // Trigger action OK
+        let action = alertController.actions.first!
+        typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
+        let block = action.value(forKey: "handler")
+        let blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        let handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        
+        XCTAssertNil(controller.groups.dataSource)
+        XCTAssertFalse((controller.groups as! CollectionViewMock).isReload)
+        
+        // Success event
+        let dataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
+        
         viewModel.groupsResult.accept(Event.next(dataSource))
-        XCTAssertEqual(controller.groups.dataSource as! CoreDataSourceCollectionView, dataSource)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        
+        XCTAssertEqual((controller.groups.dataSource as! CoreDataSourceCollectionViewMock), dataSource)
         XCTAssertTrue((controller.groups as! CollectionViewMock).isReload)
     }
     
     func testSelectGroup() {
+        XCTAssertNotNil(groups.delegate)
         let groupDataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
         let productsDataSource = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
         
