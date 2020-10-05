@@ -13,13 +13,10 @@ import RxSwift
 class CartViewModelMockTests: XCTestCase {
     
     private var viewModel: CartViewModelMock!
+    private let disposeBag = DisposeBag()
 
     override func setUpWithError() throws {
         viewModel = CartViewModelMock()
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
     func testInCartCount() {
@@ -36,23 +33,52 @@ class CartViewModelMockTests: XCTestCase {
     func testProducts() {
         var result: CoreDataSourceTableView<Product>?
         let dataSource = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
-        let disposeBag = DisposeBag()
         viewModel.products().dematerialize()
             .subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
         viewModel.productsResult.accept(Event.next(dataSource))
         XCTAssertEqual(result, dataSource)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    func testTotalInCart() {
+        var result: Int?
+        viewModel.totalInCart().subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
+        viewModel.totalInCartResult.accept(3)
+        XCTAssertEqual(result, 3)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testWarning() {
+        var result: String?
+        let warning = "Warning"
+        viewModel.warning().dematerialize()
+            .subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
+        viewModel.warningResult.accept(Event.next(warning))
+        XCTAssertEqual(result, warning)
+    }
+    
+    func testWithoutWarning() {
+        var result: Bool?
+        viewModel.withoutWarning()
+            .subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
+        viewModel.withoutWarningResult.accept(true)
+        XCTAssertTrue(result!)
+    }
+    
+    func testPhoneForOrder() {
+        XCTAssertFalse(viewModel.isPhoneForOrder)
+        XCTAssertThrowsError(try viewModel.phoneForOrder().dematerialize().toBlocking().first())
+        XCTAssertTrue(viewModel.isPhoneForOrder)
+    }
+    
+    func testCheckContact() {
+        XCTAssertFalse(viewModel.isCheckContact)
+        XCTAssertNotNil(try viewModel.checkContact(phone: "").toBlocking().first())
+        XCTAssertTrue(viewModel.isCheckContact)
+    }
+    
+    func testMessage() {
+        XCTAssertFalse(viewModel.isMessage)
+        XCTAssertEqual(try viewModel.message().toBlocking().first(), viewModel.messageResult)
+        XCTAssertTrue(viewModel.isMessage)
     }
 
 }
