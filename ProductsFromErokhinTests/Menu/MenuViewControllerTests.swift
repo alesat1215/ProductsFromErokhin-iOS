@@ -144,6 +144,55 @@ class MenuViewControllerTests: XCTestCase {
         XCTAssertTrue((controller.products as! TableViewMock).isScroll)
     }
     
+    func testBindProducts() {
+        // Error. Show message
+        XCTAssertNil(controller.products.dataSource)
+        XCTAssertFalse((controller.products as! TableViewMock).isReload)
+        XCTAssertNil(controller.presentedViewController)
+        
+        viewModel.productsResult.accept(Event.error(AppError.unknown))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.presentedViewController)
+        let alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertNil(controller.products.dataSource)
+        XCTAssertFalse((controller.products as! TableViewMock).isReload)
+        
+        // Trigger action OK
+        let action = alertController.actions.first!
+        typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
+        let block = action.value(forKey: "handler")
+        let blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        let handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        
+        XCTAssertNil(controller.products.dataSource)
+        XCTAssertFalse((controller.products as! TableViewMock).isReload)
+        
+        // Success event
+        let dataSource = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
+        
+        viewModel.productsResult.accept(Event.next(dataSource))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        
+        XCTAssertEqual((controller.products.dataSource as! CoreDataSourceTableViewMock), dataSource)
+        XCTAssertTrue((controller.products as! TableViewMock).isReload)
+    }
+    
     func testSelectGroupWhenScrollProducts() {
         let groupDataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
         let productsDataSource = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
