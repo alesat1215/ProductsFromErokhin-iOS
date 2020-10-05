@@ -68,18 +68,18 @@ class CartViewControllerTests: XCTestCase {
         waitForExpectations(timeout: 1)
         
         XCTAssertNotNil(controller.presentedViewController)
-        var alertController = controller.navigationController?.presentedViewController as! UIAlertController
+        let alertController = controller.navigationController?.presentedViewController as! UIAlertController
         XCTAssertEqual(alertController.actions.count, 1)
         XCTAssertEqual(alertController.actions.first?.style, .default)
         XCTAssertEqual(alertController.actions.first?.title, "OK")
         XCTAssertNil(products.dataSource)
         XCTAssertFalse(products.isReload)
         // Trigger action OK
-        var action = alertController.actions.first!
+        let action = alertController.actions.first!
         typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
-        var block = action.value(forKey: "handler")
-        var blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
-        var handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        let block = action.value(forKey: "handler")
+        let blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        let handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
         handler(action)
         
         expectation(description: "wait 1 second").isInverted = true
@@ -88,6 +88,16 @@ class CartViewControllerTests: XCTestCase {
         XCTAssertNil(controller.presentedViewController)
         XCTAssertNil(products.dataSource)
         XCTAssertFalse(products.isReload)
+        
+        // Success
+        let dataSource = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
+        viewModel.productsResult.accept(Event.next(dataSource))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertEqual(controller.products.dataSource as! CoreDataSourceTableViewMock, dataSource)
+        XCTAssertTrue((controller.products as! TableViewMock).isReload)
     }
 
     func testExample() throws {
