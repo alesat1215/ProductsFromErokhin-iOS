@@ -53,7 +53,7 @@ class TabBarController: UITabBarController {
     
     /** Setup action for clear cart button */
     private func setupClearCartAction() {
-        clearCart.rx.tap
+        clearCart?.rx.tap
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()

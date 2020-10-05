@@ -20,11 +20,9 @@ class TabBarControllerTests: XCTestCase {
 
     override func setUpWithError() throws {
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TabBarController")
-        viewModel = CartViewModelMock()
-        controller.viewModel = viewModel
+        
         clearCart = UIButton()
-        // Set outlets
-        controller.clearCart = clearCart
+        viewModel = CartViewModelMock()
         
         navigationController = UINavigationController()
         navigationController.viewControllers = [controller]
@@ -32,6 +30,13 @@ class TabBarControllerTests: XCTestCase {
         let window = UIWindow()
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        // Set viewModel & clearCart
+        controller.viewModel = viewModel
+        controller.clearCart = clearCart
         
         controller.viewDidLoad()
     }
