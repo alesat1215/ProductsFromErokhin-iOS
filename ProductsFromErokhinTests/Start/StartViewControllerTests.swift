@@ -53,9 +53,11 @@ class StartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        // Set viewModel
+        // Set viewModel & products
         viewModel = StartViewModelMock()
         controller.viewModel = viewModel
+        controller.products = products
+        controller.products2 = products2
         
         controller.viewDidLoad()
     }
@@ -121,52 +123,94 @@ class StartViewControllerTests: XCTestCase {
     }
     
     func testBindProducts() {
-        controller.products = products
-        controller.products2 = products2
+        // Error. Show message
+        XCTAssertNil(controller.presentedViewController)
         XCTAssertNil(controller.products.dataSource)
-        XCTAssertNil(controller.products2.dataSource)
         XCTAssertFalse((controller.products as! CollectionViewMock).isReload)
-        XCTAssertFalse((controller.products2 as! CollectionViewMock).isReload)
-        // Setup dataSource
-        var dataSource = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
-        var dataSource2 = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
-        // Success event
-        viewModel.productsResult.accept(Event.next(dataSource))
-        viewModel.productsResult2.accept(Event.next(dataSource2))
-        XCTAssertEqual(controller.products.dataSource as! CoreDataSourceCollectionView, dataSource)
-        XCTAssertEqual(controller.products2.dataSource as! CoreDataSourceCollectionView, dataSource2)
-        XCTAssertTrue((controller.products as! CollectionViewMock).isReload)
-        XCTAssertTrue((controller.products2 as! CollectionViewMock).isReload)
         
-        dataSource = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
-        dataSource2 = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
-        (controller.products as! CollectionViewMock).isReload = false
-        (controller.products2 as! CollectionViewMock).isReload = false
-        viewModel.productsResult.accept(Event.next(dataSource))
-        viewModel.productsResult2.accept(Event.next(dataSource2))
-        XCTAssertEqual(controller.products.dataSource as! CoreDataSourceCollectionView, dataSource)
-        XCTAssertEqual(controller.products2.dataSource as! CoreDataSourceCollectionView, dataSource2)
-        XCTAssertTrue((controller.products as! CollectionViewMock).isReload)
-        XCTAssertTrue((controller.products2 as! CollectionViewMock).isReload)
-        // Error event
-        (controller.products as! CollectionViewMock).isReload = false
-        (controller.products2 as! CollectionViewMock).isReload = false
         viewModel.productsResult.accept(Event.error(AppError.unknown))
-        viewModel.productsResult2.accept(Event.error(AppError.unknown))
-        XCTAssertEqual(controller.products.dataSource as! CoreDataSourceCollectionView, dataSource)
-        XCTAssertEqual(controller.products2.dataSource as! CoreDataSourceCollectionView, dataSource2)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.presentedViewController)
+        let alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertNil(controller.products.dataSource)
         XCTAssertFalse((controller.products as! CollectionViewMock).isReload)
-        XCTAssertFalse((controller.products2 as! CollectionViewMock).isReload)
-        // Success event after error
-        dataSource = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
-        dataSource2 = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
-        (controller.products as! CollectionViewMock).isReload = false
-        (controller.products2 as! CollectionViewMock).isReload = false
+        // Trigger action OK
+        let action = alertController.actions.first!
+        typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
+        let block = action.value(forKey: "handler")
+        let blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        let handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertNil(controller.products.dataSource)
+        XCTAssertFalse((controller.products as! CollectionViewMock).isReload)
+        
+        // Success
+        let dataSource = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
+        
         viewModel.productsResult.accept(Event.next(dataSource))
-        viewModel.productsResult2.accept(Event.next(dataSource2))
-        XCTAssertEqual(controller.products.dataSource as! CoreDataSourceCollectionView, dataSource)
-        XCTAssertEqual(controller.products2.dataSource as! CoreDataSourceCollectionView, dataSource2)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertEqual((controller.products.dataSource as! CoreDataSourceCollectionView), dataSource)
         XCTAssertTrue((controller.products as! CollectionViewMock).isReload)
+    }
+    
+    func testBindProducts2() {
+        // Error. Show message
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertNil(controller.products2.dataSource)
+        XCTAssertFalse((controller.products2 as! CollectionViewMock).isReload)
+        
+        viewModel.productsResult2.accept(Event.error(AppError.unknown))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.presentedViewController)
+        let alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertNil(controller.products2.dataSource)
+        XCTAssertFalse((controller.products2 as! CollectionViewMock).isReload)
+        // Trigger action OK
+        let action = alertController.actions.first!
+        typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
+        let block = action.value(forKey: "handler")
+        let blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        let handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertNil(controller.products2.dataSource)
+        XCTAssertFalse((controller.products2 as! CollectionViewMock).isReload)
+        
+        // Success
+        let dataSource = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
+        
+        viewModel.productsResult2.accept(Event.next(dataSource))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertEqual((controller.products2.dataSource as! CoreDataSourceCollectionView), dataSource)
         XCTAssertTrue((controller.products2 as! CollectionViewMock).isReload)
     }
     
