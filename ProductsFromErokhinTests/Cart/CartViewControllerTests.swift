@@ -324,6 +324,38 @@ class CartViewControllerTests: XCTestCase {
         XCTAssertTrue(viewModel.isCheckContact)
         XCTAssertTrue(viewModel.isMessage)
         XCTAssertTrue(viewModel.isClearCart)
+        
+        // phoneForOrder success. Select messenger success, completed. Clear cart success
+        viewModel.isPhoneForOrder = false
+        viewModel.isCheckContact = false
+        viewModel.isMessage = false
+        viewModel.isClearCart = false
+        viewModel.clearCartResult = .success(())
+        
+        controller.send.sendActions(for: .touchUpInside)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.navigationController?.presentedViewController)
+        activityController = controller.navigationController?.presentedViewController as! UIActivityViewController
+        
+        XCTAssertTrue(viewModel.isPhoneForOrder)
+        XCTAssertTrue(viewModel.isCheckContact)
+        XCTAssertTrue(viewModel.isMessage)
+        XCTAssertFalse(viewModel.isClearCart)
+        
+        activityController.dismiss(animated: false)
+        activityController.completionWithItemsHandler?(nil, true, nil, nil)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.navigationController?.presentedViewController)
+        XCTAssertTrue(viewModel.isPhoneForOrder)
+        XCTAssertTrue(viewModel.isCheckContact)
+        XCTAssertTrue(viewModel.isMessage)
+        XCTAssertTrue(viewModel.isClearCart)
     }
 
     func testExample() throws {
