@@ -59,7 +59,7 @@ class CartViewControllerTests: XCTestCase {
     
     func testBindProducts() {
         // Error. Show message
-        XCTAssertNil(products.delegate)
+        XCTAssertNil(products.dataSource)
         XCTAssertFalse(products.isReload)
         XCTAssertNil(controller.presentedViewController)
         viewModel.productsResult.accept(Event.error(AppError.unknown))
@@ -72,7 +72,7 @@ class CartViewControllerTests: XCTestCase {
         XCTAssertEqual(alertController.actions.count, 1)
         XCTAssertEqual(alertController.actions.first?.style, .default)
         XCTAssertEqual(alertController.actions.first?.title, "OK")
-        XCTAssertNil(products.delegate)
+        XCTAssertNil(products.dataSource)
         XCTAssertFalse(products.isReload)
         // Trigger action OK
         var action = alertController.actions.first!
@@ -86,7 +86,7 @@ class CartViewControllerTests: XCTestCase {
         waitForExpectations(timeout: 1)
         
         XCTAssertNil(controller.presentedViewController)
-        XCTAssertNil(products.delegate)
+        XCTAssertNil(products.dataSource)
         XCTAssertFalse(products.isReload)
     }
 
