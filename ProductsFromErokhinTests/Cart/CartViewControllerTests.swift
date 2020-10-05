@@ -204,7 +204,7 @@ class CartViewControllerTests: XCTestCase {
         waitForExpectations(timeout: 1)
         
         XCTAssertNotNil(controller.navigationController?.presentedViewController)
-        let activityController = controller.navigationController?.presentedViewController as! UIActivityViewController
+        var activityController = controller.navigationController?.presentedViewController as! UIActivityViewController
         
         XCTAssertTrue(viewModel.isPhoneForOrder)
         XCTAssertTrue(viewModel.isCheckContact)
@@ -233,6 +233,36 @@ class CartViewControllerTests: XCTestCase {
         blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
         handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
         handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.navigationController?.presentedViewController)
+        XCTAssertTrue(viewModel.isPhoneForOrder)
+        XCTAssertTrue(viewModel.isCheckContact)
+        XCTAssertTrue(viewModel.isMessage)
+        XCTAssertFalse(viewModel.isClearCart)
+        
+        // phoneForOrder success. Select messenger success but not completed
+        viewModel.isPhoneForOrder = false
+        viewModel.isCheckContact = false
+        viewModel.isMessage = false
+        
+        controller.send.sendActions(for: .touchUpInside)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.navigationController?.presentedViewController)
+        activityController = controller.navigationController?.presentedViewController as! UIActivityViewController
+        
+        XCTAssertTrue(viewModel.isPhoneForOrder)
+        XCTAssertTrue(viewModel.isCheckContact)
+        XCTAssertTrue(viewModel.isMessage)
+        XCTAssertFalse(viewModel.isClearCart)
+        
+        activityController.dismiss(animated: false)
+        activityController.completionWithItemsHandler?(nil, false, nil, nil)
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
