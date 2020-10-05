@@ -101,7 +101,7 @@ extension CartViewController {
 extension CartViewController {
     /** Create order message, select messenger, send & clear cart after */
     private func setupSendAction() {
-        send.rx.tap
+        send?.rx.tap
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()

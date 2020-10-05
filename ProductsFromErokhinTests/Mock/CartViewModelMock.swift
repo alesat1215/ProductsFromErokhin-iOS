@@ -49,13 +49,25 @@ class CartViewModelMock: CartViewModel {
         withoutWarningResult.asObservable()
     }
     
-    let phoneForOrderResult = PublishRelay<Event<String>>()
+    var isPhoneForOrder = false
+    var phoneForOrderResult = Event<String>.error(AppError.unknown)
     override func phoneForOrder() -> Observable<Event<String>> {
-        phoneForOrderResult.asObservable()
+        isPhoneForOrder.toggle()
+        return Observable.just(phoneForOrderResult)
     }
     
-    let checkContactResult = PublishRelay<Void>()
+    var isCheckContact = false
+//    let checkContactResult = PublishRelay<Void>()
     override func checkContact(phone: String) -> Observable<Void> {
-        checkContactResult.asObservable()
+        isCheckContact.toggle()
+        return Observable.just(())
+    }
+    
+    var isMessage = false
+//    let messageResult = PublishRelay<String>()
+    let messageResult = "Message"
+    override func message() -> Observable<String> {
+        isMessage.toggle()
+        return Observable.just(messageResult)
     }
 }
