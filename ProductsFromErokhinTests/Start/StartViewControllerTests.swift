@@ -65,42 +65,55 @@ class StartViewControllerTests: XCTestCase {
         controller.imgTitle.text = nil
         controller.productsTitle.text = nil
         controller.productsTitle2.text = nil
-        // Setup titles
-        var titles = Titles(context: context)
+        
+        // Error. Show message
+        XCTAssertNil(controller.presentedViewController)
+        
+        viewModel.titlesResult.accept(Event.error(AppError.unknown))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.presentedViewController)
+        let alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertNil(controller._title.text)
+        XCTAssertNil(controller.imgTitle.text)
+        XCTAssertNil(controller.productsTitle.text)
+        XCTAssertNil(controller.productsTitle2.text)
+        // Trigger action OK
+        let action = alertController.actions.first!
+        typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
+        let block = action.value(forKey: "handler")
+        let blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        let handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertNil(controller._title.text)
+        XCTAssertNil(controller.imgTitle.text)
+        XCTAssertNil(controller.productsTitle.text)
+        XCTAssertNil(controller.productsTitle2.text)
+        
+        // Success
+        let titles = Titles(context: context)
         titles.title = "title"
         titles.imgTitle = "imgTitle"
         titles.productsTitle = "productsTitle"
         titles.productsTitle2 = "productsTitle2"
-        // Success event
-        viewModel.titlesResult.accept(Event.next([titles]))
-        XCTAssertEqual(controller._title.text, titles.title)
-        XCTAssertEqual(controller.imgTitle.text, titles.imgTitle)
-        XCTAssertEqual(controller.productsTitle.text, titles.productsTitle)
-        XCTAssertEqual(controller.productsTitle2.text, titles.productsTitle2)
         
-        titles = Titles(context: context)
-        titles.title = "title_2"
-        titles.imgTitle = "imgTitle_2"
-        titles.productsTitle = "productsTitle_2"
-        titles.productsTitle2 = "productsTitle2_2"
         viewModel.titlesResult.accept(Event.next([titles]))
-        XCTAssertEqual(controller._title.text, titles.title)
-        XCTAssertEqual(controller.imgTitle.text, titles.imgTitle)
-        XCTAssertEqual(controller.productsTitle.text, titles.productsTitle)
-        XCTAssertEqual(controller.productsTitle2.text, titles.productsTitle2)
-        // Error event
-        viewModel.titlesResult.accept(Event.error(AppError.unknown))
-        XCTAssertEqual(controller._title.text, titles.title)
-        XCTAssertEqual(controller.imgTitle.text, titles.imgTitle)
-        XCTAssertEqual(controller.productsTitle.text, titles.productsTitle)
-        XCTAssertEqual(controller.productsTitle2.text, titles.productsTitle2)
-        // Success event after error
-        titles = Titles(context: context)
-        titles.title = "title_3"
-        titles.imgTitle = "imgTitle_3"
-        titles.productsTitle = "productsTitle_3"
-        titles.productsTitle2 = "productsTitle2_3"
-        viewModel.titlesResult.accept(Event.next([titles]))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        
         XCTAssertEqual(controller._title.text, titles.title)
         XCTAssertEqual(controller.imgTitle.text, titles.imgTitle)
         XCTAssertEqual(controller.productsTitle.text, titles.productsTitle)
