@@ -15,18 +15,31 @@ class MenuViewControllerTests: XCTestCase {
     private var controller: MenuViewController!
     private var viewModel: MenuViewModelMock!
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var navigationController: UINavigationController!
     // Outlets
     private var groups: UICollectionView!
     private var products: UITableView!
 
     override func setUpWithError() throws {
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MenuViewController")
-        viewModel = MenuViewModelMock()
-        controller.viewModel = viewModel
+        
         // Set views
         groups = CollectionViewMock()
         products = TableViewMock()
-        // Set outlets
+        
+        navigationController = UINavigationController()
+        navigationController.viewControllers = [controller]
+        
+        let window = UIWindow()
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        // Set viewModel & outlets
+        viewModel = MenuViewModelMock()
+        controller.viewModel = viewModel
         controller.groups = groups
         controller.products = products
         
