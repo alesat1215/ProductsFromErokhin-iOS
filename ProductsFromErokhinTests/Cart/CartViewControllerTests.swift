@@ -108,6 +108,50 @@ class CartViewControllerTests: XCTestCase {
         XCTAssertEqual(controller.resultSum.text, "0 ₽")
         XCTAssertFalse(controller.send.isEnabled)
     }
+    
+    func testbindWarning() {
+        viewModel.withoutWarningResult.accept(true)
+        XCTAssertTrue(controller.orderWarning.isHidden)
+        viewModel.withoutWarningResult.accept(false)
+        XCTAssertFalse(controller.orderWarning.isHidden)
+        
+        // Error. Show message
+        controller.orderWarning.text = nil
+        XCTAssertNil(controller.presentedViewController)
+        viewModel.warningResult.accept(Event.error(AppError.unknown))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.presentedViewController)
+        let alertController = controller.navigationController?.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertNil(controller.orderWarning.text)
+        // Trigger action OK
+        let action = alertController.actions.first!
+        typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
+        let block = action.value(forKey: "handler")
+        let blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        let handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertNil(controller.orderWarning.text)
+        
+        // Success
+        viewModel.warningResult.accept(Event.next("Warning"))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertEqual(controller.orderWarning.text, "Warning")
+    }
 
     func testExample() throws {
         // This is an example of a functional test case.
