@@ -57,14 +57,12 @@ class CartViewModelMock: CartViewModel {
     }
     
     var isCheckContact = false
-//    let checkContactResult = PublishRelay<Void>()
     override func checkContact(phone: String) -> Observable<Void> {
         isCheckContact.toggle()
         return Observable.just(())
     }
     
     var isMessage = false
-//    let messageResult = PublishRelay<String>()
     let messageResult = "Message"
     override func message() -> Observable<String> {
         isMessage.toggle()
