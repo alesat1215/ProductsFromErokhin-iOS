@@ -50,7 +50,7 @@ extension CartViewController {
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
             }
             .subscribe(onNext: { [weak self] in
                 $0.bind(tableView: self?.products)
@@ -90,7 +90,7 @@ extension CartViewController {
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
             }
             .bind(to: orderWarning.rx.text)
             .disposed(by: disposeBag)
@@ -132,7 +132,7 @@ extension CartViewController {
             .observeOn(MainScheduler.instance)
             // Show message for error
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
             }.observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             // Check phone in contacts
             .flatMap { [weak self] in
