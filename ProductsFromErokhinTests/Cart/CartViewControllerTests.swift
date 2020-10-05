@@ -61,13 +61,13 @@ class CartViewControllerTests: XCTestCase {
         // Error. Show message
         XCTAssertNil(products.dataSource)
         XCTAssertFalse(products.isReload)
-        XCTAssertNil(controller.presentedViewController)
+        XCTAssertNil(controller.navigationController?.presentedViewController)
         viewModel.productsResult.accept(Event.error(AppError.unknown))
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNotNil(controller.presentedViewController)
+        XCTAssertNotNil(controller.navigationController?.presentedViewController)
         let alertController = controller.navigationController?.presentedViewController as! UIAlertController
         XCTAssertEqual(alertController.actions.count, 1)
         XCTAssertEqual(alertController.actions.first?.style, .default)
@@ -85,7 +85,7 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNil(controller.presentedViewController)
+        XCTAssertNil(controller.navigationController?.presentedViewController)
         XCTAssertNil(products.dataSource)
         XCTAssertFalse(products.isReload)
         
@@ -117,13 +117,13 @@ class CartViewControllerTests: XCTestCase {
         
         // Error. Show message
         controller.orderWarning.text = nil
-        XCTAssertNil(controller.presentedViewController)
+        XCTAssertNil(controller.navigationController?.presentedViewController)
         viewModel.warningResult.accept(Event.error(AppError.unknown))
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNotNil(controller.presentedViewController)
+        XCTAssertNotNil(controller.navigationController?.presentedViewController)
         let alertController = controller.navigationController?.presentedViewController as! UIAlertController
         XCTAssertEqual(alertController.actions.count, 1)
         XCTAssertEqual(alertController.actions.first?.style, .default)
@@ -140,7 +140,7 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNil(controller.presentedViewController)
+        XCTAssertNil(controller.navigationController?.presentedViewController)
         XCTAssertNil(controller.orderWarning.text)
         
         // Success
@@ -149,7 +149,7 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNil(controller.presentedViewController)
+        XCTAssertNil(controller.navigationController?.presentedViewController)
         XCTAssertEqual(controller.orderWarning.text, "Warning")
     }
 
