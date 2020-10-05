@@ -67,7 +67,7 @@ extension CartViewController {
         
         // Set sum for order
         totalInCart?
-            .map { "\($0) P" }
+            .map { "\($0) ₽" }
             .bind(to: resultSum.rx.text)
             .disposed(by: disposeBag)
         

@@ -99,6 +99,15 @@ class CartViewControllerTests: XCTestCase {
         XCTAssertEqual(controller.products.dataSource as! CoreDataSourceTableViewMock, dataSource)
         XCTAssertTrue((controller.products as! TableViewMock).isReload)
     }
+    
+    func testBindResult() {
+        viewModel.totalInCartResult.accept(5)
+        XCTAssertEqual(controller.resultSum.text, "5 ₽")
+        XCTAssertTrue(controller.send.isEnabled)
+        viewModel.totalInCartResult.accept(0)
+        XCTAssertEqual(controller.resultSum.text, "0 ₽")
+        XCTAssertFalse(controller.send.isEnabled)
+    }
 
     func testExample() throws {
         // This is an example of a functional test case.
