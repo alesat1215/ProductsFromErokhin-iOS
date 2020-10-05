@@ -33,7 +33,7 @@ class MenuViewController: UIViewController {
     /** Setup select & dataSorce for groups */
     private func bindGroups() {
         // Select group when item selected & scroll to it
-        groups.rx.itemSelected.subscribe(onNext: { [weak self] in
+        groups?.rx.itemSelected.subscribe(onNext: { [weak self] in
             // Disable select group by scroll products
             self?.tabSelected = true
             // Select group
@@ -50,7 +50,9 @@ class MenuViewController: UIViewController {
         viewModel?.groups()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
-            .flatMapError { print("Groups error: \($0.localizedDescription)") }
+            .flatMapError { [weak self] in
+                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+            }
             .subscribe(onNext: { [weak self] in
                 $0.bind(collectionView: self?.groups)
             }).disposed(by: disposeBag)
@@ -58,7 +60,7 @@ class MenuViewController: UIViewController {
     /** Setup select group when scroll & set dataSource for products */
     private func bindProducts() {
         // Select group for top visible cell of products
-        products.rx.willDisplayCell
+        products?.rx.willDisplayCell
             .throttle(RxTimeInterval.milliseconds(50), scheduler: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 // Return for scrolling products by group selected
@@ -74,7 +76,7 @@ class MenuViewController: UIViewController {
             }).disposed(by: disposeBag)
         
         // Enable select group by scroll products
-        products.rx.willBeginDragging.subscribe(onNext: { [weak self] _ in
+        products?.rx.willBeginDragging.subscribe(onNext: { [weak self] _ in
             self?.tabSelected = false
         }).disposed(by: disposeBag)
         
@@ -82,7 +84,9 @@ class MenuViewController: UIViewController {
         viewModel?.products()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
-            .flatMapError { print("Products error: \($0.localizedDescription)") }
+            .flatMapError { [weak self] in
+                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+            }
             .subscribe(onNext: { [weak self] in
                 $0.bind(tableView: self?.products)
             }).disposed(by: disposeBag)
