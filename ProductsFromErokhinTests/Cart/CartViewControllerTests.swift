@@ -52,9 +52,17 @@ class CartViewControllerTests: XCTestCase {
         
         controller.viewDidLoad()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    func testPrepare() {
+        let tableView = TableViewMock()
+        let viewController = UIViewController()
+        viewController.view = tableView
+        let productsSegueId = "productsSegueId"
+        controller.products = nil
+        controller.prepare(for: UIStoryboardSegue(identifier: "test", source: UIViewController(), destination: viewController), sender: nil)
+        XCTAssertNil(controller.products)
+        controller.prepare(for: UIStoryboardSegue(identifier: productsSegueId, source: UIViewController(), destination: viewController), sender: nil)
+        XCTAssertEqual(controller.products, tableView)
     }
     
     func testBindProducts() {
@@ -356,18 +364,6 @@ class CartViewControllerTests: XCTestCase {
         XCTAssertTrue(viewModel.isCheckContact)
         XCTAssertTrue(viewModel.isMessage)
         XCTAssertTrue(viewModel.isClearCart)
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 
 }
