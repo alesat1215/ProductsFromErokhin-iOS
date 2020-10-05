@@ -24,15 +24,13 @@ class CartViewControllerTests: XCTestCase {
 
     override func setUpWithError() throws {
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "CartViewController")
-        viewModel = CartViewModelMock()
-        controller.viewModel = viewModel
+        
         // Set views
         products = TableViewMock()
         orderWarning = UILabel()
         resultSum = UILabel()
         send = UIButton()
         // Set outlets
-        controller.products = products
         controller.orderWarning = orderWarning
         controller.resultSum = resultSum
         controller.send = send
@@ -43,6 +41,14 @@ class CartViewControllerTests: XCTestCase {
         let window = UIWindow()
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        // Set viewModel & products
+        viewModel = CartViewModelMock()
+        controller.viewModel = viewModel
+        controller.products = products
         
         controller.viewDidLoad()
     }
@@ -62,7 +68,7 @@ class CartViewControllerTests: XCTestCase {
         waitForExpectations(timeout: 1)
         
         XCTAssertNotNil(controller.presentedViewController)
-        var alertController = controller.presentedViewController as! UIAlertController
+        var alertController = controller.navigationController?.presentedViewController as! UIAlertController
         XCTAssertEqual(alertController.actions.count, 1)
         XCTAssertEqual(alertController.actions.first?.style, .default)
         XCTAssertEqual(alertController.actions.first?.title, "OK")
