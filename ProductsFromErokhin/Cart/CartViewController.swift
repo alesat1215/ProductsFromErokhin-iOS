@@ -49,7 +49,9 @@ extension CartViewController {
         viewModel?.products()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
-            .flatMapError { print("Products error: \($0.localizedDescription)") }
+            .flatMapError { [weak self] in
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
+            }
             .subscribe(onNext: { [weak self] in
                 $0.bind(tableView: self?.products)
             }).disposed(by: disposeBag)
@@ -87,7 +89,9 @@ extension CartViewController {
         viewModel?.warning()
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
-            .flatMapError { print("Products error: \($0.localizedDescription)") }
+            .flatMapError { [weak self] in
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
+            }
             .bind(to: orderWarning.rx.text)
             .disposed(by: disposeBag)
     }
