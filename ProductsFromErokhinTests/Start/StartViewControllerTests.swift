@@ -15,6 +15,7 @@ class StartViewControllerTests: XCTestCase {
     private var controller: StartViewController!
     private var viewModel: StartViewModelMock!
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var navigationController: UINavigationController!
     // Outlets
     private var _title: UILabel!
     private var img: UIImageView!
@@ -26,8 +27,7 @@ class StartViewControllerTests: XCTestCase {
 
     override func setUpWithError() throws {
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "StartViewController")
-        viewModel = StartViewModelMock()
-        controller.viewModel = viewModel
+        
         // Set views
         _title = UILabel()
         img = UIImageView()
@@ -43,14 +43,28 @@ class StartViewControllerTests: XCTestCase {
         controller.productsTitle = productsTitle
         controller.productsTitle2 = productsTitle2
         
+        navigationController = UINavigationController()
+        navigationController.viewControllers = [controller]
+        
+        let window = UIWindow()
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        // Set viewModel
+        viewModel = StartViewModelMock()
+        controller.viewModel = viewModel
+        
         controller.viewDidLoad()
     }
     
     func testBindTitles() {
-        XCTAssertNil(controller._title.text)
-        XCTAssertNil(controller.imgTitle.text)
-        XCTAssertNil(controller.productsTitle.text)
-        XCTAssertNil(controller.productsTitle2.text)
+        controller._title.text = nil
+        controller.imgTitle.text = nil
+        controller.productsTitle.text = nil
+        controller.productsTitle2.text = nil
         // Setup titles
         var titles = Titles(context: context)
         titles.title = "title"
@@ -144,6 +158,9 @@ class StartViewControllerTests: XCTestCase {
     }
     
     func testPrepare() {
+        controller.products = nil
+        controller.products2 = nil
+        
         let destination = UIViewController()
         destination.view.addSubview(products)
         // products
