@@ -17,10 +17,8 @@ class LoadViewModelMock: LoadViewModel {
         super.init(repository: nil, anonymousAuth: nil)
     }
     
-//    var authResult: Event<Void> = Event.error(AppError.unknown)
     let authResult = PublishRelay<Event<Void>>()
     override func auth() -> Observable<Event<Void>> {
-//        Observable.just(authResult)
         authResult.asObservable()
     }
     
