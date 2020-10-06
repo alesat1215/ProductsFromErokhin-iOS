@@ -11,12 +11,13 @@ import FirebaseAuth
 import RxSwift
 
 extension Auth: AuthMethods { }
-
+/** Firebase authentications methods */
 protocol AuthMethods: AnyObject, ReactiveCompatible {
     func signInAnonymously(completion: AuthDataResultCallback?)
 }
-
+/** Reactive wrapper for firebase authentications methods */
 extension Reactive where Base: AuthMethods {
+    /** For error generate event with error. For succes auth generate void event & complete */
     internal func signInAnonymously() -> Observable<Event<Void>> {
         Observable.create { observer in
             base.signInAnonymously { auth, error in
