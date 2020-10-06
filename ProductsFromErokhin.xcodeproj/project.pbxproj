@@ -90,6 +90,7 @@
 		D7D64953252C925B0010E2F3 /* AuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64952252C925B0010E2F3 /* AuthMock.swift */; };
 		D7D64975252CA3340010E2F3 /* Auth+RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64974252CA3340010E2F3 /* Auth+RxTests.swift */; };
 		D7D6497D252CA69C0010E2F3 /* AuthMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6497C252CA69C0010E2F3 /* AuthMockTests.swift */; };
+		D7D6498B252CAAD90010E2F3 /* RemoteConfig+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6498A252CAAD90010E2F3 /* RemoteConfig+Rx.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -227,6 +228,7 @@
 		D7D64952252C925B0010E2F3 /* AuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMock.swift; sourceTree = "<group>"; };
 		D7D64974252CA3340010E2F3 /* Auth+RxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+RxTests.swift"; sourceTree = "<group>"; };
 		D7D6497C252CA69C0010E2F3 /* AuthMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMockTests.swift; sourceTree = "<group>"; };
+		D7D6498A252CAAD90010E2F3 /* RemoteConfig+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteConfig+Rx.swift"; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 			children = (
 				D7877B6425028D9200244B81 /* AppError.swift */,
 				D7D64944252C84810010E2F3 /* Auth+Rx.swift */,
+				D7D6498A252CAAD90010E2F3 /* RemoteConfig+Rx.swift */,
 				D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */,
 				D7B4B529250E542100BA07CB /* CoreDataSourceCollectionView.swift */,
 				D71A78C92519F8E1001B9234 /* CoreDataSourceTableView.swift */,
@@ -899,6 +902,7 @@
 				D795210124FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld in Sources */,
 				D7E29402252771C900EA2845 /* SellerContactsRemote.swift in Sources */,
 				D7B4B5332512428000BA07CB /* LoadViewController.swift in Sources */,
+				D7D6498B252CAAD90010E2F3 /* RemoteConfig+Rx.swift in Sources */,
 				D7877B5E25010F7100244B81 /* ProductsRemote.swift in Sources */,
 				D7B4613F25193472001ED878 /* ProductTableViewCell.swift in Sources */,
 				D7877B6525028D9200244B81 /* AppError.swift in Sources */,

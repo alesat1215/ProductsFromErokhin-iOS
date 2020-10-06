@@ -83,7 +83,7 @@ extension SwinjectStoryboard {
         defaultContainer.register(DatabaseUpdater.self) { r in
             DatabaseUpdater(
                 remoteConfig: r.resolve(RemoteConfig.self),
-                remoteConfigComplection: r.resolve(RemoteConfigComplection.self),
+//                remoteConfigComplection: r.resolve(RemoteConfigComplection.self),
                 decoder: r.resolve(JSONDecoder.self),
                 context: r.resolve(NSManagedObjectContext.self),
                 fetchLimiter: r.resolve(FetchLimiter.self)
@@ -96,9 +96,9 @@ extension SwinjectStoryboard {
             return remoteConfig
         }.inObjectScope(.container)
         
-        defaultContainer.register(RemoteConfigComplection.self) { _ in
-            RemoteConfigComplection()
-        }
+//        defaultContainer.register(RemoteConfigComplection.self) { _ in
+//            RemoteConfigComplection()
+//        }
         
         defaultContainer.register(FetchLimiter.self) { r in
             FetchLimiter(serialQueue: r.resolve(DispatchQueue.self))

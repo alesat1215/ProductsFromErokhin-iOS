@@ -16,20 +16,20 @@ import CoreData
 /** Sync database with remote config */
 class DatabaseUpdater {
     private let remoteConfig: RemoteConfig! // di
-    private let remoteConfigComplection: RemoteConfigComplection! // di
+//    private let remoteConfigComplection: RemoteConfigComplection! // di
     private let decoder: JSONDecoder! // di
     private let context: NSManagedObjectContext! // di
     private let fetchLimiter: FetchLimiter! // di
     
     init(
         remoteConfig: RemoteConfig?,
-        remoteConfigComplection: RemoteConfigComplection?,
+//        remoteConfigComplection: RemoteConfigComplection?,
         decoder: JSONDecoder?,
         context: NSManagedObjectContext?,
         fetchLimiter: FetchLimiter?
     ) {
         self.remoteConfig = remoteConfig
-        self.remoteConfigComplection = remoteConfigComplection
+//        self.remoteConfigComplection = remoteConfigComplection
         self.decoder = decoder
         self.context = context
         self.fetchLimiter = fetchLimiter
@@ -44,9 +44,10 @@ class DatabaseUpdater {
         // Block fetch for other requests
         fetchLimiter.fetchInProcess = true
         // Fetch & activate remote config
-        remoteConfig.fetchAndActivate(completionHandler: remoteConfigComplection.completionHandler(status:error:))
+//        remoteConfig.fetchAndActivate(completionHandler: remoteConfigComplection.completionHandler(status:error:))
         // Get result for request
-        return remoteConfigComplection.result().flatMap { [weak self] status, error -> Observable<Event<T>> in
+//        return remoteConfigComplection.result().flatMap { [weak self] status, error -> Observable<Event<T>> in
+        return remoteConfig.rx.fetchAndActivate().flatMap { [weak self] status, error -> Observable<Event<T>> in
             // Default result
             var result = Observable<Event<T>>.empty()
             // Update database only when config wethed from remote
