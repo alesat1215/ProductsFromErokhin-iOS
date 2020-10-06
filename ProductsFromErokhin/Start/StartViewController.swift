@@ -41,7 +41,7 @@ class StartViewController: UIViewController {
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }
             .map { $0.first }
             .subscribe(onNext: { [weak self] in
@@ -60,7 +60,7 @@ class StartViewController: UIViewController {
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }.subscribe(
                 onNext: { [weak self] in
                     $0.bind(collectionView: self?.products)
@@ -71,7 +71,7 @@ class StartViewController: UIViewController {
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }.subscribe(
                 onNext: { [weak self] in
                     $0.bind(collectionView: self?.products2)

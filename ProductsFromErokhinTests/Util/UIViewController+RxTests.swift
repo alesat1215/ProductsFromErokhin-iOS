@@ -45,7 +45,7 @@ class UIViewController_RxTests: XCTestCase {
         XCTAssertNil(controller.presentedViewController)
         let disposeBag = DisposeBag()
         var result: Void?
-        controller.rx.showMessage("").subscribe(onNext: {
+        controller.rx.showMessage("", withEvent: true).subscribe(onNext: {
             result = $0
         }).disposed(by: disposeBag)
         XCTAssertNotNil(controller.presentedViewController)
@@ -69,7 +69,7 @@ class UIViewController_RxTests: XCTestCase {
         XCTAssertNil(controller.presentedViewController)
         let disposeBag = DisposeBag()
         var result: Void?
-        controller.rx.showMessage("", withEvent: false).subscribe(onNext: {
+        controller.rx.showMessage("").subscribe(onNext: {
             result = $0
         }).disposed(by: disposeBag)
         XCTAssertNotNil(controller.presentedViewController)

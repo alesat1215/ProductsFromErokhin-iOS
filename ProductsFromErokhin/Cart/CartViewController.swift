@@ -50,7 +50,7 @@ extension CartViewController {
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }
             .subscribe(onNext: { [weak self] in
                 $0.bind(tableView: self?.products)
@@ -90,7 +90,7 @@ extension CartViewController {
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }
             .bind(to: orderWarning.rx.text)
             .disposed(by: disposeBag)
@@ -132,7 +132,7 @@ extension CartViewController {
             .observeOn(MainScheduler.instance)
             // Show message for error
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }.observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             // Check phone in contacts
             .flatMap { [weak self] in
@@ -150,7 +150,7 @@ extension CartViewController {
             }.flatMap { [weak self] result -> Observable<Bool> in
                 // For error result show alert with error
                 if let error = result.1 {
-                    return self?.rx.showMessage(error.localizedDescription)
+                    return self?.rx.showMessage(error.localizedDescription, withEvent: true)
                         .map { false } ?? Observable.empty()
                 }
                 // For success result send it status
@@ -171,7 +171,7 @@ extension CartViewController {
                 switch result {
                 case .failure(let error):
                     // Show error
-                    return self?.rx.showMessage(error.localizedDescription, withEvent: false) ?? Observable.empty()
+                    return self?.rx.showMessage(error.localizedDescription) ?? Observable.empty()
                 default:
                     return Observable.just(())
                 }

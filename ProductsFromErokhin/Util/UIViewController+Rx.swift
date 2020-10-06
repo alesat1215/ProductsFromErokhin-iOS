@@ -38,9 +38,9 @@ extension Reactive where Base: UIViewController {
      Show alert with text & OK button. For withEvent == false result is Observable.empty()
      - Parameters:
         - text: Text for message
-        - withEvent: If false return empty sequence. Default return sequence with void event
+        - withEvent: If true return sequence with one event. Default return empty sequence
      */
-    public func showMessage(_ text: String, withEvent: Bool = true) -> Observable<Void> {
+    public func showMessage(_ text: String, withEvent: Bool = false) -> Observable<Void> {
         let _alert = alert(title: nil,
               message: text,
               actions: [AlertAction(title: "OK", style: .default)]

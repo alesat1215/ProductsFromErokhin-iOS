@@ -41,7 +41,7 @@ class LoadViewController: UIViewController {
         viewModel?.auth()
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             } ?? Observable.empty()
     }
     /** Load data */
@@ -49,7 +49,7 @@ class LoadViewController: UIViewController {
         viewModel?.loadComplete()
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }
             .filter { $0 }
             .map { _ in return } ?? Observable.empty()

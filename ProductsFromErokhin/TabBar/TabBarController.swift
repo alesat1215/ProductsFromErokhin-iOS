@@ -88,7 +88,7 @@ class TabBarController: UITabBarController {
             switch result {
             case .failure(let error):
                 print("Clear cart error: \(error)")
-                return self?.rx.showMessage(error.localizedDescription, withEvent: false) ?? Observable.empty()
+                return self?.rx.showMessage(error.localizedDescription) ?? Observable.empty()
             default:
                 return Observable.just(())
             }

@@ -51,7 +51,7 @@ class MenuViewController: UIViewController {
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }
             .subscribe(onNext: { [weak self] in
                 $0.bind(collectionView: self?.groups)
@@ -85,7 +85,7 @@ class MenuViewController: UIViewController {
             .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }
             .subscribe(onNext: { [weak self] in
                 $0.bind(tableView: self?.products)
