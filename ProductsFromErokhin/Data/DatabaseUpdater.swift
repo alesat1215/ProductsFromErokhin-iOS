@@ -19,20 +19,17 @@ protocol DatabaseUpdater {
 /** Sync database with remote config */
 class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
     private let remoteConfig: R! // di
-//    private let remoteConfigComplection: RemoteConfigComplection! // di
     private let decoder: JSONDecoder! // di
     private let context: NSManagedObjectContext! // di
     private let fetchLimiter: FetchLimiter! // di
     
     init(
         remoteConfig: R?,
-//        remoteConfigComplection: RemoteConfigComplection?,
         decoder: JSONDecoder?,
         context: NSManagedObjectContext?,
         fetchLimiter: FetchLimiter?
     ) {
         self.remoteConfig = remoteConfig
-//        self.remoteConfigComplection = remoteConfigComplection
         self.decoder = decoder
         self.context = context
         self.fetchLimiter = fetchLimiter
@@ -47,9 +44,6 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
         // Block fetch for other requests
         fetchLimiter.fetchInProcess = true
         // Fetch & activate remote config
-//        remoteConfig.fetchAndActivate(completionHandler: remoteConfigComplection.completionHandler(status:error:))
-        // Get result for request
-//        return remoteConfigComplection.result().flatMap { [weak self] status, error -> Observable<Event<T>> in
         return remoteConfig.rx.fetchAndActivate().flatMap { [weak self] status, error -> Observable<Event<T>> in
             // Default result
             var result = Observable<Event<T>>.empty()

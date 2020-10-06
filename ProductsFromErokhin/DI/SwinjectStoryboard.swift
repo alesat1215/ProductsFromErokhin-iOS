@@ -83,27 +83,20 @@ extension SwinjectStoryboard {
         defaultContainer.register(DatabaseUpdater.self) { r in
             DatabaseUpdaterImpl(
                 remoteConfig: r.resolve(RemoteConfig.self),
-//                remoteConfigComplection: r.resolve(RemoteConfigComplection.self),
                 decoder: r.resolve(JSONDecoder.self),
                 context: r.resolve(NSManagedObjectContext.self),
                 fetchLimiter: r.resolve(FetchLimiter.self)
             )
         }
-        
         defaultContainer.register(RemoteConfig.self) { _ in
             let remoteConfig = RemoteConfig.remoteConfig()
             remoteConfig.setDefaults(fromPlist: "RemoteConfigDefaults")
             return remoteConfig
         }.inObjectScope(.container)
         
-//        defaultContainer.register(RemoteConfigComplection.self) { _ in
-//            RemoteConfigComplection()
-//        }
-        
         defaultContainer.register(FetchLimiter.self) { r in
             FetchLimiter(serialQueue: r.resolve(DispatchQueue.self))
         }
-        
         defaultContainer.register(DispatchQueue.self) { _ in
             DispatchQueue(label: "com.alesat1215.ProductsFromErokhin.serialQueue")
         }.inObjectScope(.container)
