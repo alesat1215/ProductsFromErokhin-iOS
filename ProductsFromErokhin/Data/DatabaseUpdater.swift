@@ -14,6 +14,7 @@ import CoreData
 
 // MARK: - Database
 protocol DatabaseUpdater {
+    /** Sync database with remote data */
     func sync<T>() -> Observable<Event<T>>
 }
 /** Sync database with remote config */
