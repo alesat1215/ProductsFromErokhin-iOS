@@ -22,36 +22,21 @@ class LoadViewController: UIViewController {
     }
     /** Sign in to Firebase, load data & navigate to destination */
     private func loadData() {
-//        viewModel?.auth()
-//            .observeOn(MainScheduler.instance)
-//            .flatMapError { [weak self] in
-//                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
-//            }
-//            // Load data
-//            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
-//            .flatMapLatest { [weak self] in
-//                self?.viewModel?.loadComplete() ?? Observable.empty()
-//            }
-//            .observeOn(MainScheduler.instance)
-//            .flatMapError { [weak self] in
-//                self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
-//            }
-//            .filter { $0 }
-//            .map { _ in return }
-        // Auth in Firebase
+        // Sign in to Firebase
         auth()
-            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             // Load data
+            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .flatMapLatest { [weak self] in
                 self?.load() ?? Observable.empty()
             }
             // Navigate to destination
+            .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 print("Load complete. Navigate to destination")
                 self?.performSegue(withIdentifier: "toStart", sender: nil)
             }).disposed(by: disposeBag)
     }
-    
+    /** Sign in to Firebase */
     private func auth() -> Observable<Void> {
         viewModel?.auth()
             .observeOn(MainScheduler.instance)
@@ -59,7 +44,7 @@ class LoadViewController: UIViewController {
                 self?.rx.showMessage($0.localizedDescription, withEvent: false) ?? Observable.empty()
             } ?? Observable.empty()
     }
-    
+    /** Load data */
     private func load() -> Observable<Void> {
         viewModel?.loadComplete()
             .observeOn(MainScheduler.instance)
