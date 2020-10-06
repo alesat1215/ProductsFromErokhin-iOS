@@ -53,7 +53,6 @@
 		D79579612517C06C007AD022 /* StartViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79579602517C06C007AD022 /* StartViewModelMockTests.swift */; };
 		D79579692517C787007AD022 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79579682517C787007AD022 /* ProductCollectionViewCell.swift */; };
 		D795796E2517C900007AD022 /* FirebaseStorageReference.swift in Sources */ = {isa = PBXBuildFile; fileRef = D795796D2517C900007AD022 /* FirebaseStorageReference.swift */; };
-		D7B460E82518F73F001ED878 /* AnonymousAuthMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B460E72518F73F001ED878 /* AnonymousAuthMockTests.swift */; };
 		D7B460ED2518F83A001ED878 /* LoadViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B460EC2518F83A001ED878 /* LoadViewModelMockTests.swift */; };
 		D7B4613F25193472001ED878 /* ProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4613E25193472001ED878 /* ProductTableViewCell.swift */; };
 		D7B4614725193A1F001ED878 /* MenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4614625193A1F001ED878 /* MenuViewModel.swift */; };
@@ -64,13 +63,9 @@
 		D7B4B52A250E542100BA07CB /* CoreDataSourceCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B529250E542100BA07CB /* CoreDataSourceCollectionView.swift */; };
 		D7B4B52C250FE43700BA07CB /* NSManagedObjectContext+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52B250FE43700BA07CB /* NSManagedObjectContext+Rx.swift */; };
 		D7B4B52E2510C5BD00BA07CB /* BindableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52D2510C5BD00BA07CB /* BindableCells.swift */; };
-		D7B4B5302512262100BA07CB /* AnonymousAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B52F2512262100BA07CB /* AnonymousAuth.swift */; };
 		D7B4B5332512428000BA07CB /* LoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B5322512428000BA07CB /* LoadViewController.swift */; };
 		D7B4B5352512429900BA07CB /* LoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B4B5342512429900BA07CB /* LoadViewModel.swift */; };
 		D7C0FB922513C5B2009BC51F /* ObservableType+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */; };
-		D7C0FBAC2513E045009BC51F /* AnonymousAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBAB2513E045009BC51F /* AnonymousAuthTests.swift */; };
-		D7C0FBB22513E082009BC51F /* AuthComplectionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */; };
-		D7C0FBBA2513E5AE009BC51F /* AuthComplectionMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBB92513E5AE009BC51F /* AuthComplectionMockTests.swift */; };
 		D7C0FBBF2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBBE2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift */; };
 		D7C0FBE92514DCF4009BC51F /* BindableCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBE82514DCF4009BC51F /* BindableCellTests.swift */; };
 		D7C0FBF02514E042009BC51F /* ProductsRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FBEF2514E042009BC51F /* ProductsRemoteTests.swift */; };
@@ -93,7 +88,6 @@
 		D7D6485A252B580F0010E2F3 /* CartViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64859252B580F0010E2F3 /* CartViewModelMockTests.swift */; };
 		D7D64945252C84810010E2F3 /* Auth+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64944252C84810010E2F3 /* Auth+Rx.swift */; };
 		D7D64953252C925B0010E2F3 /* AuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64952252C925B0010E2F3 /* AuthMock.swift */; };
-		D7D6EBE92517CD410098ABC7 /* AnonymousAuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBE82517CD410098ABC7 /* AnonymousAuthMock.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -194,7 +188,6 @@
 		D79579602517C06C007AD022 /* StartViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewModelMockTests.swift; sourceTree = "<group>"; };
 		D79579682517C787007AD022 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		D795796D2517C900007AD022 /* FirebaseStorageReference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageReference.swift; sourceTree = "<group>"; };
-		D7B460E72518F73F001ED878 /* AnonymousAuthMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuthMockTests.swift; sourceTree = "<group>"; };
 		D7B460EC2518F83A001ED878 /* LoadViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMockTests.swift; sourceTree = "<group>"; };
 		D7B4613E25193472001ED878 /* ProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTableViewCell.swift; sourceTree = "<group>"; };
 		D7B4614625193A1F001ED878 /* MenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewModel.swift; sourceTree = "<group>"; };
@@ -205,13 +198,9 @@
 		D7B4B529250E542100BA07CB /* CoreDataSourceCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceCollectionView.swift; sourceTree = "<group>"; };
 		D7B4B52B250FE43700BA07CB /* NSManagedObjectContext+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Rx.swift"; sourceTree = "<group>"; };
 		D7B4B52D2510C5BD00BA07CB /* BindableCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableCells.swift; sourceTree = "<group>"; };
-		D7B4B52F2512262100BA07CB /* AnonymousAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuth.swift; sourceTree = "<group>"; };
 		D7B4B5322512428000BA07CB /* LoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewController.swift; sourceTree = "<group>"; };
 		D7B4B5342512429900BA07CB /* LoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModel.swift; sourceTree = "<group>"; };
 		D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+ExtensionsTests.swift"; sourceTree = "<group>"; };
-		D7C0FBAB2513E045009BC51F /* AnonymousAuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuthTests.swift; sourceTree = "<group>"; };
-		D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthComplectionMock.swift; sourceTree = "<group>"; };
-		D7C0FBB92513E5AE009BC51F /* AuthComplectionMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthComplectionMockTests.swift; sourceTree = "<group>"; };
 		D7C0FBBE2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSourceCollectionViewTests.swift; sourceTree = "<group>"; };
 		D7C0FBE82514DCF4009BC51F /* BindableCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindableCellTests.swift; sourceTree = "<group>"; };
 		D7C0FBEF2514E042009BC51F /* ProductsRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRemoteTests.swift; sourceTree = "<group>"; };
@@ -234,7 +223,6 @@
 		D7D64859252B580F0010E2F3 /* CartViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModelMockTests.swift; sourceTree = "<group>"; };
 		D7D64944252C84810010E2F3 /* Auth+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+Rx.swift"; sourceTree = "<group>"; };
 		D7D64952252C925B0010E2F3 /* AuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMock.swift; sourceTree = "<group>"; };
-		D7D6EBE82517CD410098ABC7 /* AnonymousAuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuthMock.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -344,7 +332,6 @@
 				D7B4B52D2510C5BD00BA07CB /* BindableCells.swift */,
 				D79579682517C787007AD022 /* ProductCollectionViewCell.swift */,
 				D7B4613E25193472001ED878 /* ProductTableViewCell.swift */,
-				D7B4B52F2512262100BA07CB /* AnonymousAuth.swift */,
 				D795796D2517C900007AD022 /* FirebaseStorageReference.swift */,
 				D7E293D425265B4000EA2845 /* UIViewController+Rx.swift */,
 				D7E293FC25275D1B00EA2845 /* Contacts+Rx.swift */,
@@ -492,7 +479,6 @@
 				D7C0FBE82514DCF4009BC51F /* BindableCellTests.swift */,
 				D72F41DE251FAE51001EE822 /* ProductCollectionViewCellTests.swift */,
 				D72F41EC2520656A001EE822 /* ProductTableViewCellTests.swift */,
-				D7C0FBAB2513E045009BC51F /* AnonymousAuthTests.swift */,
 				D7E2942E2528DFEF00EA2845 /* UIViewController+RxTests.swift */,
 				D7E294332528F71D00EA2845 /* Contacts+RxTests.swift */,
 			);
@@ -503,7 +489,6 @@
 			isa = PBXGroup;
 			children = (
 				D7C0FC1725154173009BC51F /* Tests */,
-				D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */,
 				D7D64952252C925B0010E2F3 /* AuthMock.swift */,
 				D7C0FC1825154199009BC51F /* CollectionViewCellMock.swift */,
 				D72F41D9251FA5F2001EE822 /* TableViewCellMock.swift */,
@@ -517,7 +502,6 @@
 				D7518E0D25220D5700C72B1E /* CoreDataSourceTableViewMock.swift */,
 				D79579562517B500007AD022 /* StartViewModelMock.swift */,
 				D7518DFB252078AC00C72B1E /* MenuViewModelMock.swift */,
-				D7D6EBE82517CD410098ABC7 /* AnonymousAuthMock.swift */,
 				D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */,
 				D7E294382528F7E800EA2845 /* CNContactStoreMock.swift */,
 				D7E29465252A3DB400EA2845 /* CartViewModelMock.swift */,
@@ -562,7 +546,6 @@
 		D7C0FC1725154173009BC51F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D7C0FBB92513E5AE009BC51F /* AuthComplectionMockTests.swift */,
 				D7C0FC28251543B7009BC51F /* CollectionViewCellMockTests.swift */,
 				D7518E2A252217CD00C72B1E /* TableViewCellMockTests.swift */,
 				D7C0FC3C2515E14A009BC51F /* CollectionViewMockTests.swift */,
@@ -575,7 +558,6 @@
 				D7518E1A2522121400C72B1E /* CoreDataSourceTableViewMockTests.swift */,
 				D79579602517C06C007AD022 /* StartViewModelMockTests.swift */,
 				D7518E00252079D600C72B1E /* MenuViewModelMockTests.swift */,
-				D7B460E72518F73F001ED878 /* AnonymousAuthMockTests.swift */,
 				D7B460EC2518F83A001ED878 /* LoadViewModelMockTests.swift */,
 				D7E2943D2529BB2B00EA2845 /* CNContactStoreMockTests.swift */,
 				D7D64859252B580F0010E2F3 /* CartViewModelMockTests.swift */,
@@ -920,7 +902,6 @@
 				D7B4B522250A7AF700BA07CB /* Titles.swift in Sources */,
 				D7877B80250809F300244B81 /* Products.swift in Sources */,
 				D79520F524FFBE7E0094BAFE /* AppDelegate.swift in Sources */,
-				D7B4B5302512262100BA07CB /* AnonymousAuth.swift in Sources */,
 				D79579692517C787007AD022 /* ProductCollectionViewCell.swift in Sources */,
 				D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */,
 				D7B4614725193A1F001ED878 /* MenuViewModel.swift in Sources */,
@@ -967,20 +948,15 @@
 				D72F41DF251FAE51001EE822 /* ProductCollectionViewCellTests.swift in Sources */,
 				D7C0FBF82514EC5B009BC51F /* TitlesRemoteTests.swift in Sources */,
 				D72F41D0251FA2AF001EE822 /* CoreDataSourceTableViewTests.swift in Sources */,
-				D7C0FBAC2513E045009BC51F /* AnonymousAuthTests.swift in Sources */,
 				D7C0FC5E251676C5009BC51F /* DatabaseUpdaterMockTests.swift in Sources */,
 				D795795225175190007AD022 /* CoreDataSourceCollectionViewMock.swift in Sources */,
 				D7E29466252A3DB400EA2845 /* CartViewModelMock.swift in Sources */,
 				D7C0FBE92514DCF4009BC51F /* BindableCellTests.swift in Sources */,
 				D7C0FC4C2515E866009BC51F /* RemoteConfigComplectionMockTests.swift in Sources */,
-				D7C0FBB22513E082009BC51F /* AuthComplectionMock.swift in Sources */,
 				D7C0FC422515E40F009BC51F /* JSONDecoderMockTests.swift in Sources */,
 				D795793A251699E9007AD022 /* StartViewModelTests.swift in Sources */,
 				D7C0FC29251543B7009BC51F /* CollectionViewCellMockTests.swift in Sources */,
 				D79579612517C06C007AD022 /* StartViewModelMockTests.swift in Sources */,
-				D7C0FBBA2513E5AE009BC51F /* AuthComplectionMockTests.swift in Sources */,
-				D7D6EBE92517CD410098ABC7 /* AnonymousAuthMock.swift in Sources */,
-				D7B460E82518F73F001ED878 /* AnonymousAuthMockTests.swift in Sources */,
 				D7D6485A252B580F0010E2F3 /* CartViewModelMockTests.swift in Sources */,
 				D7E2942F2528DFEF00EA2845 /* UIViewController+RxTests.swift in Sources */,
 				D79579422517251A007AD022 /* StartViewControllerTests.swift in Sources */,

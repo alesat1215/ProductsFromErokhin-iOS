@@ -13,9 +13,7 @@ import RxSwift
 
 class LoadViewModelMock: LoadViewModel {
     
-    init() {
-//        super.init(repository: nil, anonymousAuth: nil)
-    }
+    init() {}
     
     let authResult = PublishRelay<Event<Void>>()
     func auth() -> Observable<Event<Void>> {

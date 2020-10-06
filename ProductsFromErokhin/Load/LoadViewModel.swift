@@ -24,7 +24,6 @@ class LoadViewModelImpl<T: AuthMethods>: LoadViewModel {
     }
     
     func auth() -> Observable<Event<Void>> {
-//        anonymousAuth.signIn()
         anonymousAuth.rx.signInAnonymously()
     }
     

@@ -75,19 +75,19 @@ extension SwinjectStoryboard {
         }.inObjectScope(.container)
         
         // MARK: - Auth
-        defaultContainer.register(AnonymousAuth.self) { r in
-            AnonymousAuth(
-                auth: r.resolve(Auth.self),
-                authComplection: r.resolve(AuthComplection.self)
-            )
-        }
+//        defaultContainer.register(AnonymousAuth.self) { r in
+//            AnonymousAuth(
+//                auth: r.resolve(Auth.self),
+//                authComplection: r.resolve(AuthComplection.self)
+//            )
+//        }
         defaultContainer.register(Auth.self) { _ in
             Auth.auth()
         }.inObjectScope(.container)
         
-        defaultContainer.register(AuthComplection.self) { _ in
-            AuthComplection()
-        }
+//        defaultContainer.register(AuthComplection.self) { _ in
+//            AuthComplection()
+//        }
         // MARK: - Remote config
         defaultContainer.register(DatabaseUpdater.self) { r in
             DatabaseUpdater(
