@@ -14,7 +14,7 @@ struct OrderWarningRemote {
     let groups: [String]
 }
 
-extension OrderWarningRemote: Codable {
+extension OrderWarningRemote: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case text, groups
     }

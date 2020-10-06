@@ -19,7 +19,7 @@ struct ProductRemote {
     let inStart2: Bool
 }
 
-extension ProductRemote: Codable {
+extension ProductRemote: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case name, consist, img, price, inStart, inStart2
     }
@@ -41,7 +41,7 @@ struct GroupRemote {
     let products: [ProductRemote]
 }
 
-extension GroupRemote: Codable {
+extension GroupRemote: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case name, products
     }

@@ -14,7 +14,7 @@ struct SellerContactsRemote {
     let address: String
 }
 
-extension SellerContactsRemote: Codable {
+extension SellerContactsRemote: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case phone, address
     }

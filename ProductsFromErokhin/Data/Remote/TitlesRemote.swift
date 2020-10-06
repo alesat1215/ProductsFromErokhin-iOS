@@ -17,7 +17,7 @@ struct TitlesRemote {
     let productsTitle2: String
 }
 
-extension TitlesRemote: Codable {
+extension TitlesRemote: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
         case title, img, imgTitle, productsTitle, productsTitle2
     }

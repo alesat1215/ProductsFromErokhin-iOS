@@ -14,8 +14,11 @@ class JSONDecoderMockTests: XCTestCase {
     func testDecode() {
         let decoder = JSONDecoderMock()
         
-        XCTAssertTrue(try decoder.decode([GroupRemote].self, from: Data()) is [GroupRemote])
-        XCTAssertTrue(try decoder.decode(TitlesRemote.self, from: Data()) is TitlesRemote)
+        XCTAssertEqual(try decoder.decode([GroupRemote].self, from: Data()), decoder.groupRemoteResult)
+        XCTAssertEqual(try decoder.decode(TitlesRemote.self, from: Data()), decoder.titlesRemoteResult)
+        XCTAssertEqual(try decoder.decode(OrderWarningRemote.self, from: Data()), decoder.orderWarningRemoteResult)
+        XCTAssertEqual(try decoder.decode(SellerContactsRemote.self, from: Data()), decoder.sellerContactsRemoteResult)
+        XCTAssertThrowsError(try decoder.decode(String.self, from: Data()))
     }
 
 }
