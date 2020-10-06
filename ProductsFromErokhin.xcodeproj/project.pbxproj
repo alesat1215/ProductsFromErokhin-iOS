@@ -78,10 +78,8 @@
 		D7C0FC242515429E009BC51F /* CollectionViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC232515429E009BC51F /* CollectionViewMock.swift */; };
 		D7C0FC29251543B7009BC51F /* CollectionViewCellMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC28251543B7009BC51F /* CollectionViewCellMockTests.swift */; };
 		D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC3225154559009BC51F /* JSONDecoderMock.swift */; };
-		D7C0FC38251545A0009BC51F /* RemoteConfigComplectionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC37251545A0009BC51F /* RemoteConfigComplectionMock.swift */; };
 		D7C0FC3D2515E14A009BC51F /* CollectionViewMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC3C2515E14A009BC51F /* CollectionViewMockTests.swift */; };
 		D7C0FC422515E40F009BC51F /* JSONDecoderMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC412515E40F009BC51F /* JSONDecoderMockTests.swift */; };
-		D7C0FC4C2515E866009BC51F /* RemoteConfigComplectionMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC4B2515E866009BC51F /* RemoteConfigComplectionMockTests.swift */; };
 		D7C0FC542515F067009BC51F /* DatabaseUpdaterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC532515F067009BC51F /* DatabaseUpdaterMock.swift */; };
 		D7C0FC592515F1E4009BC51F /* AppRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC582515F1E4009BC51F /* AppRepositoryTests.swift */; };
 		D7C0FC5E251676C5009BC51F /* DatabaseUpdaterMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC5D251676C5009BC51F /* DatabaseUpdaterMockTests.swift */; };
@@ -216,10 +214,8 @@
 		D7C0FC232515429E009BC51F /* CollectionViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewMock.swift; sourceTree = "<group>"; };
 		D7C0FC28251543B7009BC51F /* CollectionViewCellMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCellMockTests.swift; sourceTree = "<group>"; };
 		D7C0FC3225154559009BC51F /* JSONDecoderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderMock.swift; sourceTree = "<group>"; };
-		D7C0FC37251545A0009BC51F /* RemoteConfigComplectionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigComplectionMock.swift; sourceTree = "<group>"; };
 		D7C0FC3C2515E14A009BC51F /* CollectionViewMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewMockTests.swift; sourceTree = "<group>"; };
 		D7C0FC412515E40F009BC51F /* JSONDecoderMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderMockTests.swift; sourceTree = "<group>"; };
-		D7C0FC4B2515E866009BC51F /* RemoteConfigComplectionMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigComplectionMockTests.swift; sourceTree = "<group>"; };
 		D7C0FC532515F067009BC51F /* DatabaseUpdaterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdaterMock.swift; sourceTree = "<group>"; };
 		D7C0FC582515F1E4009BC51F /* AppRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepositoryTests.swift; sourceTree = "<group>"; };
 		D7C0FC5D251676C5009BC51F /* DatabaseUpdaterMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdaterMockTests.swift; sourceTree = "<group>"; };
@@ -503,7 +499,6 @@
 				D7C0FC232515429E009BC51F /* CollectionViewMock.swift */,
 				D72F41D4251FA348001EE822 /* TableViewMock.swift */,
 				D7C0FC3225154559009BC51F /* JSONDecoderMock.swift */,
-				D7C0FC37251545A0009BC51F /* RemoteConfigComplectionMock.swift */,
 				D7C0FC532515F067009BC51F /* DatabaseUpdaterMock.swift */,
 				D79579272516966B007AD022 /* AppRepositoryMock.swift */,
 				D795795125175190007AD022 /* CoreDataSourceCollectionViewMock.swift */,
@@ -560,7 +555,6 @@
 				D7C0FC3C2515E14A009BC51F /* CollectionViewMockTests.swift */,
 				D7518E1F2522147600C72B1E /* TableViewMockTests.swift */,
 				D7C0FC412515E40F009BC51F /* JSONDecoderMockTests.swift */,
-				D7C0FC4B2515E866009BC51F /* RemoteConfigComplectionMockTests.swift */,
 				D7C0FC5D251676C5009BC51F /* DatabaseUpdaterMockTests.swift */,
 				D795795B2517BE72007AD022 /* AppRepositoryMockTests.swift */,
 				D7518E1525220EEF00C72B1E /* CoreDataSourceCollectionViewMockTests.swift */,
@@ -963,7 +957,6 @@
 				D795795225175190007AD022 /* CoreDataSourceCollectionViewMock.swift in Sources */,
 				D7E29466252A3DB400EA2845 /* CartViewModelMock.swift in Sources */,
 				D7C0FBE92514DCF4009BC51F /* BindableCellTests.swift in Sources */,
-				D7C0FC4C2515E866009BC51F /* RemoteConfigComplectionMockTests.swift in Sources */,
 				D7C0FC422515E40F009BC51F /* JSONDecoderMockTests.swift in Sources */,
 				D795793A251699E9007AD022 /* StartViewModelTests.swift in Sources */,
 				D7C0FC29251543B7009BC51F /* CollectionViewCellMockTests.swift in Sources */,
@@ -988,7 +981,6 @@
 				D7518E0625207B4C00C72B1E /* MenuViewControllerTests.swift in Sources */,
 				D7C0FBFE2514EF06009BC51F /* OrderedTests.swift in Sources */,
 				D7C0FBBF2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift in Sources */,
-				D7C0FC38251545A0009BC51F /* RemoteConfigComplectionMock.swift in Sources */,
 				D7C0FBF02514E042009BC51F /* ProductsRemoteTests.swift in Sources */,
 				D7518E202522147600C72B1E /* TableViewMockTests.swift in Sources */,
 				D7E2944D252A07A100EA2845 /* OrderWarningTests.swift in Sources */,

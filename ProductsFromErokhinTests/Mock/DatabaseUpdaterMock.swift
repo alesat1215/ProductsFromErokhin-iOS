@@ -12,11 +12,11 @@ import RxSwift
 
 class DatabaseUpdaterMock: DatabaseUpdater {
     init() {
-        super.init(remoteConfig: nil, remoteConfigComplection: nil, decoder: nil, context: nil, fetchLimiter: nil)
+//        super.init(remoteConfig: nil, remoteConfigComplection: nil, decoder: nil, context: nil, fetchLimiter: nil)
     }
     var error: Error?
     var isSync = false
-    override func sync<T>() -> Observable<Event<T>> {
+    func sync<T>() -> Observable<Event<T>> {
         isSync.toggle()
         if let error = error {
             return Observable.just(Event.error(error))

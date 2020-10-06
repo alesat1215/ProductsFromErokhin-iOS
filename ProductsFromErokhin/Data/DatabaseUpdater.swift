@@ -134,18 +134,18 @@ fileprivate enum RemoteDataKeys: String {
     case products, titles, orderWarning = "order_warning", contacts
 }
 
-/** Completion handler for fetchAndActivate with observable result */
-class RemoteConfigComplection {
-    private let _result = PublishRelay<(status: RemoteConfigFetchAndActivateStatus, error: Error?)>()
-    
-    func completionHandler(status: RemoteConfigFetchAndActivateStatus, error: Error?) -> Void {
-        _result.accept((status, error))
-    }
-    /** - returns: Observable result of fetchAndActivate method */
-    func result() -> Observable<(status: RemoteConfigFetchAndActivateStatus, error: Error?)> {
-        _result.asObservable()
-    }
-}
+///** Completion handler for fetchAndActivate with observable result */
+//class RemoteConfigComplection {
+//    private let _result = PublishRelay<(status: RemoteConfigFetchAndActivateStatus, error: Error?)>()
+//    
+//    func completionHandler(status: RemoteConfigFetchAndActivateStatus, error: Error?) -> Void {
+//        _result.accept((status, error))
+//    }
+//    /** - returns: Observable result of fetchAndActivate method */
+//    func result() -> Observable<(status: RemoteConfigFetchAndActivateStatus, error: Error?)> {
+//        _result.asObservable()
+//    }
+//}
 
 /** Limit for run fetchAndActivate method */
 class FetchLimiter {
