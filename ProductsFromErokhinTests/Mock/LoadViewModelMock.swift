@@ -14,17 +14,17 @@ import RxSwift
 class LoadViewModelMock: LoadViewModel {
     
     init() {
-        super.init(repository: nil, anonymousAuth: nil)
+//        super.init(repository: nil, anonymousAuth: nil)
     }
     
     let authResult = PublishRelay<Event<Void>>()
-    override func auth() -> Observable<Event<Void>> {
+    func auth() -> Observable<Event<Void>> {
         authResult.asObservable()
     }
     
     let loadCompleteResult = PublishRelay<Event<Bool>>()
     var isLoadComplete = false
-    override func loadComplete() -> Observable<Event<Bool>> {
+    func loadComplete() -> Observable<Event<Bool>> {
         isLoadComplete.toggle()
         return loadCompleteResult.asObservable()
     }

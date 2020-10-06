@@ -25,9 +25,9 @@ extension SwinjectStoryboard {
             c.viewModel = r.resolve(LoadViewModel.self)
         }
         defaultContainer.register(LoadViewModel.self) { r in
-            LoadViewModel(
+            LoadViewModelImpl(
                 repository: r.resolve(AppRepository.self),
-                anonymousAuth: r.resolve(AnonymousAuth.self)
+                anonymousAuth: r.resolve(Auth.self)
             )
         }
         // MARK: - TabBar

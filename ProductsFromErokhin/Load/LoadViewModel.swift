@@ -9,17 +9,23 @@
 import Foundation
 import RxSwift
 
-class LoadViewModel {
+protocol LoadViewModel {
+    func auth() -> Observable<Event<Void>>
+    func loadComplete() -> Observable<Event<Bool>>
+}
+
+class LoadViewModelImpl<T: AuthMethods>: LoadViewModel {
     private let repository: AppRepository! // di
-    private let anonymousAuth: AnonymousAuth! // di
+    private let anonymousAuth: T! // di
     
-    init(repository: AppRepository?, anonymousAuth: AnonymousAuth?) {
+    init(repository: AppRepository?, anonymousAuth: T?) {
         self.repository = repository
         self.anonymousAuth = anonymousAuth
     }
     
     func auth() -> Observable<Event<Void>> {
-        anonymousAuth.signIn()
+//        anonymousAuth.signIn()
+        anonymousAuth.rx.signInAnonymously()
     }
     
     func loadComplete() -> Observable<Event<Bool>> {

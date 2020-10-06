@@ -91,6 +91,8 @@
 		D7C0FC592515F1E4009BC51F /* AppRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC582515F1E4009BC51F /* AppRepositoryTests.swift */; };
 		D7C0FC5E251676C5009BC51F /* DatabaseUpdaterMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C0FC5D251676C5009BC51F /* DatabaseUpdaterMockTests.swift */; };
 		D7D6485A252B580F0010E2F3 /* CartViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64859252B580F0010E2F3 /* CartViewModelMockTests.swift */; };
+		D7D64945252C84810010E2F3 /* Auth+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64944252C84810010E2F3 /* Auth+Rx.swift */; };
+		D7D64953252C925B0010E2F3 /* AuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64952252C925B0010E2F3 /* AuthMock.swift */; };
 		D7D6EBE92517CD410098ABC7 /* AnonymousAuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBE82517CD410098ABC7 /* AnonymousAuthMock.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
@@ -230,6 +232,8 @@
 		D7C0FC582515F1E4009BC51F /* AppRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepositoryTests.swift; sourceTree = "<group>"; };
 		D7C0FC5D251676C5009BC51F /* DatabaseUpdaterMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdaterMockTests.swift; sourceTree = "<group>"; };
 		D7D64859252B580F0010E2F3 /* CartViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModelMockTests.swift; sourceTree = "<group>"; };
+		D7D64944252C84810010E2F3 /* Auth+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+Rx.swift"; sourceTree = "<group>"; };
+		D7D64952252C925B0010E2F3 /* AuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMock.swift; sourceTree = "<group>"; };
 		D7D6EBE82517CD410098ABC7 /* AnonymousAuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnonymousAuthMock.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
@@ -332,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				D7877B6425028D9200244B81 /* AppError.swift */,
+				D7D64944252C84810010E2F3 /* Auth+Rx.swift */,
 				D7B4B51B250A299D00BA07CB /* ObservableType+Extensions.swift */,
 				D7B4B529250E542100BA07CB /* CoreDataSourceCollectionView.swift */,
 				D71A78C92519F8E1001B9234 /* CoreDataSourceTableView.swift */,
@@ -499,6 +504,7 @@
 			children = (
 				D7C0FC1725154173009BC51F /* Tests */,
 				D7C0FBB12513E082009BC51F /* AuthComplectionMock.swift */,
+				D7D64952252C925B0010E2F3 /* AuthMock.swift */,
 				D7C0FC1825154199009BC51F /* CollectionViewCellMock.swift */,
 				D72F41D9251FA5F2001EE822 /* TableViewCellMock.swift */,
 				D7C0FC232515429E009BC51F /* CollectionViewMock.swift */,
@@ -899,6 +905,7 @@
 				D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */,
 				D7B4B5352512429900BA07CB /* LoadViewModel.swift in Sources */,
 				D7E293A22524843400EA2845 /* OrderWarningRemote.swift in Sources */,
+				D7D64945252C84810010E2F3 /* Auth+Rx.swift in Sources */,
 				D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */,
 				D7B4B52A250E542100BA07CB /* CoreDataSourceCollectionView.swift in Sources */,
 				D795210124FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld in Sources */,
@@ -985,6 +992,7 @@
 				D795211124FFBE800094BAFE /* ProductsFromErokhinTests.swift in Sources */,
 				D7C0FC0E25150772009BC51F /* TitlesTests.swift in Sources */,
 				D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */,
+				D7D64953252C925B0010E2F3 /* AuthMock.swift in Sources */,
 				D7C0FC1925154199009BC51F /* CollectionViewCellMock.swift in Sources */,
 				D7E29448252A065700EA2845 /* SellerContactsRemoteTests.swift in Sources */,
 				D7C0FC1325151426009BC51F /* DatabaseUpdaterTests.swift in Sources */,

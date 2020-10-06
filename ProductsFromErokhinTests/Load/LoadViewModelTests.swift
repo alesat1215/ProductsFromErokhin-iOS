@@ -7,20 +7,30 @@
 //
 
 import XCTest
+import RxSwift
+import FirebaseAuth
 @testable import ProductsFromErokhin
 
 class LoadViewModelTests: XCTestCase {
     
-    private var viewModel: LoadViewModel!
-    private let repository = AppRepositoryMock()
-    private let auth = AnonymousAuthMock()
+    private var viewModel: LoadViewModelImpl<AuthMock>!
+    private var repository: AppRepositoryMock!
+    private var auth: AuthMock!
+    private var disposeBag: DisposeBag!
 
     override func setUpWithError() throws {
-        viewModel = LoadViewModel(repository: repository, anonymousAuth: auth)
+        disposeBag = DisposeBag()
+        repository = AppRepositoryMock()
+        auth = AuthMock()
+        viewModel = LoadViewModelImpl(repository: repository, anonymousAuth: auth)
     }
     
     func testAuth() {
-        XCTAssertNotNil(try viewModel.auth().toBlocking().first())
+        var result: Event<Void>?
+        viewModel.auth().subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
+        XCTAssertNil(result)
+        auth.completion?(nil, AppError.unknown)
+        XCTAssertNotNil(result)
     }
     
     func testLoadComplete() {
