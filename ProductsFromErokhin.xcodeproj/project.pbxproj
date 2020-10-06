@@ -89,6 +89,7 @@
 		D7D64945252C84810010E2F3 /* Auth+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64944252C84810010E2F3 /* Auth+Rx.swift */; };
 		D7D64953252C925B0010E2F3 /* AuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64952252C925B0010E2F3 /* AuthMock.swift */; };
 		D7D64975252CA3340010E2F3 /* Auth+RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64974252CA3340010E2F3 /* Auth+RxTests.swift */; };
+		D7D6497D252CA69C0010E2F3 /* AuthMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6497C252CA69C0010E2F3 /* AuthMockTests.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -225,6 +226,7 @@
 		D7D64944252C84810010E2F3 /* Auth+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+Rx.swift"; sourceTree = "<group>"; };
 		D7D64952252C925B0010E2F3 /* AuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMock.swift; sourceTree = "<group>"; };
 		D7D64974252CA3340010E2F3 /* Auth+RxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+RxTests.swift"; sourceTree = "<group>"; };
+		D7D6497C252CA69C0010E2F3 /* AuthMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMockTests.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 		D7C0FC1725154173009BC51F /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D7D6497C252CA69C0010E2F3 /* AuthMockTests.swift */,
 				D7C0FC28251543B7009BC51F /* CollectionViewCellMockTests.swift */,
 				D7518E2A252217CD00C72B1E /* TableViewCellMockTests.swift */,
 				D7C0FC3C2515E14A009BC51F /* CollectionViewMockTests.swift */,
@@ -946,6 +949,7 @@
 				D7E29443252A04D900EA2845 /* OrderWarningRemoteTests.swift in Sources */,
 				D7E2943E2529BB2B00EA2845 /* CNContactStoreMockTests.swift in Sources */,
 				D7518E1625220EEF00C72B1E /* CoreDataSourceCollectionViewMockTests.swift in Sources */,
+				D7D6497D252CA69C0010E2F3 /* AuthMockTests.swift in Sources */,
 				D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */,
 				D7C0FC062514FEBE009BC51F /* ProductsTests.swift in Sources */,
 				D72F41DF251FAE51001EE822 /* ProductCollectionViewCellTests.swift in Sources */,
