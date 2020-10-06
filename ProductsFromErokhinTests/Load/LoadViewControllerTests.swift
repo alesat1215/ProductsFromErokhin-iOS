@@ -13,43 +13,127 @@ import RxSwift
 class LoadViewControllerTests: XCTestCase {
     
     private var controller: LoadViewController!
-    private let viewModel = LoadViewModelMock()
+    private var viewModel: LoadViewModelMock!
+    private var navigationController: UINavigationController!
 
     override func setUpWithError() throws {
-        controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoadViewController") as! LoadViewController
-        controller.viewModel = viewModel
-        // For segue
+        controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "LoadViewController")
+        
+        navigationController = UINavigationController()
+        navigationController.viewControllers = [controller]
+        
         let window = UIWindow()
-        window.rootViewController = controller
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        viewModel = LoadViewModelMock()
+        controller.viewModel = viewModel
+        
+        controller.viewDidLoad()
     }
     
-    func testLoadDataAuthError() {
-        controller.viewDidLoad()
-        let exp = expectation(description: "Wait 1 second")
-        _ = XCTWaiter.wait(for: [exp], timeout: 1)
+    func testLoadData() {
+        // Auth error. Show message
         XCTAssertNil(controller.presentedViewController)
-    }
-    
-    func testLoadDataAuthSuccess() {
-        viewModel.authResult = Event.next(())
-        controller.viewDidLoad()
-        XCTAssertNil(controller.presentedViewController)
-        // Load error
-        viewModel.loadCompleteResult.accept(Event.error(AppError.unknown))
-        var exp = expectation(description: "Wait 1 second")
-        _ = XCTWaiter.wait(for: [exp], timeout: 1)
-        XCTAssertNil(controller.presentedViewController)
-        // Load empty
-        viewModel.loadCompleteResult.accept(Event.next(false))
-        exp = expectation(description: "Wait 1 second")
-        _ = XCTWaiter.wait(for: [exp], timeout: 1)
-        XCTAssertNil(controller.presentedViewController)
-        // Load success
-        viewModel.loadCompleteResult.accept(Event.next(true))
-        exp = expectation(description: "Wait 1 second")
-        _ = XCTWaiter.wait(for: [exp], timeout: 1)
+        XCTAssertFalse(viewModel.isLoadComplete)
+
+        viewModel.authResult.accept(Event.error(AppError.unknown))
+
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+
         XCTAssertNotNil(controller.presentedViewController)
+        var alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertFalse(viewModel.isLoadComplete)
+        // Trigger action OK
+        var action = alertController.actions.first!
+        typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
+        var block = action.value(forKey: "handler")
+        var blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        var handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertFalse(viewModel.isLoadComplete)
+        
+        // Auth success. Load error. Show message
+        viewModel.authResult.accept(Event.next(()))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertTrue(viewModel.isLoadComplete)
+        
+        viewModel.loadCompleteResult.accept(Event.error(AppError.unknown))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.presentedViewController)
+        alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertTrue(viewModel.isLoadComplete)
+        // Trigger action OK
+        action = alertController.actions.first!
+        block = action.value(forKey: "handler")
+        blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertTrue(viewModel.isLoadComplete)
+        
+        // Auth success. Load success, but not completed.
+        viewModel.isLoadComplete = false
+        
+        viewModel.authResult.accept(Event.next(()))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertTrue(viewModel.isLoadComplete)
+        
+        viewModel.loadCompleteResult.accept(Event.next(false))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        
+        // Auth success. Load success, completed. Navigate to destination
+        viewModel.isLoadComplete = false
+        
+        viewModel.authResult.accept(Event.next(()))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertTrue(viewModel.isLoadComplete)
+        
+        viewModel.loadCompleteResult.accept(Event.next(true))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.presentedViewController)
+        XCTAssertTrue(controller.presentedViewController is UINavigationController)
     }
 
 }

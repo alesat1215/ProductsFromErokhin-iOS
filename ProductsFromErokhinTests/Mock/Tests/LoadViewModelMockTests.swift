@@ -17,9 +17,9 @@ class LoadViewModelMockTests: XCTestCase {
         viewModel = LoadViewModelMock()
     }
     
-    func testAuth() {
-        XCTAssertEqual(try viewModel.auth().toBlocking().first()?.error?.localizedDescription, viewModel.authResult.error?.localizedDescription)
-    }
+//    func testAuth() {
+//        XCTAssertEqual(try viewModel.auth().toBlocking().first()?.error?.localizedDescription, viewModel.authResult.error?.localizedDescription)
+//    }
     
     func testLoadComplete() {
         let complete = Event.next(true)
