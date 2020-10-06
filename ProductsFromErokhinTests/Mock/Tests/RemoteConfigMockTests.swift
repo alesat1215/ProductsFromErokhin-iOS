@@ -23,5 +23,11 @@ class RemoteConfigMockTests: XCTestCase {
         XCTAssertNotNil(remoteConfig.completionHandler)
         XCTAssertTrue(remoteConfig.isFetchAndActivate)
     }
+    
+    func testSubscript() {
+        XCTAssertFalse(remoteConfig.isSubscript)
+        _ = remoteConfig["test"]
+        XCTAssertTrue(remoteConfig.isSubscript)
+    }
 
 }
