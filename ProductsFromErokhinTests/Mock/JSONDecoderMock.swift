@@ -14,6 +14,16 @@ class JSONDecoderMock: JSONDecoder {
         if type == [GroupRemote].self {
             return [GroupRemote(name: "", products: [])] as! T
         }
-        return TitlesRemote(title: "", img: "", imgTitle: "", productsTitle: "", productsTitle2: "") as! T
+        if type == TitlesRemote.self {
+            return TitlesRemote(title: "", img: "", imgTitle: "", productsTitle: "", productsTitle2: "") as! T
+        }
+        if type == OrderWarningRemote.self {
+            return OrderWarningRemote(text: "", groups: []) as! T
+        }
+        if type == SellerContactsRemote.self {
+            return SellerContactsRemote(phone: "", address: "") as! T
+        }
+        
+        throw AppError.error("Unknown type for JSONDecoderMock")
     }
 }

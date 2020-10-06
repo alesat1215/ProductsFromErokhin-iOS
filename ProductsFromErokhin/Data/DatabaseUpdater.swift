@@ -36,7 +36,9 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
         self.fetchLimiter = fetchLimiter
     }
     
-    /** Sync database with remote data */
+    /** Sync database with remote data.
+    - Returns: For success get data from remote return Observable.empty(). For error - Observable.just(Event.error(error))
+     */
     func sync<T>() -> Observable<Event<T>> {
         // Check can fetch
         if fetchLimiter.fetchInProcess {

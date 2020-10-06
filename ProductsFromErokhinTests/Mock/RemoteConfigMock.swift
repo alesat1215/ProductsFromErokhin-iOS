@@ -19,9 +19,10 @@ class RemoteConfigMock: RemoteConfigMethods {
         self.completionHandler = completionHandler
     }
     
-    
+    var isSubscript = false
     subscript(key: String) -> RemoteConfigValue {
-        RemoteConfigValue()
+        isSubscript = true
+        return RemoteConfigValue()
     }
     
     
