@@ -89,6 +89,8 @@
 		D7D64975252CA3340010E2F3 /* Auth+RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64974252CA3340010E2F3 /* Auth+RxTests.swift */; };
 		D7D6497D252CA69C0010E2F3 /* AuthMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6497C252CA69C0010E2F3 /* AuthMockTests.swift */; };
 		D7D6498B252CAAD90010E2F3 /* RemoteConfig+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6498A252CAAD90010E2F3 /* RemoteConfig+Rx.swift */; };
+		D7D64999252CB76C0010E2F3 /* RemoteConfig+RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64998252CB76C0010E2F3 /* RemoteConfig+RxTests.swift */; };
+		D7D6499E252CB7B60010E2F3 /* RemoteConfigMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6499D252CB7B60010E2F3 /* RemoteConfigMock.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -225,6 +227,8 @@
 		D7D64974252CA3340010E2F3 /* Auth+RxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+RxTests.swift"; sourceTree = "<group>"; };
 		D7D6497C252CA69C0010E2F3 /* AuthMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMockTests.swift; sourceTree = "<group>"; };
 		D7D6498A252CAAD90010E2F3 /* RemoteConfig+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteConfig+Rx.swift"; sourceTree = "<group>"; };
+		D7D64998252CB76C0010E2F3 /* RemoteConfig+RxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteConfig+RxTests.swift"; sourceTree = "<group>"; };
+		D7D6499D252CB7B60010E2F3 /* RemoteConfigMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigMock.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -477,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				D7D64974252CA3340010E2F3 /* Auth+RxTests.swift */,
+				D7D64998252CB76C0010E2F3 /* RemoteConfig+RxTests.swift */,
 				D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */,
 				D7C0FBBE2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift */,
 				D72F41CF251FA2AF001EE822 /* CoreDataSourceTableViewTests.swift */,
@@ -494,6 +499,7 @@
 			children = (
 				D7C0FC1725154173009BC51F /* Tests */,
 				D7D64952252C925B0010E2F3 /* AuthMock.swift */,
+				D7D6499D252CB7B60010E2F3 /* RemoteConfigMock.swift */,
 				D7C0FC1825154199009BC51F /* CollectionViewCellMock.swift */,
 				D72F41D9251FA5F2001EE822 /* TableViewCellMock.swift */,
 				D7C0FC232515429E009BC51F /* CollectionViewMock.swift */,
@@ -974,10 +980,12 @@
 				D7C0FC0E25150772009BC51F /* TitlesTests.swift in Sources */,
 				D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */,
 				D7D64953252C925B0010E2F3 /* AuthMock.swift in Sources */,
+				D7D64999252CB76C0010E2F3 /* RemoteConfig+RxTests.swift in Sources */,
 				D7C0FC1925154199009BC51F /* CollectionViewCellMock.swift in Sources */,
 				D7E29448252A065700EA2845 /* SellerContactsRemoteTests.swift in Sources */,
 				D7C0FC1325151426009BC51F /* DatabaseUpdaterTests.swift in Sources */,
 				D7E2945E252A113700EA2845 /* CartViewModelTests.swift in Sources */,
+				D7D6499E252CB7B60010E2F3 /* RemoteConfigMock.swift in Sources */,
 				D7518E0625207B4C00C72B1E /* MenuViewControllerTests.swift in Sources */,
 				D7C0FBFE2514EF06009BC51F /* OrderedTests.swift in Sources */,
 				D7C0FBBF2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift in Sources */,
