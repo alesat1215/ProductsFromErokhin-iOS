@@ -13,7 +13,7 @@ import FirebaseRemoteConfig
 class RemoteConfigMock: RemoteConfigMethods {
     
     var completionHandler: ((RemoteConfigFetchAndActivateStatus, Error?) -> Void)?
-    var isFetchAndActivate = true
+    var isFetchAndActivate = false
     func fetchAndActivate(completionHandler: ((RemoteConfigFetchAndActivateStatus, Error?) -> Void)?) {
         isFetchAndActivate.toggle()
         self.completionHandler = completionHandler
