@@ -8,12 +8,13 @@
 
 import XCTest
 import RxSwift
+import CoreData
 @testable import ProductsFromErokhin
 
 class AppRepositoryTests: XCTestCase {
     
     private var updater: DatabaseUpdaterMock!
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var repository: AppRepository!
     private var products = [Product]()
     private var titles = [Titles]()
@@ -59,6 +60,8 @@ class AppRepositoryTests: XCTestCase {
             return sellerContact
         }
         
+        try context.save()
+        
         repository = AppRepository(updater: updater, context: context)
     }
 
@@ -66,6 +69,9 @@ class AppRepositoryTests: XCTestCase {
         try Product.clearEntity(context: context)
         try Titles.clearEntity(context: context)
         try Group.clearEntity(context: context)
+        try OrderWarning.clearEntity(context: context)
+        try ProductInCart.clearEntity(context: context)
+        try SellerContacts.clearEntity(context: context)
     }
     
     func testGroups() throws {
@@ -167,6 +173,9 @@ class AppRepositoryTests: XCTestCase {
     func testOrderWarning() throws {
         // Success
         // Check sequence contains only one element
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
         XCTAssertThrowsError(try repository.orderWarning().take(2).toBlocking(timeout: 1).toArray())
         updater.isSync = false
         // Check that element
