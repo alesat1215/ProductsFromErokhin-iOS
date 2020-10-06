@@ -13,16 +13,19 @@ import RxRelay
 import CoreData
 
 // MARK: - Database
+protocol DatabaseUpdater {
+    func sync<T>() -> Observable<Event<T>>
+}
 /** Sync database with remote config */
-class DatabaseUpdater {
-    private let remoteConfig: RemoteConfig! // di
+class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
+    private let remoteConfig: R! // di
 //    private let remoteConfigComplection: RemoteConfigComplection! // di
     private let decoder: JSONDecoder! // di
     private let context: NSManagedObjectContext! // di
     private let fetchLimiter: FetchLimiter! // di
     
     init(
-        remoteConfig: RemoteConfig?,
+        remoteConfig: R?,
 //        remoteConfigComplection: RemoteConfigComplection?,
         decoder: JSONDecoder?,
         context: NSManagedObjectContext?,

@@ -81,7 +81,7 @@ extension SwinjectStoryboard {
 
         // MARK: - Remote config
         defaultContainer.register(DatabaseUpdater.self) { r in
-            DatabaseUpdater(
+            DatabaseUpdaterImpl(
                 remoteConfig: r.resolve(RemoteConfig.self),
 //                remoteConfigComplection: r.resolve(RemoteConfigComplection.self),
                 decoder: r.resolve(JSONDecoder.self),

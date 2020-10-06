@@ -14,6 +14,7 @@ extension RemoteConfig: RemoteConfigMethods { }
 /** Firebase remote config methods */
 protocol RemoteConfigMethods: AnyObject, ReactiveCompatible {
     func fetchAndActivate(completionHandler: ((RemoteConfigFetchAndActivateStatus, Error?) -> Void)?)
+    subscript(_ key: String) -> RemoteConfigValue { get }
 }
 /** Reactive wrapper for firebase remote config methods */
 extension Reactive where Base: RemoteConfigMethods {
