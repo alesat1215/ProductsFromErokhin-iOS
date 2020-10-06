@@ -88,6 +88,7 @@
 		D7D6485A252B580F0010E2F3 /* CartViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64859252B580F0010E2F3 /* CartViewModelMockTests.swift */; };
 		D7D64945252C84810010E2F3 /* Auth+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64944252C84810010E2F3 /* Auth+Rx.swift */; };
 		D7D64953252C925B0010E2F3 /* AuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64952252C925B0010E2F3 /* AuthMock.swift */; };
+		D7D64975252CA3340010E2F3 /* Auth+RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64974252CA3340010E2F3 /* Auth+RxTests.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -223,6 +224,7 @@
 		D7D64859252B580F0010E2F3 /* CartViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModelMockTests.swift; sourceTree = "<group>"; };
 		D7D64944252C84810010E2F3 /* Auth+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+Rx.swift"; sourceTree = "<group>"; };
 		D7D64952252C925B0010E2F3 /* AuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthMock.swift; sourceTree = "<group>"; };
+		D7D64974252CA3340010E2F3 /* Auth+RxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Auth+RxTests.swift"; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 		D7C0FB962513D216009BC51F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				D7D64974252CA3340010E2F3 /* Auth+RxTests.swift */,
 				D7C0FB912513C5B2009BC51F /* ObservableType+ExtensionsTests.swift */,
 				D7C0FBBE2513EBE8009BC51F /* CoreDataSourceCollectionViewTests.swift */,
 				D72F41CF251FA2AF001EE822 /* CoreDataSourceTableViewTests.swift */,
@@ -956,6 +959,7 @@
 				D7C0FC422515E40F009BC51F /* JSONDecoderMockTests.swift in Sources */,
 				D795793A251699E9007AD022 /* StartViewModelTests.swift in Sources */,
 				D7C0FC29251543B7009BC51F /* CollectionViewCellMockTests.swift in Sources */,
+				D7D64975252CA3340010E2F3 /* Auth+RxTests.swift in Sources */,
 				D79579612517C06C007AD022 /* StartViewModelMockTests.swift in Sources */,
 				D7D6485A252B580F0010E2F3 /* CartViewModelMockTests.swift in Sources */,
 				D7E2942F2528DFEF00EA2845 /* UIViewController+RxTests.swift in Sources */,
