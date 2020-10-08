@@ -22,6 +22,7 @@ class AppRepositoryTests: XCTestCase {
     private var orderWarnings = [OrderWarning]()
     private var productsInCart = [ProductInCart]()
     private var sellerContacts = [SellerContacts]()
+    private var profile = [Profile]()
 
     override func setUpWithError() throws {
         updater = DatabaseUpdaterMock()
@@ -59,6 +60,12 @@ class AppRepositoryTests: XCTestCase {
             sellerContact.phone = $0.element
             return sellerContact
         }
+        profile = ["name"].enumerated().map {
+            let profile = Profile(context: context)
+            profile.order = Int16($0.offset)
+            profile.name = $0.element
+            return profile
+        }
         
         try context.save()
         
@@ -72,6 +79,7 @@ class AppRepositoryTests: XCTestCase {
         try OrderWarning.clearEntity(context: context)
         try ProductInCart.clearEntity(context: context)
         try SellerContacts.clearEntity(context: context)
+        try Profile.clearEntity(context: context)
     }
     
     func testGroups() throws {
@@ -219,6 +227,10 @@ class AppRepositoryTests: XCTestCase {
         XCTAssertTrue(updater.isSync)
         result = resultArray.first { $0.error == nil }?.element
         XCTAssertEqual(result?.count, sellerContacts.count)
+    }
+    
+    func testProfile() {
+        XCTAssertEqual(try repository.profile().toBlocking().first(), profile)
     }
 
 }

@@ -108,11 +108,14 @@ class AppRepository {
             updater.sync()
         ])
     }
-    
+    /**
+     Get Profile from database
+     - returns: Observable array with Profile
+     */
     func profile() -> Observable<[Profile]> {
         context.rx.entities(fetchRequest: Profile.fetchRequestWithSort())
     }
-    
+    /** Clear profile entity, add new with params, save & return result */
     func updateProfile(name: String?, phone: String?, address: String?) -> Result<Void, Error> {
         do {
             try Profile.clearEntity(context: context)
