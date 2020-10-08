@@ -232,5 +232,20 @@ class AppRepositoryTests: XCTestCase {
     func testProfile() {
         XCTAssertEqual(try repository.profile().toBlocking().first(), profile)
     }
+    
+    func testUpdateProfile() throws {
+        var profiles = try repository.profile().toBlocking().first()!
+        XCTAssertEqual(profiles.count, 1)
+        XCTAssertEqual(profiles.first?.name, "name")
+        XCTAssertNil(profiles.first?.phone)
+        XCTAssertNil(profiles.first?.address)
+        
+        XCTAssertNoThrow(try repository.updateProfile(name: "name2", phone: "phone", address: "address").get())
+        profiles = try repository.profile().toBlocking().first()!
+        XCTAssertEqual(profiles.count, 1)
+        XCTAssertEqual(profiles.first?.name, "name2")
+        XCTAssertEqual(profiles.first?.phone, "phone")
+        XCTAssertEqual(profiles.first?.address, "address")
+    }
 
 }
