@@ -11,12 +11,6 @@ import Foundation
 extension Profile: Ordered {
     /** - Returns: delivery info for message */
     func delivery() -> String {
-//        guard let name = name,
-//              let phone = phone,
-//              let address = address
-//        else {
-//            return ""
-//        }
         if name?.isEmpty ?? true,
            phone?.isEmpty ?? true,
            address?.isEmpty ?? true
