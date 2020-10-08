@@ -92,6 +92,9 @@
 		D7D64999252CB76C0010E2F3 /* RemoteConfig+RxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64998252CB76C0010E2F3 /* RemoteConfig+RxTests.swift */; };
 		D7D6499E252CB7B60010E2F3 /* RemoteConfigMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6499D252CB7B60010E2F3 /* RemoteConfigMock.swift */; };
 		D7D649A9252CBC420010E2F3 /* RemoteConfigMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649A8252CBC420010E2F3 /* RemoteConfigMockTests.swift */; };
+		D7D649B7252EFF230010E2F3 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649B6252EFF230010E2F3 /* Profile.swift */; };
+		D7D649BD252F01060010E2F3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649BC252F01060010E2F3 /* ProfileViewModel.swift */; };
+		D7D649C2252F02E50010E2F3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649C1252F02E50010E2F3 /* ProfileViewController.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -231,6 +234,9 @@
 		D7D64998252CB76C0010E2F3 /* RemoteConfig+RxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteConfig+RxTests.swift"; sourceTree = "<group>"; };
 		D7D6499D252CB7B60010E2F3 /* RemoteConfigMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigMock.swift; sourceTree = "<group>"; };
 		D7D649A8252CBC420010E2F3 /* RemoteConfigMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteConfigMockTests.swift; sourceTree = "<group>"; };
+		D7D649B6252EFF230010E2F3 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		D7D649BC252F01060010E2F3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		D7D649C1252F02E50010E2F3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -355,6 +361,7 @@
 				D7B4B521250A7AF700BA07CB /* Titles.swift */,
 				D7E293A6252485AB00EA2845 /* OrderWarning.swift */,
 				D7E294092527737000EA2845 /* SellerContacts.swift */,
+				D7D649B6252EFF230010E2F3 /* Profile.swift */,
 				D7877B772504B05D00244B81 /* Ordered.swift */,
 			);
 			path = Local;
@@ -401,6 +408,7 @@
 				D795212924FFD0F50094BAFE /* Start */,
 				D7B460F725191454001ED878 /* Menu */,
 				D7E293932523878D00EA2845 /* Cart */,
+				D7D649BB252F00E40010E2F3 /* Profile */,
 				D7877B612501180F00244B81 /* Util */,
 				D7877B5C25010F4900244B81 /* Data */,
 				D73C7DBF25010953007062D9 /* DI */,
@@ -575,6 +583,15 @@
 				D7D64859252B580F0010E2F3 /* CartViewModelMockTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		D7D649BB252F00E40010E2F3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D7D649C1252F02E50010E2F3 /* ProfileViewController.swift */,
+				D7D649BC252F01060010E2F3 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		D7D6EBED2517CE120098ABC7 /* Load */ = {
@@ -911,6 +928,7 @@
 				D7877B6525028D9200244B81 /* AppError.swift in Sources */,
 				D7B4B52C250FE43700BA07CB /* NSManagedObjectContext+Rx.swift in Sources */,
 				D7B4B51C250A299D00BA07CB /* ObservableType+Extensions.swift in Sources */,
+				D7D649C2252F02E50010E2F3 /* ProfileViewController.swift in Sources */,
 				D7B4B520250A774100BA07CB /* TitlesRemote.swift in Sources */,
 				D7B4B522250A7AF700BA07CB /* Titles.swift in Sources */,
 				D7877B80250809F300244B81 /* Products.swift in Sources */,
@@ -924,6 +942,8 @@
 				D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */,
 				D7B4B52E2510C5BD00BA07CB /* BindableCells.swift in Sources */,
 				D71A78CA2519F8E1001B9234 /* CoreDataSourceTableView.swift in Sources */,
+				D7D649B7252EFF230010E2F3 /* Profile.swift in Sources */,
+				D7D649BD252F01060010E2F3 /* ProfileViewModel.swift in Sources */,
 				D7E2940A2527737000EA2845 /* SellerContacts.swift in Sources */,
 				D7E293A7252485AB00EA2845 /* OrderWarning.swift in Sources */,
 			);

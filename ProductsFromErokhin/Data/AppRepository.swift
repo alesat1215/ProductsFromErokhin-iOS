@@ -109,4 +109,8 @@ class AppRepository {
         ])
     }
     
+    func profile() -> Observable<[Profile]> {
+        context.rx.entities(fetchRequest: Profile.fetchRequestWithSort())
+    }
+    
 }
