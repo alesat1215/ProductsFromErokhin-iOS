@@ -85,6 +85,7 @@ PODS:
   - GoogleUtilities/UserDefaults (6.7.2):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.4.0)
+  - IQKeyboardManagerSwift (6.5.6)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -120,6 +121,7 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - Firebase/Storage
   - FirebaseUI/Storage
+  - IQKeyboardManagerSwift
   - RxBlocking (~> 5)
   - RxCocoa (~> 5)
   - RxCoreData (~> 1.0.0)
@@ -146,6 +148,7 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUtilities
     - GTMSessionFetcher
+    - IQKeyboardManagerSwift
     - nanopb
     - PromisesObjC
     - RxBlocking
@@ -183,6 +186,7 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 672fb0ce96fe7f7f31d43672fca62ad2c9c86f7b
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   RxBlocking: 5f700a78cad61ce253ebd37c9a39b5ccc76477b4
@@ -196,6 +200,6 @@ SPEC CHECKSUMS:
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   SwinjectStoryboard: f0d5b1c16459949d6ff1cbb6610107946b18e1f8
 
-PODFILE CHECKSUM: 7ddeaf0c5e983c085131cbb3091ac58b64d04b89
+PODFILE CHECKSUM: d0fb2ee5c79479fd033867c12382fe938dffd7f6
 
 COCOAPODS: 1.9.3

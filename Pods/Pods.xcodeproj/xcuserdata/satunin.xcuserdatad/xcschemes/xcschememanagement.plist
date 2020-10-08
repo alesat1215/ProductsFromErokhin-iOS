@@ -74,6 +74,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManagerSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-ProductsFromErokhin-ProductsFromErokhinUITests.xcscheme</key>
 		<dict>
 			<key>isShown</key>

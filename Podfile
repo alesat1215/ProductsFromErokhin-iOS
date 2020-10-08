@@ -21,6 +21,8 @@ target 'ProductsFromErokhin' do
   # DI
   pod 'Swinject'
   pod 'SwinjectStoryboard', :git => 'https://github.com/Swinject/SwinjectStoryboard.git', :branch => 'master'
+  # Utils
+  pod 'IQKeyboardManagerSwift'
 
   target 'ProductsFromErokhinTests' do
     inherit! :search_paths
