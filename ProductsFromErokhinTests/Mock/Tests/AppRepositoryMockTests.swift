@@ -51,5 +51,13 @@ class AppRepositoryMockTests: XCTestCase {
     func testSellerContacts() {
         XCTAssertEqual(try repository.sellerContacts().toBlocking().first()?.element, repository.sellerContactsResult)
     }
+    
+    func testProfile() {
+        XCTAssertEqual(try repository.profile().toBlocking().first(), repository.profileResult)
+    }
+    
+    func testUpdateProfile() {
+        XCTAssertNoThrow(try repository.updateProfile(name: "", phone: "", address: "").get())
+    }
 
 }
