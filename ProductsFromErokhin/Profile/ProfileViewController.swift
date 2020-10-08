@@ -8,6 +8,8 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
+import IQKeyboardManagerSwift
 
 class ProfileViewController: UIViewController {
     
@@ -35,6 +37,31 @@ class ProfileViewController: UIViewController {
             self?.phone.text = $0.phone
             self?.address.text = $0.address
         }).disposed(by: disposeBag)
+    }
+    
+    private func setupKeyboardForProfile() {
+        name?.rx.controlEvent(.editingDidEndOnExit)
+            .subscribe(onNext: { [weak self] in
+                self?.textFieldShouldReturn(self?.name)
+            }).disposed(by: disposeBag)
+        
+        phone?.rx.controlEvent(.editingDidEndOnExit)
+            .subscribe(onNext: { [weak self] in
+                self?.textFieldShouldReturn(self?.phone)
+            }).disposed(by: disposeBag)
+        
+        address?.rx.controlEvent(.editingDidEndOnExit)
+            .subscribe(onNext: { [weak self] in
+                self?.textFieldShouldReturn(self?.address)
+            }).disposed(by: disposeBag)
+    }
+    
+    private func textFieldShouldReturn(_ textField: UITextField?) {
+      if IQKeyboardManager.shared.canGoNext {
+        IQKeyboardManager.shared.goNext()
+      } else {
+        textField?.resignFirstResponder()
+      }
     }
     
     private func setupSaveAction() {
@@ -67,6 +94,8 @@ class ProfileViewController: UIViewController {
                 print($0)
             }).disposed(by: disposeBag)
     }
+    
+    
     
 
     /*
