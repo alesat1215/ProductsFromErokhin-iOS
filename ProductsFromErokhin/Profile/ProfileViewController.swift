@@ -78,16 +78,23 @@ extension ProfileViewController {
         save.rx.tap.asDriver()
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
-            // Get data for profile
-            .flatMapLatest { [weak self] _ -> Observable<(name: String?, phone: String?, address: String?)> in
-                guard let name = self?.name,
-                      let phone = self?.phone,
-                      let address = self?.address
-                else {
-                    return Observable.empty()
-                }
-                return Observable.just((name.text, phone.text, address.text))
+            // Save profile data
+            .flatMapLatest { [weak self] in
+                self?.updateProfile() ?? Observable.empty()
             }
+            // Show result message
+            .observeOn(MainScheduler.instance)
+            .flatMap { [weak self] in
+                self?.showUpdateProfileResult($0) ?? Observable.empty()
+            }
+            // Log success result
+            .subscribe(onNext: {
+                print("Profile saved success")
+            }).disposed(by: disposeBag)
+    }
+    /** Save data from profile text fields */
+    private func updateProfile() -> Observable<Result<Void, Error>> {
+        Observable.just((name.text, phone.text, address.text))
             // Update profile
             .observeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
             .flatMap { [weak self] profile -> Observable<Result<Void, Error>> in
@@ -95,13 +102,18 @@ extension ProfileViewController {
                     return Observable.empty()
                 }
                 return Observable.just(
-                    viewModel.updateProfile(name: profile.name, phone: profile.phone, address: profile.address)
+                    viewModel.updateProfile(name: profile.0, phone: profile.1, address: profile.2)
                 )
             }
-            // Show result message
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: {
-                print($0)
-            }).disposed(by: disposeBag)
+    }
+    /** Show result for update profile */
+    private func showUpdateProfileResult(_ result: Result<Void, Error>) -> Observable<Void> {
+        switch result {
+        case .failure(let error):
+            print("Profile saved error: \(error.localizedDescription)")
+            return self.rx.showMessage(error.localizedDescription)
+        default:
+            return self.rx.showMessage("Profile saved", withEvent: true)
+        }
     }
 }
