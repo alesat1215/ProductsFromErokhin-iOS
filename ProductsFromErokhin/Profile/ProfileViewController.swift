@@ -75,7 +75,7 @@ extension ProfileViewController {
 extension ProfileViewController {
     /** Save profile data & show result message */
     private func setupSaveAction() {
-        save.rx.tap.asDriver()
+        save?.rx.tap.asDriver()
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
             // Save profile data
