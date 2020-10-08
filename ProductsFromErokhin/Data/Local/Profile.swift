@@ -9,6 +9,7 @@
 import Foundation
 
 extension Profile: Ordered {
+    /** - Returns: delivery info for message */
     func delivery() -> String {
         guard let name = name,
               let phone = phone,
@@ -19,18 +20,13 @@ extension Profile: Ordered {
         if name.isEmpty, phone.isEmpty, address.isEmpty {
             return ""
         }
-//        let separator = "\r\n"
-//        var result = ""
         var result = "\r\n\r\n" + name
-//        result += { if !result.hasSuffix(separator) && !phone.isEmpty { return separator } else { return "" } }() + phone
-//        result += { if !result.hasSuffix(separator) && !address.isEmpty { return separator } else { return "" } }() + address
         result += addFieldToResult(result, field: phone)
         result += addFieldToResult(result, field: address)
         return result
     }
-    
+    /** - Returns: string with separator for field */
     private func addFieldToResult(_ result: String, field: String, separator: String = "\r\n") -> String {
-//        { if !result.hasSuffix(separator) && !field.isEmpty { return separator } else { return "" } }() + field
         if !result.hasSuffix(separator) && !field.isEmpty {
             return separator + field
         }
