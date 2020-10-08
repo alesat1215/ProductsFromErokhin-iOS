@@ -262,7 +262,7 @@
                             <constraint firstItem="HLP-Xx-0Jb" firstAttribute="top" secondItem="igh-Zk-TDS" secondAttribute="top" id="z4Y-ZV-ezu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="xHn-tJ-vpY"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="Profile" image="person.fill" catalog="system" id="xHn-tJ-vpY"/>
                     <connections>
                         <outlet property="address" destination="pGZ-ku-CMs" id="y59-tl-JPs"/>
                         <outlet property="name" destination="sAg-zN-sEJ" id="F9x-mY-OpV"/>
