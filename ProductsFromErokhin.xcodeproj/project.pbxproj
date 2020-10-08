@@ -96,6 +96,7 @@
 		D7D649BD252F01060010E2F3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649BC252F01060010E2F3 /* ProfileViewModel.swift */; };
 		D7D649C2252F02E50010E2F3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649C1252F02E50010E2F3 /* ProfileViewController.swift */; };
 		D7D649EB252F8FEC0010E2F3 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649EA252F8FEC0010E2F3 /* ProfileTests.swift */; };
+		D7D649F1252F9AE70010E2F3 /* ProfileViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649F0252F9AE70010E2F3 /* ProfileViewModelTests.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -239,6 +240,7 @@
 		D7D649BC252F01060010E2F3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		D7D649C1252F02E50010E2F3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		D7D649EA252F8FEC0010E2F3 /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
+		D7D649F0252F9AE70010E2F3 /* ProfileViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -435,6 +437,7 @@
 				D7957938251699D2007AD022 /* Start */,
 				D7518DF22520743800C72B1E /* Menu */,
 				D7E2945C252A111800EA2845 /* Cart */,
+				D7D649EF252F9AD10010E2F3 /* Profile */,
 				D7C0FB962513D216009BC51F /* Util */,
 				D7C0FBED2514E027009BC51F /* Data */,
 				D7C0FBB02513E063009BC51F /* Mock */,
@@ -593,6 +596,14 @@
 			children = (
 				D7D649C1252F02E50010E2F3 /* ProfileViewController.swift */,
 				D7D649BC252F01060010E2F3 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D7D649EF252F9AD10010E2F3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D7D649F0252F9AE70010E2F3 /* ProfileViewModelTests.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -996,6 +1007,7 @@
 				D7C0FC29251543B7009BC51F /* CollectionViewCellMockTests.swift in Sources */,
 				D7D64975252CA3340010E2F3 /* Auth+RxTests.swift in Sources */,
 				D79579612517C06C007AD022 /* StartViewModelMockTests.swift in Sources */,
+				D7D649F1252F9AE70010E2F3 /* ProfileViewModelTests.swift in Sources */,
 				D7D6485A252B580F0010E2F3 /* CartViewModelMockTests.swift in Sources */,
 				D7E2942F2528DFEF00EA2845 /* UIViewController+RxTests.swift in Sources */,
 				D79579422517251A007AD022 /* StartViewControllerTests.swift in Sources */,

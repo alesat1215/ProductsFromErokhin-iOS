@@ -76,4 +76,16 @@ class AppRepositoryMock: AppRepository {
     override func sellerContacts() -> Observable<Event<[SellerContacts]>> {
         Observable.just(Event.next(sellerContactsResult))
     }
+    
+    // MARK: - profile
+    var profileResult = [Profile]()
+    override func profile() -> Observable<[Profile]> {
+        Observable.just(profileResult)
+    }
+    
+    var updateProfileResult: Result<Void, Error> = .success(())
+    override func updateProfile(name: String?, phone: String?, address: String?) -> Result<Void, Error> {
+        updateProfileResult
+    }
+    
 }
