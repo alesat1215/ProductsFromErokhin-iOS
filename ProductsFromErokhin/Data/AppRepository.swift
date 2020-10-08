@@ -113,4 +113,21 @@ class AppRepository {
         context.rx.entities(fetchRequest: Profile.fetchRequestWithSort())
     }
     
+    func updateProfile(name: String?, phone: String?, address: String?) -> Result<Void, Error> {
+        do {
+            try Profile.clearEntity(context: context)
+            let profile = NSEntityDescription.insertNewObject(forEntityName: "Profile", into: context)
+            (profile as? Profile)?.order = 0
+            (profile as? Profile)?.name = name
+            (profile as? Profile)?.phone = phone
+            (profile as? Profile)?.address = address
+            if context.hasChanges {
+                try context.save()
+            }
+            return .success(())
+        } catch {
+            return .failure(error)
+        }
+    }
+    
 }

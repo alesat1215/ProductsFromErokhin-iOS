@@ -11,6 +11,7 @@ import RxSwift
 
 protocol ProfileViewModel {
     func profile() -> Observable<Profile>
+    func updateProfile(name: String?, phone: String?, address: String?) -> Result<Void, Error>
 }
 
 class ProfileViewModelImpl: ProfileViewModel {
@@ -23,5 +24,9 @@ class ProfileViewModelImpl: ProfileViewModel {
     
     func profile() -> Observable<Profile> {
         repository.profile().compactMap { $0.first }
+    }
+    
+    func updateProfile(name: String?, phone: String?, address: String?) -> Result<Void, Error> {
+        repository.updateProfile(name: name, phone: phone, address: address)
     }
 }

@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         bindProfile()
+        setupSaveAction()
     }
     
     private func bindProfile() {
@@ -34,6 +35,37 @@ class ProfileViewController: UIViewController {
             self?.phone.text = $0.phone
             self?.address.text = $0.address
         }).disposed(by: disposeBag)
+    }
+    
+    private func setupSaveAction() {
+        save.rx.tap.asDriver()
+            .throttle(RxTimeInterval.seconds(1))
+            .asObservable()
+            // Get data for profile
+            .flatMapLatest { [weak self] _ -> Observable<(name: String?, phone: String?, address: String?)> in
+                guard let name = self?.name,
+                      let phone = self?.phone,
+                      let address = self?.address
+                else {
+                    return Observable.empty()
+                }
+                return Observable.just((name.text, phone.text, address.text))
+            }
+            // Update profile
+            .observeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
+            .flatMap { [weak self] profile -> Observable<Result<Void, Error>> in
+                guard let viewModel = self?.viewModel else {
+                    return Observable.empty()
+                }
+                return Observable.just(
+                    viewModel.updateProfile(name: profile.name, phone: profile.phone, address: profile.address)
+                )
+            }
+            // Show result message
+            .observeOn(MainScheduler.instance)
+            .subscribe(onNext: {
+                print($0)
+            }).disposed(by: disposeBag)
     }
     
 
