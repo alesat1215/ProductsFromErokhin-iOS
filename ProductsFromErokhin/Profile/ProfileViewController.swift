@@ -26,11 +26,16 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         bindProfile()
+        setupKeyboardForProfile()
         setupSaveAction()
     }
-    
+
+}
+
+// MARK: - Profile
+extension ProfileViewController {
+    /** Set values to profile text fields */
     private func bindProfile() {
         viewModel?.profile().subscribe(onNext: { [weak self] in
             self?.name.text = $0.name
@@ -38,24 +43,25 @@ class ProfileViewController: UIViewController {
             self?.address.text = $0.address
         }).disposed(by: disposeBag)
     }
-    
+    /** Setup keyboard return key for profile text fields */
     private func setupKeyboardForProfile() {
+        // name
         name?.rx.controlEvent(.editingDidEndOnExit)
             .subscribe(onNext: { [weak self] in
                 self?.textFieldShouldReturn(self?.name)
             }).disposed(by: disposeBag)
-        
+        // phone
         phone?.rx.controlEvent(.editingDidEndOnExit)
             .subscribe(onNext: { [weak self] in
                 self?.textFieldShouldReturn(self?.phone)
             }).disposed(by: disposeBag)
-        
+        // address
         address?.rx.controlEvent(.editingDidEndOnExit)
             .subscribe(onNext: { [weak self] in
                 self?.textFieldShouldReturn(self?.address)
             }).disposed(by: disposeBag)
     }
-    
+    /** Go to next field or hide keyboard */
     private func textFieldShouldReturn(_ textField: UITextField?) {
       if IQKeyboardManager.shared.canGoNext {
         IQKeyboardManager.shared.goNext()
@@ -63,7 +69,11 @@ class ProfileViewController: UIViewController {
         textField?.resignFirstResponder()
       }
     }
-    
+}
+
+// MARK: - Action
+extension ProfileViewController {
+    /** Save profile data & show result message */
     private func setupSaveAction() {
         save.rx.tap.asDriver()
             .throttle(RxTimeInterval.seconds(1))
@@ -94,18 +104,4 @@ class ProfileViewController: UIViewController {
                 print($0)
             }).disposed(by: disposeBag)
     }
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
