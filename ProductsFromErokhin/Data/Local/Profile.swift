@@ -10,10 +10,13 @@ import Foundation
 
 extension Profile: Ordered {
     func delivery() -> String {
-        guard let name = name, name.isEmpty,
-              let phone = phone, phone.isEmpty,
-              let address = address, address.isEmpty
+        guard let name = name,
+              let phone = phone,
+              let address = address
         else {
+            return ""
+        }
+        if name.isEmpty, phone.isEmpty, address.isEmpty {
             return ""
         }
         let separator = "\r\n"
