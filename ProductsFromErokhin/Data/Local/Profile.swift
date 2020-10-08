@@ -19,11 +19,21 @@ extension Profile: Ordered {
         if name.isEmpty, phone.isEmpty, address.isEmpty {
             return ""
         }
-        let separator = "\r\n"
-        var result = ""
-        result += separator + separator + name
-        result += { if !result.hasSuffix(separator) && !phone.isEmpty { return separator } else { return "" } }() + phone
-        result += { if !result.hasSuffix(separator) && !address.isEmpty { return separator } else { return "" } }() + address
+//        let separator = "\r\n"
+//        var result = ""
+        var result = "\r\n\r\n" + name
+//        result += { if !result.hasSuffix(separator) && !phone.isEmpty { return separator } else { return "" } }() + phone
+//        result += { if !result.hasSuffix(separator) && !address.isEmpty { return separator } else { return "" } }() + address
+        result += addFieldToResult(result, field: phone)
+        result += addFieldToResult(result, field: address)
         return result
+    }
+    
+    private func addFieldToResult(_ result: String, field: String, separator: String = "\r\n") -> String {
+//        { if !result.hasSuffix(separator) && !field.isEmpty { return separator } else { return "" } }() + field
+        if !result.hasSuffix(separator) && !field.isEmpty {
+            return separator + field
+        }
+        return field
     }
 }
