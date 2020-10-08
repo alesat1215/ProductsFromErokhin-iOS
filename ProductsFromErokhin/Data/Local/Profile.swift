@@ -22,8 +22,8 @@ extension Profile: Ordered {
         let separator = "\r\n"
         var result = ""
         result += separator + separator + name
-        result += { if result.last != separator.last && !phone.isEmpty { return separator } else { return "" } }() + phone
-        result += { if result.last != separator.last && !address.isEmpty { return separator } else { return "" } }() + address
+        result += { if !result.hasSuffix(separator) && !phone.isEmpty { return separator } else { return "" } }() + phone
+        result += { if !result.hasSuffix(separator) && !address.isEmpty { return separator } else { return "" } }() + address
         return result
     }
 }
