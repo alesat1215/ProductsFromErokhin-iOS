@@ -11,18 +11,21 @@ import Foundation
 extension Profile: Ordered {
     /** - Returns: delivery info for message */
     func delivery() -> String {
-        guard let name = name,
-              let phone = phone,
-              let address = address
-        else {
+//        guard let name = name,
+//              let phone = phone,
+//              let address = address
+//        else {
+//            return ""
+//        }
+        if name?.isEmpty ?? true,
+           phone?.isEmpty ?? true,
+           address?.isEmpty ?? true
+        {
             return ""
         }
-        if name.isEmpty, phone.isEmpty, address.isEmpty {
-            return ""
-        }
-        var result = "\r\n\r\n" + name
-        result += addFieldToResult(result, field: phone)
-        result += addFieldToResult(result, field: address)
+        var result = "\r\n\r\n" + (name ?? "")
+        result += addFieldToResult(result, field: phone ?? "")
+        result += addFieldToResult(result, field: address ?? "")
         return result
     }
     /** - Returns: string with separator for field */

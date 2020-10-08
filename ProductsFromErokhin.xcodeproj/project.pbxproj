@@ -95,6 +95,7 @@
 		D7D649B7252EFF230010E2F3 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649B6252EFF230010E2F3 /* Profile.swift */; };
 		D7D649BD252F01060010E2F3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649BC252F01060010E2F3 /* ProfileViewModel.swift */; };
 		D7D649C2252F02E50010E2F3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649C1252F02E50010E2F3 /* ProfileViewController.swift */; };
+		D7D649EB252F8FEC0010E2F3 /* ProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649EA252F8FEC0010E2F3 /* ProfileTests.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -237,6 +238,7 @@
 		D7D649B6252EFF230010E2F3 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		D7D649BC252F01060010E2F3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		D7D649C1252F02E50010E2F3 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D7D649EA252F8FEC0010E2F3 /* ProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTests.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -557,6 +559,7 @@
 				D7C0FC0D25150772009BC51F /* TitlesTests.swift */,
 				D7E2944C252A07A100EA2845 /* OrderWarningTests.swift */,
 				D7E29454252A093C00EA2845 /* SellerContactsTests.swift */,
+				D7D649EA252F8FEC0010E2F3 /* ProfileTests.swift */,
 				D7C0FBFD2514EF06009BC51F /* OrderedTests.swift */,
 			);
 			path = Local;
@@ -970,6 +973,7 @@
 				D79579572517B500007AD022 /* StartViewModelMock.swift in Sources */,
 				D7518E01252079D600C72B1E /* MenuViewModelMockTests.swift in Sources */,
 				D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */,
+				D7D649EB252F8FEC0010E2F3 /* ProfileTests.swift in Sources */,
 				D7C0FC242515429E009BC51F /* CollectionViewMock.swift in Sources */,
 				D72F41DA251FA5F2001EE822 /* TableViewCellMock.swift in Sources */,
 				D7B460ED2518F83A001ED878 /* LoadViewModelMockTests.swift in Sources */,
