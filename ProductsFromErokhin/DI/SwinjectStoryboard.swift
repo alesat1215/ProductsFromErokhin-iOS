@@ -66,6 +66,16 @@ extension SwinjectStoryboard {
             CNContactStore()
         }.inObjectScope(.container)
         
+        // MARK: - Profile
+        defaultContainer.storyboardInitCompleted(ProfileViewController.self) { r, c in
+            c.viewModel = r.resolve(ProfileViewModel.self)
+        }
+        defaultContainer.register(ProfileViewModel.self) { r in
+            ProfileViewModelImpl(
+                repository: r.resolve(AppRepository.self)
+            )
+        }
+        
         // MARK: - Repository
         defaultContainer.register(AppRepository.self) { r in
             AppRepository(

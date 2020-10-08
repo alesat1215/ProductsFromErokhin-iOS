@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol ProfileViewModel {
-    
+    func profile() -> Observable<Profile>
 }
 
 class ProfileViewModelImpl: ProfileViewModel {
