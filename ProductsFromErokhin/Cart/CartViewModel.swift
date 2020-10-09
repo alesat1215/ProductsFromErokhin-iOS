@@ -43,7 +43,7 @@ class CartViewModel {
             $0.map { $0.textForOrder() }.joined(separator: ", \r\n") + "\r\n"
         }
         let sum = totalInCart().take(1).map { "Total: \($0) rub." }
-        let delivery = repository.profile().take(1).compactMap { $0.first?.delivery() }
+        let delivery = repository.profile().take(1).compactMap { $0.first?.delivery() }.ifEmpty(default: "")
         return Observable.zip(order, sum, delivery).map { $0.0 + $0.1 + $0.2 }
     }
     /** Count of products in cart */
