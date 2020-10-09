@@ -21,6 +21,7 @@ class CartViewModelTests: XCTestCase {
     private var products = [Product]()
     private var orderWarning = [OrderWarning]()
     private var sellerContacts = [SellerContacts]()
+    private var profile: Profile!
 
     override func setUpWithError() throws {
         // Product with sum 10 * 1
@@ -67,9 +68,25 @@ class CartViewModelTests: XCTestCase {
             return [contact]
         }()
         
+        profile = { () -> Profile in
+            let profile = Profile(context: context)
+            profile.name = "name"
+            profile.phone = "phone"
+            profile.address = "address"
+            return profile
+        }()
+        
         repository = AppRepositoryMock()
         contactStore = CNContactStoreMock()
         viewModel = CartViewModel(repository: repository, contactStore: contactStore)
+    }
+    
+    override func tearDownWithError() throws {
+        try Product.clearEntity(context: context)
+        try ProductInCart.clearEntity(context: context)
+        try OrderWarning.clearEntity(context: context)
+        try SellerContacts.clearEntity(context: context)
+        try Profile.clearEntity(context: context)
     }
     
     func testProducts() {
@@ -87,11 +104,13 @@ class CartViewModelTests: XCTestCase {
     
     func testMessage() throws {
         repository.productResult = products
+        repository.profileResult.append(profile)
         let result = try viewModel.message().toBlocking().first()
         products.forEach {
             XCTAssertTrue(result!.contains($0.textForOrder()))
         }
         XCTAssertTrue(result!.contains("60"))
+        XCTAssertTrue(result!.contains(profile.delivery()))
     }
     
     func testInCartCountEmpty() {
