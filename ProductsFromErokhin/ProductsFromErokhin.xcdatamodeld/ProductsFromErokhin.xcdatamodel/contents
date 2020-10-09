@@ -6,6 +6,12 @@
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="products" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Product" inverseName="group" inverseEntity="Product"/>
     </entity>
+    <entity name="Instruction" representedClassName="Instruction" syncable="YES" codeGenerationType="class">
+        <attribute name="img_path" optional="YES" attributeType="String"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="OrderWarning" representedClassName="OrderWarning" syncable="YES" codeGenerationType="class">
         <attribute name="groups" optional="YES" attributeType="Transformable" customClassName="[String]"/>
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -50,8 +56,9 @@
         <element name="OrderWarning" positionX="-414" positionY="63" width="128" height="88"/>
         <element name="Product" positionX="-431.8671875" positionY="-9.4609375" width="128" height="178"/>
         <element name="ProductInCart" positionX="-140.65625" positionY="-18.96484375" width="128" height="73"/>
+        <element name="Profile" positionX="-414" positionY="63" width="128" height="103"/>
         <element name="SellerContacts" positionX="-405" positionY="72" width="128" height="88"/>
         <element name="Titles" positionX="-414" positionY="63" width="128" height="133"/>
-        <element name="Profile" positionX="-414" positionY="63" width="128" height="103"/>
+        <element name="Instruction" positionX="-405" positionY="72" width="128" height="103"/>
     </elements>
 </model>

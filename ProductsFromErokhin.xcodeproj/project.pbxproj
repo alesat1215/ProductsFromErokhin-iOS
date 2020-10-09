@@ -100,6 +100,8 @@
 		D7D649F9252F9D290010E2F3 /* ProfileViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649F8252F9D290010E2F3 /* ProfileViewModelMock.swift */; };
 		D7D649FE252FAAF60010E2F3 /* ProfileViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D649FD252FAAF60010E2F3 /* ProfileViewControllerTests.swift */; };
 		D7D64A06253079600010E2F3 /* ProfileViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A05253079600010E2F3 /* ProfileViewModelMockTests.swift */; };
+		D7D64A2F2530AAB70010E2F3 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A2E2530AAB70010E2F3 /* Instruction.swift */; };
+		D7D64A342530AAF70010E2F3 /* InstructionRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A332530AAF70010E2F3 /* InstructionRemote.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -247,6 +249,8 @@
 		D7D649F8252F9D290010E2F3 /* ProfileViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelMock.swift; sourceTree = "<group>"; };
 		D7D649FD252FAAF60010E2F3 /* ProfileViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewControllerTests.swift; sourceTree = "<group>"; };
 		D7D64A05253079600010E2F3 /* ProfileViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelMockTests.swift; sourceTree = "<group>"; };
+		D7D64A2E2530AAB70010E2F3 /* Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
+		D7D64A332530AAF70010E2F3 /* InstructionRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionRemote.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -372,6 +376,7 @@
 				D7E293A6252485AB00EA2845 /* OrderWarning.swift */,
 				D7E294092527737000EA2845 /* SellerContacts.swift */,
 				D7D649B6252EFF230010E2F3 /* Profile.swift */,
+				D7D64A2E2530AAB70010E2F3 /* Instruction.swift */,
 				D7877B772504B05D00244B81 /* Ordered.swift */,
 			);
 			path = Local;
@@ -384,6 +389,7 @@
 				D7B4B51F250A774100BA07CB /* TitlesRemote.swift */,
 				D7E293A12524843400EA2845 /* OrderWarningRemote.swift */,
 				D7E29401252771C900EA2845 /* SellerContactsRemote.swift */,
+				D7D64A332530AAF70010E2F3 /* InstructionRemote.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -939,6 +945,7 @@
 				D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */,
 				D7B4B5352512429900BA07CB /* LoadViewModel.swift in Sources */,
 				D7E293A22524843400EA2845 /* OrderWarningRemote.swift in Sources */,
+				D7D64A342530AAF70010E2F3 /* InstructionRemote.swift in Sources */,
 				D7D64945252C84810010E2F3 /* Auth+Rx.swift in Sources */,
 				D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */,
 				D7B4B52A250E542100BA07CB /* CoreDataSourceCollectionView.swift in Sources */,
@@ -963,6 +970,7 @@
 				D7E293D525265B4000EA2845 /* UIViewController+Rx.swift in Sources */,
 				D7E293952523882E00EA2845 /* CartViewController.swift in Sources */,
 				D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */,
+				D7D64A2F2530AAB70010E2F3 /* Instruction.swift in Sources */,
 				D7B4B52E2510C5BD00BA07CB /* BindableCells.swift in Sources */,
 				D71A78CA2519F8E1001B9234 /* CoreDataSourceTableView.swift in Sources */,
 				D7D649B7252EFF230010E2F3 /* Profile.swift in Sources */,
