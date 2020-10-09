@@ -55,10 +55,6 @@ class ProfileViewControllerTests: XCTestCase {
         
         controller.viewDidLoad()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
     
     func testBindProfile() {
         XCTAssertTrue(controller.name.text!.isEmpty)
@@ -100,17 +96,70 @@ class ProfileViewControllerTests: XCTestCase {
         XCTAssertFalse(controller.phone.isFirstResponder)
         XCTAssertFalse(controller.address.isFirstResponder)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testSetupSaveAction() {
+        // Error. Show message
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertFalse(viewModel.isUpdateProfile)
+        XCTAssertNil(viewModel.updateProfileParamsResult)
+        
+        controller.save.sendActions(for: .touchUpInside)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.presentedViewController)
+        var alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertEqual(alertController.message, AppError.unknown.localizedDescription)
+        XCTAssertTrue(viewModel.isUpdateProfile)
+        XCTAssertNotNil(viewModel.updateProfileParamsResult)
+    
+        // Trigger action OK
+        var action = alertController.actions.first!
+        typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
+        var block = action.value(forKey: "handler")
+        var blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        var handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        
+        // Success. Show message
+        viewModel.isUpdateProfile = false
+        viewModel.updateProfileParamsResult = nil
+        viewModel.updateProfileResult = .success(())
+        
+        controller.save.sendActions(for: .touchUpInside)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.presentedViewController)
+        alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertEqual(alertController.message, "Profile saved")
+        XCTAssertTrue(viewModel.isUpdateProfile)
+        XCTAssertNotNil(viewModel.updateProfileParamsResult)
+    
+        // Trigger action OK
+        action = alertController.actions.first!
+        block = action.value(forKey: "handler")
+        blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
     }
 
 }
