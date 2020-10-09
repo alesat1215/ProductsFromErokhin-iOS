@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import IQKeyboardManagerSwift
 @testable import ProductsFromErokhin
 
 class ProfileViewControllerTests: XCTestCase {
@@ -48,6 +49,10 @@ class ProfileViewControllerTests: XCTestCase {
         controller.address = address
         controller.save = save
         
+        controller.view.addSubview(controller.name)
+        controller.view.addSubview(controller.phone)
+        controller.view.addSubview(controller.address)
+        
         controller.viewDidLoad()
     }
 
@@ -69,6 +74,31 @@ class ProfileViewControllerTests: XCTestCase {
         XCTAssertEqual(controller.name.text, profile.name)
         XCTAssertEqual(controller.phone.text, profile.phone)
         XCTAssertEqual(controller.address.text, profile.address)
+    }
+    
+    func testSetupKeyboardForProfile() {
+        XCTAssertFalse(controller.name.isFirstResponder)
+        XCTAssertFalse(controller.phone.isFirstResponder)
+        XCTAssertFalse(controller.address.isFirstResponder)
+        // name
+        controller.name.becomeFirstResponder()
+        XCTAssertTrue(controller.name.isFirstResponder)
+        XCTAssertFalse(controller.phone.isFirstResponder)
+        XCTAssertFalse(controller.address.isFirstResponder)
+        controller.name.sendActions(for: .editingDidEndOnExit)
+        XCTAssertFalse(controller.name.isFirstResponder)
+        XCTAssertTrue(controller.phone.isFirstResponder)
+        XCTAssertFalse(controller.address.isFirstResponder)
+        // phone
+        controller.phone.sendActions(for: .editingDidEndOnExit)
+        XCTAssertFalse(controller.name.isFirstResponder)
+        XCTAssertFalse(controller.phone.isFirstResponder)
+        XCTAssertTrue(controller.address.isFirstResponder)
+        // address
+        controller.address.sendActions(for: .editingDidEndOnExit)
+        XCTAssertFalse(controller.name.isFirstResponder)
+        XCTAssertFalse(controller.phone.isFirstResponder)
+        XCTAssertFalse(controller.address.isFirstResponder)
     }
 
     func testExample() throws {

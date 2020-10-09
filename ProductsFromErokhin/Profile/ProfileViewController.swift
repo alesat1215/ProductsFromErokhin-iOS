@@ -48,21 +48,21 @@ extension ProfileViewController {
         // name
         name?.rx.controlEvent(.editingDidEndOnExit)
             .subscribe(onNext: { [weak self] in
-                self?.textFieldShouldReturn(self?.name)
+                self?.setupFirstResponder(self?.name)
             }).disposed(by: disposeBag)
         // phone
         phone?.rx.controlEvent(.editingDidEndOnExit)
             .subscribe(onNext: { [weak self] in
-                self?.textFieldShouldReturn(self?.phone)
+                self?.setupFirstResponder(self?.phone)
             }).disposed(by: disposeBag)
         // address
         address?.rx.controlEvent(.editingDidEndOnExit)
             .subscribe(onNext: { [weak self] in
-                self?.textFieldShouldReturn(self?.address)
+                self?.setupFirstResponder(self?.address)
             }).disposed(by: disposeBag)
     }
     /** Go to next field or hide keyboard */
-    private func textFieldShouldReturn(_ textField: UITextField?) {
+    private func setupFirstResponder(_ textField: UITextField?) {
       if IQKeyboardManager.shared.canGoNext {
         IQKeyboardManager.shared.goNext()
       } else {
