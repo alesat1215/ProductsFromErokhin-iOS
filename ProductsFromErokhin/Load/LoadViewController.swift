@@ -32,13 +32,13 @@ class LoadViewController: UIViewController {
             // Navigate to destination
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
-                print("Load complete. Navigate to destination")
+                print("Load complete")
                 if self?.viewModel?.tutorialIsRead() ?? true {
-                    print("To start")
+                    print("Navigate to start")
                     self?.performSegue(withIdentifier: "toStart", sender: nil)
                 } else {
-                    print("To tutorial")
-                    self?.performSegue(withIdentifier: "toTutorial", sender: nil)
+                    print("Navigate to tutorial")
+                    self?.performSegue(withIdentifier: "toInstructions", sender: nil)
                 }
             }).disposed(by: disposeBag)
     }

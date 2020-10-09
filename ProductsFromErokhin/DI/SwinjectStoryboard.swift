@@ -30,6 +30,15 @@ extension SwinjectStoryboard {
                 anonymousAuth: r.resolve(Auth.self)
             )
         }
+        // MARK: - Instructions
+        defaultContainer.storyboardInitCompleted(InstructionsViewController.self) { r, c in
+            c.viewModel = r.resolve(InstructionsViewModel.self)
+        }
+        defaultContainer.register(InstructionsViewModel.self) { r in
+            InstructionsViewModelImpl(
+                repository: r.resolve(AppRepository.self)
+            )
+        }
         // MARK: - TabBar
         defaultContainer.storyboardInitCompleted(TabBarController.self) { r, c in
             c.viewModel = r.resolve(CartViewModel.self)

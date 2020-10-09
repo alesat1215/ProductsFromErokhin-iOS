@@ -11,6 +11,7 @@ import RxSwift
 
 protocol InstructionsViewModel {
     func instructions() -> Observable<Event<[Instruction]>>
+    func pageCount() -> Observable<Int>
 }
 
 class InstructionsViewModelImpl: InstructionsViewModel {
@@ -20,7 +21,13 @@ class InstructionsViewModelImpl: InstructionsViewModel {
         self.repository = repository
     }
     
+    private lazy var _instructions = repository.instructions().share(replay: 1, scope: .forever)
+    
     func instructions() -> Observable<Event<[Instruction]>> {
-        repository.instructions()
+        _instructions
+    }
+    
+    func pageCount() -> Observable<Int> {
+        _instructions.map { $0.element?.count ?? 0 }
     }
 }

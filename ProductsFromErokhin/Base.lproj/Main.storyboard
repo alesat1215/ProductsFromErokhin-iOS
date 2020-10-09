@@ -454,17 +454,17 @@
                     </view>
                     <connections>
                         <segue destination="6zn-Lp-oPf" kind="presentation" identifier="toStart" modalPresentationStyle="fullScreen" id="Upv-8P-4Xc"/>
-                        <segue destination="Evr-cP-LP6" kind="presentation" identifier="toTutorial" modalPresentationStyle="fullScreen" id="Cr8-CC-htE"/>
+                        <segue destination="Evr-cP-LP6" kind="presentation" identifier="toInstructions" modalPresentationStyle="fullScreen" id="Cr8-CC-htE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCq-9b-usB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1381" y="1"/>
         </scene>
-        <!--View Controller-->
+        <!--Instructions View Controller-->
         <scene sceneID="3Wh-f2-efp">
             <objects>
-                <viewController id="Evr-cP-LP6" sceneMemberID="viewController">
+                <viewController id="Evr-cP-LP6" customClass="InstructionsViewController" customModule="ProductsFromErokhin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pws-bQ-jHX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -531,6 +531,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rer-8D-d5D"/>
+                    <connections>
+                        <outlet property="_title" destination="6tZ-XL-Xhy" id="LTG-5O-1cd"/>
+                        <outlet property="image" destination="GDJ-VI-vFz" id="EQb-CJ-bRG"/>
+                        <outlet property="ok" destination="GZE-zw-Lda" id="546-rG-b9k"/>
+                        <outlet property="pageControl" destination="nbP-Dt-xf2" id="aQE-O4-8LM"/>
+                        <outlet property="text" destination="Xdj-LA-Iga" id="say-vN-QSJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnk-VX-6Kn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
