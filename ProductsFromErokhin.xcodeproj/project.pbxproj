@@ -102,6 +102,7 @@
 		D7D64A06253079600010E2F3 /* ProfileViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A05253079600010E2F3 /* ProfileViewModelMockTests.swift */; };
 		D7D64A2F2530AAB70010E2F3 /* Instruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A2E2530AAB70010E2F3 /* Instruction.swift */; };
 		D7D64A342530AAF70010E2F3 /* InstructionRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A332530AAF70010E2F3 /* InstructionRemote.swift */; };
+		D7D64A3D2530AFBE0010E2F3 /* InstructionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A3C2530AFBE0010E2F3 /* InstructionsViewModel.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -251,6 +252,7 @@
 		D7D64A05253079600010E2F3 /* ProfileViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelMockTests.swift; sourceTree = "<group>"; };
 		D7D64A2E2530AAB70010E2F3 /* Instruction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instruction.swift; sourceTree = "<group>"; };
 		D7D64A332530AAF70010E2F3 /* InstructionRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionRemote.swift; sourceTree = "<group>"; };
+		D7D64A3C2530AFBE0010E2F3 /* InstructionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionsViewModel.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 			isa = PBXGroup;
 			children = (
 				D7B4B5312512424E00BA07CB /* Load */,
+				D7D64A382530AEF70010E2F3 /* Instructions */,
 				D7E293AB2524A10500EA2845 /* TabBar */,
 				D795212924FFD0F50094BAFE /* Start */,
 				D7B460F725191454001ED878 /* Menu */,
@@ -621,6 +624,14 @@
 				D7D649F0252F9AE70010E2F3 /* ProfileViewModelTests.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		D7D64A382530AEF70010E2F3 /* Instructions */ = {
+			isa = PBXGroup;
+			children = (
+				D7D64A3C2530AFBE0010E2F3 /* InstructionsViewModel.swift */,
+			);
+			path = Instructions;
 			sourceTree = "<group>";
 		};
 		D7D6EBED2517CE120098ABC7 /* Load */ = {
@@ -952,6 +963,7 @@
 				D795210124FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld in Sources */,
 				D7E29402252771C900EA2845 /* SellerContactsRemote.swift in Sources */,
 				D7B4B5332512428000BA07CB /* LoadViewController.swift in Sources */,
+				D7D64A3D2530AFBE0010E2F3 /* InstructionsViewModel.swift in Sources */,
 				D7D6498B252CAAD90010E2F3 /* RemoteConfig+Rx.swift in Sources */,
 				D7877B5E25010F7100244B81 /* ProductsRemote.swift in Sources */,
 				D7B4613F25193472001ED878 /* ProductTableViewCell.swift in Sources */,

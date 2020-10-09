@@ -132,5 +132,15 @@ class AppRepository {
             return .failure(error)
         }
     }
+    /**
+    Get instructions from database & update it if needed
+    - returns: Observable array with instructions
+    */
+    func instructions() -> Observable<Event<[Instruction]>> {
+        Observable.merge([
+            context.rx.entities(fetchRequest: Instruction.fetchRequestWithSort()).materialize(),
+            updater.sync()
+        ])
+    }
     
 }
