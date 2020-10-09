@@ -33,7 +33,13 @@ class LoadViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 print("Load complete. Navigate to destination")
-                self?.performSegue(withIdentifier: "toStart", sender: nil)
+                if self?.viewModel?.tutorialIsRead() ?? true {
+                    print("To start")
+                    self?.performSegue(withIdentifier: "toStart", sender: nil)
+                } else {
+                    print("To tutorial")
+                    self?.performSegue(withIdentifier: "toTutorial", sender: nil)
+                }
             }).disposed(by: disposeBag)
     }
     /** Sign in to Firebase */
@@ -54,5 +60,7 @@ class LoadViewController: UIViewController {
             .filter { $0 }
             .map { _ in return } ?? Observable.empty()
     }
+    
+    
 
 }

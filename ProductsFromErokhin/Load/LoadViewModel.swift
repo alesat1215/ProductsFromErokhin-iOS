@@ -12,6 +12,7 @@ import RxSwift
 protocol LoadViewModel {
     func auth() -> Observable<Event<Void>>
     func loadComplete() -> Observable<Event<Bool>>
+    func tutorialIsRead() -> Bool
 }
 
 class LoadViewModelImpl<T: AuthMethods>: LoadViewModel {
@@ -38,5 +39,9 @@ class LoadViewModelImpl<T: AuthMethods>: LoadViewModel {
                 return Event.completed
             }
         }
+    }
+    
+    func tutorialIsRead() -> Bool {
+        UserDefaults.standard.bool(forKey: "tutorialIsRead")
     }
 }
