@@ -18,8 +18,6 @@ class InstructionViewController: BindablePage<Instruction> {
     
     private let disposeBag = DisposeBag()
     
-    weak var viewModel: TutorialViewModel? // di
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,8 +39,9 @@ class InstructionViewController: BindablePage<Instruction> {
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
             .subscribe(onNext: { [weak self] in
-                self?.viewModel?.readTutorial()
+                (self?.parent as? TutorialViewController)?.viewModel?.readTutorial()
                 self?.performSegue(withIdentifier: "toStart", sender: nil)
+                print("Tutorial is read. Navigate to start")
             }).disposed(by: disposeBag)
     }
     

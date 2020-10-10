@@ -12,11 +12,11 @@ class PagesDataSource<T: AnyObject>: NSObject, UIPageViewControllerDataSource {
     
     private let pages: [UIViewController]
     
-    init(data: [T], storyboardId: String, viewModel: TutorialViewModel?) {
+    init(data: [T], storyboardId: String) {
         pages = data.map {
             let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: storyboardId)
             (controller as? BindablePage)?.bind(model: $0)
-            (controller as? InstructionViewController)?.viewModel = viewModel
+//            (controller as? InstructionViewController)?.viewModel = viewModel
             return controller
         }
     }
