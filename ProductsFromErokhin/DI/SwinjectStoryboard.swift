@@ -27,7 +27,8 @@ extension SwinjectStoryboard {
         defaultContainer.register(LoadViewModel.self) { r in
             LoadViewModelImpl(
                 repository: r.resolve(AppRepository.self),
-                anonymousAuth: r.resolve(Auth.self)
+                anonymousAuth: r.resolve(Auth.self),
+                userDefaults: r.resolve(UserDefaults.self)
             )
         }
         // MARK: - Tutorial
@@ -40,9 +41,6 @@ extension SwinjectStoryboard {
                 userDefaults: r.resolve(UserDefaults.self)
             )
         }
-        defaultContainer.register(UserDefaults.self) { r in
-            UserDefaults.standard
-        }.inObjectScope(.container)
         // MARK: - TabBar
         defaultContainer.storyboardInitCompleted(TabBarController.self) { r, c in
             c.viewModel = r.resolve(CartViewModel.self)
@@ -136,6 +134,10 @@ extension SwinjectStoryboard {
         
         defaultContainer.register(JSONDecoder.self) { _ in
             JSONDecoder()
+        }.inObjectScope(.container)
+        
+        defaultContainer.register(UserDefaults.self) { r in
+            UserDefaults.standard
         }.inObjectScope(.container)
     }
 }

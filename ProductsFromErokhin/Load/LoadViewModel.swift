@@ -18,10 +18,12 @@ protocol LoadViewModel {
 class LoadViewModelImpl<T: AuthMethods>: LoadViewModel {
     private let repository: AppRepository! // di
     private let anonymousAuth: T! // di
+    private let userDefaults: UserDefaults! // di
     
-    init(repository: AppRepository?, anonymousAuth: T?) {
+    init(repository: AppRepository?, anonymousAuth: T?, userDefaults: UserDefaults?) {
         self.repository = repository
         self.anonymousAuth = anonymousAuth
+        self.userDefaults = userDefaults
     }
     
     func auth() -> Observable<Event<Void>> {
@@ -42,6 +44,6 @@ class LoadViewModelImpl<T: AuthMethods>: LoadViewModel {
     }
     
     func tutorialIsRead() -> Bool {
-        UserDefaults.standard.bool(forKey: TutorialKey.tutorialIsRead.rawValue)
+        userDefaults.bool(forKey: TutorialKey.tutorialIsRead.rawValue)
     }
 }
