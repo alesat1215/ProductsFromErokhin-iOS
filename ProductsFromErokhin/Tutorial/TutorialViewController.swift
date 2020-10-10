@@ -12,6 +12,7 @@ import RxSwift
 class TutorialViewController: UIPageViewController {
     
     var viewModel: TutorialViewModel? // di
+    /** Need because dataSource is weak */
     private var _dataSource: UIPageViewControllerDataSource?
     
     private let disposeBag = DisposeBag()
@@ -19,10 +20,9 @@ class TutorialViewController: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         bindDataSource()
     }
-    
+    /** Set dataSource for page controller & save to _dataSource */
     private func bindDataSource() {
         viewModel?.instructions()
             .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
@@ -35,17 +35,6 @@ class TutorialViewController: UIPageViewController {
                 self?._dataSource = $0.bind(to: self)
             }).disposed(by: disposeBag)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

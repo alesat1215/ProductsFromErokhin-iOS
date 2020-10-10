@@ -9,18 +9,19 @@
 import UIKit
 
 class PagesDataSource<T: AnyObject>: NSObject, UIPageViewControllerDataSource {
-    
+    /** View controllers for UIPageViewController */
     private let pages: [UIViewController]
     
+    /** Create pages for data */
     init(data: [T], storyboardId: String) {
         pages = data.map {
             let controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: storyboardId)
             (controller as? BindablePage)?.bind(model: $0)
-//            (controller as? InstructionViewController)?.viewModel = viewModel
             return controller
         }
     }
     
+    /** Set dataSource, first page to page controller & return dataSource */
     func bind(to pageViewController: UIPageViewController?) -> UIPageViewControllerDataSource {
         pageViewController?.dataSource = self
         if let firstPage = pages.first {
@@ -29,6 +30,13 @@ class PagesDataSource<T: AnyObject>: NSObject, UIPageViewControllerDataSource {
         }
         return self
     }
+    
+    /** Check last page */
+    func isLastPage(_ page: UIViewController) -> Bool {
+        pages.last == page
+    }
+    
+    //MARK: - DataSource
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = pages.firstIndex(of: viewController) else {
@@ -62,9 +70,5 @@ class PagesDataSource<T: AnyObject>: NSObject, UIPageViewControllerDataSource {
         { return index }
         return 0
     }
-    
-    func isLastPage(_ page: UIViewController) -> Bool {
-        pages.last == page
-    }
-    
+
 }

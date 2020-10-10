@@ -11,6 +11,7 @@ import RxSwift
 
 protocol TutorialViewModel: AnyObject {
     func instructions() -> Observable<Event<[Instruction]>>
+    /** Set true for key TutorialKey.tutorialIsRead in UserDefaults in global queue */
     func readTutorial() -> Void
 }
 
@@ -27,7 +28,7 @@ class TutorialViewModelImpl: TutorialViewModel {
     func instructions() -> Observable<Event<[Instruction]>> {
         repository.instructions()
     }
-    
+    /** Set true for key TutorialKey.tutorialIsRead in UserDefaults in global queue */
     func readTutorial() {
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             self?.userDefaults.set(true, forKey: TutorialKey.tutorialIsRead.rawValue)
