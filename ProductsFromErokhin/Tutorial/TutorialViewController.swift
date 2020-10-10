@@ -12,6 +12,7 @@ import RxSwift
 class TutorialViewController: UIPageViewController {
     
     var viewModel: TutorialViewModel? // di
+    private var _dataSource: UIPageViewControllerDataSource?
     
     private let disposeBag = DisposeBag()
 
@@ -29,13 +30,9 @@ class TutorialViewController: UIPageViewController {
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }
-            .observeOn(MainScheduler.instance)
-            .subscribe(onNext: { [weak self] _ in
-                guard let self = self, let firstPage = self.viewModel?.pages?.first else {
-                    return
-                }
-                self.dataSource = self
-                self.setViewControllers([firstPage], direction: .forward, animated: true)
+            .map { PagesDataSource(data: $0, storyboardId: "InstructionViewController") }
+            .subscribe(onNext: { [weak self] in
+                self?._dataSource = $0.bind(to: self)
             }).disposed(by: disposeBag)
     }
     
@@ -52,24 +49,3 @@ class TutorialViewController: UIPageViewController {
 
 }
 
-extension TutorialViewController: UIPageViewControllerDataSource {
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        viewModel?.previousPage(for: viewController)
-    }
-    
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        viewModel?.nextPage(for: viewController)
-    }
-    
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        viewModel?.pagesCount() ?? 0
-    }
-    
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        viewModel?.pageIndex(viewControllers?.first) ?? 0
-    }
-    
-    func isLastPage(_ page: UIViewController) -> Bool {
-        viewModel?.isLastPage(page) ?? false
-    }
-}

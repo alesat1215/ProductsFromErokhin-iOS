@@ -33,7 +33,10 @@ class InstructionViewController: BindablePage<Instruction> {
     }
     
     private func isLastPage() -> Bool {
-        (parent as? TutorialViewController)?.isLastPage(self) ?? false
+        let controller = parent as? UIPageViewController
+        let dataSource = controller?.dataSource as? PagesDataSource<Instruction>
+        return dataSource?.isLastPage(self) ?? false
+//        (parent as? UIPageViewController)?.dataSource as? PagesDataSource?.isLastPage(self) ?? false
     }
 
 }
