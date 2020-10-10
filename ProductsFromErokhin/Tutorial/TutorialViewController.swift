@@ -30,7 +30,13 @@ class TutorialViewController: UIPageViewController {
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }
-            .map { PagesDataSource(data: $0, storyboardId: "InstructionViewController") }
+            .map { [weak self] in
+                PagesDataSource(
+                    data: $0,
+                    storyboardId: "InstructionViewController",
+                    viewModel: self?.viewModel
+                )
+            }
             .subscribe(onNext: { [weak self] in
                 self?._dataSource = $0.bind(to: self)
             }).disposed(by: disposeBag)

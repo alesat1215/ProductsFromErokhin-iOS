@@ -42,6 +42,6 @@ class LoadViewModelImpl<T: AuthMethods>: LoadViewModel {
     }
     
     func tutorialIsRead() -> Bool {
-        UserDefaults.standard.bool(forKey: "tutorialIsRead")
+        UserDefaults.standard.bool(forKey: TutorialKey.tutorialIsRead.rawValue)
     }
 }

@@ -16,12 +16,15 @@ class InstructionViewController: BindablePage<Instruction> {
     @IBOutlet weak var text: UILabel!
     @IBOutlet weak var ok: UIButton!
     
-//    private let disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
+    
+    weak var viewModel: TutorialViewModel? // di
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         bindInstruction()
+        setupOkAction()
     }
     
     private func bindInstruction() {
@@ -32,11 +35,21 @@ class InstructionViewController: BindablePage<Instruction> {
         ok.isHidden = !isLastPage()
     }
     
+    private func setupOkAction() {
+        ok.rx.tap
+            .asDriver()
+            .throttle(RxTimeInterval.seconds(1))
+            .asObservable()
+            .subscribe(onNext: { [weak self] in
+                self?.viewModel?.readTutorial()
+                self?.performSegue(withIdentifier: "toStart", sender: nil)
+            }).disposed(by: disposeBag)
+    }
+    
     private func isLastPage() -> Bool {
         let controller = parent as? UIPageViewController
         let dataSource = controller?.dataSource as? PagesDataSource<Instruction>
         return dataSource?.isLastPage(self) ?? false
-//        (parent as? UIPageViewController)?.dataSource as? PagesDataSource?.isLastPage(self) ?? false
     }
 
 }

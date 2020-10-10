@@ -36,9 +36,13 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(TutorialViewModel.self) { r in
             TutorialViewModelImpl(
-                repository: r.resolve(AppRepository.self)
+                repository: r.resolve(AppRepository.self),
+                userDefaults: r.resolve(UserDefaults.self)
             )
         }
+        defaultContainer.register(UserDefaults.self) { r in
+            UserDefaults.standard
+        }.inObjectScope(.container)
         // MARK: - TabBar
         defaultContainer.storyboardInitCompleted(TabBarController.self) { r, c in
             c.viewModel = r.resolve(CartViewModel.self)

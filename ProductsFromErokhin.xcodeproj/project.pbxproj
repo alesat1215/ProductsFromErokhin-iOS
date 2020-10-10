@@ -107,6 +107,7 @@
 		D7D64A562530C0910010E2F3 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A552530C0910010E2F3 /* TutorialViewController.swift */; };
 		D7D64A662531A9F10010E2F3 /* BindablePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A652531A9F10010E2F3 /* BindablePage.swift */; };
 		D7D64A6B25321A970010E2F3 /* PagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A6A25321A970010E2F3 /* PagesDataSource.swift */; };
+		D7D64A7025321D610010E2F3 /* TutorialKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A6F25321D610010E2F3 /* TutorialKey.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -261,6 +262,7 @@
 		D7D64A552530C0910010E2F3 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		D7D64A652531A9F10010E2F3 /* BindablePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindablePage.swift; sourceTree = "<group>"; };
 		D7D64A6A25321A970010E2F3 /* PagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesDataSource.swift; sourceTree = "<group>"; };
+		D7D64A6F25321D610010E2F3 /* TutorialKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialKey.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 				D7D64A552530C0910010E2F3 /* TutorialViewController.swift */,
 				D7D64A442530B0980010E2F3 /* InstructionViewController.swift */,
 				D7D64A3C2530AFBE0010E2F3 /* TutorialViewModel.swift */,
+				D7D64A6F25321D610010E2F3 /* TutorialKey.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -999,6 +1002,7 @@
 				D7D64A2F2530AAB70010E2F3 /* Instruction.swift in Sources */,
 				D7D64A562530C0910010E2F3 /* TutorialViewController.swift in Sources */,
 				D7B4B52E2510C5BD00BA07CB /* BindableCells.swift in Sources */,
+				D7D64A7025321D610010E2F3 /* TutorialKey.swift in Sources */,
 				D71A78CA2519F8E1001B9234 /* CoreDataSourceTableView.swift in Sources */,
 				D7D649B7252EFF230010E2F3 /* Profile.swift in Sources */,
 				D7D649BD252F01060010E2F3 /* ProfileViewModel.swift in Sources */,
