@@ -11,8 +11,10 @@ import RxSwift
 
 protocol TutorialViewModel {
     func instructions() -> Observable<Event<[Instruction]>>
-    func pageCount() -> Observable<Int>
+//    func pageCount() -> Observable<Int>
     var pages: [UIViewController]? { get }
+    func previousPage(for page: UIViewController) -> UIViewController?
+    func nextPage(for page: UIViewController) -> UIViewController?
 }
 
 class TutorialViewModelImpl: TutorialViewModel {
@@ -39,7 +41,29 @@ class TutorialViewModelImpl: TutorialViewModel {
             })
     }
     
-    func pageCount() -> Observable<Int> {
-        _instructions.map { $0.element?.count ?? 0 }
+    func previousPage(for page: UIViewController) -> UIViewController? {
+        guard let pages = pages, let index = pages.firstIndex(of: page) else {
+            return nil
+        }
+        let previousIndex = index - 1
+        if pages.indices.contains(previousIndex) {
+            return pages[previousIndex]
+        }
+        return nil
     }
+    
+    func nextPage(for page: UIViewController) -> UIViewController? {
+        guard let pages = pages, let index = pages.firstIndex(of: page) else {
+            return nil
+        }
+        let nextIndex = index + 1
+        if pages.indices.contains(nextIndex) {
+            return pages[nextIndex]
+        }
+        return nil
+    }
+    
+//    func pageCount() -> Observable<Int> {
+//        _instructions.map { $0.element?.count ?? 0 }
+//    }
 }

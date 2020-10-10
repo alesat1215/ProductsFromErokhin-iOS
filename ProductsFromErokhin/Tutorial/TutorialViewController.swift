@@ -55,25 +55,27 @@ class TutorialViewController: UIPageViewController {
 
 extension TutorialViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let pages = viewModel?.pages, let index = pages.firstIndex(of: viewController) else {
-            return nil
-        }
-        let previousIndex = index - 1
-        if pages.indices.contains(previousIndex) {
-            return pages[previousIndex]
-        }
-        return nil
+//        guard let pages = viewModel?.pages, let index = pages.firstIndex(of: viewController) else {
+//            return nil
+//        }
+//        let previousIndex = index - 1
+//        if pages.indices.contains(previousIndex) {
+//            return pages[previousIndex]
+//        }
+//        return nil
+        viewModel?.previousPage(for: viewController)
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let pages = viewModel?.pages, let index = pages.firstIndex(of: viewController) else {
-            return nil
-        }
-        let nextIndex = index + 1
-        if pages.indices.contains(nextIndex) {
-            return pages[nextIndex]
-        }
-        return nil
+//        guard let pages = viewModel?.pages, let index = pages.firstIndex(of: viewController) else {
+//            return nil
+//        }
+//        let nextIndex = index + 1
+//        if pages.indices.contains(nextIndex) {
+//            return pages[nextIndex]
+//        }
+//        return nil
+        viewModel?.nextPage(for: viewController)
     }
     
     func presentationCount(for pageViewController: UIPageViewController) -> Int {
@@ -81,9 +83,9 @@ extension TutorialViewController: UIPageViewControllerDataSource {
     }
     
     func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        guard let page = viewControllers?.first, let index = viewModel?.pages?.firstIndex(of: page) else {
-            return 0
-        }
+        guard let page = viewControllers?.first,
+              let index = viewModel?.pages?.firstIndex(of: page)
+        else { return 0 }
         return index
     }
 }
