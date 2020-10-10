@@ -454,17 +454,27 @@
                     </view>
                     <connections>
                         <segue destination="6zn-Lp-oPf" kind="presentation" identifier="toStart" modalPresentationStyle="fullScreen" id="Upv-8P-4Xc"/>
-                        <segue destination="Evr-cP-LP6" kind="presentation" identifier="toInstructions" modalPresentationStyle="fullScreen" id="Cr8-CC-htE"/>
+                        <segue destination="dze-lD-Ibh" kind="presentation" identifier="toTutorial" modalPresentationStyle="fullScreen" id="yOs-Pf-RzP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kCq-9b-usB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1381" y="1"/>
         </scene>
-        <!--Instructions View Controller-->
+        <!--Tutorial View Controller-->
+        <scene sceneID="Aey-jg-ouT">
+            <objects>
+                <pageViewController storyboardIdentifier="TutorialViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="dze-lD-Ibh" customClass="TutorialViewController" customModule="ProductsFromErokhin" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lqY-fq-WsB"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6I0-sG-s2b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1381" y="664"/>
+        </scene>
+        <!--Instruction View Controller-->
         <scene sceneID="3Wh-f2-efp">
             <objects>
-                <viewController id="Evr-cP-LP6" customClass="InstructionsViewController" customModule="ProductsFromErokhin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InstructionViewController" id="Evr-cP-LP6" customClass="InstructionViewController" customModule="ProductsFromErokhin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pws-bQ-jHX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -483,19 +493,14 @@
                                     </imageView>
                                 </subviews>
                             </stackView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="nbP-Dt-xf2">
-                                <rect key="frame" x="8" y="834.66666666666663" width="398" height="27.333333333333371"/>
-                                <color key="pageIndicatorTintColor" systemColor="opaqueSeparatorColor"/>
-                                <color key="currentPageIndicatorTintColor" systemColor="linkColor"/>
-                            </pageControl>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdj-LA-Iga">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xdj-LA-Iga">
                                 <rect key="frame" x="8" y="453" width="398" height="21.666666666666686"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GZE-zw-Lda">
-                                <rect key="frame" x="172" y="792.66666666666663" width="70" height="34"/>
+                                <rect key="frame" x="172" y="820" width="70" height="34"/>
                                 <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="RRP-aB-72i"/>
@@ -516,26 +521,22 @@
                             <constraint firstItem="7qU-lN-T89" firstAttribute="trailing" secondItem="kmO-6c-Zhn" secondAttribute="trailing" constant="32" id="C0R-JA-qNS"/>
                             <constraint firstItem="GZE-zw-Lda" firstAttribute="centerX" secondItem="7qU-lN-T89" secondAttribute="centerX" id="PCH-VF-VXR"/>
                             <constraint firstItem="7qU-lN-T89" firstAttribute="trailing" secondItem="6tZ-XL-Xhy" secondAttribute="trailing" constant="8" id="PUd-el-S0v"/>
-                            <constraint firstItem="7qU-lN-T89" firstAttribute="bottom" secondItem="nbP-Dt-xf2" secondAttribute="bottom" id="PvN-jQ-MKl"/>
                             <constraint firstItem="kmO-6c-Zhn" firstAttribute="top" secondItem="6tZ-XL-Xhy" secondAttribute="bottom" constant="32.000000000000057" id="VOT-5x-1vZ"/>
-                            <constraint firstItem="nbP-Dt-xf2" firstAttribute="leading" secondItem="7qU-lN-T89" secondAttribute="leading" constant="8" id="brN-LQ-Q43"/>
                             <constraint firstItem="Xdj-LA-Iga" firstAttribute="leading" secondItem="7qU-lN-T89" secondAttribute="leading" constant="8" id="cDv-JL-AOw"/>
                             <constraint firstItem="GZE-zw-Lda" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Xdj-LA-Iga" secondAttribute="bottom" constant="8" id="dvR-HR-5zv"/>
-                            <constraint firstItem="nbP-Dt-xf2" firstAttribute="top" secondItem="GZE-zw-Lda" secondAttribute="bottom" constant="8" symbolic="YES" id="jVA-GD-DqI"/>
+                            <constraint firstItem="7qU-lN-T89" firstAttribute="bottom" secondItem="GZE-zw-Lda" secondAttribute="bottom" constant="8" id="jDJ-Dl-K0a"/>
                             <constraint firstItem="kmO-6c-Zhn" firstAttribute="leading" secondItem="7qU-lN-T89" secondAttribute="leading" constant="32" id="rFy-ru-J2r"/>
                             <constraint firstItem="Xdj-LA-Iga" firstAttribute="top" secondItem="kmO-6c-Zhn" secondAttribute="bottom" constant="31.999999999999886" id="ro0-BV-uua"/>
                             <constraint firstItem="6tZ-XL-Xhy" firstAttribute="leading" secondItem="7qU-lN-T89" secondAttribute="leading" constant="8" id="tSd-wA-NXH"/>
                             <constraint firstItem="6tZ-XL-Xhy" firstAttribute="top" secondItem="7qU-lN-T89" secondAttribute="top" constant="8" id="tUF-cq-CG3"/>
                             <constraint firstItem="kmO-6c-Zhn" firstAttribute="height" secondItem="7qU-lN-T89" secondAttribute="height" multiplier="0.376936" id="wyH-Wf-3WO"/>
-                            <constraint firstItem="7qU-lN-T89" firstAttribute="trailing" secondItem="nbP-Dt-xf2" secondAttribute="trailing" constant="8" id="zDr-36-CPi"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rer-8D-d5D"/>
                     <connections>
-                        <outlet property="_title" destination="6tZ-XL-Xhy" id="LTG-5O-1cd"/>
-                        <outlet property="image" destination="GDJ-VI-vFz" id="EQb-CJ-bRG"/>
+                        <outlet property="_title" destination="6tZ-XL-Xhy" id="9xL-fR-BMc"/>
+                        <outlet property="image" destination="GDJ-VI-vFz" id="rBc-Hn-NRv"/>
                         <outlet property="ok" destination="GZE-zw-Lda" id="546-rG-b9k"/>
-                        <outlet property="pageControl" destination="nbP-Dt-xf2" id="aQE-O4-8LM"/>
                         <outlet property="text" destination="Xdj-LA-Iga" id="say-vN-QSJ"/>
                     </connections>
                 </viewController>

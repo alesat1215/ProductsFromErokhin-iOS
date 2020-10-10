@@ -30,12 +30,12 @@ extension SwinjectStoryboard {
                 anonymousAuth: r.resolve(Auth.self)
             )
         }
-        // MARK: - Instructions
-        defaultContainer.storyboardInitCompleted(InstructionsViewController.self) { r, c in
-            c.viewModel = r.resolve(InstructionsViewModel.self)
+        // MARK: - Tutorial
+        defaultContainer.storyboardInitCompleted(TutorialViewController.self) { r, c in
+            c.viewModel = r.resolve(TutorialViewModel.self)
         }
-        defaultContainer.register(InstructionsViewModel.self) { r in
-            InstructionsViewModelImpl(
+        defaultContainer.register(TutorialViewModel.self) { r in
+            TutorialViewModelImpl(
                 repository: r.resolve(AppRepository.self)
             )
         }
