@@ -11,13 +11,16 @@ import RxSwift
 
 protocol TutorialViewModel {
     func instructions() -> Observable<Event<[Instruction]>>
-//    func pageCount() -> Observable<Int>
     var pages: [UIViewController]? { get }
     func previousPage(for page: UIViewController) -> UIViewController?
     func nextPage(for page: UIViewController) -> UIViewController?
+    func pagesCount() -> Int
+    func pageIndex(_ page: UIViewController?) -> Int
+    func isLastPage(_ page: UIViewController) -> Bool
 }
 
 class TutorialViewModelImpl: TutorialViewModel {
+    
     private let repository: AppRepository! // di
     
     init(repository: AppRepository?) {
@@ -63,7 +66,18 @@ class TutorialViewModelImpl: TutorialViewModel {
         return nil
     }
     
-//    func pageCount() -> Observable<Int> {
-//        _instructions.map { $0.element?.count ?? 0 }
-//    }
+    func isLastPage(_ page: UIViewController) -> Bool {
+        pages?.last == page
+    }
+    
+    func pagesCount() -> Int {
+        pages?.count ?? 0
+    }
+    
+    func pageIndex(_ page: UIViewController?) -> Int {
+        guard let page = page else {
+            return 0
+        }
+        return pages?.firstIndex(of: page) ?? 0
+    }
 }
