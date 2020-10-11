@@ -118,6 +118,7 @@
 		D7D64A9C253346100010E2F3 /* InstructionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A9B253346100010E2F3 /* InstructionViewControllerTests.swift */; };
 		D7D64AA4253374550010E2F3 /* PagesDataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64AA3253374550010E2F3 /* PagesDataSourceMock.swift */; };
 		D7D64AA9253379480010E2F3 /* TutorialViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64AA8253379480010E2F3 /* TutorialViewModelMock.swift */; };
+		D7D64AAE25337E940010E2F3 /* TutorialViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64AAD25337E940010E2F3 /* TutorialViewControllerTests.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -283,6 +284,7 @@
 		D7D64A9B253346100010E2F3 /* InstructionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewControllerTests.swift; sourceTree = "<group>"; };
 		D7D64AA3253374550010E2F3 /* PagesDataSourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesDataSourceMock.swift; sourceTree = "<group>"; };
 		D7D64AA8253379480010E2F3 /* TutorialViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModelMock.swift; sourceTree = "<group>"; };
+		D7D64AAD25337E940010E2F3 /* TutorialViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerTests.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -681,6 +683,7 @@
 		D7D64A9225333CE60010E2F3 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				D7D64AAD25337E940010E2F3 /* TutorialViewControllerTests.swift */,
 				D7D64A9B253346100010E2F3 /* InstructionViewControllerTests.swift */,
 				D7D64A9325333D510010E2F3 /* TutorialViewModelTests.swift */,
 			);
@@ -1083,6 +1086,7 @@
 				D7D64AA9253379480010E2F3 /* TutorialViewModelMock.swift in Sources */,
 				D7E29443252A04D900EA2845 /* OrderWarningRemoteTests.swift in Sources */,
 				D7E2943E2529BB2B00EA2845 /* CNContactStoreMockTests.swift in Sources */,
+				D7D64AAE25337E940010E2F3 /* TutorialViewControllerTests.swift in Sources */,
 				D7518E1625220EEF00C72B1E /* CoreDataSourceCollectionViewMockTests.swift in Sources */,
 				D7D6497D252CA69C0010E2F3 /* AuthMockTests.swift in Sources */,
 				D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */,

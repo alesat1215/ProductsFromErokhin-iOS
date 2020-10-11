@@ -8,11 +8,14 @@
 
 import Foundation
 import RxSwift
+import RxRelay
 @testable import ProductsFromErokhin
 
 class TutorialViewModelMock: TutorialViewModel {
+    
+    let instructionsResult = PublishRelay<Event<[Instruction]>>()
     func instructions() -> Observable<Event<[Instruction]>> {
-        Observable.empty()
+        instructionsResult.asObservable()
     }
     
     var isReadTutorial = false
