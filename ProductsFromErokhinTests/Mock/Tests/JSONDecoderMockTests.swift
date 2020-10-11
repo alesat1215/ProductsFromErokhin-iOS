@@ -18,6 +18,7 @@ class JSONDecoderMockTests: XCTestCase {
         XCTAssertEqual(try decoder.decode(TitlesRemote.self, from: Data()), decoder.titlesRemoteResult)
         XCTAssertEqual(try decoder.decode(OrderWarningRemote.self, from: Data()), decoder.orderWarningRemoteResult)
         XCTAssertEqual(try decoder.decode(SellerContactsRemote.self, from: Data()), decoder.sellerContactsRemoteResult)
+        XCTAssertEqual(try decoder.decode([InstructionRemote].self, from: Data()), decoder.instructionRemoteResult)
         XCTAssertThrowsError(try decoder.decode(String.self, from: Data()))
     }
 
