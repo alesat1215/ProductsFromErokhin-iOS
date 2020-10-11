@@ -22,7 +22,7 @@ class PagesDataSource<T: AnyObject>: NSObject, UIPageViewControllerDataSource {
     }
     
     /** Set dataSource, first page to page controller & return dataSource */
-    func bind(to pageViewController: UIPageViewController?) -> UIPageViewControllerDataSource {
+    func bind(to pageViewController: UIPageViewController?) -> Self {
         pageViewController?.dataSource = self
         if let firstPage = pages.first {
             pageViewController?
