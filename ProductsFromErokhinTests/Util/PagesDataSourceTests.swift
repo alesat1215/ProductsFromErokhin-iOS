@@ -95,6 +95,25 @@ class PagesDataSourceTests: XCTestCase {
         XCTAssertEqual(dataSource.presentationCount(for: controller), instructions.count)
     }
     
+    func testPresentationIndex() {
+        XCTAssertTrue(controller.viewControllers!.isEmpty)
+        XCTAssertEqual(dataSource.presentationIndex(for: controller), 0)
+        
+        _ = dataSource.bind(to: controller)
+        XCTAssertEqual(dataSource.presentationIndex(for: controller), 0)
+        
+        let page1 = controller.viewControllers!.first!
+        let page2 = dataSource.pageViewController(controller, viewControllerAfter: page1)!
+        let page3 = dataSource.pageViewController(controller, viewControllerAfter: page2)!
+        
+        controller.setViewControllers([page2], direction: .forward, animated: true)
+        XCTAssertEqual(dataSource.presentationIndex(for: controller), 1)
+        controller.setViewControllers([page3], direction: .forward, animated: true)
+        XCTAssertEqual(dataSource.presentationIndex(for: controller), 2)
+        controller.setViewControllers([page1], direction: .forward, animated: true)
+        XCTAssertEqual(dataSource.presentationIndex(for: controller), 0)
+    }
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
