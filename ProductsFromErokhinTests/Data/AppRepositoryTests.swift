@@ -23,6 +23,7 @@ class AppRepositoryTests: XCTestCase {
     private var productsInCart = [ProductInCart]()
     private var sellerContacts = [SellerContacts]()
     private var profile = [Profile]()
+    private var instructions = [Instruction]()
 
     override func setUpWithError() throws {
         updater = DatabaseUpdaterMock()
@@ -66,6 +67,12 @@ class AppRepositoryTests: XCTestCase {
             profile.name = $0.element
             return profile
         }
+        instructions = ["title", "title1", "title2"].enumerated().map {
+            let instruction = Instruction(context: context)
+            instruction.order = Int16($0.offset)
+            instruction.title = $0.element
+            return instruction
+        }
         
         try context.save()
         
@@ -80,6 +87,7 @@ class AppRepositoryTests: XCTestCase {
         try ProductInCart.clearEntity(context: context)
         try SellerContacts.clearEntity(context: context)
         try Profile.clearEntity(context: context)
+        try Instruction.clearEntity(context: context)
     }
     
     func testGroups() throws {
@@ -250,6 +258,26 @@ class AppRepositoryTests: XCTestCase {
         XCTAssertEqual(profiles.first?.address, "address")
         
         waitForExpectations(timeout: 1)
+    }
+    
+    func testInstructions() throws {
+        // Success
+        // Check sequence contains only one element
+        XCTAssertThrowsError(try repository.instructions().take(2).toBlocking(timeout: 1).toArray())
+        updater.isSync = false
+        // Check that element
+        var result = try repository.instructions().toBlocking().first()?.element
+        XCTAssertTrue(updater.isSync)
+        XCTAssertEqual(result?.count, instructions.count)
+    
+        // Sync error
+        updater.isSync = false
+        updater.error = AppError.unknown
+        let resultArray = try repository.instructions().take(2).toBlocking().toArray()
+        XCTAssertTrue(resultArray.contains { $0.error?.localizedDescription == AppError.unknown.localizedDescription })
+        XCTAssertTrue(updater.isSync)
+        result = resultArray.first { $0.error == nil }?.element
+        XCTAssertEqual(result?.count, instructions.count)
     }
 
 }
