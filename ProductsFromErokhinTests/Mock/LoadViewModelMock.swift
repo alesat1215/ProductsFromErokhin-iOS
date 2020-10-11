@@ -14,13 +14,6 @@ import RxSwift
 class LoadViewModelMock: LoadViewModel {
     init() {}
     
-    var tutorialIsReadResult = false
-    var isRead = false
-    func tutorialIsRead() -> Bool {
-        isRead.toggle()
-        return tutorialIsReadResult
-    }
-    
     let authResult = PublishRelay<Event<Void>>()
     func auth() -> Observable<Event<Void>> {
         authResult.asObservable()
@@ -31,5 +24,12 @@ class LoadViewModelMock: LoadViewModel {
     func loadComplete() -> Observable<Event<Bool>> {
         isLoadComplete.toggle()
         return loadCompleteResult.asObservable()
+    }
+    
+    var tutorialIsReadResult = false
+    var isRead = false
+    func tutorialIsRead() -> Bool {
+        isRead.toggle()
+        return tutorialIsReadResult
     }
 }

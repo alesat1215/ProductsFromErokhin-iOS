@@ -35,5 +35,11 @@ class LoadViewModelMockTests: XCTestCase {
         viewModel.loadCompleteResult.accept(Event.next(true))
         XCTAssertEqual(result?.element, complete.element)
     }
+    
+    func testTutorialIsRead() {
+        XCTAssertFalse(viewModel.isRead)
+        XCTAssertEqual(viewModel.tutorialIsRead(), viewModel.tutorialIsReadResult)
+        XCTAssertTrue(viewModel.isRead)
+    }
 
 }
