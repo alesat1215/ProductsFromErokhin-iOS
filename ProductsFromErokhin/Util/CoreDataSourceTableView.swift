@@ -126,6 +126,8 @@ class CoreDataSourceTableView<T: NSFetchRequestResult>: NSObject, UITableViewDat
 extension CoreDataSourceTableView: Disposable {
     func dispose() {
         frc.delegate = nil
-        tableView?.dataSource = nil
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView?.dataSource = nil
+        }
     }
 }

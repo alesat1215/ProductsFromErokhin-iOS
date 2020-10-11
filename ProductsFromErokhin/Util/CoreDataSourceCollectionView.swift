@@ -130,6 +130,8 @@ class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollect
 extension CoreDataSourceCollectionView: Disposable {
     func dispose() {
         frc.delegate = nil
-        collectionView?.dataSource = nil
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView?.dataSource = nil
+        }
     }
 }

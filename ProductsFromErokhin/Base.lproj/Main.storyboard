@@ -934,7 +934,7 @@
         <scene sceneID="Kr9-1D-Y3b">
             <objects>
                 <tableViewController id="GEn-y5-nm9" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="V5f-7o-Wj8">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="V5f-7o-Wj8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -962,6 +962,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="dze-lD-Ibh" kind="show" id="CQG-Zm-PfX"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="2yw-7x-Ofd" imageView="Nec-Ce-kXg" style="IBUITableViewCellStyleDefault" id="w0j-ty-IOf">
                                         <rect key="frame" x="0.0" y="71.666667938232422" width="414" height="43.666667938232422"/>
@@ -1069,6 +1072,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Ao1-Hk-ydd"/>
         <segue reference="33c-xM-IQG"/>
+        <segue reference="CQG-Zm-PfX"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="app.fill" catalog="system" width="128" height="114"/>
