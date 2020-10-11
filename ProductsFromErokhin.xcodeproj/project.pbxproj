@@ -116,6 +116,7 @@
 		D7D64A8E253337880010E2F3 /* UserDefaultsMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A8D253337880010E2F3 /* UserDefaultsMockTests.swift */; };
 		D7D64A9425333D510010E2F3 /* TutorialViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A9325333D510010E2F3 /* TutorialViewModelTests.swift */; };
 		D7D64A9C253346100010E2F3 /* InstructionViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A9B253346100010E2F3 /* InstructionViewControllerTests.swift */; };
+		D7D64AA4253374550010E2F3 /* PagesDataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64AA3253374550010E2F3 /* PagesDataSourceMock.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -279,6 +280,7 @@
 		D7D64A8D253337880010E2F3 /* UserDefaultsMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMockTests.swift; sourceTree = "<group>"; };
 		D7D64A9325333D510010E2F3 /* TutorialViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModelTests.swift; sourceTree = "<group>"; };
 		D7D64A9B253346100010E2F3 /* InstructionViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstructionViewControllerTests.swift; sourceTree = "<group>"; };
+		D7D64AA3253374550010E2F3 /* PagesDataSourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesDataSourceMock.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -577,6 +579,7 @@
 				D7E29465252A3DB400EA2845 /* CartViewModelMock.swift */,
 				D7D649F8252F9D290010E2F3 /* ProfileViewModelMock.swift */,
 				D7D64A88253336630010E2F3 /* UserDefaultsMock.swift */,
+				D7D64AA3253374550010E2F3 /* PagesDataSourceMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -1108,6 +1111,7 @@
 				D795211124FFBE800094BAFE /* ProductsFromErokhinTests.swift in Sources */,
 				D7C0FC0E25150772009BC51F /* TitlesTests.swift in Sources */,
 				D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */,
+				D7D64AA4253374550010E2F3 /* PagesDataSourceMock.swift in Sources */,
 				D7D64953252C925B0010E2F3 /* AuthMock.swift in Sources */,
 				D7D64999252CB76C0010E2F3 /* RemoteConfig+RxTests.swift in Sources */,
 				D7D64A9425333D510010E2F3 /* TutorialViewModelTests.swift in Sources */,

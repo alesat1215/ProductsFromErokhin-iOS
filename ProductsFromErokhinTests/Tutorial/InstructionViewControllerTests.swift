@@ -13,6 +13,8 @@ class InstructionViewControllerTests: XCTestCase {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var controller: InstructionViewController!
     private var navigationController: UINavigationController!
+    private var tutorialController: TutorialViewController!
+    private var dataSource: PagesDataSourceMock<Instruction>!
     private var instruction: Instruction!
 
     override func setUpWithError() throws {
@@ -23,8 +25,14 @@ class InstructionViewControllerTests: XCTestCase {
         instruction.text = "text"
         controller.bind(model: instruction)
         
+        dataSource = PagesDataSourceMock()
+        dataSource.isLastPageResult = true
+        tutorialController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TutorialViewController")
+        tutorialController.dataSource = dataSource
+        tutorialController.setViewControllers([controller], direction: .forward, animated: true)
+        
         navigationController = UINavigationController()
-        navigationController.viewControllers = [controller]
+        navigationController.viewControllers = [tutorialController]
         
         let window = UIWindow()
         window.rootViewController = navigationController
@@ -39,9 +47,15 @@ class InstructionViewControllerTests: XCTestCase {
     }
     
     func testBindInstruction() {
+        // Last page. OK is available
         XCTAssertEqual(controller._title.text, instruction.title)
         XCTAssertEqual(controller.text.text, instruction.text)
         XCTAssertFalse(controller.image.isHidden)
+        XCTAssertFalse(controller.ok.isHidden)
+        // Not last page. OK is unavailable
+        dataSource.isLastPageResult = false
+        controller.viewDidLoad()
+        XCTAssertTrue(controller.ok.isHidden)
     }
 
     func testExample() throws {
