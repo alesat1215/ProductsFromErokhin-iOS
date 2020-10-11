@@ -90,6 +90,11 @@ class PagesDataSourceTests: XCTestCase {
         XCTAssertNil(dataSource.pageViewController(controller, viewControllerAfter: page3!))
     }
     
+    func testPresentationCount() {
+        _ = dataSource.bind(to: controller)
+        XCTAssertEqual(dataSource.presentationCount(for: controller), instructions.count)
+    }
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
