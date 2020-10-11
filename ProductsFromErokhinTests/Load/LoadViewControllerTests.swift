@@ -116,8 +116,9 @@ class LoadViewControllerTests: XCTestCase {
         
         XCTAssertNil(controller.presentedViewController)
         
-        // Auth success. Load success, completed. Navigate to destination
+        // Auth success. Load success, completed. Tutorial is read. Navigate to Start
         viewModel.isLoadComplete = false
+        viewModel.tutorialIsReadResult = true
         
         viewModel.authResult.accept(Event.next(()))
         

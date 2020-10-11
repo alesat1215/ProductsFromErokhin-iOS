@@ -22,7 +22,7 @@ class LoadViewModelTests: XCTestCase {
         disposeBag = DisposeBag()
         repository = AppRepositoryMock()
         auth = AuthMock()
-        viewModel = LoadViewModelImpl(repository: repository, anonymousAuth: auth)
+        viewModel = LoadViewModelImpl(repository: repository, anonymousAuth: auth, userDefaults: nil)
     }
     
     func testAuth() {

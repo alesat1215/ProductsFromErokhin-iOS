@@ -167,15 +167,15 @@ class CartViewControllerTests: XCTestCase {
         XCTAssertFalse(viewModel.isCheckContact)
         XCTAssertFalse(viewModel.isMessage)
         XCTAssertFalse(viewModel.isClearCart)
-        XCTAssertNil(controller.navigationController?.presentedViewController)
+        XCTAssertNil(controller.presentedViewController)
         
         controller.send.sendActions(for: .touchUpInside)
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNotNil(controller.navigationController?.presentedViewController)
-        var alertController = controller.navigationController?.presentedViewController as! UIAlertController
+        XCTAssertNotNil(controller.presentedViewController)
+        var alertController = controller.presentedViewController as! UIAlertController
         XCTAssertEqual(alertController.actions.count, 1)
         XCTAssertEqual(alertController.actions.first?.style, .default)
         XCTAssertEqual(alertController.actions.first?.title, "OK")
@@ -196,7 +196,7 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNil(controller.navigationController?.presentedViewController)
+        XCTAssertNil(controller.presentedViewController)
         XCTAssertTrue(viewModel.isPhoneForOrder)
         XCTAssertFalse(viewModel.isCheckContact)
         XCTAssertFalse(viewModel.isMessage)
@@ -211,8 +211,8 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNotNil(controller.navigationController?.presentedViewController)
-        var activityController = controller.navigationController?.presentedViewController as! UIActivityViewController
+        XCTAssertNotNil(controller.presentedViewController)
+        var activityController = controller.presentedViewController as! UIActivityViewController
         
         XCTAssertTrue(viewModel.isPhoneForOrder)
         XCTAssertTrue(viewModel.isCheckContact)
@@ -225,8 +225,8 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNotNil(controller.navigationController?.presentedViewController)
-        alertController = controller.navigationController?.presentedViewController as! UIAlertController
+        XCTAssertNotNil(controller.presentedViewController)
+        alertController = controller.presentedViewController as! UIAlertController
         XCTAssertEqual(alertController.actions.count, 1)
         XCTAssertEqual(alertController.actions.first?.style, .default)
         XCTAssertEqual(alertController.actions.first?.title, "OK")
@@ -245,7 +245,7 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNil(controller.navigationController?.presentedViewController)
+        XCTAssertNil(controller.presentedViewController)
         XCTAssertTrue(viewModel.isPhoneForOrder)
         XCTAssertTrue(viewModel.isCheckContact)
         XCTAssertTrue(viewModel.isMessage)
@@ -261,8 +261,8 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNotNil(controller.navigationController?.presentedViewController)
-        activityController = controller.navigationController?.presentedViewController as! UIActivityViewController
+        XCTAssertNotNil(controller.presentedViewController)
+        activityController = controller.presentedViewController as! UIActivityViewController
         
         XCTAssertTrue(viewModel.isPhoneForOrder)
         XCTAssertTrue(viewModel.isCheckContact)
@@ -275,7 +275,7 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNil(controller.navigationController?.presentedViewController)
+        XCTAssertNil(controller.presentedViewController)
         XCTAssertTrue(viewModel.isPhoneForOrder)
         XCTAssertTrue(viewModel.isCheckContact)
         XCTAssertTrue(viewModel.isMessage)
@@ -292,8 +292,8 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNotNil(controller.navigationController?.presentedViewController)
-        activityController = controller.navigationController?.presentedViewController as! UIActivityViewController
+        XCTAssertNotNil(controller.presentedViewController)
+        activityController = controller.presentedViewController as! UIActivityViewController
         
         XCTAssertTrue(viewModel.isPhoneForOrder)
         XCTAssertTrue(viewModel.isCheckContact)
@@ -306,13 +306,13 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNotNil(controller.navigationController?.presentedViewController)
+        XCTAssertNotNil(controller.presentedViewController)
         XCTAssertTrue(viewModel.isPhoneForOrder)
         XCTAssertTrue(viewModel.isCheckContact)
         XCTAssertTrue(viewModel.isMessage)
         XCTAssertTrue(viewModel.isClearCart)
         
-        alertController = controller.navigationController?.presentedViewController as! UIAlertController
+        alertController = controller.presentedViewController as! UIAlertController
         XCTAssertEqual(alertController.actions.count, 1)
         XCTAssertEqual(alertController.actions.first?.style, .default)
         XCTAssertEqual(alertController.actions.first?.title, "OK")
@@ -327,7 +327,7 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNil(controller.navigationController?.presentedViewController)
+        XCTAssertNil(controller.presentedViewController)
         XCTAssertTrue(viewModel.isPhoneForOrder)
         XCTAssertTrue(viewModel.isCheckContact)
         XCTAssertTrue(viewModel.isMessage)
@@ -345,8 +345,8 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNotNil(controller.navigationController?.presentedViewController)
-        activityController = controller.navigationController?.presentedViewController as! UIActivityViewController
+        XCTAssertNotNil(controller.presentedViewController)
+        activityController = controller.presentedViewController as! UIActivityViewController
         
         XCTAssertTrue(viewModel.isPhoneForOrder)
         XCTAssertTrue(viewModel.isCheckContact)
@@ -359,7 +359,7 @@ class CartViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertNil(controller.navigationController?.presentedViewController)
+        XCTAssertNil(controller.presentedViewController)
         XCTAssertTrue(viewModel.isPhoneForOrder)
         XCTAssertTrue(viewModel.isCheckContact)
         XCTAssertTrue(viewModel.isMessage)

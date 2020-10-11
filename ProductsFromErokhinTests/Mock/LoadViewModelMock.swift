@@ -12,8 +12,14 @@ import RxSwift
 @testable import ProductsFromErokhin
 
 class LoadViewModelMock: LoadViewModel {
-    
     init() {}
+    
+    var tutorialIsReadResult = false
+    var isRead = false
+    func tutorialIsRead() -> Bool {
+        isRead.toggle()
+        return tutorialIsReadResult
+    }
     
     let authResult = PublishRelay<Event<Void>>()
     func auth() -> Observable<Event<Void>> {

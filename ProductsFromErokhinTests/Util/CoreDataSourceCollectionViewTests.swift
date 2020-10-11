@@ -133,6 +133,8 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
         dataSourceProducts.bind(collectionView: collectionView)
         XCTAssertNotNil(collectionView.dataSource)
         dataSourceProducts.dispose()
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
         XCTAssertNil(collectionView.dataSource)
     }
 

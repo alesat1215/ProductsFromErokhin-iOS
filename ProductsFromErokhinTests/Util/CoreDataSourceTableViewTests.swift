@@ -130,6 +130,8 @@ class CoreDataSourceTableViewTests: XCTestCase {
         dataSourceProducts.bind(tableView: tableView)
         XCTAssertNotNil(tableView.dataSource)
         dataSourceProducts.dispose()
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
         XCTAssertNil(tableView.dataSource)
     }
 
