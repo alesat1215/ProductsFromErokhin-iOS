@@ -21,5 +21,13 @@ class UserDefaultsMockTests: XCTestCase {
         XCTAssertEqual(userDefaults.bool(forKey: ""), userDefaults.boolResult)
         XCTAssertTrue(userDefaults.isBool)
     }
+    
+    func testSet() {
+        XCTAssertFalse(userDefaults.isSet)
+        XCTAssertNil(userDefaults.setResult)
+        userDefaults.set(true, forKey: "")
+        XCTAssertTrue(userDefaults.isSet)
+        XCTAssertTrue(userDefaults.setResult!)
+    }
 
 }
