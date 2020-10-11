@@ -14,6 +14,8 @@ class InstructionViewControllerTests: XCTestCase {
     private var controller: InstructionViewController!
     private var navigationController: UINavigationController!
     private var tutorialController: TutorialViewController!
+    private var loadViewController: LoadViewController!
+    private var viewModel: TutorialViewModelMock!
     private var dataSource: PagesDataSourceMock<Instruction>!
     private var instruction: Instruction!
 
@@ -27,12 +29,16 @@ class InstructionViewControllerTests: XCTestCase {
         
         dataSource = PagesDataSourceMock()
         dataSource.isLastPageResult = true
+        viewModel = TutorialViewModelMock()
         tutorialController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TutorialViewController")
+        tutorialController.viewModel = viewModel
         tutorialController.dataSource = dataSource
         tutorialController.setViewControllers([controller], direction: .forward, animated: true)
         
+        loadViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "LoadViewController")
+        
         navigationController = UINavigationController()
-        navigationController.viewControllers = [tutorialController]
+        navigationController.viewControllers = [loadViewController, tutorialController]
         
         let window = UIWindow()
         window.rootViewController = navigationController
@@ -60,6 +66,17 @@ class InstructionViewControllerTests: XCTestCase {
         controller.model?.img_path = nil
         controller.viewDidLoad()
         XCTAssertTrue(controller.image.isHidden)
+    }
+    
+    func testSetupOkAction() {
+        XCTAssertFalse(viewModel.isReadTutorial)
+        XCTAssertEqual(navigationController.viewControllers.count, 2)
+        controller.ok.sendActions(for: .touchUpInside)
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        XCTAssertTrue(viewModel.isReadTutorial)
+        print("View controllers \(navigationController.viewControllers)")
+        XCTAssertEqual(navigationController.viewControllers.count, 1)
     }
 
     func testExample() throws {
