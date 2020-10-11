@@ -12,12 +12,15 @@ import RxSwift
 class LoadViewController: UIViewController {
     
     @IBAction func unwindToLoad(_ unwindSegue: UIStoryboardSegue) {
-        loadData()
+        DispatchQueue.main.async { [weak self] in
+            print("Navigate to start")
+            self?.performSegue(withIdentifier: "toStart", sender: nil)
+        }
     }
     
     var viewModel: LoadViewModel? // di
     
-    private var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +29,6 @@ class LoadViewController: UIViewController {
     }
     /** Sign in to Firebase, load data & navigate to destination */
     private func loadData() {
-        disposeBag = DisposeBag()
         // Sign in to Firebase
         auth()
             // Load data
