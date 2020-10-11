@@ -16,13 +16,15 @@ class LoadViewModelTests: XCTestCase {
     private var viewModel: LoadViewModelImpl<AuthMock>!
     private var repository: AppRepositoryMock!
     private var auth: AuthMock!
+    private var userDefaults: UserDefaultsMock!
     private var disposeBag: DisposeBag!
 
     override func setUpWithError() throws {
         disposeBag = DisposeBag()
         repository = AppRepositoryMock()
         auth = AuthMock()
-        viewModel = LoadViewModelImpl(repository: repository, anonymousAuth: auth, userDefaults: nil)
+        userDefaults = UserDefaultsMock()
+        viewModel = LoadViewModelImpl(repository: repository, anonymousAuth: auth, userDefaults: userDefaults)
     }
     
     func testAuth() {
@@ -39,6 +41,11 @@ class LoadViewModelTests: XCTestCase {
         // Uncomplete
         repository.titlesResult = []
         XCTAssertFalse(try viewModel.loadComplete().toBlocking().first()?.element ?? true)
+    }
+    
+    func testTutorialIsRead() {
+        XCTAssertEqual(viewModel.tutorialIsRead(), userDefaults.boolResult)
+        XCTAssertTrue(userDefaults.isBool)
     }
 
 }
