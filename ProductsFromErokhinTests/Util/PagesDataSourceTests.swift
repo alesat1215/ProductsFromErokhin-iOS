@@ -65,6 +65,18 @@ class PagesDataSourceTests: XCTestCase {
         XCTAssertFalse(dataSource.isLastPage(page2))
         XCTAssertTrue(dataSource.isLastPage(page3))
     }
+    
+    //MARK: - DataSource
+    
+    func testViewControllerBefore() {
+        _ = dataSource.bind(to: controller)
+        let page1 = controller.viewControllers!.first!
+        let page2 = dataSource.pageViewController(controller, viewControllerAfter: page1)!
+        XCTAssertNotNil(page2)
+        let page3 = dataSource.pageViewController(controller, viewControllerAfter: page2)!
+        XCTAssertNotNil(page3)
+        XCTAssertNil(dataSource.pageViewController(controller, viewControllerAfter: page3))
+    }
 
     func testExample() throws {
         // This is an example of a functional test case.
