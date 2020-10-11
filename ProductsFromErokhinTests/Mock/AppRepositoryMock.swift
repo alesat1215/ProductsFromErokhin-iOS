@@ -88,4 +88,9 @@ class AppRepositoryMock: AppRepository {
         updateProfileResult
     }
     
+    var instructionsResult = [Instruction]()
+    override func instructions() -> Observable<Event<[Instruction]>> {
+        Observable.just(Event.next(instructionsResult))
+    }
+    
 }

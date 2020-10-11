@@ -114,6 +114,7 @@
 		D7D64A84253329890010E2F3 /* PagesDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A83253329890010E2F3 /* PagesDataSourceTests.swift */; };
 		D7D64A89253336630010E2F3 /* UserDefaultsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A88253336630010E2F3 /* UserDefaultsMock.swift */; };
 		D7D64A8E253337880010E2F3 /* UserDefaultsMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A8D253337880010E2F3 /* UserDefaultsMockTests.swift */; };
+		D7D64A9425333D510010E2F3 /* TutorialViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64A9325333D510010E2F3 /* TutorialViewModelTests.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -275,6 +276,7 @@
 		D7D64A83253329890010E2F3 /* PagesDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesDataSourceTests.swift; sourceTree = "<group>"; };
 		D7D64A88253336630010E2F3 /* UserDefaultsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMock.swift; sourceTree = "<group>"; };
 		D7D64A8D253337880010E2F3 /* UserDefaultsMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMockTests.swift; sourceTree = "<group>"; };
+		D7D64A9325333D510010E2F3 /* TutorialViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 			isa = PBXGroup;
 			children = (
 				D7D6EBED2517CE120098ABC7 /* Load */,
+				D7D64A9225333CE60010E2F3 /* Tutorial */,
 				D7E2946A252A3EB600EA2845 /* TabBar */,
 				D7957938251699D2007AD022 /* Start */,
 				D7518DF22520743800C72B1E /* Menu */,
@@ -663,6 +666,14 @@
 				D7D64A442530B0980010E2F3 /* InstructionViewController.swift */,
 				D7D64A3C2530AFBE0010E2F3 /* TutorialViewModel.swift */,
 				D7D64A6F25321D610010E2F3 /* TutorialKey.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		D7D64A9225333CE60010E2F3 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				D7D64A9325333D510010E2F3 /* TutorialViewModelTests.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -1095,6 +1106,7 @@
 				D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */,
 				D7D64953252C925B0010E2F3 /* AuthMock.swift in Sources */,
 				D7D64999252CB76C0010E2F3 /* RemoteConfig+RxTests.swift in Sources */,
+				D7D64A9425333D510010E2F3 /* TutorialViewModelTests.swift in Sources */,
 				D7D64A7F253328740010E2F3 /* BindablePageTests.swift in Sources */,
 				D7C0FC1925154199009BC51F /* CollectionViewCellMock.swift in Sources */,
 				D7E29448252A065700EA2845 /* SellerContactsRemoteTests.swift in Sources */,
