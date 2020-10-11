@@ -59,5 +59,9 @@ class AppRepositoryMockTests: XCTestCase {
     func testUpdateProfile() {
         XCTAssertNoThrow(try repository.updateProfile(name: "", phone: "", address: "").get())
     }
+    
+    func testInstructions() {
+        XCTAssertEqual(try repository.instructions().dematerialize().toBlocking().first(), repository.instructionsResult)
+    }
 
 }
