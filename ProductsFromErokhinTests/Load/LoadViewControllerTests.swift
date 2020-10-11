@@ -39,6 +39,7 @@ class LoadViewControllerTests: XCTestCase {
         // Auth error. Show message
         XCTAssertNil(controller.presentedViewController)
         XCTAssertFalse(viewModel.isLoadComplete)
+        XCTAssertFalse(viewModel.isRead)
 
         viewModel.authResult.accept(Event.error(AppError.unknown))
 
@@ -64,6 +65,7 @@ class LoadViewControllerTests: XCTestCase {
         
         XCTAssertNil(controller.presentedViewController)
         XCTAssertFalse(viewModel.isLoadComplete)
+        XCTAssertFalse(viewModel.isRead)
         
         // Auth success. Load error. Show message
         viewModel.authResult.accept(Event.next(()))
@@ -73,6 +75,7 @@ class LoadViewControllerTests: XCTestCase {
         
         XCTAssertNil(controller.presentedViewController)
         XCTAssertTrue(viewModel.isLoadComplete)
+        XCTAssertFalse(viewModel.isRead)
         
         viewModel.loadCompleteResult.accept(Event.error(AppError.unknown))
         
@@ -97,6 +100,7 @@ class LoadViewControllerTests: XCTestCase {
         
         XCTAssertNil(controller.presentedViewController)
         XCTAssertTrue(viewModel.isLoadComplete)
+        XCTAssertFalse(viewModel.isRead)
         
         // Auth success. Load success, but not completed.
         viewModel.isLoadComplete = false
@@ -108,6 +112,7 @@ class LoadViewControllerTests: XCTestCase {
         
         XCTAssertNil(controller.presentedViewController)
         XCTAssertTrue(viewModel.isLoadComplete)
+        XCTAssertFalse(viewModel.isRead)
         
         viewModel.loadCompleteResult.accept(Event.next(false))
         
@@ -115,10 +120,11 @@ class LoadViewControllerTests: XCTestCase {
         waitForExpectations(timeout: 1)
         
         XCTAssertNil(controller.presentedViewController)
+        XCTAssertFalse(viewModel.isRead)
         
-        // Auth success. Load success, completed. Tutorial is read. Navigate to Start
+        // Auth success. Load success, completed. Tutorial isn't read. Navigate to Tutorial
         viewModel.isLoadComplete = false
-        viewModel.tutorialIsReadResult = true
+        XCTAssertFalse(viewModel.isRead)
         
         viewModel.authResult.accept(Event.next(()))
         
@@ -127,6 +133,31 @@ class LoadViewControllerTests: XCTestCase {
         
         XCTAssertNil(controller.presentedViewController)
         XCTAssertTrue(viewModel.isLoadComplete)
+        XCTAssertFalse(viewModel.isRead)
+        
+        viewModel.loadCompleteResult.accept(Event.next(true))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNotNil(controller.presentedViewController)
+        XCTAssertTrue(controller.presentedViewController is UIPageViewController)
+        XCTAssertTrue(viewModel.isRead)
+        
+        // Auth success. Load success, completed. Tutorial is read. Navigate to Start
+        controller.presentedViewController?.dismiss(animated: true)
+        viewModel.isLoadComplete = false
+        viewModel.tutorialIsReadResult = true
+        viewModel.isRead = false
+        
+        viewModel.authResult.accept(Event.next(()))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertTrue(viewModel.isLoadComplete)
+        XCTAssertFalse(viewModel.isRead)
         
         viewModel.loadCompleteResult.accept(Event.next(true))
         
@@ -135,6 +166,7 @@ class LoadViewControllerTests: XCTestCase {
         
         XCTAssertNotNil(controller.presentedViewController)
         XCTAssertTrue(controller.presentedViewController is UINavigationController)
+        XCTAssertTrue(viewModel.isRead)
     }
 
 }
