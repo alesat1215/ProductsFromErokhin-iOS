@@ -70,14 +70,26 @@ class PagesDataSourceTests: XCTestCase {
     
     func testViewControllerBefore() {
         _ = dataSource.bind(to: controller)
+        
         let page1 = controller.viewControllers!.first!
         let page2 = dataSource.pageViewController(controller, viewControllerAfter: page1)!
-        XCTAssertNotNil(page2)
         let page3 = dataSource.pageViewController(controller, viewControllerAfter: page2)!
-        XCTAssertNotNil(page3)
-        XCTAssertNil(dataSource.pageViewController(controller, viewControllerAfter: page3))
+        
+        XCTAssertEqual(dataSource.pageViewController(controller, viewControllerBefore: page3), page2)
+        XCTAssertEqual(dataSource.pageViewController(controller, viewControllerBefore: page2), page1)
+        XCTAssertNil(dataSource.pageViewController(controller, viewControllerBefore: page1))
     }
-
+    
+    func testViewControllerAfter() {
+        _ = dataSource.bind(to: controller)
+        let page1 = controller.viewControllers!.first!
+        let page2 = dataSource.pageViewController(controller, viewControllerAfter: page1)
+        XCTAssertNotNil(page2)
+        let page3 = dataSource.pageViewController(controller, viewControllerAfter: page2!)
+        XCTAssertNotNil(page3)
+        XCTAssertNil(dataSource.pageViewController(controller, viewControllerAfter: page3!))
+    }
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
