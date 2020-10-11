@@ -40,8 +40,8 @@ class InstructionViewController: BindablePage<Instruction> {
             .asObservable()
             .subscribe(onNext: { [weak self] in
                 (self?.parent as? TutorialViewController)?.viewModel?.readTutorial()
-                self?.performSegue(withIdentifier: "toStart", sender: nil)
-                print("Tutorial is read. Navigate to start")
+                self?.performSegue(withIdentifier: "toLoad", sender: nil)
+                print("Tutorial is read. Navigate to load")
             }).disposed(by: disposeBag)
     }
     
