@@ -25,17 +25,13 @@ class TutorialViewModelTests: XCTestCase {
     func testInstructions() {
         XCTAssertEqual(try viewModel.instructions().dematerialize().toBlocking().first(), repository.instructionsResult)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testReadTutorial() {
+        viewModel.readTutorial()
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        XCTAssertTrue(userDefaults.isSet)
+        XCTAssertTrue(userDefaults.setResult!)
     }
 
 }

@@ -15,4 +15,11 @@ class UserDefaultsMock: UserDefaults {
         isBool.toggle()
         return boolResult
     }
+    
+    var isSet = false
+    var setResult: Bool?
+    override func set(_ value: Bool, forKey defaultName: String) {
+        setResult = value
+        isSet.toggle()
+    }
 }
