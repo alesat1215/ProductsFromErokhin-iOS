@@ -7,12 +7,15 @@
 //
 
 import XCTest
-import RxSwift
 @testable import ProductsFromErokhin
 
 class BindableCellTests: XCTestCase {
     
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    override func tearDownWithError() throws {
+        try Product.clearEntity(context: context)
+    }
     
     func testBindableTableViewCell() {
         let model = Product(context: context)
