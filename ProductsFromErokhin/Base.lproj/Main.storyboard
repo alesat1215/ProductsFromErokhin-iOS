@@ -491,6 +491,7 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GDJ-VI-vFz">
                                         <rect key="frame" x="0.0" y="0.0" width="350" height="308.33333333333331"/>
+                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="10"/>
