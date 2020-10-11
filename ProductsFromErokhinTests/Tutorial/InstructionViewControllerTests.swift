@@ -43,19 +43,23 @@ class InstructionViewControllerTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        try Instruction.clearEntity(context: context)
     }
     
     func testBindInstruction() {
-        // Last page. OK is available
+        // Last page. OK is available. Instruction with image. Image available
         XCTAssertEqual(controller._title.text, instruction.title)
         XCTAssertEqual(controller.text.text, instruction.text)
         XCTAssertFalse(controller.image.isHidden)
         XCTAssertFalse(controller.ok.isHidden)
-        // Not last page. OK is unavailable
+        // Not last page. OK is unavailable.
         dataSource.isLastPageResult = false
         controller.viewDidLoad()
         XCTAssertTrue(controller.ok.isHidden)
+        // Instruction without image. Image unavailable
+        controller.model?.img_path = nil
+        controller.viewDidLoad()
+        XCTAssertTrue(controller.image.isHidden)
     }
 
     func testExample() throws {
