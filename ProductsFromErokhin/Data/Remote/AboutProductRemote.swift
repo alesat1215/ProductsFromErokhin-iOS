@@ -32,7 +32,7 @@ extension AboutProductsRemote {
     func managedObject(context: NSManagedObjectContext, order: Int) -> NSManagedObject {
         // Create entity & set values
         let sellerContacts = NSEntityDescription.insertNewObject(forEntityName: "AboutProduct", into: context)
-        (sellerContacts as? AboutProduct)?.update(from: self, order: order)
+        (sellerContacts as? AboutProducts)?.update(from: self, order: order)
         // Return result
         return sellerContacts
     }

@@ -78,6 +78,7 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
         try updateOrderWarning()
         try updateSellerContacts()
         try updateInstructions()
+        try updateAboutProducts()
         // Save result
         if context.hasChanges {
             try context.save()
@@ -135,6 +136,17 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
         }
     }
     
+    private func updateAboutProducts() throws {
+        // Get aboutProducts from remote data
+        let aboutProducts: [AboutProductsRemote] = try remoteData(key: .aboutProducts)
+        // Delete all aboutProducts from database
+        try AboutProducts.clearEntity(context: context)
+        // Create aboutProducts entity from remote
+        aboutProducts.enumerated().forEach {
+            context.insert($1.managedObject(context: context, order: $0))
+        }
+    }
+    
     /** Get data from remote config & decode it from JSON */
     private func remoteData<T: Codable>(key: RemoteDataKeys) throws -> T {
         try decoder.decode(T.self, from: remoteConfig[key.rawValue].dataValue)
@@ -145,7 +157,7 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
 // MARK: - Remote config
 /** Keys for remote config parameters */
 fileprivate enum RemoteDataKeys: String {
-    case products, titles, orderWarning = "order_warning", contacts, instructions
+    case products, titles, orderWarning = "order_warning", contacts, instructions, aboutProducts = "about_products_list"
 }
 
 ///** Completion handler for fetchAndActivate with observable result */
