@@ -121,6 +121,8 @@
 		D7D64AAE25337E940010E2F3 /* TutorialViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64AAD25337E940010E2F3 /* TutorialViewControllerTests.swift */; };
 		D7D64AB625338AD60010E2F3 /* PagesDataSourceMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64AB525338AD60010E2F3 /* PagesDataSourceMockTests.swift */; };
 		D7D64ABB25338BDC0010E2F3 /* TutorialViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64ABA25338BDC0010E2F3 /* TutorialViewModelMockTests.swift */; };
+		D7D64ACD2534CF9C0010E2F3 /* AboutProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64ACC2534CF9C0010E2F3 /* AboutProducts.swift */; };
+		D7D64AD22534D0BF0010E2F3 /* AboutProductRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64AD12534D0BF0010E2F3 /* AboutProductRemote.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -289,6 +291,8 @@
 		D7D64AAD25337E940010E2F3 /* TutorialViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewControllerTests.swift; sourceTree = "<group>"; };
 		D7D64AB525338AD60010E2F3 /* PagesDataSourceMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagesDataSourceMockTests.swift; sourceTree = "<group>"; };
 		D7D64ABA25338BDC0010E2F3 /* TutorialViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModelMockTests.swift; sourceTree = "<group>"; };
+		D7D64ACC2534CF9C0010E2F3 /* AboutProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProducts.swift; sourceTree = "<group>"; };
+		D7D64AD12534D0BF0010E2F3 /* AboutProductRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductRemote.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -417,6 +421,7 @@
 				D7E294092527737000EA2845 /* SellerContacts.swift */,
 				D7D649B6252EFF230010E2F3 /* Profile.swift */,
 				D7D64A2E2530AAB70010E2F3 /* Instruction.swift */,
+				D7D64ACC2534CF9C0010E2F3 /* AboutProducts.swift */,
 				D7877B772504B05D00244B81 /* Ordered.swift */,
 			);
 			path = Local;
@@ -430,6 +435,7 @@
 				D7E293A12524843400EA2845 /* OrderWarningRemote.swift */,
 				D7E29401252771C900EA2845 /* SellerContactsRemote.swift */,
 				D7D64A332530AAF70010E2F3 /* InstructionRemote.swift */,
+				D7D64AD12534D0BF0010E2F3 /* AboutProductRemote.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -1043,6 +1049,7 @@
 				D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */,
 				D7B4614725193A1F001ED878 /* MenuViewModel.swift in Sources */,
 				D795796E2517C900007AD022 /* FirebaseStorageReference.swift in Sources */,
+				D7D64AD22534D0BF0010E2F3 /* AboutProductRemote.swift in Sources */,
 				D7E293D525265B4000EA2845 /* UIViewController+Rx.swift in Sources */,
 				D7E293952523882E00EA2845 /* CartViewController.swift in Sources */,
 				D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */,
@@ -1052,6 +1059,7 @@
 				D7D64A7025321D610010E2F3 /* TutorialKey.swift in Sources */,
 				D71A78CA2519F8E1001B9234 /* CoreDataSourceTableView.swift in Sources */,
 				D7D649B7252EFF230010E2F3 /* Profile.swift in Sources */,
+				D7D64ACD2534CF9C0010E2F3 /* AboutProducts.swift in Sources */,
 				D7D649BD252F01060010E2F3 /* ProfileViewModel.swift in Sources */,
 				D7E2940A2527737000EA2845 /* SellerContacts.swift in Sources */,
 				D7D64A452530B0980010E2F3 /* InstructionViewController.swift in Sources */,
