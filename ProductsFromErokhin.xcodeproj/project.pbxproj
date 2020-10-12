@@ -123,6 +123,7 @@
 		D7D64ABB25338BDC0010E2F3 /* TutorialViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64ABA25338BDC0010E2F3 /* TutorialViewModelMockTests.swift */; };
 		D7D64ACD2534CF9C0010E2F3 /* AboutProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64ACC2534CF9C0010E2F3 /* AboutProducts.swift */; };
 		D7D64AD22534D0BF0010E2F3 /* AboutProductRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64AD12534D0BF0010E2F3 /* AboutProductRemote.swift */; };
+		D7D64AD82534D5AE0010E2F3 /* AboutProductsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D64AD72534D5AE0010E2F3 /* AboutProductsViewModel.swift */; };
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
@@ -293,6 +294,7 @@
 		D7D64ABA25338BDC0010E2F3 /* TutorialViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewModelMockTests.swift; sourceTree = "<group>"; };
 		D7D64ACC2534CF9C0010E2F3 /* AboutProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProducts.swift; sourceTree = "<group>"; };
 		D7D64AD12534D0BF0010E2F3 /* AboutProductRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductRemote.swift; sourceTree = "<group>"; };
+		D7D64AD72534D5AE0010E2F3 /* AboutProductsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsViewModel.swift; sourceTree = "<group>"; };
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
@@ -472,6 +474,7 @@
 				D7B460F725191454001ED878 /* Menu */,
 				D7E293932523878D00EA2845 /* Cart */,
 				D7D649BB252F00E40010E2F3 /* Profile */,
+				D7D64AD62534D5860010E2F3 /* AboutProducts */,
 				D7877B612501180F00244B81 /* Util */,
 				D7877B5C25010F4900244B81 /* Data */,
 				D73C7DBF25010953007062D9 /* DI */,
@@ -700,6 +703,14 @@
 				D7D64A9325333D510010E2F3 /* TutorialViewModelTests.swift */,
 			);
 			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		D7D64AD62534D5860010E2F3 /* AboutProducts */ = {
+			isa = PBXGroup;
+			children = (
+				D7D64AD72534D5AE0010E2F3 /* AboutProductsViewModel.swift */,
+			);
+			path = AboutProducts;
 			sourceTree = "<group>";
 		};
 		D7D6EBED2517CE120098ABC7 /* Load */ = {
@@ -1049,6 +1060,7 @@
 				D79520F724FFBE7E0094BAFE /* SceneDelegate.swift in Sources */,
 				D7B4614725193A1F001ED878 /* MenuViewModel.swift in Sources */,
 				D795796E2517C900007AD022 /* FirebaseStorageReference.swift in Sources */,
+				D7D64AD82534D5AE0010E2F3 /* AboutProductsViewModel.swift in Sources */,
 				D7D64AD22534D0BF0010E2F3 /* AboutProductRemote.swift in Sources */,
 				D7E293D525265B4000EA2845 /* UIViewController+Rx.swift in Sources */,
 				D7E293952523882E00EA2845 /* CartViewController.swift in Sources */,
