@@ -24,14 +24,14 @@ class StartViewModel {
     func products() -> Observable<Event<CoreDataSourceCollectionView<Product>>> {
         repository.products(
             predicate: NSPredicate(format: "inStart == %@", NSNumber(value: true)),
-            cellId: "product"
+            cellId: ["product"]
         )
     }
     
     func products2() -> Observable<Event<CoreDataSourceCollectionView<Product>>> {
         repository.products(
             predicate: NSPredicate(format: "inStart2 == %@", NSNumber(value: true)),
-            cellId: "product"
+            cellId: ["product"]
         )
     }
 

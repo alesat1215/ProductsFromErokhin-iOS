@@ -17,7 +17,7 @@ class MenuViewModel {
     }
     
     func groups() -> Observable<Event<CoreDataSourceCollectionView<Group>>> {
-        repository.groups(cellId: "group")
+        repository.groups(cellId: ["group"])
     }
     
     func products() -> Observable<Event<CoreDataSourceTableView<Product>>> {

@@ -16,12 +16,14 @@ class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollect
     
     private let observer: Observer
     private let frc: NSFetchedResultsController<T>
-    private let cellId: String
+//    private let cellId: String
+    private let cellId: [String]
     private weak var collectionView: UICollectionView?
     
     init(
         observer: Observer,
-        cellId: String,
+//        cellId: String,
+        cellId: [String],
         fetchRequest: NSFetchRequest<T>,
         managedObjectContext: NSManagedObjectContext,
         sectionNameKeyPath: String?,
@@ -63,7 +65,8 @@ class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let id = cellId.indices.contains(indexPath.section) ? cellId[indexPath.section] : ""
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: id, for: indexPath)
         (cell as? BindableCollectionViewCell)?.bind(model: object(at: indexPath))
         return cell
     }

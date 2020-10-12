@@ -19,7 +19,8 @@ extension Reactive where Base: NSManagedObjectContext {
     - returns: An `Observable` CoreDataSource that can be bound to a collection view.
     */
     func coreDataSource<T: NSManagedObject>(
-        cellId: String,
+//        cellId: String,
+        cellId: [String],
         fetchRequest: NSFetchRequest<T>,
         sectionNameKeyPath: String? = nil,
         cacheName: String? = nil

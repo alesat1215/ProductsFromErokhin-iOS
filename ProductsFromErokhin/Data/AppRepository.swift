@@ -24,7 +24,7 @@ class AppRepository {
      Get groups from database & update it if needed
      - returns: Observable array with groups
      */
-    func groups(cellId: String) -> Observable<Event<CoreDataSourceCollectionView<Group>>> {
+    func groups(cellId: [String]) -> Observable<Event<CoreDataSourceCollectionView<Group>>> {
         Observable.merge([
             context.rx.coreDataSource(
                 cellId: cellId,
@@ -47,7 +47,7 @@ class AppRepository {
     Get products from database & update it if needed
     - returns: Observable dataSource with products for collection view
     */
-    func products(predicate: NSPredicate? = nil, cellId: String) -> Observable<Event<CoreDataSourceCollectionView<Product>>> {
+    func products(predicate: NSPredicate? = nil, cellId: [String]) -> Observable<Event<CoreDataSourceCollectionView<Product>>> {
         Observable.merge([
             context.rx.coreDataSource(
                 cellId: cellId,
@@ -146,7 +146,7 @@ class AppRepository {
     Get aboutProducts from database & update it if needed
     - returns: Observable dataSource with aboutProducts for collection view
     */
-    func aboutProducts(cellId: String) -> Observable<Event<CoreDataSourceCollectionView<AboutProducts>>> {
+    func aboutProducts(cellId: [String]) -> Observable<Event<CoreDataSourceCollectionView<AboutProducts>>> {
         Observable.merge([
             context.rx.coreDataSource(
                 cellId: cellId,

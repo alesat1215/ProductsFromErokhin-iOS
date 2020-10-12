@@ -20,6 +20,6 @@ class AboutProductsViewModelImpl: AboutProductsViewModel {
         self.repository = repository
     }
     func aboutProducts() -> Observable<Event<CoreDataSourceCollectionView<AboutProducts>>> {
-        repository.aboutProducts(cellId: "aboutProducts")
+        repository.aboutProducts(cellId: ["aboutProducts0", "aboutProducts1"])
     }
 }
