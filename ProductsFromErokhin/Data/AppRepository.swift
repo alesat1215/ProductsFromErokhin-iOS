@@ -142,5 +142,18 @@ class AppRepository {
             updater.sync()
         ])
     }
+    /**
+    Get aboutProducts from database & update it if needed
+    - returns: Observable dataSource with aboutProducts for collection view
+    */
+    func aboutProducts(cellId: String) -> Observable<Event<CoreDataSourceCollectionView<AboutProducts>>> {
+        Observable.merge([
+            context.rx.coreDataSource(
+                cellId: cellId,
+                fetchRequest: AboutProducts.fetchRequestWithSort()
+            ).materialize(),
+            updater.sync()
+        ])
+    }
     
 }
