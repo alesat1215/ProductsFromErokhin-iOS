@@ -22,8 +22,8 @@ class AppRepositoryMock: AppRepository {
     
     // MARK: - groups
     let groupsResult = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
-    var cellIdGroups: String?
-    override func groups(cellId: String) -> Observable<Event<CoreDataSourceCollectionView<Group>>> {
+    var cellIdGroups: [String]?
+    override func groups(cellId: [String]) -> Observable<Event<CoreDataSourceCollectionView<Group>>> {
         self.cellIdGroups = cellId
         return Observable.just(Event.next(groupsResult))
     }
@@ -37,8 +37,8 @@ class AppRepositoryMock: AppRepository {
     // MARK: - products
     let productsResultCollectionView = CoreDataSourceCollectionViewMock(fetchRequest: Product.fetchRequestWithSort())
     var predicateProductsCollectionView: NSPredicate?
-    var cellIdProductsCollectionView: String?
-    override func products(predicate: NSPredicate? = nil, cellId: String) -> Observable<Event<CoreDataSourceCollectionView<Product>>> {
+    var cellIdProductsCollectionView: [String]?
+    override func products(predicate: NSPredicate? = nil, cellId: [String]) -> Observable<Event<CoreDataSourceCollectionView<Product>>> {
         self.predicateProductsCollectionView = predicate
         self.cellIdProductsCollectionView = cellId
         return Observable.just(Event.next(productsResultCollectionView))

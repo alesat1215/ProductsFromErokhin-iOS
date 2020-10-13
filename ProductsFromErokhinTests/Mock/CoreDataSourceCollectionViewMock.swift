@@ -16,7 +16,7 @@ class CoreDataSourceCollectionViewMock<T: NSFetchRequestResult>: CoreDataSourceC
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     init(fetchRequest: NSFetchRequest<T>) {
-        super.init(observer: AnyObserver(eventHandler: {_ in }), cellId: "", fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        super.init(observer: AnyObserver(eventHandler: {_ in }), cellId: [], fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
     }
     
     var isSelected = false

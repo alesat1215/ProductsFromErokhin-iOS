@@ -37,8 +37,8 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
             return group
         }
         
-        dataSourceProducts = try context.rx.coreDataSource(cellId: "", fetchRequest: Product.fetchRequestWithSort()).toBlocking().first()
-        dataSourceGroups = try context.rx.coreDataSource(cellId: "", fetchRequest: Group.fetchRequestWithSort()).toBlocking().first()
+        dataSourceProducts = try context.rx.coreDataSource(cellId: [], fetchRequest: Product.fetchRequestWithSort()).toBlocking().first()
+        dataSourceGroups = try context.rx.coreDataSource(cellId: [], fetchRequest: Group.fetchRequestWithSort()).toBlocking().first()
         collectionView = CollectionViewMock()
     }
     

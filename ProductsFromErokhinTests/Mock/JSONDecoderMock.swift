@@ -15,6 +15,7 @@ class JSONDecoderMock: JSONDecoder {
     let orderWarningRemoteResult = OrderWarningRemote(text: "", groups: [])
     let sellerContactsRemoteResult = SellerContactsRemote(phone: "", address: "")
     let instructionRemoteResult = [InstructionRemote(title: "", text: "", img_path: "")]
+    let aboutProductsRemoteResult = [AboutProductsRemote(title: "", text: "", img: "")]
     let error = AppError.error("Unknown type for JSONDecoderMock")
     
     override func decode<T>(_ type: T.Type, from data: Data) throws -> T where T : Decodable {
@@ -32,6 +33,9 @@ class JSONDecoderMock: JSONDecoder {
         }
         if type == [InstructionRemote].self {
             return instructionRemoteResult as! T
+        }
+        if type == [AboutProductsRemote].self {
+            return aboutProductsRemoteResult as! T
         }
         throw error
     }
