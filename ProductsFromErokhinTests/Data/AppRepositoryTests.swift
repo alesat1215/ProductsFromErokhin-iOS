@@ -24,6 +24,7 @@ class AppRepositoryTests: XCTestCase {
     private var sellerContacts = [SellerContacts]()
     private var profile = [Profile]()
     private var instructions = [Instruction]()
+    private var aboutProducts = [AboutProducts]()
 
     override func setUpWithError() throws {
         updater = DatabaseUpdaterMock()
@@ -73,6 +74,13 @@ class AppRepositoryTests: XCTestCase {
             instruction.title = $0.element
             return instruction
         }
+        aboutProducts = ["text", "text1", "text2"].enumerated().map {
+            let about = AboutProducts(context: context)
+            about.order = Int16($0.offset)
+            about.text = $0.element
+            about.section = Int16($0.offset % 2)
+            return about
+        }
         
         try context.save()
         
@@ -88,6 +96,7 @@ class AppRepositoryTests: XCTestCase {
         try SellerContacts.clearEntity(context: context)
         try Profile.clearEntity(context: context)
         try Instruction.clearEntity(context: context)
+        try AboutProducts.clearEntity(context: context)
     }
     
     func testGroups() throws {
@@ -278,6 +287,30 @@ class AppRepositoryTests: XCTestCase {
         XCTAssertTrue(updater.isSync)
         result = resultArray.first { $0.error == nil }?.element
         XCTAssertEqual(result?.count, instructions.count)
+    }
+    
+    func testAboutProducts() throws {
+        // Success
+        // Check sequence contains only one element
+        var dataSourceCollectionView: Observable<Event<CoreDataSourceCollectionView<AboutProducts>>>?
+        dataSourceCollectionView = repository.aboutProducts(cellId: [])
+        XCTAssertThrowsError(try dataSourceCollectionView?.take(2).toBlocking(timeout: 1).toArray())
+        updater.isSync = false
+        // Check that element
+        dataSourceCollectionView = repository.aboutProducts(cellId: [])
+        var result = try dataSourceCollectionView?.toBlocking().first()?.element
+        XCTAssertTrue(updater.isSync)
+        XCTAssertEqual(result?.collectionView(CollectionViewMock(), numberOfItemsInSection: 0), aboutProducts.filter { $0.section == 0 }.count)
+        
+        // Sync error
+        updater.isSync = false
+        updater.error = AppError.unknown
+        dataSourceCollectionView = repository.aboutProducts(cellId: [])
+        let resultArray = try dataSourceCollectionView!.take(2).toBlocking().toArray()
+        XCTAssertTrue(resultArray.contains { $0.error?.localizedDescription == AppError.unknown.localizedDescription })
+        XCTAssertTrue(updater.isSync)
+        result = resultArray.first { $0.error == nil }?.element
+        XCTAssertEqual(result?.collectionView(CollectionViewMock(), numberOfItemsInSection: 0), aboutProducts.filter { $0.section == 0 }.count)
     }
 
 }
