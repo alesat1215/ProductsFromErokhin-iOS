@@ -10,9 +10,13 @@ import XCTest
 @testable import ProductsFromErokhin
 
 class InstructionRemoteTests: XCTestCase {
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    override func tearDownWithError() throws {
+        try Instruction.clearEntity(context: context)
+    }
     
     func testManagedObject() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let instructionRemote = InstructionRemote(title: "title", text: "text", img_path: "img_path")
         
         expectation(forNotification: .NSManagedObjectContextDidSave, object: context).isInverted = true
