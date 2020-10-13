@@ -65,10 +65,15 @@ class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let id = cellId.indices.contains(indexPath.section) ? cellId[indexPath.section] : ""
+        let id = cellId.indices.contains(indexPath.section) ?
+            cellId[indexPath.section] : cellId.last ?? ""
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: id, for: indexPath)
         (cell as? BindableCollectionViewCell)?.bind(model: object(at: indexPath))
         return cell
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        frc.sections?.count ?? 0
     }
     
     // MARK: - NSFetchedResultsControllerDelegate

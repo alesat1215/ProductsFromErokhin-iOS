@@ -31,7 +31,7 @@ extension AboutProductsRemote: Codable, Equatable {
 extension AboutProductsRemote {
     func managedObject(context: NSManagedObjectContext, order: Int) -> NSManagedObject {
         // Create entity & set values
-        let sellerContacts = NSEntityDescription.insertNewObject(forEntityName: "AboutProduct", into: context)
+        let sellerContacts = NSEntityDescription.insertNewObject(forEntityName: "AboutProducts", into: context)
         (sellerContacts as? AboutProducts)?.update(from: self, order: order)
         // Return result
         return sellerContacts

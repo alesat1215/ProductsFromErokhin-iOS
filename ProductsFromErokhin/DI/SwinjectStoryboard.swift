@@ -86,6 +86,15 @@ extension SwinjectStoryboard {
                 repository: r.resolve(AppRepository.self)
             )
         }
+        // MARK: - AboutProducts
+        defaultContainer.storyboardInitCompleted(AboutProductsViewController.self) { r, c in
+            c.viewModel = r.resolve(AboutProductsViewModel.self)
+        }
+        defaultContainer.register(AboutProductsViewModel.self) { r in
+            AboutProductsViewModelImpl(
+                repository: r.resolve(AppRepository.self)
+            )
+        }
         
         // MARK: - Repository
         defaultContainer.register(AppRepository.self) { r in

@@ -150,7 +150,11 @@ class AppRepository {
         Observable.merge([
             context.rx.coreDataSource(
                 cellId: cellId,
-                fetchRequest: AboutProducts.fetchRequestWithSort()
+                fetchRequest: AboutProducts.fetchRequestWithSort(sortDescriptors: [
+                    NSSortDescriptor(key: "section", ascending: true),
+                    NSSortDescriptor(key: "order", ascending: true)
+                ]),
+                sectionNameKeyPath: "section"
             ).materialize(),
             updater.sync()
         ])
