@@ -17,8 +17,10 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
     
     private var products = [Product]()
     private var groups = [Group]()
+    private var aboutProducts = [AboutProducts]()
     private var dataSourceProducts: CoreDataSourceCollectionView<Product>!
     private var dataSourceGroups: CoreDataSourceCollectionView<Group>!
+    private var dataSourceAboutProducts: CoreDataSourceCollectionView<AboutProducts>!
     private var collectionView: CollectionViewMock!
     
     override func setUpWithError() throws {
@@ -37,19 +39,37 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
             return group
         }
         
+        aboutProducts = ["text", "text1", "text2"].enumerated().map {
+            let about = AboutProducts(context: context)
+            about.order = Int16($0.offset)
+            about.text = $0.element
+            about.section = Int16($0.offset % 2)
+            return about
+        }
+        
         dataSourceProducts = try context.rx.coreDataSource(cellId: [], fetchRequest: Product.fetchRequestWithSort()).toBlocking().first()
         dataSourceGroups = try context.rx.coreDataSource(cellId: [], fetchRequest: Group.fetchRequestWithSort()).toBlocking().first()
+        dataSourceAboutProducts = try context.rx.coreDataSource(
+            cellId: [],
+            fetchRequest: AboutProducts.fetchRequestWithSort(sortDescriptors: [
+                NSSortDescriptor(key: "section", ascending: true),
+                NSSortDescriptor(key: "order", ascending: true)
+            ]),
+            sectionNameKeyPath: "section").toBlocking().first()
+        
         collectionView = CollectionViewMock()
     }
     
     override func tearDownWithError() throws {
         try Group.clearEntity(context: context)
         try Product.clearEntity(context: context)
+        try AboutProducts.clearEntity(context: context)
     }
     
     func testCoreDataSource() throws {
         XCTAssertNotNil(dataSourceProducts)
         XCTAssertNotNil(dataSourceGroups)
+        XCTAssertNotNil(dataSourceAboutProducts)
     }
     
     func testBind() {
@@ -66,6 +86,8 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
         // Cell for indexPath
         let cell = dataSourceProducts.collectionView(collectionView, cellForItemAt: IndexPath(item: 0, section: 0))
         XCTAssertTrue((cell as! CollectionViewCellMock).isBind)
+        // Count of sections
+        XCTAssertEqual(dataSourceAboutProducts.numberOfSections(in: collectionView), 2)
     }
     
     func testNSFetchedResultsControllerDelegate() {

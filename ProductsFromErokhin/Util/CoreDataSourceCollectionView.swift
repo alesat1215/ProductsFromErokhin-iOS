@@ -57,11 +57,10 @@ class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollect
     
     // MARK: - UICollectionViewDataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        var count = 0
         if let sections = frc.sections, sections.indices.contains(section) {
-            count = sections[section].numberOfObjects
+            return sections[section].numberOfObjects
         }
-        return count
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
