@@ -20,19 +20,7 @@ class AboutProductsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-        setupAboutProducts()
         bindAboutProducts()
-    }
-    
-    private func setupAboutProducts() {
-        aboutProducts.rx.willDisplayCell
-            .subscribe(onNext: { [weak self] cell, indexPath in
-                guard let self = self else { return }
-                if indexPath.section == 0 {
-                    cell.frame.size.width = self.aboutProducts.frame.width
-                }
-            }).disposed(by: disposeBag)
     }
     
     private func bindAboutProducts() {
