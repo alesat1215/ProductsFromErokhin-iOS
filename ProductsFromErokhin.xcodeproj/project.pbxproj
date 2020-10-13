@@ -128,6 +128,7 @@
 		D7D6EBEF2517CE2D0098ABC7 /* LoadViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */; };
 		D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */; };
 		D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */; };
+		D7D8F590253601B800574F4B /* AboutProductsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F58F253601B800574F4B /* AboutProductsTests.swift */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -300,6 +301,7 @@
 		D7D6EBEE2517CE2D0098ABC7 /* LoadViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelTests.swift; sourceTree = "<group>"; };
 		D7D6EC062517DD800098ABC7 /* LoadViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewModelMock.swift; sourceTree = "<group>"; };
 		D7D6EC0B2517DE160098ABC7 /* LoadViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadViewControllerTests.swift; sourceTree = "<group>"; };
+		D7D8F58F253601B800574F4B /* AboutProductsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsTests.swift; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 				D7E29454252A093C00EA2845 /* SellerContactsTests.swift */,
 				D7D649EA252F8FEC0010E2F3 /* ProfileTests.swift */,
 				D7D64A79253320790010E2F3 /* InstructionTests.swift */,
+				D7D8F58F253601B800574F4B /* AboutProductsTests.swift */,
 				D7C0FBFD2514EF06009BC51F /* OrderedTests.swift */,
 			);
 			path = Local;
@@ -1100,6 +1103,7 @@
 				D7D6EC0C2517DE160098ABC7 /* LoadViewControllerTests.swift in Sources */,
 				D7D64ABB25338BDC0010E2F3 /* TutorialViewModelMockTests.swift in Sources */,
 				D7518DF42520746100C72B1E /* MenuViewModelTests.swift in Sources */,
+				D7D8F590253601B800574F4B /* AboutProductsTests.swift in Sources */,
 				D7E294392528F7E800EA2845 /* CNContactStoreMock.swift in Sources */,
 				D7D649A9252CBC420010E2F3 /* RemoteConfigMockTests.swift in Sources */,
 				D7D64A8E253337880010E2F3 /* UserDefaultsMockTests.swift in Sources */,

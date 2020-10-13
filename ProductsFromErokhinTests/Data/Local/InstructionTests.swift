@@ -11,9 +11,13 @@ import CoreData
 @testable import ProductsFromErokhin
 
 class InstructionTests: XCTestCase {
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    override func tearDownWithError() throws {
+        try Instruction.clearEntity(context: context)
+    }
     
     func testUpdate() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let instructionRemote = InstructionRemote(title: "title", text: "text", img_path: "img_path")
         let order = 1
         
