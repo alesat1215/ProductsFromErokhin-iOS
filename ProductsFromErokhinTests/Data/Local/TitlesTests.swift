@@ -11,9 +11,13 @@ import CoreData
 @testable import ProductsFromErokhin
 
 class TitlesTests: XCTestCase {
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    override func tearDownWithError() throws {
+        try Titles.clearEntity(context: context)
+    }
 
     func testUpdate() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let titlesRemote = TitlesRemote(title: "title", img: "img", imgTitle: "imgTitle", productsTitle: "productsTitle", productsTitle2: "productsTitle2")
         let order = 1
         let titles = Titles(context: context)

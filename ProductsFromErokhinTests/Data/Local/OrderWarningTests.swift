@@ -11,9 +11,13 @@ import CoreData
 @testable import ProductsFromErokhin
 
 class OrderWarningTests: XCTestCase {
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    override func tearDownWithError() throws {
+        try OrderWarning.clearEntity(context: context)
+    }
 
     func testUpdate() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let orderWarningRemote = OrderWarningRemote(text: "text", groups: ["group"])
         let order = 1
         

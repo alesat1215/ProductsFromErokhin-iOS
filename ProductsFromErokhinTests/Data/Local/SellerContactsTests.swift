@@ -11,9 +11,14 @@ import CoreData
 @testable import ProductsFromErokhin
 
 class SellerContactsTests: XCTestCase {
+    
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    override func tearDownWithError() throws {
+        try SellerContacts.clearEntity(context: context)
+    }
 
     func testUpdate() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let sellerContactsRemote = SellerContactsRemote(phone: "phone", address: "address")
         let order = 1
         

@@ -11,9 +11,14 @@ import CoreData
 @testable import ProductsFromErokhin
 
 class ProfileTests: XCTestCase {
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    override func tearDownWithError() throws {
+        try Profile.clearEntity(context: context)
+    }
     
     func testDelivery() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
         let profile = Profile(context: context)
         
         // Profile with nil fields
