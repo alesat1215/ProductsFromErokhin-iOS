@@ -83,10 +83,13 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
     func testUICollectionViewDataSource() {
         // Count of items
         XCTAssertEqual(dataSourceProducts.collectionView(collectionView, numberOfItemsInSection: 0), products.count)
+        XCTAssertEqual(dataSourceAboutProducts.collectionView(collectionView, numberOfItemsInSection: 0), aboutProducts.filter { $0.section == 0 }.count)
+        XCTAssertEqual(dataSourceAboutProducts.collectionView(collectionView, numberOfItemsInSection: 1), aboutProducts.filter { $0.section == 1 }.count)
         // Cell for indexPath
         let cell = dataSourceProducts.collectionView(collectionView, cellForItemAt: IndexPath(item: 0, section: 0))
         XCTAssertTrue((cell as! CollectionViewCellMock).isBind)
         // Count of sections
+        XCTAssertEqual(dataSourceProducts.numberOfSections(in: collectionView), 1)
         XCTAssertEqual(dataSourceAboutProducts.numberOfSections(in: collectionView), 2)
     }
     
