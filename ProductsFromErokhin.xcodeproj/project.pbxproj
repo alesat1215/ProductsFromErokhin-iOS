@@ -131,6 +131,8 @@
 		D7D8F590253601B800574F4B /* AboutProductsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F58F253601B800574F4B /* AboutProductsTests.swift */; };
 		D7D8F5952536046E00574F4B /* AboutProductsRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5942536046E00574F4B /* AboutProductsRemoteTests.swift */; };
 		D7D8F59B253609AF00574F4B /* AboutProductsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F59A253609AF00574F4B /* AboutProductsViewModelTests.swift */; };
+		D7D8F5A325360B7A00574F4B /* AboutProductsViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5A225360B7A00574F4B /* AboutProductsViewModelMock.swift */; };
+		D7D8F5A825360BF300574F4B /* AboutProductsViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5A725360BF300574F4B /* AboutProductsViewModelMockTests.swift */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -306,6 +308,8 @@
 		D7D8F58F253601B800574F4B /* AboutProductsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsTests.swift; sourceTree = "<group>"; };
 		D7D8F5942536046E00574F4B /* AboutProductsRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsRemoteTests.swift; sourceTree = "<group>"; };
 		D7D8F59A253609AF00574F4B /* AboutProductsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsViewModelTests.swift; sourceTree = "<group>"; };
+		D7D8F5A225360B7A00574F4B /* AboutProductsViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsViewModelMock.swift; sourceTree = "<group>"; };
+		D7D8F5A725360BF300574F4B /* AboutProductsViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsViewModelMockTests.swift; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -607,6 +611,7 @@
 				D7D64A88253336630010E2F3 /* UserDefaultsMock.swift */,
 				D7D64AA3253374550010E2F3 /* PagesDataSourceMock.swift */,
 				D7D64AA8253379480010E2F3 /* TutorialViewModelMock.swift */,
+				D7D8F5A225360B7A00574F4B /* AboutProductsViewModelMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -673,6 +678,7 @@
 				D7D64A8D253337880010E2F3 /* UserDefaultsMockTests.swift */,
 				D7D64AB525338AD60010E2F3 /* PagesDataSourceMockTests.swift */,
 				D7D64ABA25338BDC0010E2F3 /* TutorialViewModelMockTests.swift */,
+				D7D8F5A725360BF300574F4B /* AboutProductsViewModelMockTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1164,7 +1170,9 @@
 				D7C0FC592515F1E4009BC51F /* AppRepositoryTests.swift in Sources */,
 				D7C0FB922513C5B2009BC51F /* ObservableType+ExtensionsTests.swift in Sources */,
 				D72F41D5251FA348001EE822 /* TableViewMock.swift in Sources */,
+				D7D8F5A825360BF300574F4B /* AboutProductsViewModelMockTests.swift in Sources */,
 				D7518E1B2522121400C72B1E /* CoreDataSourceTableViewMockTests.swift in Sources */,
+				D7D8F5A325360B7A00574F4B /* AboutProductsViewModelMock.swift in Sources */,
 				D7D649F9252F9D290010E2F3 /* ProfileViewModelMock.swift in Sources */,
 				D7D64A9C253346100010E2F3 /* InstructionViewControllerTests.swift in Sources */,
 				D795795C2517BE72007AD022 /* AppRepositoryMockTests.swift in Sources */,
