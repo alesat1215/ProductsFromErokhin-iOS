@@ -133,6 +133,7 @@
 		D7D8F59B253609AF00574F4B /* AboutProductsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F59A253609AF00574F4B /* AboutProductsViewModelTests.swift */; };
 		D7D8F5A325360B7A00574F4B /* AboutProductsViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5A225360B7A00574F4B /* AboutProductsViewModelMock.swift */; };
 		D7D8F5A825360BF300574F4B /* AboutProductsViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5A725360BF300574F4B /* AboutProductsViewModelMockTests.swift */; };
+		D7D8F5AD25360E0A00574F4B /* AboutProductsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5AC25360E0A00574F4B /* AboutProductsViewControllerTests.swift */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -310,6 +311,7 @@
 		D7D8F59A253609AF00574F4B /* AboutProductsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsViewModelTests.swift; sourceTree = "<group>"; };
 		D7D8F5A225360B7A00574F4B /* AboutProductsViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsViewModelMock.swift; sourceTree = "<group>"; };
 		D7D8F5A725360BF300574F4B /* AboutProductsViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsViewModelMockTests.swift; sourceTree = "<group>"; };
+		D7D8F5AC25360E0A00574F4B /* AboutProductsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsViewControllerTests.swift; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -743,6 +745,7 @@
 		D7D8F5992536098A00574F4B /* AboutProducts */ = {
 			isa = PBXGroup;
 			children = (
+				D7D8F5AC25360E0A00574F4B /* AboutProductsViewControllerTests.swift */,
 				D7D8F59A253609AF00574F4B /* AboutProductsViewModelTests.swift */,
 			);
 			path = AboutProducts;
@@ -1111,6 +1114,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D79579282516966B007AD022 /* AppRepositoryMock.swift in Sources */,
+				D7D8F5AD25360E0A00574F4B /* AboutProductsViewControllerTests.swift in Sources */,
 				D7E29455252A093C00EA2845 /* SellerContactsTests.swift in Sources */,
 				D7E29477252A69B500EA2845 /* CartViewControllerTests.swift in Sources */,
 				D7D64A89253336630010E2F3 /* UserDefaultsMock.swift in Sources */,
