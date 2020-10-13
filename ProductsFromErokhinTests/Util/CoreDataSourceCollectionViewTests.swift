@@ -50,7 +50,7 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
         dataSourceProducts = try context.rx.coreDataSource(cellId: [], fetchRequest: Product.fetchRequestWithSort()).toBlocking().first()
         dataSourceGroups = try context.rx.coreDataSource(cellId: [], fetchRequest: Group.fetchRequestWithSort()).toBlocking().first()
         dataSourceAboutProducts = try context.rx.coreDataSource(
-            cellId: [],
+            cellId: ["cell0", "cell1"],
             fetchRequest: AboutProducts.fetchRequestWithSort(sortDescriptors: [
                 NSSortDescriptor(key: "section", ascending: true),
                 NSSortDescriptor(key: "order", ascending: true)
@@ -85,9 +85,24 @@ class CoreDataSourceCollectionViewTests: XCTestCase {
         XCTAssertEqual(dataSourceProducts.collectionView(collectionView, numberOfItemsInSection: 0), products.count)
         XCTAssertEqual(dataSourceAboutProducts.collectionView(collectionView, numberOfItemsInSection: 0), aboutProducts.filter { $0.section == 0 }.count)
         XCTAssertEqual(dataSourceAboutProducts.collectionView(collectionView, numberOfItemsInSection: 1), aboutProducts.filter { $0.section == 1 }.count)
-        // Cell for indexPath
+        // Cell for indexPath.
+        // Empty cell id array.
+        XCTAssertNil(collectionView.cellId)
         let cell = dataSourceProducts.collectionView(collectionView, cellForItemAt: IndexPath(item: 0, section: 0))
         XCTAssertTrue((cell as! CollectionViewCellMock).isBind)
+        XCTAssertTrue(collectionView.cellId!.isEmpty)
+        // Not empty cell id array
+        collectionView.cellId = nil
+        var cell2 = dataSourceAboutProducts.collectionView(collectionView, cellForItemAt: IndexPath(item: 0, section: 0))
+        XCTAssertTrue((cell2 as! CollectionViewCellMock).isBind)
+        XCTAssertEqual(collectionView.cellId, "cell0")
+        cell2 = dataSourceAboutProducts.collectionView(collectionView, cellForItemAt: IndexPath(item: 0, section: 1))
+        XCTAssertTrue((cell2 as! CollectionViewCellMock).isBind)
+        XCTAssertEqual(collectionView.cellId, "cell1")
+        // Wrong section. Get last cell id
+        cell2 = dataSourceAboutProducts.collectionView(collectionView, cellForItemAt: IndexPath(item: 0, section: 2))
+        XCTAssertTrue((cell2 as! CollectionViewCellMock).isBind)
+        XCTAssertEqual(collectionView.cellId, "cell1")
         // Count of sections
         XCTAssertEqual(dataSourceProducts.numberOfSections(in: collectionView), 1)
         XCTAssertEqual(dataSourceAboutProducts.numberOfSections(in: collectionView), 2)

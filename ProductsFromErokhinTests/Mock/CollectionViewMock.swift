@@ -19,8 +19,10 @@ class CollectionViewMock: UICollectionView {
     }
     
     let cell = CollectionViewCellMock()
+    var cellId: String?
     override func dequeueReusableCell(withReuseIdentifier identifier: String, for indexPath: IndexPath) -> UICollectionViewCell {
-        cell
+        cellId = identifier
+        return cell
     }
     
     var isReload = false
