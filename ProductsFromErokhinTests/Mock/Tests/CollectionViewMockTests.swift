@@ -13,7 +13,9 @@ class CollectionViewMockTests: XCTestCase {
     func testCollectionViewMock() {
         let collectionView = CollectionViewMock()
         // Cell
-        XCTAssertEqual(collectionView.dequeueReusableCell(withReuseIdentifier: "", for: .init()), collectionView.cell)
+        XCTAssertNil(collectionView.cellId)
+        XCTAssertEqual(collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: .init()), collectionView.cell)
+        XCTAssertEqual(collectionView.cellId, "test")
         // Reload
         XCTAssertFalse(collectionView.isReload)
         collectionView.reloadData()
