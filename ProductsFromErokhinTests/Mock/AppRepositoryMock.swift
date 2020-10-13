@@ -88,9 +88,17 @@ class AppRepositoryMock: AppRepository {
         updateProfileResult
     }
     
+    // MARK: - instructions
     var instructionsResult = [Instruction]()
     override func instructions() -> Observable<Event<[Instruction]>> {
         Observable.just(Event.next(instructionsResult))
     }
     
+    //MARK: - about products
+    var aboutProductsResult = CoreDataSourceCollectionViewMock(fetchRequest: AboutProducts.fetchRequestWithSort())
+    var aboutProductsCellIdResult = [String]()
+    override func aboutProducts(cellId: [String]) -> Observable<Event<CoreDataSourceCollectionView<AboutProducts>>> {
+        aboutProductsCellIdResult = cellId
+        return Observable.just(Event.next(aboutProductsResult))
+    }
 }

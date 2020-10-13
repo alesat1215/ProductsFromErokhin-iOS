@@ -63,5 +63,12 @@ class AppRepositoryMockTests: XCTestCase {
     func testInstructions() {
         XCTAssertEqual(try repository.instructions().dematerialize().toBlocking().first(), repository.instructionsResult)
     }
+    
+    func testAboutProducts() {
+        let cells = ["cell", "cell1"]
+        XCTAssertTrue(repository.aboutProductsCellIdResult.isEmpty)
+        XCTAssertEqual(try repository.aboutProducts(cellId: cells).dematerialize().toBlocking().first(), repository.aboutProductsResult)
+        XCTAssertEqual(repository.aboutProductsCellIdResult, cells)
+    }
 
 }
