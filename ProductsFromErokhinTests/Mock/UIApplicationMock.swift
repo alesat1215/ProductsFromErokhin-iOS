@@ -10,11 +10,11 @@ import UIKit
 @testable import ProductsFromErokhin
 
 class UIApplicationMock: UIApplicationMethods {
-    var canOpenUrlResult: URL?
+    var canOpenURLParamResult: URL?
     var canOpenURLResult = true
     var isCanOpenURL = false
     func canOpenURL(_ url: URL) -> Bool {
-        canOpenUrlResult = url
+        canOpenURLParamResult = url
         isCanOpenURL.toggle()
         return canOpenURLResult
     }

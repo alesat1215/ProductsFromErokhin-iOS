@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIApplication: UIApplicationMethods { }
-
+/** UIApplication methods */
 protocol UIApplicationMethods {
     func canOpenURL(_ url: URL) -> Bool
     func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey : Any], completionHandler completion: ((Bool) -> Void)?)

@@ -19,25 +19,43 @@ class ContactsViewModelTests: XCTestCase {
         app = UIApplicationMock()
         viewModel = ContactsViewModelImpl(repository: repository, app: app)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
     
     func testContacts() {
         XCTAssertEqual(try viewModel.contacts().dematerialize().toBlocking().first(), repository.sellerContactsResult)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testCall() {
+        // Phone is nil
+        viewModel.call(to: nil)
+        XCTAssertNil(app.canOpenURLParamResult)
+        XCTAssertFalse(app.isCanOpenURL)
+        XCTAssertNil(app.openResult)
+        XCTAssertFalse(app.isOpen)
+        // Phone is empty
+        viewModel.call(to: "")
+        XCTAssertNil(app.canOpenURLParamResult)
+        XCTAssertFalse(app.isCanOpenURL)
+        XCTAssertNil(app.openResult)
+        XCTAssertFalse(app.isOpen)
+        // Phone not empty, but can't open url
+        app.canOpenURLResult = false
+        viewModel.call(to: "test")
+        XCTAssertNotNil(app.canOpenURLParamResult)
+        XCTAssertTrue(app.isCanOpenURL)
+        XCTAssertEqual(app.canOpenURLParamResult?.absoluteString, "telprompt://test")
+        XCTAssertNil(app.openResult)
+        XCTAssertFalse(app.isOpen)
+        // Phone not empty, open url
+        app.canOpenURLResult = true
+        app.canOpenURLParamResult = nil
+        app.isCanOpenURL = false
+        viewModel.call(to: "test")
+        XCTAssertNotNil(app.canOpenURLParamResult)
+        XCTAssertTrue(app.isCanOpenURL)
+        XCTAssertEqual(app.canOpenURLParamResult?.absoluteString, "telprompt://test")
+        XCTAssertNotNil(app.openResult)
+        XCTAssertTrue(app.isOpen)
+        XCTAssertEqual(app.openResult?.absoluteString, "telprompt://test")
     }
 
 }
