@@ -1207,6 +1207,9 @@
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="zOU-Jb-MQi" kind="show" id="qz6-qt-ybO"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1305,6 +1308,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dcu-jF-2tL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3120.289855072464" y="664.28571428571422"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3a3-WE-STY">
+            <objects>
+                <viewController id="zOU-Jb-MQi" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o8f-tV-iG0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aEs-nT-nDF">
+                                <rect key="frame" x="8" y="96" width="398" height="118.33333333333331"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mI-iL-nlB">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="28.666666666666668"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHT-yh-GDQ">
+                                        <rect key="frame" x="0.0" y="28.666666666666671" width="398" height="21.666666666666671"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsv-eg-74k">
+                                        <rect key="frame" x="0.0" y="50.333333333333343" width="398" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Privacy policy"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qad-5a-kvc">
+                                        <rect key="frame" x="0.0" y="84.333333333333343" width="398" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Update"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="2xN-PH-KKI"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2xN-PH-KKI" firstAttribute="trailing" secondItem="aEs-nT-nDF" secondAttribute="trailing" constant="8" id="RaO-QB-Nvi"/>
+                            <constraint firstItem="2xN-PH-KKI" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aEs-nT-nDF" secondAttribute="bottom" constant="8" id="TCO-Eb-eZR"/>
+                            <constraint firstItem="aEs-nT-nDF" firstAttribute="leading" secondItem="2xN-PH-KKI" secondAttribute="leading" constant="8" id="rO4-sD-cPz"/>
+                            <constraint firstItem="aEs-nT-nDF" firstAttribute="top" secondItem="2xN-PH-KKI" secondAttribute="top" constant="8" id="rnV-mC-Hic"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Aq3-Oa-uCP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g34-17-USv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3120" y="1317"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
