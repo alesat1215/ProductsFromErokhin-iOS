@@ -101,7 +101,8 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(ContactsViewModel.self) { r in
             ContactsViewModelImpl(
-                repository: r.resolve(AppRepository.self)
+                repository: r.resolve(AppRepository.self),
+                app: r.resolve(UIApplication.self)
             )
         }
         
@@ -146,15 +147,20 @@ extension SwinjectStoryboard {
         }.inObjectScope(.container)
         
         // MARK: - Shared
-        defaultContainer.register(NSManagedObjectContext.self) { _ in
-            (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        defaultContainer.register(NSManagedObjectContext.self) { r in
+//            (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            (r.resolve(UIApplication.self)?.delegate as! AppDelegate).persistentContainer.viewContext
+        }.inObjectScope(.container)
+        
+        defaultContainer.register(UIApplication.self) { _ in
+            UIApplication.shared
         }.inObjectScope(.container)
         
         defaultContainer.register(JSONDecoder.self) { _ in
             JSONDecoder()
         }.inObjectScope(.container)
         
-        defaultContainer.register(UserDefaults.self) { r in
+        defaultContainer.register(UserDefaults.self) { _ in
             UserDefaults.standard
         }.inObjectScope(.container)
     }
