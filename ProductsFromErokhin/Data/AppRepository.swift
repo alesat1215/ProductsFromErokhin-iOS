@@ -159,5 +159,14 @@ class AppRepository {
             updater.sync()
         ])
     }
-    
+    /**
+    Get aboutApp from database & update it if needed
+    - returns: Observable array with aboutApp
+    */
+    func aboutApp() -> Observable<Event<[AboutApp]>> {
+        Observable.merge([
+            context.rx.entities(fetchRequest: AboutApp.fetchRequestWithSort()).materialize(),
+            updater.sync()
+        ])
+    }
 }

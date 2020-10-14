@@ -145,6 +145,7 @@
 		D7D8F5EF25371BBD00574F4B /* ContactsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5EE25371BBD00574F4B /* ContactsViewControllerTests.swift */; };
 		D7D8F60025372CF700574F4B /* AboutAppRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5FF25372CF700574F4B /* AboutAppRemote.swift */; };
 		D7D8F60525372E0200574F4B /* AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F60425372E0200574F4B /* AboutApp.swift */; };
+		D7D8F60B2537706600574F4B /* AboutAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F60A2537706600574F4B /* AboutAppViewModel.swift */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -334,6 +335,7 @@
 		D7D8F5EE25371BBD00574F4B /* ContactsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewControllerTests.swift; sourceTree = "<group>"; };
 		D7D8F5FF25372CF700574F4B /* AboutAppRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppRemote.swift; sourceTree = "<group>"; };
 		D7D8F60425372E0200574F4B /* AboutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutApp.swift; sourceTree = "<group>"; };
+		D7D8F60A2537706600574F4B /* AboutAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewModel.swift; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -515,6 +517,7 @@
 				D7D649BB252F00E40010E2F3 /* Profile */,
 				D7D64AD62534D5860010E2F3 /* AboutProducts */,
 				D7D8F5BE2536310100574F4B /* Contacts */,
+				D7D8F6092537702D00574F4B /* AboutApp */,
 				D7877B612501180F00244B81 /* Util */,
 				D7877B5C25010F4900244B81 /* Data */,
 				D73C7DBF25010953007062D9 /* DI */,
@@ -798,6 +801,14 @@
 				D7D8F5CD25370E2900574F4B /* ContactsViewModelTests.swift */,
 			);
 			path = Contacts;
+			sourceTree = "<group>";
+		};
+		D7D8F6092537702D00574F4B /* AboutApp */ = {
+			isa = PBXGroup;
+			children = (
+				D7D8F60A2537706600574F4B /* AboutAppViewModel.swift */,
+			);
+			path = AboutApp;
 			sourceTree = "<group>";
 		};
 		D7E293932523878D00EA2845 /* Cart */ = {
@@ -1115,6 +1126,7 @@
 				D7D8F60525372E0200574F4B /* AboutApp.swift in Sources */,
 				D7B4B5352512429900BA07CB /* LoadViewModel.swift in Sources */,
 				D7E293A22524843400EA2845 /* OrderWarningRemote.swift in Sources */,
+				D7D8F60B2537706600574F4B /* AboutAppViewModel.swift in Sources */,
 				D7D64A342530AAF70010E2F3 /* InstructionRemote.swift in Sources */,
 				D7D64945252C84810010E2F3 /* Auth+Rx.swift in Sources */,
 				D79520F924FFBE7E0094BAFE /* StartViewController.swift in Sources */,
