@@ -135,6 +135,7 @@
 		D7D8F5A825360BF300574F4B /* AboutProductsViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5A725360BF300574F4B /* AboutProductsViewModelMockTests.swift */; };
 		D7D8F5AD25360E0A00574F4B /* AboutProductsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5AC25360E0A00574F4B /* AboutProductsViewControllerTests.swift */; };
 		D7D8F5C02536312900574F4B /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5BF2536312900574F4B /* ContactsViewModel.swift */; };
+		D7D8F5C52536D71900574F4B /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5C42536D71900574F4B /* ContactsViewController.swift */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -314,6 +315,7 @@
 		D7D8F5A725360BF300574F4B /* AboutProductsViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsViewModelMockTests.swift; sourceTree = "<group>"; };
 		D7D8F5AC25360E0A00574F4B /* AboutProductsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsViewControllerTests.swift; sourceTree = "<group>"; };
 		D7D8F5BF2536312900574F4B /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
+		D7D8F5C42536D71900574F4B /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -757,6 +759,7 @@
 		D7D8F5BE2536310100574F4B /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				D7D8F5C42536D71900574F4B /* ContactsViewController.swift */,
 				D7D8F5BF2536312900574F4B /* ContactsViewModel.swift */,
 			);
 			path = Contacts;
@@ -1106,6 +1109,7 @@
 				D7D64AD22534D0BF0010E2F3 /* AboutProductRemote.swift in Sources */,
 				D7E293D525265B4000EA2845 /* UIViewController+Rx.swift in Sources */,
 				D7E293952523882E00EA2845 /* CartViewController.swift in Sources */,
+				D7D8F5C52536D71900574F4B /* ContactsViewController.swift in Sources */,
 				D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */,
 				D7D64A2F2530AAB70010E2F3 /* Instruction.swift in Sources */,
 				D7D64A562530C0910010E2F3 /* TutorialViewController.swift in Sources */,

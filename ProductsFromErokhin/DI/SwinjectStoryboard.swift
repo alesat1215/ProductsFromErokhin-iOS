@@ -95,6 +95,15 @@ extension SwinjectStoryboard {
                 repository: r.resolve(AppRepository.self)
             )
         }
+        // MARK: - Contacts
+        defaultContainer.storyboardInitCompleted(ContactsViewController.self) { r, c in
+            c.viewModel = r.resolve(ContactsViewModel.self)
+        }
+        defaultContainer.register(ContactsViewModel.self) { r in
+            ContactsViewModelImpl(
+                repository: r.resolve(AppRepository.self)
+            )
+        }
         
         // MARK: - Repository
         defaultContainer.register(AppRepository.self) { r in
