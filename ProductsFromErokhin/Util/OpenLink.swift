@@ -10,7 +10,7 @@ import Foundation
 
 protocol OpenLink {
     var app: UIApplicationMethods? { get }
-    /** Create url for string & open it */
+    /** Create url for string & open it if can */
     func open(link: String?)
 }
 
