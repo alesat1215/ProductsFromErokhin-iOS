@@ -45,7 +45,7 @@ class ContactsViewController: UIViewController {
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
             .drive(onNext: { [weak self] in
-                self?.viewModel?.call(to: self?.phone.text)
+                self?.viewModel?.open(link: "telprompt://\(self?.phone.text ?? "")")
             }).disposed(by: disposeBag)
     }
 

@@ -9,15 +9,14 @@
 import Foundation
 import RxSwift
 
-protocol ContactsViewModel {
+protocol ContactsViewModel: OpenLink {
     func contacts() -> Observable<Event<[SellerContacts]>>
-    func call(to phone: String?)
 }
 
 class ContactsViewModelImpl: ContactsViewModel {
     
     private let repository: AppRepository! // di
-    private let app: UIApplicationMethods! // di
+    var app: UIApplicationMethods? // di
     
     init(repository: AppRepository?, app: UIApplicationMethods?) {
         self.repository = repository
@@ -27,13 +26,5 @@ class ContactsViewModelImpl: ContactsViewModel {
     func contacts() -> Observable<Event<[SellerContacts]>> {
         repository.sellerContacts()
     }
-    
-    func call(to phone: String?) {
-        if let phone = phone, !phone.isEmpty,
-           let url = URL(string: "telprompt://\(phone)"),
-           app.canOpenURL(url)
-        {
-            app.open(url, options: [:], completionHandler: nil)
-        }
-    }
+
 }

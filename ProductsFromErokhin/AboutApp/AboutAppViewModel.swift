@@ -40,12 +40,4 @@ class AboutAppViewModelImpl: AboutAppViewModel {
         return "\(version) (\(build))"
     }
     
-//    func open(link: String?) {
-//        if let link = link, !link.isEmpty,
-//           let url = URL(string: link),
-//           app.canOpenURL(url)
-//        {
-//            app.open(url, options: [:], completionHandler: nil)
-//        }
-//    }
 }
