@@ -31,7 +31,7 @@ extension AboutAppRemote: Codable, Equatable {
 }
 
 extension AboutAppRemote {
-    func managedObject(context: NSManagedObjectContext, order: Int) -> NSManagedObject {
+    func managedObject(context: NSManagedObjectContext, order: Int = 0) -> NSManagedObject {
         // Create entity & set values
         let aboutApp = NSEntityDescription.insertNewObject(forEntityName: "AboutApp", into: context)
         (aboutApp as? AboutApp)?.update(from: self, order: order)
