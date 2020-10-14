@@ -148,7 +148,6 @@ extension SwinjectStoryboard {
         
         // MARK: - Shared
         defaultContainer.register(NSManagedObjectContext.self) { r in
-//            (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             (r.resolve(UIApplication.self)?.delegate as! AppDelegate).persistentContainer.viewContext
         }.inObjectScope(.container)
         
