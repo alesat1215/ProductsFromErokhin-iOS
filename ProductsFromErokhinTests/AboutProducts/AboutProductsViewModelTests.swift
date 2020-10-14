@@ -10,7 +10,6 @@ import XCTest
 @testable import ProductsFromErokhin
 
 class AboutProductsViewModelTests: XCTestCase {
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     private var repository: AppRepositoryMock!
     private var viewModel: AboutProductsViewModel!

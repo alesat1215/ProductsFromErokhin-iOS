@@ -17,9 +17,9 @@ protocol ContactsViewModel {
 class ContactsViewModelImpl: ContactsViewModel {
     
     private let repository: AppRepository! // di
-    private let app: UIApplication!
+    private let app: UIApplicationMethods!
     
-    init(repository: AppRepository?, app: UIApplication?) {
+    init(repository: AppRepository?, app: UIApplicationMethods?) {
         self.repository = repository
         self.app = app
     }
@@ -33,7 +33,7 @@ class ContactsViewModelImpl: ContactsViewModel {
            let url = URL(string: "telprompt://\(phone)"),
            app.canOpenURL(url)
         {
-            app.open(url, options: [:])
+            app.open(url, options: [:], completionHandler: nil)
         }
     }
 }

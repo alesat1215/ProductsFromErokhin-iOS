@@ -136,6 +136,9 @@
 		D7D8F5AD25360E0A00574F4B /* AboutProductsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5AC25360E0A00574F4B /* AboutProductsViewControllerTests.swift */; };
 		D7D8F5C02536312900574F4B /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5BF2536312900574F4B /* ContactsViewModel.swift */; };
 		D7D8F5C52536D71900574F4B /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5C42536D71900574F4B /* ContactsViewController.swift */; };
+		D7D8F5CE25370E2900574F4B /* ContactsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5CD25370E2900574F4B /* ContactsViewModelTests.swift */; };
+		D7D8F5D625370EBA00574F4B /* UIApplicationMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5D525370EBA00574F4B /* UIApplicationMock.swift */; };
+		D7D8F5DB2537128F00574F4B /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F5DA2537128F00574F4B /* UIApplication+Extensions.swift */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -316,6 +319,9 @@
 		D7D8F5AC25360E0A00574F4B /* AboutProductsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutProductsViewControllerTests.swift; sourceTree = "<group>"; };
 		D7D8F5BF2536312900574F4B /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		D7D8F5C42536D71900574F4B /* ContactsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewController.swift; sourceTree = "<group>"; };
+		D7D8F5CD25370E2900574F4B /* ContactsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModelTests.swift; sourceTree = "<group>"; };
+		D7D8F5D525370EBA00574F4B /* UIApplicationMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplicationMock.swift; sourceTree = "<group>"; };
+		D7D8F5DA2537128F00574F4B /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -428,6 +434,7 @@
 				D7E293FC25275D1B00EA2845 /* Contacts+Rx.swift */,
 				D7D64A652531A9F10010E2F3 /* BindablePage.swift */,
 				D7D64A6A25321A970010E2F3 /* PagesDataSource.swift */,
+				D7D8F5DA2537128F00574F4B /* UIApplication+Extensions.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -521,6 +528,7 @@
 				D7E2945C252A111800EA2845 /* Cart */,
 				D7D649EF252F9AD10010E2F3 /* Profile */,
 				D7D8F5992536098A00574F4B /* AboutProducts */,
+				D7D8F5CC25370E0A00574F4B /* Contacts */,
 				D7C0FB962513D216009BC51F /* Util */,
 				D7C0FBED2514E027009BC51F /* Data */,
 				D7C0FBB02513E063009BC51F /* Mock */,
@@ -619,6 +627,7 @@
 				D7D64AA3253374550010E2F3 /* PagesDataSourceMock.swift */,
 				D7D64AA8253379480010E2F3 /* TutorialViewModelMock.swift */,
 				D7D8F5A225360B7A00574F4B /* AboutProductsViewModelMock.swift */,
+				D7D8F5D525370EBA00574F4B /* UIApplicationMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -761,6 +770,14 @@
 			children = (
 				D7D8F5C42536D71900574F4B /* ContactsViewController.swift */,
 				D7D8F5BF2536312900574F4B /* ContactsViewModel.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		D7D8F5CC25370E0A00574F4B /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				D7D8F5CD25370E2900574F4B /* ContactsViewModelTests.swift */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -1068,6 +1085,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7D8F5DB2537128F00574F4B /* UIApplication+Extensions.swift in Sources */,
 				D7E293FD25275D1B00EA2845 /* Contacts+Rx.swift in Sources */,
 				D7877B602501168700244B81 /* AppRepository.swift in Sources */,
 				D7877B632501182200244B81 /* DatabaseUpdater.swift in Sources */,
@@ -1176,6 +1194,7 @@
 				D7C0FC5E251676C5009BC51F /* DatabaseUpdaterMockTests.swift in Sources */,
 				D795795225175190007AD022 /* CoreDataSourceCollectionViewMock.swift in Sources */,
 				D7E29466252A3DB400EA2845 /* CartViewModelMock.swift in Sources */,
+				D7D8F5D625370EBA00574F4B /* UIApplicationMock.swift in Sources */,
 				D7C0FBE92514DCF4009BC51F /* BindableCellTests.swift in Sources */,
 				D7D649FE252FAAF60010E2F3 /* ProfileViewControllerTests.swift in Sources */,
 				D7C0FC422515E40F009BC51F /* JSONDecoderMockTests.swift in Sources */,
@@ -1198,6 +1217,7 @@
 				D795795C2517BE72007AD022 /* AppRepositoryMockTests.swift in Sources */,
 				D795211124FFBE800094BAFE /* ProductsFromErokhinTests.swift in Sources */,
 				D7C0FC0E25150772009BC51F /* TitlesTests.swift in Sources */,
+				D7D8F5CE25370E2900574F4B /* ContactsViewModelTests.swift in Sources */,
 				D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */,
 				D7D64AA4253374550010E2F3 /* PagesDataSourceMock.swift in Sources */,
 				D7D64953252C925B0010E2F3 /* AuthMock.swift in Sources */,
