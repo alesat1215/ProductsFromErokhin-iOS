@@ -1225,7 +1225,7 @@
         <!--Contacts View Controller-->
         <scene sceneID="k8a-IN-07L">
             <objects>
-                <viewController id="Z4g-ih-Uc9" customClass="ContactsViewController" customModule="ProductsFromErokhin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContactsViewController" id="Z4g-ih-Uc9" customClass="ContactsViewController" customModule="ProductsFromErokhin" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XOm-d4-N4C">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
