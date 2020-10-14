@@ -17,7 +17,7 @@ protocol ContactsViewModel {
 class ContactsViewModelImpl: ContactsViewModel {
     
     private let repository: AppRepository! // di
-    private let app: UIApplicationMethods!
+    private let app: UIApplicationMethods! // di
     
     init(repository: AppRepository?, app: UIApplicationMethods?) {
         self.repository = repository

@@ -150,7 +150,7 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
     
     private func updateAboutApp() throws {
         // Get aboutApp from remote data
-        let aboutApp: AboutAppRemote = try remoteData(key: .aboutProducts)
+        let aboutApp: AboutAppRemote = try remoteData(key: .aboutApp)
         // Delete all aboutApp from database
         try AboutApp.clearEntity(context: context)
         // Create aboutApp entity from remote

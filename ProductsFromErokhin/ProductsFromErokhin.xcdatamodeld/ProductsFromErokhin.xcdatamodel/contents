@@ -2,7 +2,6 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AboutApp" representedClassName="AboutApp" syncable="YES" codeGenerationType="class">
         <attribute name="appStore" optional="YES" attributeType="String"/>
-        <attribute name="build" optional="YES" attributeType="String"/>
         <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="privacy" optional="YES" attributeType="String"/>
         <attribute name="version" optional="YES" attributeType="String"/>
@@ -66,6 +65,7 @@
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
     <elements>
+        <element name="AboutApp" positionX="-414" positionY="72" width="128" height="103"/>
         <element name="AboutProducts" positionX="-396" positionY="81" width="128" height="118"/>
         <element name="Group" positionX="-622.515625" positionY="34.71484375" width="128" height="103"/>
         <element name="Instruction" positionX="-405" positionY="72" width="128" height="103"/>
@@ -75,6 +75,5 @@
         <element name="Profile" positionX="-414" positionY="63" width="128" height="103"/>
         <element name="SellerContacts" positionX="-405" positionY="72" width="128" height="88"/>
         <element name="Titles" positionX="-414" positionY="63" width="128" height="133"/>
-        <element name="AboutApp" positionX="-414" positionY="72" width="128" height="118"/>
     </elements>
 </model>

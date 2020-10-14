@@ -12,20 +12,18 @@ import CoreData
 struct AboutAppRemote {
     let privacy: String
     let version: String
-    let build: String
     let appStore: String
 }
 
 extension AboutAppRemote: Codable, Equatable {
     enum CodingKeys: String, CodingKey {
-        case privacy, version, build, appStore
+        case privacy, version, appStore
     }
     /** Decode or set defaults */
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         privacy = (try? values.decode(String.self, forKey: .privacy)) ?? ""
         version = (try? values.decode(String.self, forKey: .version)) ?? ""
-        build = (try? values.decode(String.self, forKey: .build)) ?? ""
         appStore = (try? values.decode(String.self, forKey: .appStore)) ?? ""
     }
 }

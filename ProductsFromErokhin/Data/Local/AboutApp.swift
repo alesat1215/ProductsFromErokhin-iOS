@@ -14,7 +14,6 @@ extension AboutApp: Ordered {
         self.order = Int16(order)
         privacy = remote.privacy
         version = remote.version
-        build = remote.build
         appStore = remote.appStore
     }
 }
