@@ -23,6 +23,7 @@ class ContactsViewController: UIViewController {
         super.viewDidLoad()
 
         bindContacts()
+        setupCallAction()
     }
     
     private func bindContacts() {
@@ -36,6 +37,20 @@ class ContactsViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 self?.phone.text = $0.phone
                 self?.address.text = $0.address
+            }).disposed(by: disposeBag)
+    }
+    
+    private func setupCallAction() {
+        call.rx.tap
+            .asDriver()
+            .throttle(RxTimeInterval.seconds(1))
+            .drive(onNext: { [weak self] in
+                if let phone = self?.phone.text, !phone.isEmpty,
+                   let url = URL(string: "telprompt://\(phone)"),
+                   UIApplication.shared.canOpenURL(url)
+                {
+                    UIApplication.shared.open(url, options: [:])
+                }
             }).disposed(by: disposeBag)
     }
     
