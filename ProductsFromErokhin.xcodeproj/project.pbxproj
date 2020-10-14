@@ -147,6 +147,7 @@
 		D7D8F60525372E0200574F4B /* AboutApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F60425372E0200574F4B /* AboutApp.swift */; };
 		D7D8F60B2537706600574F4B /* AboutAppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F60A2537706600574F4B /* AboutAppViewModel.swift */; };
 		D7D8F6132537758100574F4B /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6122537758100574F4B /* AboutAppViewController.swift */; };
+		D7D8F61B25378B1400574F4B /* OpenLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F61A25378B1400574F4B /* OpenLink.swift */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -338,6 +339,7 @@
 		D7D8F60425372E0200574F4B /* AboutApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutApp.swift; sourceTree = "<group>"; };
 		D7D8F60A2537706600574F4B /* AboutAppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewModel.swift; sourceTree = "<group>"; };
 		D7D8F6122537758100574F4B /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
+		D7D8F61A25378B1400574F4B /* OpenLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLink.swift; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 				D7D64A652531A9F10010E2F3 /* BindablePage.swift */,
 				D7D64A6A25321A970010E2F3 /* PagesDataSource.swift */,
 				D7D8F5DA2537128F00574F4B /* UIApplication+Extensions.swift */,
+				D7D8F61A25378B1400574F4B /* OpenLink.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1162,6 +1165,7 @@
 				D7D64AD22534D0BF0010E2F3 /* AboutProductRemote.swift in Sources */,
 				D7E293D525265B4000EA2845 /* UIViewController+Rx.swift in Sources */,
 				D7E293952523882E00EA2845 /* CartViewController.swift in Sources */,
+				D7D8F61B25378B1400574F4B /* OpenLink.swift in Sources */,
 				D7D8F5C52536D71900574F4B /* ContactsViewController.swift in Sources */,
 				D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */,
 				D7D64A2F2530AAB70010E2F3 /* Instruction.swift in Sources */,

@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-protocol AboutAppViewModel {
+protocol AboutAppViewModel: OpenLink {
     func aboutApp() -> Observable<Event<[AboutApp]>>
     func name() -> String
     func version() -> String
@@ -17,8 +17,9 @@ protocol AboutAppViewModel {
 }
 
 class AboutAppViewModelImpl: AboutAppViewModel {
+    
     private let repository: AppRepository! // di
-    private let app: UIApplicationMethods! // di
+    var app: UIApplicationMethods? // di
     
     init(repository: AppRepository?, app: UIApplicationMethods?) {
         self.repository = repository
@@ -39,12 +40,12 @@ class AboutAppViewModelImpl: AboutAppViewModel {
         return "\(version) (\(build))"
     }
     
-    func open(link: String?) {
-        if let link = link, !link.isEmpty,
-           let url = URL(string: link),
-           app.canOpenURL(url)
-        {
-            app.open(url, options: [:], completionHandler: nil)
-        }
-    }
+//    func open(link: String?) {
+//        if let link = link, !link.isEmpty,
+//           let url = URL(string: link),
+//           app.canOpenURL(url)
+//        {
+//            app.open(url, options: [:], completionHandler: nil)
+//        }
+//    }
 }
