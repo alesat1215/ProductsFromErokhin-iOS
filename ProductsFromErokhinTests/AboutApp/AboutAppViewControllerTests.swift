@@ -11,13 +11,41 @@ import RxSwift
 @testable import ProductsFromErokhin
 
 class AboutAppViewControllerTests: XCTestCase {
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var aboutApp: AboutApp!
+    private var controller: AboutAppViewController!
+    private var viewModel: AboutAppViewModelMock!
+    private var navigationController: UINavigationController!
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        aboutApp = AboutApp(context: context)
+        aboutApp.version = "version"
+        aboutApp.privacy = "https://apps.apple.com"
+        aboutApp.appStore = "https://apps.apple.com"
+        
+        viewModel = AboutAppViewModelMock()
+        
+        controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "AboutAppViewController")
+        controller.viewModel = viewModel
+        
+        navigationController = UINavigationController()
+        navigationController.viewControllers = [controller]
+        
+        let window = UIWindow()
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        try AboutApp.clearEntity(context: context)
+    }
+    
+    func testBindInfo() {
+        XCTAssertEqual(controller.name.text, viewModel.nameResult)
+        XCTAssertEqual(controller.version.text, viewModel.versionResult)
     }
 
     func testExample() throws {
