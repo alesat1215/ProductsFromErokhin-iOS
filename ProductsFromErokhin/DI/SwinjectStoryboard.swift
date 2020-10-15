@@ -105,8 +105,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(ContactsViewModel.self) { r in
             ContactsViewModelImpl(
-                repository: r.resolve(AppRepository.self),
-                app: r.resolve(UIApplication.self)
+                repository: r.resolve(AppRepository.self)
             )
         }
         // MARK: - AboutApp

@@ -16,11 +16,9 @@ protocol ContactsViewModel: OpenLink {
 class ContactsViewModelImpl: ContactsViewModel {
     
     private let repository: AppRepository! // di
-    var app: UIApplicationMethods? // di
     
-    init(repository: AppRepository?, app: UIApplicationMethods?) {
+    init(repository: AppRepository?) {
         self.repository = repository
-        self.app = app
     }
     
     func contacts() -> Observable<Event<[SellerContacts]>> {
