@@ -115,8 +115,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(AboutAppViewModel.self) { r in
             AboutAppViewModelImpl(
-                repository: r.resolve(AppRepository.self),
-                app: r.resolve(UIApplication.self)
+                repository: r.resolve(AppRepository.self)
             )
         }
         
