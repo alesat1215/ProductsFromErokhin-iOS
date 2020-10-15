@@ -22,14 +22,7 @@ class MoreTableViewController: UITableViewController {
         setupShareAction()
     }
     
-    private func setupShareAction() {
-//        let aboutApp = viewModel?.aboutApp()
-//            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
-//            .observeOn(MainScheduler.instance)
-//            .flatMapError { [weak self] in
-//                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
-//            }.compactMap { $0.first } ?? Observable.empty()
-        
+    private func setupShareAction() {        
         tableView.rx.itemSelected
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
