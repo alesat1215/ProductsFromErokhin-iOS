@@ -11,40 +11,46 @@ import XCTest
 
 class OpenLinkTests: XCTestCase {
     
+    class OpenLinkMock: OpenLink {
+        let _app = UIApplicationMock()
+        var app: UIApplicationMethods? {
+            _app
+        }
+    }
+    
     func testOpen() {
-        let app = UIApplicationMock()
-        let viewModel = ContactsViewModelImpl(repository: nil)
+        let openLink = OpenLinkMock()
         // Link is nil
-        viewModel.open(link: nil)
-        XCTAssertNil(app.canOpenURLParamResult)
-        XCTAssertFalse(app.isCanOpenURL)
-        XCTAssertNil(app.openResult)
-        XCTAssertFalse(app.isOpen)
+        openLink.open(link: nil)
+        XCTAssertNil(openLink._app.canOpenURLParamResult)
+        XCTAssertFalse(openLink._app.isCanOpenURL)
+        XCTAssertNil(openLink._app.openResult)
+        XCTAssertFalse(openLink._app.isOpen)
         // Link is empty
-        viewModel.open(link: "")
-        XCTAssertNil(app.canOpenURLParamResult)
-        XCTAssertFalse(app.isCanOpenURL)
-        XCTAssertNil(app.openResult)
-        XCTAssertFalse(app.isOpen)
+        openLink.open(link: "")
+        XCTAssertNil(openLink._app.canOpenURLParamResult)
+        XCTAssertFalse(openLink._app.isCanOpenURL)
+        XCTAssertNil(openLink._app.openResult)
+        XCTAssertFalse(openLink._app.isOpen)
         // Link not empty, but can't open url
-        app.canOpenURLResult = false
-        viewModel.open(link: "test")
-        XCTAssertNotNil(app.canOpenURLParamResult)
-        XCTAssertTrue(app.isCanOpenURL)
-        XCTAssertEqual(app.canOpenURLParamResult?.absoluteString, "test")
-        XCTAssertNil(app.openResult)
-        XCTAssertFalse(app.isOpen)
+        openLink._app.canOpenURLResult = false
+        openLink.open(link: "test")
+        XCTAssertNotNil(openLink._app.canOpenURLParamResult)
+        XCTAssertTrue(openLink._app.isCanOpenURL)
+        XCTAssertEqual(openLink._app.canOpenURLParamResult?.absoluteString, "test")
+        XCTAssertNil(openLink._app.openResult)
+        XCTAssertFalse(openLink._app.isOpen)
         // Link not empty, open url
-        app.canOpenURLResult = true
-        app.canOpenURLParamResult = nil
-        app.isCanOpenURL = false
-        viewModel.open(link: "test")
-        XCTAssertNotNil(app.canOpenURLParamResult)
-        XCTAssertTrue(app.isCanOpenURL)
-        XCTAssertEqual(app.canOpenURLParamResult?.absoluteString, "test")
-        XCTAssertNotNil(app.openResult)
-        XCTAssertTrue(app.isOpen)
-        XCTAssertEqual(app.openResult?.absoluteString, "test")
+        openLink._app.canOpenURLResult = true
+        openLink._app.canOpenURLParamResult = nil
+        openLink._app.isCanOpenURL = false
+        openLink.open(link: "test")
+        XCTAssertNotNil(openLink._app.canOpenURLParamResult)
+        XCTAssertTrue(openLink._app.isCanOpenURL)
+        XCTAssertEqual(openLink._app.canOpenURLParamResult?.absoluteString, "test")
+        XCTAssertNotNil(openLink._app.openResult)
+        XCTAssertTrue(openLink._app.isOpen)
+        XCTAssertEqual(openLink._app.openResult?.absoluteString, "test")
     }
 
 }
