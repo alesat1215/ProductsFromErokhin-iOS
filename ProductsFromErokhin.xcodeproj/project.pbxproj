@@ -153,6 +153,9 @@
 		D7D8F63125382AA900574F4B /* AboutAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F63025382AA900574F4B /* AboutAppTests.swift */; };
 		D7D8F63625382C3E00574F4B /* AboutAppRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F63525382C3E00574F4B /* AboutAppRemoteTests.swift */; };
 		D7D8F63C25382F1000574F4B /* AboutAppViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F63B25382F1000574F4B /* AboutAppViewModelTests.swift */; };
+		D7D8F6442538352200574F4B /* AboutAppViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6432538352200574F4B /* AboutAppViewControllerTests.swift */; };
+		D7D8F6492538356C00574F4B /* AboutAppViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6482538356C00574F4B /* AboutAppViewModelMock.swift */; };
+		D7D8F6512538367200574F4B /* AboutAppViewModelMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6502538367200574F4B /* AboutAppViewModelMockTests.swift */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -350,6 +353,9 @@
 		D7D8F63025382AA900574F4B /* AboutAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppTests.swift; sourceTree = "<group>"; };
 		D7D8F63525382C3E00574F4B /* AboutAppRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppRemoteTests.swift; sourceTree = "<group>"; };
 		D7D8F63B25382F1000574F4B /* AboutAppViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewModelTests.swift; sourceTree = "<group>"; };
+		D7D8F6432538352200574F4B /* AboutAppViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewControllerTests.swift; sourceTree = "<group>"; };
+		D7D8F6482538356C00574F4B /* AboutAppViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewModelMock.swift; sourceTree = "<group>"; };
+		D7D8F6502538367200574F4B /* AboutAppViewModelMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewModelMockTests.swift; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -664,6 +670,7 @@
 				D7D8F5A225360B7A00574F4B /* AboutProductsViewModelMock.swift */,
 				D7D8F5D525370EBA00574F4B /* UIApplicationMock.swift */,
 				D7D8F5E42537194F00574F4B /* ContactsViewModelMock.swift */,
+				D7D8F6482538356C00574F4B /* AboutAppViewModelMock.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -735,6 +742,7 @@
 				D7D8F5A725360BF300574F4B /* AboutProductsViewModelMockTests.swift */,
 				D7D8F5DF253717AC00574F4B /* UIApplicationMockTests.swift */,
 				D7D8F5E9253719FC00574F4B /* ContactsViewModelMockTests.swift */,
+				D7D8F6502538367200574F4B /* AboutAppViewModelMockTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -843,6 +851,7 @@
 		D7D8F63A25382EE100574F4B /* AboutApp */ = {
 			isa = PBXGroup;
 			children = (
+				D7D8F6432538352200574F4B /* AboutAppViewControllerTests.swift */,
 				D7D8F63B25382F1000574F4B /* AboutAppViewModelTests.swift */,
 			);
 			path = AboutApp;
@@ -1267,6 +1276,7 @@
 				D7C0FC5E251676C5009BC51F /* DatabaseUpdaterMockTests.swift in Sources */,
 				D795795225175190007AD022 /* CoreDataSourceCollectionViewMock.swift in Sources */,
 				D7E29466252A3DB400EA2845 /* CartViewModelMock.swift in Sources */,
+				D7D8F6512538367200574F4B /* AboutAppViewModelMockTests.swift in Sources */,
 				D7D8F5D625370EBA00574F4B /* UIApplicationMock.swift in Sources */,
 				D7C0FBE92514DCF4009BC51F /* BindableCellTests.swift in Sources */,
 				D7D649FE252FAAF60010E2F3 /* ProfileViewControllerTests.swift in Sources */,
@@ -1297,6 +1307,7 @@
 				D7D8F5CE25370E2900574F4B /* ContactsViewModelTests.swift in Sources */,
 				D7C0FC3325154559009BC51F /* JSONDecoderMock.swift in Sources */,
 				D7D64AA4253374550010E2F3 /* PagesDataSourceMock.swift in Sources */,
+				D7D8F6442538352200574F4B /* AboutAppViewControllerTests.swift in Sources */,
 				D7D64953252C925B0010E2F3 /* AuthMock.swift in Sources */,
 				D7D64999252CB76C0010E2F3 /* RemoteConfig+RxTests.swift in Sources */,
 				D7D8F63625382C3E00574F4B /* AboutAppRemoteTests.swift in Sources */,
@@ -1304,6 +1315,7 @@
 				D7D64A7F253328740010E2F3 /* BindablePageTests.swift in Sources */,
 				D7C0FC1925154199009BC51F /* CollectionViewCellMock.swift in Sources */,
 				D7E29448252A065700EA2845 /* SellerContactsRemoteTests.swift in Sources */,
+				D7D8F6492538356C00574F4B /* AboutAppViewModelMock.swift in Sources */,
 				D7C0FC1325151426009BC51F /* DatabaseUpdaterTests.swift in Sources */,
 				D7D8F5E52537194F00574F4B /* ContactsViewModelMock.swift in Sources */,
 				D7D8F5EA253719FC00574F4B /* ContactsViewModelMockTests.swift in Sources */,

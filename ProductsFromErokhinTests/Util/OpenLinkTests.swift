@@ -13,7 +13,7 @@ class OpenLinkTests: XCTestCase {
     
     func testOpen() {
         let app = UIApplicationMock()
-        let viewModel = ContactsViewModelImpl(repository: nil, app: app)
+        let viewModel = ContactsViewModelImpl(repository: nil)
         // Link is nil
         viewModel.open(link: nil)
         XCTAssertNil(app.canOpenURLParamResult)
