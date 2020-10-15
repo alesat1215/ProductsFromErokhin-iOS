@@ -33,20 +33,20 @@ class AboutAppViewController: UIViewController {
     }
     /** Setup buttons privacy, update */
     private func setupActions() {
-        let aboutApp = viewModel?.aboutApp()
-            .share(replay: 1, scope: .forever)
-            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
-            .observeOn(MainScheduler.instance)
-            .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
-            }.compactMap { $0.first } ?? Observable.empty()
+//        let aboutApp = viewModel?.aboutApp()
+//            .share(replay: 1, scope: .forever)
+//            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
+//            .observeOn(MainScheduler.instance)
+//            .flatMapError { [weak self] in
+//                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
+//            }.compactMap { $0.first } ?? Observable.empty()
         // Privacy
         privacy.rx.tap
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
-            .flatMapLatest {
-                aboutApp
+            .flatMapLatest { [weak self] in
+                self?.aboutApp() ?? Observable.empty()
             }.map { $0.privacy }
             .subscribe(onNext: { [weak self] in
                 self?.viewModel?.open(link: $0)
@@ -56,18 +56,27 @@ class AboutAppViewController: UIViewController {
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
-            .flatMapLatest {
-                aboutApp
+            .flatMapLatest { [weak self] in
+                self?.aboutApp() ?? Observable.empty()
             }.map { $0.appStore }
             .subscribe(onNext: { [weak self] in
                 self?.viewModel?.open(link: $0)
             }).disposed(by: disposeBag)
         // Update visibility
-        aboutApp.map { [weak self] in
+        aboutApp().map { [weak self] in
             $0.version == self?.viewModel?.version() ?? ""
         }
         .bind(to: update.rx.isHidden)
         .disposed(by: disposeBag)
+    }
+    
+    private func aboutApp() -> Observable<AboutApp> {
+        viewModel?.aboutApp()
+            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
+            .observeOn(MainScheduler.instance)
+            .flatMapError { [weak self] in
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
+            }.compactMap { $0.first } ?? Observable.empty()
     }
 
 }

@@ -13,9 +13,10 @@ import RxRelay
 
 class AboutAppViewModelMock: AboutAppViewModel {
     
-    let aboutAppResult = PublishRelay<Event<[AboutApp]>>()
+    var aboutAppResult = Event<[AboutApp]>.error(AppError.unknown)
     func aboutApp() -> Observable<Event<[AboutApp]>> {
-        aboutAppResult.asObservable()
+//        aboutAppResult.asObservable()
+        Observable.just(aboutAppResult)
     }
     
     let nameResult = "name"
@@ -28,10 +29,10 @@ class AboutAppViewModelMock: AboutAppViewModel {
         versionResult
     }
     
-    var phoneResult: String?
-    var isCall = false
+    var linkResult: String?
+    var isOpen = false
     func open(link: String?) {
-        phoneResult = link
-        isCall.toggle()
+        linkResult = link
+        isOpen.toggle()
     }
 }
