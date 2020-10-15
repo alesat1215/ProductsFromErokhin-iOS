@@ -25,6 +25,7 @@ class AppRepositoryTests: XCTestCase {
     private var profile = [Profile]()
     private var instructions = [Instruction]()
     private var aboutProducts = [AboutProducts]()
+    private var aboutApp = [AboutApp]()
 
     override func setUpWithError() throws {
         updater = DatabaseUpdaterMock()
@@ -80,6 +81,12 @@ class AppRepositoryTests: XCTestCase {
             about.text = $0.element
             about.section = Int16($0.offset % 2)
             return about
+        }
+        aboutApp = ["appStore"].enumerated().map {
+            let aboutApp = AboutApp(context: context)
+            aboutApp.order = Int16($0.offset)
+            aboutApp.appStore = $0.element
+            return aboutApp
         }
         
         try context.save()
@@ -311,6 +318,26 @@ class AppRepositoryTests: XCTestCase {
         XCTAssertTrue(updater.isSync)
         result = resultArray.first { $0.error == nil }?.element
         XCTAssertEqual(result?.collectionView(CollectionViewMock(), numberOfItemsInSection: 0), aboutProducts.filter { $0.section == 0 }.count)
+    }
+    
+    func testAboutApp() throws {
+        // Success
+        // Check sequence contains only one element
+        XCTAssertThrowsError(try repository.aboutApp().take(2).toBlocking(timeout: 1).toArray())
+        updater.isSync = false
+        // Check that element
+        var result = try repository.aboutApp().toBlocking().first()?.element
+        XCTAssertTrue(updater.isSync)
+        XCTAssertEqual(result?.count, aboutApp.count)
+    
+        // Sync error
+        updater.isSync = false
+        updater.error = AppError.unknown
+        let resultArray = try repository.aboutApp().take(2).toBlocking().toArray()
+        XCTAssertTrue(resultArray.contains { $0.error?.localizedDescription == AppError.unknown.localizedDescription })
+        XCTAssertTrue(updater.isSync)
+        result = resultArray.first { $0.error == nil }?.element
+        XCTAssertEqual(result?.count, aboutApp.count)
     }
 
 }
