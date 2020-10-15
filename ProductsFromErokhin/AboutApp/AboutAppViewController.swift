@@ -24,23 +24,17 @@ class AboutAppViewController: UIViewController {
         super.viewDidLoad()
 
         bindInfo()
-        setupActions()
+        setupPrivacyActions()
+        setupUpdateActions()
+        setupUpdateVisibility()
     }
     /** Set data to name, version */
     private func bindInfo() {
         name.text = viewModel?.name()
         version.text = viewModel?.version()
     }
-    /** Setup buttons privacy, update */
-    private func setupActions() {
-//        let aboutApp = viewModel?.aboutApp()
-//            .share(replay: 1, scope: .forever)
-//            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
-//            .observeOn(MainScheduler.instance)
-//            .flatMapError { [weak self] in
-//                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
-//            }.compactMap { $0.first } ?? Observable.empty()
-        // Privacy
+    
+    private func setupPrivacyActions() {
         privacy.rx.tap
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
@@ -51,7 +45,9 @@ class AboutAppViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 self?.viewModel?.open(link: $0)
             }).disposed(by: disposeBag)
-        // Update
+    }
+    
+    private func setupUpdateActions() {
         update.rx.tap
             .asDriver()
             .throttle(RxTimeInterval.seconds(1))
@@ -62,7 +58,9 @@ class AboutAppViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 self?.viewModel?.open(link: $0)
             }).disposed(by: disposeBag)
-        // Update visibility
+    }
+    
+    private func setupUpdateVisibility() {
         aboutApp().map { [weak self] in
             $0.version == self?.viewModel?.version() ?? ""
         }
@@ -71,7 +69,7 @@ class AboutAppViewController: UIViewController {
     }
     
     private func aboutApp() -> Observable<AboutApp> {
-        viewModel?.aboutApp()
+        viewModel?.aboutApp().take(1)
             .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
