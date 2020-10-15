@@ -149,6 +149,7 @@
 		D7D8F6132537758100574F4B /* AboutAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6122537758100574F4B /* AboutAppViewController.swift */; };
 		D7D8F61B25378B1400574F4B /* OpenLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F61A25378B1400574F4B /* OpenLink.swift */; };
 		D7D8F62425378F9200574F4B /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F62325378F9200574F4B /* MoreTableViewController.swift */; };
+		D7D8F62C2538294E00574F4B /* OpenLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F62B2538294E00574F4B /* OpenLinkTests.swift */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -342,6 +343,7 @@
 		D7D8F6122537758100574F4B /* AboutAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewController.swift; sourceTree = "<group>"; };
 		D7D8F61A25378B1400574F4B /* OpenLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLink.swift; sourceTree = "<group>"; };
 		D7D8F62325378F9200574F4B /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
+		D7D8F62B2538294E00574F4B /* OpenLinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLinkTests.swift; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -623,6 +625,7 @@
 				D7E294332528F71D00EA2845 /* Contacts+RxTests.swift */,
 				D7D64A7E253328740010E2F3 /* BindablePageTests.swift */,
 				D7D64A83253329890010E2F3 /* PagesDataSourceTests.swift */,
+				D7D8F62B2538294E00574F4B /* OpenLinkTests.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1220,6 +1223,7 @@
 				D7D64A8E253337880010E2F3 /* UserDefaultsMockTests.swift in Sources */,
 				D7E2946C252A3ED300EA2845 /* TabBarControllerTests.swift in Sources */,
 				D79579572517B500007AD022 /* StartViewModelMock.swift in Sources */,
+				D7D8F62C2538294E00574F4B /* OpenLinkTests.swift in Sources */,
 				D7518E01252079D600C72B1E /* MenuViewModelMockTests.swift in Sources */,
 				D7D64A06253079600010E2F3 /* ProfileViewModelMockTests.swift in Sources */,
 				D7D6EC072517DD800098ABC7 /* LoadViewModelMock.swift in Sources */,
