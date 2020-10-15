@@ -19,11 +19,11 @@ protocol AboutAppViewModel: OpenLink {
 class AboutAppViewModelImpl: AboutAppViewModel {
     
     private let repository: AppRepository! // di
-    var app: UIApplicationMethods? // di
+//    var app: UIApplicationMethods? // di
     
     init(repository: AppRepository?, app: UIApplicationMethods?) {
         self.repository = repository
-        self.app = app
+//        self.app = app
     }
     
     func aboutApp() -> Observable<Event<[AboutApp]>> {

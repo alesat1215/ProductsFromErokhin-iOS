@@ -152,6 +152,7 @@
 		D7D8F62C2538294E00574F4B /* OpenLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F62B2538294E00574F4B /* OpenLinkTests.swift */; };
 		D7D8F63125382AA900574F4B /* AboutAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F63025382AA900574F4B /* AboutAppTests.swift */; };
 		D7D8F63625382C3E00574F4B /* AboutAppRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F63525382C3E00574F4B /* AboutAppRemoteTests.swift */; };
+		D7D8F63C25382F1000574F4B /* AboutAppViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F63B25382F1000574F4B /* AboutAppViewModelTests.swift */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -348,6 +349,7 @@
 		D7D8F62B2538294E00574F4B /* OpenLinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLinkTests.swift; sourceTree = "<group>"; };
 		D7D8F63025382AA900574F4B /* AboutAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppTests.swift; sourceTree = "<group>"; };
 		D7D8F63525382C3E00574F4B /* AboutAppRemoteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppRemoteTests.swift; sourceTree = "<group>"; };
+		D7D8F63B25382F1000574F4B /* AboutAppViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutAppViewModelTests.swift; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 				D7D649EF252F9AD10010E2F3 /* Profile */,
 				D7D8F5992536098A00574F4B /* AboutProducts */,
 				D7D8F5CC25370E0A00574F4B /* Contacts */,
+				D7D8F63A25382EE100574F4B /* AboutApp */,
 				D7C0FB962513D216009BC51F /* Util */,
 				D7C0FBED2514E027009BC51F /* Data */,
 				D7C0FBB02513E063009BC51F /* Mock */,
@@ -835,6 +838,14 @@
 				D7D8F62325378F9200574F4B /* MoreTableViewController.swift */,
 			);
 			path = More;
+			sourceTree = "<group>";
+		};
+		D7D8F63A25382EE100574F4B /* AboutApp */ = {
+			isa = PBXGroup;
+			children = (
+				D7D8F63B25382F1000574F4B /* AboutAppViewModelTests.swift */,
+			);
+			path = AboutApp;
 			sourceTree = "<group>";
 		};
 		D7E293932523878D00EA2845 /* Cart */ = {
@@ -1270,6 +1281,7 @@
 				D7D6485A252B580F0010E2F3 /* CartViewModelMockTests.swift in Sources */,
 				D7E2942F2528DFEF00EA2845 /* UIViewController+RxTests.swift in Sources */,
 				D79579422517251A007AD022 /* StartViewControllerTests.swift in Sources */,
+				D7D8F63C25382F1000574F4B /* AboutAppViewModelTests.swift in Sources */,
 				D7C0FC592515F1E4009BC51F /* AppRepositoryTests.swift in Sources */,
 				D7C0FB922513C5B2009BC51F /* ObservableType+ExtensionsTests.swift in Sources */,
 				D72F41D5251FA348001EE822 /* TableViewMock.swift in Sources */,

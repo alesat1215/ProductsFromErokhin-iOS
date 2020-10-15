@@ -101,4 +101,10 @@ class AppRepositoryMock: AppRepository {
         aboutProductsCellIdResult = cellId
         return Observable.just(Event.next(aboutProductsResult))
     }
+    
+    //MARK: - about app
+    var aboutAppResult = [AboutApp]()
+    override func aboutApp() -> Observable<Event<[AboutApp]>> {
+        Observable.just(Event.next(aboutAppResult))
+    }
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Alexander Satunin. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol OpenLink {
     var app: UIApplicationMethods? { get }
@@ -15,6 +15,9 @@ protocol OpenLink {
 }
 
 extension OpenLink {
+    var app: UIApplicationMethods? {
+        UIApplication.shared
+    }
     func open(link: String?) {
         if let link = link, !link.isEmpty,
            let url = URL(string: link),
