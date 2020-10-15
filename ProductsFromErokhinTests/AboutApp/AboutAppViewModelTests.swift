@@ -11,13 +11,11 @@ import XCTest
 
 class AboutAppViewModelTests: XCTestCase {
     private var repository: AppRepositoryMock!
-    private var app: UIApplicationMock!
     private var viewModel: AboutAppViewModel!
 
     override func setUpWithError() throws {
         repository = AppRepositoryMock()
-        app = UIApplicationMock()
-        viewModel = AboutAppViewModelImpl(repository: repository, app: app)
+        viewModel = AboutAppViewModelImpl(repository: repository)
     }
 
     override func tearDownWithError() throws {
@@ -26,6 +24,10 @@ class AboutAppViewModelTests: XCTestCase {
     
     func testAboutApp() {
         XCTAssertEqual(try viewModel.aboutApp().dematerialize().toBlocking().first(), repository.aboutAppResult)
+    }
+    
+    func testName() {
+        XCTAssertEqual(viewModel.name(), Bundle.main.infoDictionary!["CFBundleName"] as! String)
     }
 
     func testExample() throws {
