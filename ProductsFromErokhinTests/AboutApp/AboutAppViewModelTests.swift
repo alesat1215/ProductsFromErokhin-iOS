@@ -29,6 +29,11 @@ class AboutAppViewModelTests: XCTestCase {
     func testName() {
         XCTAssertEqual(viewModel.name(), Bundle.main.infoDictionary!["CFBundleName"] as! String)
     }
+    
+    func testVersion() {
+        let version = "\(Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String) (\(Bundle.main.infoDictionary!["CFBundleVersion"] as! String))"
+        XCTAssertEqual(viewModel.version(), version)
+    }
 
     func testExample() throws {
         // This is an example of a functional test case.
