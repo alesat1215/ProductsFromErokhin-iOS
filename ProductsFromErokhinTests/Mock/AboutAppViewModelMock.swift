@@ -13,10 +13,9 @@ import RxRelay
 
 class AboutAppViewModelMock: AboutAppViewModel {
     
-    var aboutAppResult = Event<[AboutApp]>.error(AppError.unknown)
+    let aboutAppResult = PublishRelay<Event<[AboutApp]>>()
     func aboutApp() -> Observable<Event<[AboutApp]>> {
-//        aboutAppResult.asObservable()
-        Observable.just(aboutAppResult)
+        aboutAppResult.asObservable()
     }
     
     let nameResult = "name"

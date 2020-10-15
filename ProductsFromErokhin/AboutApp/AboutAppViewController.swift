@@ -40,7 +40,7 @@ class AboutAppViewController: UIViewController {
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
             .flatMapLatest { [weak self] in
-                self?.aboutApp() ?? Observable.empty()
+                self?.aboutApp().take(1) ?? Observable.empty()
             }.map { $0.privacy }
             .subscribe(onNext: { [weak self] in
                 self?.viewModel?.open(link: $0)
@@ -53,7 +53,7 @@ class AboutAppViewController: UIViewController {
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
             .flatMapLatest { [weak self] in
-                self?.aboutApp() ?? Observable.empty()
+                self?.aboutApp().take(1) ?? Observable.empty()
             }.map { $0.appStore }
             .subscribe(onNext: { [weak self] in
                 self?.viewModel?.open(link: $0)
@@ -69,7 +69,7 @@ class AboutAppViewController: UIViewController {
     }
     
     private func aboutApp() -> Observable<AboutApp> {
-        viewModel?.aboutApp().take(1)
+        viewModel?.aboutApp()
             .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in

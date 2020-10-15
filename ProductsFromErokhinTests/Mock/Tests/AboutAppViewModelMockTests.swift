@@ -20,12 +20,12 @@ class AboutAppViewModelMockTests: XCTestCase {
     }
 
     func testAboutApp() {
-//        var result: [AboutApp]?
-//        viewModel.aboutApp().dematerialize()
-//            .subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
-//        XCTAssertNil(result)
-//        viewModel.aboutAppResult.accept(Event.next([]))
-//        XCTAssertNotNil(result)
+        var result: [AboutApp]?
+        viewModel.aboutApp().dematerialize()
+            .subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
+        XCTAssertNil(result)
+        viewModel.aboutAppResult.accept(Event.next([]))
+        XCTAssertNotNil(result)
     }
     
     func testName() {

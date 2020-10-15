@@ -52,8 +52,11 @@ class AboutAppViewControllerTests: XCTestCase {
         // Error. Show message
         XCTAssertFalse(viewModel.isOpen)
         XCTAssertNil(viewModel.linkResult)
-        controller.privacy.sendActions(for: .touchUpInside)
         
+        controller.privacy.sendActions(for: .touchUpInside)
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        viewModel.aboutAppResult.accept(Event.error(AppError.unknown))
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
@@ -80,9 +83,10 @@ class AboutAppViewControllerTests: XCTestCase {
         XCTAssertNil(viewModel.linkResult)
         
         // Empty array of info
-        viewModel.aboutAppResult = Event.next([])
         controller.privacy.sendActions(for: .touchUpInside)
-        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        viewModel.aboutAppResult.accept(Event.next([]))
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
@@ -91,9 +95,10 @@ class AboutAppViewControllerTests: XCTestCase {
         XCTAssertNil(viewModel.linkResult)
         
         // Success
-        viewModel.aboutAppResult = Event.next([aboutApp])
         controller.privacy.sendActions(for: .touchUpInside)
-        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        viewModel.aboutAppResult.accept(Event.next([aboutApp]))
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
@@ -107,8 +112,11 @@ class AboutAppViewControllerTests: XCTestCase {
         // Error. Show message
         XCTAssertFalse(viewModel.isOpen)
         XCTAssertNil(viewModel.linkResult)
-        controller.update.sendActions(for: .touchUpInside)
         
+        controller.update.sendActions(for: .touchUpInside)
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        viewModel.aboutAppResult.accept(Event.error(AppError.unknown))
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
@@ -135,8 +143,12 @@ class AboutAppViewControllerTests: XCTestCase {
         XCTAssertNil(viewModel.linkResult)
         
         // Empty array of info
-        viewModel.aboutAppResult = Event.next([])
         controller.update.sendActions(for: .touchUpInside)
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        viewModel.aboutAppResult.accept(Event.next([]))
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
@@ -146,8 +158,12 @@ class AboutAppViewControllerTests: XCTestCase {
         XCTAssertNil(viewModel.linkResult)
         
         // Success
-        viewModel.aboutAppResult = Event.next([aboutApp])
         controller.update.sendActions(for: .touchUpInside)
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        viewModel.aboutAppResult.accept(Event.next([aboutApp]))
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
@@ -157,17 +173,14 @@ class AboutAppViewControllerTests: XCTestCase {
         XCTAssertNotNil(viewModel.linkResult)
         XCTAssertEqual(viewModel.linkResult, aboutApp.appStore)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    
+    func testSetupUpdateVisibility() {
+        XCTAssertFalse(controller.update.isHidden)
+        viewModel.aboutAppResult.accept(Event.next([aboutApp]))
+        XCTAssertFalse(controller.update.isHidden)
+        aboutApp.version = viewModel.versionResult
+        viewModel.aboutAppResult.accept(Event.next([aboutApp]))
+        XCTAssertTrue(controller.update.isHidden)
     }
 
 }
