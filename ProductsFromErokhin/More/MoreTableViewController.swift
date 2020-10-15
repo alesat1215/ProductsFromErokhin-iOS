@@ -23,12 +23,12 @@ class MoreTableViewController: UITableViewController {
     }
     
     private func setupShareAction() {
-        let aboutApp = viewModel?.aboutApp()
-            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
-            .observeOn(MainScheduler.instance)
-            .flatMapError { [weak self] in
-                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
-            }.compactMap { $0.first } ?? Observable.empty()
+//        let aboutApp = viewModel?.aboutApp()
+//            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
+//            .observeOn(MainScheduler.instance)
+//            .flatMapError { [weak self] in
+//                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
+//            }.compactMap { $0.first } ?? Observable.empty()
         
         tableView.rx.itemSelected
             .asDriver()
@@ -36,8 +36,8 @@ class MoreTableViewController: UITableViewController {
             .asObservable()
             .filter { $0.row == 3 }
             // Get appStore link
-            .flatMapLatest { _ -> Observable<AboutApp> in
-                aboutApp
+            .flatMapLatest { [weak self] _ -> Observable<AboutApp> in
+                self?.aboutApp() ?? Observable.empty()
             }.compactMap { $0.appStore }
             // Share appStore link
             .flatMap { [weak self] in
@@ -56,6 +56,15 @@ class MoreTableViewController: UITableViewController {
             .subscribe(onNext: { _ in
                 print("Share app success")
             }).disposed(by: disposeBag)
+    }
+    
+    private func aboutApp() -> Observable<AboutApp> {
+        viewModel?.aboutApp().take(1)
+            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
+            .observeOn(MainScheduler.instance)
+            .flatMapError { [weak self] in
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
+            }.compactMap { $0.first } ?? Observable.empty()
     }
 
 }

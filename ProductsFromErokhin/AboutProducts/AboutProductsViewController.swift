@@ -34,20 +34,10 @@ class AboutProductsViewController: UIViewController {
                 $0.bind(collectionView: self?.aboutProducts)
             }).disposed(by: disposeBag)
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 
+/** Cell for dataSource without image */
 class AboutProductsCell0: BindableCollectionViewCell<AboutProducts> {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var text: UILabel!
@@ -56,7 +46,7 @@ class AboutProductsCell0: BindableCollectionViewCell<AboutProducts> {
         text.text = model?.text
     }
 }
-
+/** Cell for dataSource with image */
 class AboutProductsCell1: BindableCollectionViewCell<AboutProducts> {
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var text: UILabel!
