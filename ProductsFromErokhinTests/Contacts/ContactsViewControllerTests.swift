@@ -99,7 +99,7 @@ class ContactsViewControllerTests: XCTestCase {
         
         controller.call.sendActions(for: .touchUpInside)
         XCTAssertTrue(viewModel.isCall)
-        XCTAssertEqual(viewModel.phoneResult, contacts.phone)
+        XCTAssertEqual(viewModel.phoneResult, "telprompt://\(contacts.phone!)")
     }
 
 }

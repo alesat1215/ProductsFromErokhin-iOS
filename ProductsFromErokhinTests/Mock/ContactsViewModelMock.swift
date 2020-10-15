@@ -12,6 +12,8 @@ import RxRelay
 @testable import ProductsFromErokhin
 
 class ContactsViewModelMock: ContactsViewModel {
+    var app: UIApplicationMethods?
+    
     let contactsResult = PublishRelay<Event<[SellerContacts]>>()
     func contacts() -> Observable<Event<[SellerContacts]>> {
         contactsResult.asObservable()
@@ -19,8 +21,8 @@ class ContactsViewModelMock: ContactsViewModel {
     
     var phoneResult: String?
     var isCall = false
-    func call(to phone: String?) {
-        phoneResult = phone
+    func open(link: String?) {
+        phoneResult = link
         isCall.toggle()
     }
     

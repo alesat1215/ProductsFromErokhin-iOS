@@ -26,36 +26,36 @@ class ContactsViewModelTests: XCTestCase {
     
     func testCall() {
         // Phone is nil
-        viewModel.call(to: nil)
+        viewModel.open(link: nil)
         XCTAssertNil(app.canOpenURLParamResult)
         XCTAssertFalse(app.isCanOpenURL)
         XCTAssertNil(app.openResult)
         XCTAssertFalse(app.isOpen)
         // Phone is empty
-        viewModel.call(to: "")
+        viewModel.open(link: "")
         XCTAssertNil(app.canOpenURLParamResult)
         XCTAssertFalse(app.isCanOpenURL)
         XCTAssertNil(app.openResult)
         XCTAssertFalse(app.isOpen)
         // Phone not empty, but can't open url
         app.canOpenURLResult = false
-        viewModel.call(to: "test")
+        viewModel.open(link: "test")
         XCTAssertNotNil(app.canOpenURLParamResult)
         XCTAssertTrue(app.isCanOpenURL)
-        XCTAssertEqual(app.canOpenURLParamResult?.absoluteString, "telprompt://test")
+        XCTAssertEqual(app.canOpenURLParamResult?.absoluteString, "test")
         XCTAssertNil(app.openResult)
         XCTAssertFalse(app.isOpen)
         // Phone not empty, open url
         app.canOpenURLResult = true
         app.canOpenURLParamResult = nil
         app.isCanOpenURL = false
-        viewModel.call(to: "test")
+        viewModel.open(link: "test")
         XCTAssertNotNil(app.canOpenURLParamResult)
         XCTAssertTrue(app.isCanOpenURL)
-        XCTAssertEqual(app.canOpenURLParamResult?.absoluteString, "telprompt://test")
+        XCTAssertEqual(app.canOpenURLParamResult?.absoluteString, "test")
         XCTAssertNotNil(app.openResult)
         XCTAssertTrue(app.isOpen)
-        XCTAssertEqual(app.openResult?.absoluteString, "telprompt://test")
+        XCTAssertEqual(app.openResult?.absoluteString, "test")
     }
 
 }

@@ -28,10 +28,10 @@ class ContactsViewModelMockTests: XCTestCase {
         XCTAssertNotNil(result)
     }
     
-    func testCall() {
+    func testOpen() {
         XCTAssertNil(viewModel.phoneResult)
         XCTAssertFalse(viewModel.isCall)
-        viewModel.call(to: "test")
+        viewModel.open(link: "test")
         XCTAssertEqual(viewModel.phoneResult, "test")
         XCTAssertTrue(viewModel.isCall)
     }
