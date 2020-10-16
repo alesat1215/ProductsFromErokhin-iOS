@@ -59,7 +59,7 @@ extension SwinjectStoryboard {
             c.viewModel = r.resolve(MenuViewModel.self)
         }
         defaultContainer.register(MenuViewModel.self) { r in
-            MenuViewModel(
+            MenuViewModelImpl(
                 repository: r.resolve(Repository.self)
             )
         }

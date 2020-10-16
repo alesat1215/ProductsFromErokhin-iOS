@@ -16,7 +16,7 @@ class MenuViewModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         repository = RepositoryMock()
-        viewModel = MenuViewModel(repository: repository)
+        viewModel = MenuViewModelImpl(repository: repository)
     }
     
     func testGroups() {

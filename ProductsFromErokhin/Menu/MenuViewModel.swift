@@ -9,7 +9,12 @@
 import Foundation
 import RxSwift
 
-class MenuViewModel {
+protocol MenuViewModel {
+    func groups() -> Observable<Event<CoreDataSourceCollectionView<Group>>>
+    func products() -> Observable<Event<CoreDataSourceTableView<Product>>>
+}
+
+class MenuViewModelImpl: MenuViewModel {
     private let repository: Repository! // di
     
     init(repository: Repository?) {
