@@ -68,7 +68,7 @@ extension SwinjectStoryboard {
             c.viewModel = r.resolve(CartViewModel.self)
         }
         defaultContainer.register(CartViewModel.self) { r in
-            CartViewModel(
+            CartViewModelImpl(
                 repository: r.resolve(Repository.self),
                 contactStore: r.resolve(CNContactStore.self)
             )

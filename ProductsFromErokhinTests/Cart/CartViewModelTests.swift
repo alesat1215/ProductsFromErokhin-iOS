@@ -78,7 +78,7 @@ class CartViewModelTests: XCTestCase {
         
         repository = RepositoryMock()
         contactStore = CNContactStoreMock()
-        viewModel = CartViewModel(repository: repository, contactStore: contactStore)
+        viewModel = CartViewModelImpl(repository: repository, contactStore: contactStore)
     }
     
     override func tearDownWithError() throws {

@@ -11,7 +11,28 @@ import RxSwift
 import RxRelay
 import Contacts
 
-class CartViewModel {
+protocol CartViewModel {
+    /** DataSource with products */
+    func products() -> Observable<Event<CoreDataSourceTableView<Product>>>
+    /** Sum for order */
+    func totalInCart() -> Observable<Int>
+    /** Message for order */
+    func message() -> Observable<String>
+    /** Count of products in cart */
+    func inCartCount() -> Observable<String?>
+    /** Remove all products from cart */
+    func clearCart() -> Result<Void, Error>
+    /** Warning text for order */
+    func warning() -> Observable<Event<String>>
+    /** Check need the warning for order */
+    func withoutWarning() -> Observable<Bool>
+    /** - Returns: Phone for order */
+    func phoneForOrder() -> Observable<Event<String>>
+    /** Find phone for order in contacts. Add it if needed */
+    func checkContact(phone: String) -> Observable<Void>
+}
+
+class CartViewModelImpl: CartViewModel {
     private let repository: Repository! // di
     private let contactStore: CNContactStore! // di
     
