@@ -2,6 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>instructions</key>
+	<string>[]</string>
+	<key>contacts</key>
+	<string></string>
+	<key>about_products_list</key>
+	<string>[]</string>
+	<key>order_warning</key>
+	<string></string>
+	<key>about_app_ios</key>
+	<string></string>
 	<key>products</key>
 	<string>[]</string>
 	<key>titles</key>
