@@ -67,7 +67,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vX-5L-XQO" userLabel="Products title container">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vX-5L-XQO" userLabel="Products title container" customClass="GradientView" customModule="ProductsFromErokhin" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="228" width="166" height="44.666666666666686"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F84-hf-PDl">
@@ -77,7 +77,6 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="linkColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="F84-hf-PDl" secondAttribute="bottom" constant="8" id="I9p-5V-FxT"/>
                                                     <constraint firstItem="F84-hf-PDl" firstAttribute="top" secondItem="4vX-5L-XQO" secondAttribute="top" constant="8" id="SFP-CN-npH"/>
@@ -88,6 +87,13 @@
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                                        <color key="value" name="Primary"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                                        <color key="value" name="GradientEnd"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isHorizontal" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RhU-gd-FTP" userLabel="Container View Products">
@@ -1400,6 +1406,9 @@
         <image name="second" width="30" height="30"/>
         <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
+        <namedColor name="GradientEnd">
+            <color red="0.97647058823529409" green="0.90196078431372551" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Primary">
             <color red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
