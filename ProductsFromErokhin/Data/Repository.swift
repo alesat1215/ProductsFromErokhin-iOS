@@ -11,8 +11,70 @@ import RxSwift
 import RxCoreData
 import CoreData
 
+protocol Repository {
+    /**
+     Get groups from database & update it if needed
+     - returns: Observable array with groups
+     */
+    func groups(cellId: [String]) -> Observable<Event<CoreDataSourceCollectionView<Group>>>
+    /**
+    Get titles from database & update it if needed
+    - returns: Observable array with products
+    */
+    func titles() -> Observable<Event<[Titles]>>
+    /**
+    Get products from database & update it if needed
+    - returns: Observable dataSource with products for collection view
+    */
+    func products(predicate: NSPredicate?, cellId: [String]) -> Observable<Event<CoreDataSourceCollectionView<Product>>>
+    /**
+    Get products from database & update it if needed
+    - returns: Observable dataSource with products for table view
+    */
+    func products(predicate: NSPredicate?, cellId: String) -> Observable<Event<CoreDataSourceTableView<Product>>>
+    /**
+    Get products from database
+    - returns: Observable array with products
+    */
+    func products(predicate: NSPredicate?) -> Observable<[Product]>
+    /**
+    Get orderWarning from database & update it if needed
+    - returns: Observable array with orderWarning
+    */
+    func orderWarning() -> Observable<Event<[OrderWarning]>>
+    /** Clear ProductInCart entity & save context */
+    func clearCart() -> Result<Void, Error>
+    /**
+    Get sellerContacts from database & update it if needed
+    - returns: Observable array with sellerContacts
+    */
+    func sellerContacts() -> Observable<Event<[SellerContacts]>>
+    /**
+     Get Profile from database
+     - returns: Observable array with Profile
+     */
+    func profile() -> Observable<[Profile]>
+    /** Clear profile entity, add new with params, save & return result */
+    func updateProfile(name: String?, phone: String?, address: String?) -> Result<Void, Error>
+    /**
+    Get instructions from database & update it if needed
+    - returns: Observable array with instructions
+    */
+    func instructions() -> Observable<Event<[Instruction]>>
+    /**
+    Get aboutProducts from database & update it if needed
+    - returns: Observable dataSource with aboutProducts for collection view
+    */
+    func aboutProducts(cellId: [String]) -> Observable<Event<CoreDataSourceCollectionView<AboutProducts>>>
+    /**
+    Get aboutApp from database & update it if needed
+    - returns: Observable array with aboutApp
+    */
+    func aboutApp() -> Observable<Event<[AboutApp]>>
+}
+
 /** Repository for groups & products */
-class AppRepository {
+class RepositoryImpl: Repository {
     private let updater: DatabaseUpdater! // di
     private let context: NSManagedObjectContext!// di
     

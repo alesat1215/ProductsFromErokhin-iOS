@@ -10,9 +10,9 @@ import Foundation
 import RxSwift
 
 class MenuViewModel {
-    private let repository: AppRepository! // di
+    private let repository: Repository! // di
     
-    init(repository: AppRepository?) {
+    init(repository: Repository?) {
         self.repository = repository
     }
     
@@ -21,6 +21,6 @@ class MenuViewModel {
     }
     
     func products() -> Observable<Event<CoreDataSourceTableView<Product>>> {
-        repository.products(cellId: "product")
+        repository.products(predicate: nil, cellId: "product")
     }
 }

@@ -17,10 +17,10 @@ protocol TutorialViewModel: AnyObject {
 
 class TutorialViewModelImpl: TutorialViewModel {
     
-    private let repository: AppRepository! // di
+    private let repository: Repository! // di
     private let userDefaults: UserDefaults! // di
     
-    init(repository: AppRepository?, userDefaults: UserDefaults?) {
+    init(repository: Repository?, userDefaults: UserDefaults?) {
         self.repository = repository
         self.userDefaults = userDefaults
     }

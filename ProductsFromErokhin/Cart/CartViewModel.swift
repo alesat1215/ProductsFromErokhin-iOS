@@ -12,10 +12,10 @@ import RxRelay
 import Contacts
 
 class CartViewModel {
-    private let repository: AppRepository! // di
+    private let repository: Repository! // di
     private let contactStore: CNContactStore! // di
     
-    init(repository: AppRepository?, contactStore: CNContactStore?) {
+    init(repository: Repository?, contactStore: CNContactStore?) {
         self.repository = repository
         self.contactStore = contactStore
     }

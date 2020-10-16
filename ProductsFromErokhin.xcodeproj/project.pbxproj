@@ -29,7 +29,7 @@
 		D7518E202522147600C72B1E /* TableViewMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518E1F2522147600C72B1E /* TableViewMockTests.swift */; };
 		D7518E2B252217CD00C72B1E /* TableViewCellMockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7518E2A252217CD00C72B1E /* TableViewCellMockTests.swift */; };
 		D7877B5E25010F7100244B81 /* ProductsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5D25010F7100244B81 /* ProductsRemote.swift */; };
-		D7877B602501168700244B81 /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5F2501168700244B81 /* AppRepository.swift */; };
+		D7877B602501168700244B81 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B5F2501168700244B81 /* Repository.swift */; };
 		D7877B632501182200244B81 /* DatabaseUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B622501182200244B81 /* DatabaseUpdater.swift */; };
 		D7877B6525028D9200244B81 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B6425028D9200244B81 /* AppError.swift */; };
 		D7877B782504B05D00244B81 /* Ordered.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7877B772504B05D00244B81 /* Ordered.swift */; };
@@ -224,7 +224,7 @@
 		D7518E1F2522147600C72B1E /* TableViewMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewMockTests.swift; sourceTree = "<group>"; };
 		D7518E2A252217CD00C72B1E /* TableViewCellMockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCellMockTests.swift; sourceTree = "<group>"; };
 		D7877B5D25010F7100244B81 /* ProductsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRemote.swift; sourceTree = "<group>"; };
-		D7877B5F2501168700244B81 /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
+		D7877B5F2501168700244B81 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		D7877B622501182200244B81 /* DatabaseUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseUpdater.swift; sourceTree = "<group>"; };
 		D7877B6425028D9200244B81 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		D7877B772504B05D00244B81 /* Ordered.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ordered.swift; sourceTree = "<group>"; };
@@ -446,7 +446,7 @@
 			children = (
 				D7877B8125080A4600244B81 /* Remote */,
 				D7877B722503EBF600244B81 /* Local */,
-				D7877B5F2501168700244B81 /* AppRepository.swift */,
+				D7877B5F2501168700244B81 /* Repository.swift */,
 				D7877B622501182200244B81 /* DatabaseUpdater.swift */,
 			);
 			path = Data;
@@ -1174,7 +1174,7 @@
 				D7D8F5DB2537128F00574F4B /* UIApplication+Extensions.swift in Sources */,
 				D7E293FD25275D1B00EA2845 /* Contacts+Rx.swift in Sources */,
 				D7D8F6132537758100574F4B /* AboutAppViewController.swift in Sources */,
-				D7877B602501168700244B81 /* AppRepository.swift in Sources */,
+				D7877B602501168700244B81 /* Repository.swift in Sources */,
 				D7877B632501182200244B81 /* DatabaseUpdater.swift in Sources */,
 				D79520FB24FFBE7E0094BAFE /* MenuViewController.swift in Sources */,
 				D73C7DBE2501060F007062D9 /* StartViewModel.swift in Sources */,

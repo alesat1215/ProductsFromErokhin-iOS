@@ -18,9 +18,9 @@ protocol AboutAppViewModel: OpenLink {
 
 class AboutAppViewModelImpl: AboutAppViewModel {
     
-    private let repository: AppRepository! // di
+    private let repository: Repository! // di
     
-    init(repository: AppRepository?) {
+    init(repository: Repository?) {
         self.repository = repository
     }
     

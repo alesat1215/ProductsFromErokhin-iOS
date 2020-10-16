@@ -14,9 +14,9 @@ protocol AboutProductsViewModel {
 }
 
 class AboutProductsViewModelImpl: AboutProductsViewModel {
-    private let repository: AppRepository! // di
+    private let repository: Repository! // di
     
-    init(repository: AppRepository?) {
+    init(repository: Repository?) {
         self.repository = repository
     }
     func aboutProducts() -> Observable<Event<CoreDataSourceCollectionView<AboutProducts>>> {

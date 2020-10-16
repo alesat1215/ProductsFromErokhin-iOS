@@ -26,7 +26,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(LoadViewModel.self) { r in
             LoadViewModelImpl(
-                repository: r.resolve(AppRepository.self),
+                repository: r.resolve(Repository.self),
                 anonymousAuth: r.resolve(Auth.self),
                 userDefaults: r.resolve(UserDefaults.self)
             )
@@ -37,7 +37,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(TutorialViewModel.self) { r in
             TutorialViewModelImpl(
-                repository: r.resolve(AppRepository.self),
+                repository: r.resolve(Repository.self),
                 userDefaults: r.resolve(UserDefaults.self)
             )
         }
@@ -51,7 +51,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(StartViewModel.self) { r in
             StartViewModel(
-                repository: r.resolve(AppRepository.self)
+                repository: r.resolve(Repository.self)
             )
         }
         // MARK: - Menu
@@ -60,7 +60,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(MenuViewModel.self) { r in
             MenuViewModel(
-                repository: r.resolve(AppRepository.self)
+                repository: r.resolve(Repository.self)
             )
         }
         // MARK: - Cart
@@ -69,7 +69,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(CartViewModel.self) { r in
             CartViewModel(
-                repository: r.resolve(AppRepository.self),
+                repository: r.resolve(Repository.self),
                 contactStore: r.resolve(CNContactStore.self)
             )
         }.inObjectScope(.weak)
@@ -83,7 +83,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(ProfileViewModel.self) { r in
             ProfileViewModelImpl(
-                repository: r.resolve(AppRepository.self)
+                repository: r.resolve(Repository.self)
             )
         }
         // MARK: - More
@@ -96,7 +96,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(AboutProductsViewModel.self) { r in
             AboutProductsViewModelImpl(
-                repository: r.resolve(AppRepository.self)
+                repository: r.resolve(Repository.self)
             )
         }
         // MARK: - Contacts
@@ -105,7 +105,7 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(ContactsViewModel.self) { r in
             ContactsViewModelImpl(
-                repository: r.resolve(AppRepository.self)
+                repository: r.resolve(Repository.self)
             )
         }
         // MARK: - AboutApp
@@ -114,13 +114,13 @@ extension SwinjectStoryboard {
         }
         defaultContainer.register(AboutAppViewModel.self) { r in
             AboutAppViewModelImpl(
-                repository: r.resolve(AppRepository.self)
+                repository: r.resolve(Repository.self)
             )
         }
         
         // MARK: - Repository
-        defaultContainer.register(AppRepository.self) { r in
-            AppRepository(
+        defaultContainer.register(Repository.self) { r in
+            RepositoryImpl(
                 updater: r.resolve(DatabaseUpdater.self),
                 context: r.resolve(NSManagedObjectContext.self)
             )

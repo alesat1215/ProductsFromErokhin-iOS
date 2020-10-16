@@ -16,11 +16,11 @@ protocol LoadViewModel {
 }
 
 class LoadViewModelImpl<T: AuthMethods>: LoadViewModel {
-    private let repository: AppRepository! // di
+    private let repository: Repository! // di
     private let anonymousAuth: T! // di
     private let userDefaults: UserDefaults! // di
     
-    init(repository: AppRepository?, anonymousAuth: T?, userDefaults: UserDefaults?) {
+    init(repository: Repository?, anonymousAuth: T?, userDefaults: UserDefaults?) {
         self.repository = repository
         self.anonymousAuth = anonymousAuth
         self.userDefaults = userDefaults
