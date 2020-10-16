@@ -50,7 +50,7 @@ extension SwinjectStoryboard {
             c.viewModel = r.resolve(StartViewModel.self)
         }
         defaultContainer.register(StartViewModel.self) { r in
-            StartViewModel(
+            StartViewModelImpl(
                 repository: r.resolve(Repository.self)
             )
         }

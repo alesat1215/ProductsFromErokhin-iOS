@@ -9,7 +9,13 @@
 import Foundation
 import RxSwift
 
-class StartViewModel {
+protocol StartViewModel {
+    func titles() -> Observable<Event<[Titles]>>
+    func products() -> Observable<Event<CoreDataSourceCollectionView<Product>>>
+    func products2() -> Observable<Event<CoreDataSourceCollectionView<Product>>>
+}
+
+class StartViewModelImpl: StartViewModel {
     
     private let repository: Repository! // di
     

@@ -17,7 +17,7 @@ class StartViewModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         repository = RepositoryMock()
-        viewModel = StartViewModel(repository: repository)
+        viewModel = StartViewModelImpl(repository: repository)
     }
     
     func testTitles() {
