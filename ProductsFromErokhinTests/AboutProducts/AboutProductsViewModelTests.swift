@@ -11,11 +11,11 @@ import XCTest
 
 class AboutProductsViewModelTests: XCTestCase {
     
-    private var repository: AppRepositoryMock!
+    private var repository: RepositoryMock!
     private var viewModel: AboutProductsViewModel!
 
     override func setUpWithError() throws {
-        repository = AppRepositoryMock()
+        repository = RepositoryMock()
         viewModel = AboutProductsViewModelImpl(repository: repository)
     }
     

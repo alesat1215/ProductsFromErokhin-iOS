@@ -14,14 +14,14 @@ import FirebaseAuth
 class LoadViewModelTests: XCTestCase {
     
     private var viewModel: LoadViewModelImpl<AuthMock>!
-    private var repository: AppRepositoryMock!
+    private var repository: RepositoryMock!
     private var auth: AuthMock!
     private var userDefaults: UserDefaultsMock!
     private var disposeBag: DisposeBag!
 
     override func setUpWithError() throws {
         disposeBag = DisposeBag()
-        repository = AppRepositoryMock()
+        repository = RepositoryMock()
         auth = AuthMock()
         userDefaults = UserDefaultsMock()
         viewModel = LoadViewModelImpl(repository: repository, anonymousAuth: auth, userDefaults: userDefaults)

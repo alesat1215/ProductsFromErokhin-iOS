@@ -13,10 +13,10 @@ class ProfileViewModelTests: XCTestCase {
     
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var viewModel: ProfileViewModelImpl!
-    private var repository: AppRepositoryMock!
+    private var repository: RepositoryMock!
 
     override func setUpWithError() throws {
-        repository = AppRepositoryMock()
+        repository = RepositoryMock()
         viewModel = ProfileViewModelImpl(repository: repository)
     }
     

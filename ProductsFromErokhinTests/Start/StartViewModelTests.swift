@@ -12,11 +12,11 @@ import RxSwift
 
 class StartViewModelTests: XCTestCase {
     
-    private var repository: AppRepositoryMock!
+    private var repository: RepositoryMock!
     private var viewModel: StartViewModel!
 
     override func setUpWithError() throws {
-        repository = AppRepositoryMock()
+        repository = RepositoryMock()
         viewModel = StartViewModel(repository: repository)
     }
     

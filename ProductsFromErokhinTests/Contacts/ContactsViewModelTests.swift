@@ -10,11 +10,11 @@ import XCTest
 @testable import ProductsFromErokhin
 
 class ContactsViewModelTests: XCTestCase {
-    private var repository: AppRepositoryMock!
+    private var repository: RepositoryMock!
     private var viewModel: ContactsViewModel!
 
     override func setUpWithError() throws {
-        repository = AppRepositoryMock()
+        repository = RepositoryMock()
         viewModel = ContactsViewModelImpl(repository: repository)
     }
     

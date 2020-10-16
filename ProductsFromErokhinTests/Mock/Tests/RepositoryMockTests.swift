@@ -1,5 +1,5 @@
 //
-//  AppRepositoryMockTests.swift
+//  RepositoryMockTests.swift
 //  ProductsFromErokhinTests
 //
 //  Created by Alexander Satunin on 20.09.2020.
@@ -8,9 +8,9 @@
 
 import XCTest
 
-class AppRepositoryMockTests: XCTestCase {
+class RepositoryMockTests: XCTestCase {
     
-    private let repository = AppRepositoryMock()
+    private let repository = RepositoryMock()
     
     func testGroups() {
         let cellId = ["cellId"]

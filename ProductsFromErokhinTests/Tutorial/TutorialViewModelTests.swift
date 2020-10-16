@@ -12,12 +12,12 @@ import XCTest
 class TutorialViewModelTests: XCTestCase {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    private var repository: AppRepositoryMock!
+    private var repository: RepositoryMock!
     private var userDefaults: UserDefaultsMock!
     private var viewModel: TutorialViewModel!
 
     override func setUpWithError() throws {
-        repository = AppRepositoryMock()
+        repository = RepositoryMock()
         userDefaults = UserDefaultsMock()
         viewModel = TutorialViewModelImpl(repository: repository, userDefaults: userDefaults)
     }

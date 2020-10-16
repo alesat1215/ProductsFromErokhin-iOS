@@ -11,11 +11,11 @@ import XCTest
 
 class MenuViewModelTests: XCTestCase {
     
-    private var repository: AppRepositoryMock!
+    private var repository: RepositoryMock!
     private var viewModel: MenuViewModel!
 
     override func setUpWithError() throws {
-        repository = AppRepositoryMock()
+        repository = RepositoryMock()
         viewModel = MenuViewModel(repository: repository)
     }
     

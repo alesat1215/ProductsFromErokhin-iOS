@@ -15,7 +15,7 @@ class CartViewModelTests: XCTestCase {
     
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    private var repository: AppRepositoryMock!
+    private var repository: RepositoryMock!
     private var viewModel: CartViewModel!
     private var contactStore: CNContactStoreMock!
     private var products = [Product]()
@@ -76,7 +76,7 @@ class CartViewModelTests: XCTestCase {
             return profile
         }()
         
-        repository = AppRepositoryMock()
+        repository = RepositoryMock()
         contactStore = CNContactStoreMock()
         viewModel = CartViewModel(repository: repository, contactStore: contactStore)
     }
