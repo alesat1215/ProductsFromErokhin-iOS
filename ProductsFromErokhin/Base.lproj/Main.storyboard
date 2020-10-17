@@ -22,6 +22,9 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="u22-zS-ruI">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="49e-Tb-3d3" kind="relationship" relationship="rootViewController" id="of9-Df-BXJ"/>
                     </connections>
@@ -717,6 +720,12 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" id="49e-Tb-3d3" customClass="TabBarController" customModule="ProductsFromErokhin" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="HFl-DC-Px1">
+                        <nil key="title"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="ut0-6L-uB7">
+                            <rect key="frame" x="164" y="6" width="86" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" image="ic_logo_24pt"/>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="WJY-pc-4Gs">
                             <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Zdk-tR-XN2">
                                 <rect key="frame" x="374.66666666666669" y="11" width="19.333333333333314" height="22"/>
@@ -1003,7 +1012,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fNG-f9-Ozo">
                                                     <rect key="frame" x="224.33333333333334" y="103.33333333333333" width="85.666666666666657" height="31.333333333333329"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agz-Gt-DiK">
+                                                        <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agz-Gt-DiK">
                                                             <rect key="frame" x="0.0" y="0.0" width="32" height="31.333333333333332"/>
                                                             <state key="normal" image="minus.circle.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
@@ -1012,13 +1021,13 @@
                                                                 <action selector="del:" destination="mLH-GH-LyA" eventType="touchUpInside" id="73h-oG-Yih"/>
                                                             </connections>
                                                         </button>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcW-sC-1gw">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcW-sC-1gw">
                                                             <rect key="frame" x="36.999999999999972" y="0.0" width="11.666666666666664" height="31.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDP-VW-dMN">
+                                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDP-VW-dMN">
                                                             <rect key="frame" x="53.666666666666657" y="0.0" width="32" height="31.333333333333332"/>
                                                             <state key="normal" image="plus.circle.fill" catalog="system">
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
@@ -1417,7 +1426,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="qAC-th-L4l"/>
         <segue reference="33c-xM-IQG"/>
-        <segue reference="CQG-Zm-PfX"/>
+        <segue reference="yOs-Pf-RzP"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="labelColor"/>
     <resources>
