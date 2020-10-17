@@ -1262,10 +1262,9 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hlU-y8-xNj">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="ic_logo_24pt" id="hlU-y8-xNj">
                                                     <rect key="frame" x="20" y="9.6666666666666643" width="24" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <imageReference key="image" image="ic_logo_24pt" symbolScale="large"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -1282,7 +1281,7 @@
                             <outlet property="delegate" destination="GEn-y5-nm9" id="7hh-EN-ide"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="More" id="dsa-Wi-9vR"/>
+                    <tabBarItem key="tabBarItem" title="More" image="baseline_more_horiz_black_24pt" id="dsa-Wi-9vR"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mih-wc-14n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1440,6 +1439,7 @@
     </inferredMetricsTieBreakers>
     <color key="tintColor" systemColor="labelColor"/>
     <resources>
+        <image name="baseline_more_horiz_black_24pt" width="24" height="24"/>
         <image name="baseline_restaurant_black_24pt" width="24" height="24"/>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
