@@ -15,10 +15,6 @@ class GradientViewTests: XCTestCase {
     override func setUpWithError() throws {
         view = GradientView()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
     
     func testFirstColor() {
         let layer = view.layer as! CAGradientLayer
@@ -36,20 +32,28 @@ class GradientViewTests: XCTestCase {
         XCTAssertEqual(layer.colors?.last as! CGColor, view.secondColor.cgColor)
     }
     
+    func testIsHorizontal() {
+        let layer = view.layer as! CAGradientLayer
+        XCTAssertNil(layer.colors)
+        XCTAssertEqual(layer.startPoint, CGPoint(x: 0.5, y: 0.0))
+        XCTAssertEqual(layer.endPoint, CGPoint(x: 0.5, y: 1.0))
+        // Horizontal
+        view.isHorizontal = true
+        XCTAssertEqual(layer.colors?.first as! CGColor, view.firstColor.cgColor)
+        XCTAssertEqual(layer.colors?.last as! CGColor, view.secondColor.cgColor)
+        XCTAssertNotEqual(layer.startPoint, CGPoint(x: 0.5, y: 0.0))
+        XCTAssertNotEqual(layer.endPoint, CGPoint(x: 0.5, y: 1.0))
+        // Vertical
+        layer.colors = nil
+        view.isHorizontal = false
+        XCTAssertEqual(layer.colors?.first as! CGColor, view.firstColor.cgColor)
+        XCTAssertEqual(layer.colors?.last as! CGColor, view.secondColor.cgColor)
+        XCTAssertEqual(layer.startPoint, CGPoint(x: 0.5, y: 0.0))
+        XCTAssertEqual(layer.endPoint, CGPoint(x: 0.5, y: 1.0))
+    }
+    
     func testLayerClass() {
         XCTAssertTrue(GradientView.layerClass is CAGradientLayer.Type)
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
     }
 
 }
