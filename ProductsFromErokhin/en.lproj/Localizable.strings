@@ -16,5 +16,8 @@
 "clear" = "Clear";
 "cancel" = "Cancel";
 
+// Cart
+"total" = "Total:";
+
 // Profile
 "profile" = "Profile saved";

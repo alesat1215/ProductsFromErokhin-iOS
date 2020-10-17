@@ -105,19 +105,19 @@
 "lsJ-5R-aWA.title" = "Корзина";
 
 /* Class = "UITextField"; placeholder = "Address"; ObjectID = "pGZ-ku-CMs"; */
-"pGZ-ku-CMs.placeholder" = "Address";
+"pGZ-ku-CMs.placeholder" = "Адрес";
 
 /* Class = "UIButton"; normalTitle = "Update"; ObjectID = "qad-5a-kvc"; */
 "qad-5a-kvc.normalTitle" = "Обновить";
 
 /* Class = "UITextField"; placeholder = "Name"; ObjectID = "sAg-zN-sEJ"; */
-"sAg-zN-sEJ.placeholder" = "Name";
+"sAg-zN-sEJ.placeholder" = "Имя";
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "sRI-D4-hg7"; */
 "sRI-D4-hg7.normalTitle" = "Отправить";
 
 /* Class = "UITextField"; placeholder = "Phone"; ObjectID = "uRD-rT-THR"; */
-"uRD-rT-THR.placeholder" = "Phone";
+"uRD-rT-THR.placeholder" = "Телефон";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "vkj-wM-jDJ"; */
 "vkj-wM-jDJ.text" = "Итого:";
