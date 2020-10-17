@@ -188,9 +188,7 @@
                             <constraint firstItem="YLi-Ae-7lz" firstAttribute="bottom" secondItem="WNf-At-51y" secondAttribute="bottom" id="XcE-Hv-xMo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Start" id="acW-dT-cKf">
-                        <imageReference key="image" image="ic_logo_24pt" symbolScale="large"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="Start" image="ic_logo_24pt" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="_title" destination="Ttu-aQ-jH5" id="i4k-dd-bHb"/>
                         <outlet property="img" destination="44w-gK-Qcu" id="4rV-bn-EMG"/>
@@ -841,7 +839,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8fn-iQ-bu2">
                                                             <rect key="frame" x="154" y="103.33333333333333" width="85.666666666666686" height="31.333333333333329"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-SW-1Bf">
+                                                                <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-SW-1Bf">
                                                                     <rect key="frame" x="0.0" y="0.0" width="32" height="31.333333333333332"/>
                                                                     <state key="normal" image="minus.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
@@ -850,13 +848,13 @@
                                                                         <action selector="del:" destination="0BG-3j-ti1" eventType="touchUpInside" id="XoM-UO-1m6"/>
                                                                     </connections>
                                                                 </button>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8F-k9-pR8">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8F-k9-pR8">
                                                                     <rect key="frame" x="37" y="0.0" width="11.666666666666664" height="31.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djJ-na-YXs">
+                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djJ-na-YXs">
                                                                     <rect key="frame" x="53.666666666666657" y="0.0" width="32" height="31.333333333333332"/>
                                                                     <state key="normal" image="plus.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
@@ -1443,7 +1441,6 @@
         <image name="baseline_restaurant_black_24pt" width="24" height="24"/>
         <image name="cart.fill" catalog="system" width="128" height="102"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
-        <image name="ic_logo_24pt" width="24" height="24"/>
         <image name="ic_logo_24pt" width="24" height="24"/>
         <image name="ic_logo_48pt" width="48" height="48"/>
         <image name="minus.circle.fill" catalog="system" width="128" height="121"/>
