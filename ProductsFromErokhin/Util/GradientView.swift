@@ -27,7 +27,7 @@ class GradientView: UIView {
         }
     }
         
-    func updateView() {
+    private func updateView() {
         guard let layer = layer as? CAGradientLayer else { return }
         layer.colors = [firstColor, secondColor]
             .map { $0.cgColor }

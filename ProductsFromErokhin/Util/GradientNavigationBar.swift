@@ -28,7 +28,22 @@ class GradientNavigationController: UINavigationController {
         }
     }
     
-    func updateView() {
+    /** Set nav bar gradient background image */
+    private func updateView() {
+        // Get gradient layer
+        let _gradient = gradient()
+        // Create image & set it to nav bar background
+        UIGraphicsBeginImageContext(_gradient.frame.size)
+        if let context = UIGraphicsGetCurrentContext() {
+            _gradient.render(in: context)
+            if let gradientImage = UIGraphicsGetImageFromCurrentImageContext()?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch) {
+                navigationBar.setBackgroundImage(gradientImage, for: .default)
+            }
+        }
+        UIGraphicsEndImageContext()
+    }
+    /** - Returns: gradient layer for colors */
+    private func gradient() -> CAGradientLayer {
         let gradient = CAGradientLayer()
         gradient.frame = view.bounds
         gradient.colors = [firstColor, secondColor]
@@ -40,14 +55,7 @@ class GradientNavigationController: UINavigationController {
             gradient.startPoint = CGPoint(x: 0.5, y: 0)
             gradient.endPoint = CGPoint (x: 0.5, y: 1)
          }
-        var gradientImage:UIImage?
-        UIGraphicsBeginImageContext(gradient.frame.size)
-        if let context = UIGraphicsGetCurrentContext() {
-            gradient.render(in: context)
-            gradientImage = UIGraphicsGetImageFromCurrentImageContext()?.resizableImage(withCapInsets: UIEdgeInsets.zero, resizingMode: .stretch)
-        }
-        UIGraphicsEndImageContext()
-        navigationBar.setBackgroundImage(gradientImage, for: .default)
+        return gradient
     }
 
 }
