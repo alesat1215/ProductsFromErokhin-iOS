@@ -162,6 +162,7 @@
 		D7D8F6EC253AFE0900574F4B /* GradientViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6EB253AFE0900574F4B /* GradientViewTests.swift */; };
 		D7D8F6F1253B08CA00574F4B /* GradientNavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6F0253B08CA00574F4B /* GradientNavigationControllerTests.swift */; };
 		D7D8F717253B15FC00574F4B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7D8F719253B15FC00574F4B /* Localizable.strings */; };
+		D7D8F740253B225C00574F4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7D8F73E253B225C00574F4B /* InfoPlist.strings */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -371,6 +372,9 @@
 		D7D8F6FC253B11B400574F4B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		D7D8F718253B15FC00574F4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7D8F71D253B160000574F4B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7D8F73F253B225C00574F4B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D7D8F745253B226800574F4B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D7D8F74F253B4DFC00574F4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -566,6 +570,7 @@
 				D795210224FFBE7F0094BAFE /* Assets.xcassets */,
 				D795210424FFBE7F0094BAFE /* LaunchScreen.storyboard */,
 				D795210724FFBE7F0094BAFE /* Info.plist */,
+				D7D8F73E253B225C00574F4B /* InfoPlist.strings */,
 				D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */,
 				D73C7DB82500FFC3007062D9 /* GoogleService-Info.plist */,
 				D7D8F719253B15FC00574F4B /* Localizable.strings */,
@@ -1042,6 +1047,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D795210624FFBE7F0094BAFE /* LaunchScreen.storyboard in Resources */,
+				D7D8F740253B225C00574F4B /* InfoPlist.strings in Resources */,
 				D7D8F717253B15FC00574F4B /* Localizable.strings in Resources */,
 				D7B4B51E250A5E8200BA07CB /* RemoteConfigDefaults.plist in Resources */,
 				D73C7DB92500FFC3007062D9 /* GoogleService-Info.plist in Resources */,
@@ -1416,6 +1422,16 @@
 				D7D8F71D253B160000574F4B /* ru */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D7D8F73E253B225C00574F4B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7D8F73F253B225C00574F4B /* Base */,
+				D7D8F745253B226800574F4B /* ru */,
+				D7D8F74F253B4DFC00574F4B /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

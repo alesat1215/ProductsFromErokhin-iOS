@@ -138,7 +138,7 @@ class CartViewModelImpl: CartViewModel {
     private func addContact(_ phone: String) throws {
         // Create a new contact
         let newContact = CNMutableContact()
-        newContact.givenName = Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+        newContact.givenName = Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String ?? ""
         newContact.phoneNumbers = [CNLabeledValue(label: nil, value: CNPhoneNumber(stringValue: phone))]
         // Save the contact
         let saveRequest = CNSaveRequest()

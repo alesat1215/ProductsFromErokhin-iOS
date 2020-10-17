@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  ProductsFromErokhin
+
+  Created by Alexander Satunin on 17.10.2020.
+  Copyright © 2020 Alexander Satunin. All rights reserved.
+*/
+
+"CFBundleDisplayName" = "Products from Erokhin";
+"NSContactsUsageDescription" = "Need to save phone number for order";

@@ -114,13 +114,13 @@
 "sAg-zN-sEJ.placeholder" = "Name";
 
 /* Class = "UIButton"; normalTitle = "Send"; ObjectID = "sRI-D4-hg7"; */
-"sRI-D4-hg7.normalTitle" = "Send";
+"sRI-D4-hg7.normalTitle" = "Отправить";
 
 /* Class = "UITextField"; placeholder = "Phone"; ObjectID = "uRD-rT-THR"; */
 "uRD-rT-THR.placeholder" = "Phone";
 
 /* Class = "UILabel"; text = "Total:"; ObjectID = "vkj-wM-jDJ"; */
-"vkj-wM-jDJ.text" = "Total:";
+"vkj-wM-jDJ.text" = "Итого:";
 
 /* Class = "UIButton"; normalTitle = "Privacy policy"; ObjectID = "vsv-eg-74k"; */
 "vsv-eg-74k.normalTitle" = "Конфиденциальность";

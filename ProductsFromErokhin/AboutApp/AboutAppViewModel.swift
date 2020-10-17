@@ -29,7 +29,7 @@ class AboutAppViewModelImpl: AboutAppViewModel {
     }
     
     func name() -> String {
-        Bundle.main.infoDictionary?["CFBundleName"] as? String ?? ""
+        Bundle.main.localizedInfoDictionary?["CFBundleDisplayName"] as? String ?? ""
     }
     
     func version() -> String {
