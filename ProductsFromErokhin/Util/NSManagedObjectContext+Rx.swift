@@ -13,13 +13,13 @@ import RxSwift
 extension Reactive where Base: NSManagedObjectContext {
     /**
     Executes a fetch request and returns as an `Observable` the CoreDataSource object for binding to DataSource protocol for collection view.
+    - parameter cellId: id cell collection for sections
     - parameter fetchRequest: an instance of `NSFetchRequest` to describe the search criteria used to retrieve data from a persistent store
     - parameter sectionNameKeyPath: the key path on the fetched objects used to determine the section they belong to; defaults to `nil`
     - parameter cacheName: the name of the file used to cache section information; defaults to `nil`
     - returns: An `Observable` CoreDataSource that can be bound to a collection view.
     */
     func coreDataSource<T: NSManagedObject>(
-//        cellId: String,
         cellId: [String],
         fetchRequest: NSFetchRequest<T>,
         sectionNameKeyPath: String? = nil,

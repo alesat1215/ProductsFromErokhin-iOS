@@ -68,10 +68,10 @@ class TabBarController: UITabBarController {
     private func clearCartAction() -> Observable<Void> {
         // Show question for clear cart
         rx.alert(
-            title: nil, message: "Are you sure you want to clear cart?",
+            title: nil, message: NSLocalizedString("clearCart", comment: ""),
             actions: [
-                AlertAction(title: "CANCEL", style: .cancel),
-                AlertAction(title: "OK", type: 1, style: .destructive)
+                AlertAction(title: NSLocalizedString("cancel", comment: ""), style: .cancel),
+                AlertAction(title: NSLocalizedString("clear", comment: ""), type: 1, style: .destructive)
             ]
         )
         // For OK action clear cart

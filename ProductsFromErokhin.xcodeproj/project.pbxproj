@@ -161,6 +161,7 @@
 		D7D8F6C6253AEF4100574F4B /* GradientNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6C5253AEF4100574F4B /* GradientNavigationBar.swift */; };
 		D7D8F6EC253AFE0900574F4B /* GradientViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6EB253AFE0900574F4B /* GradientViewTests.swift */; };
 		D7D8F6F1253B08CA00574F4B /* GradientNavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6F0253B08CA00574F4B /* GradientNavigationControllerTests.swift */; };
+		D7D8F717253B15FC00574F4B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7D8F719253B15FC00574F4B /* Localizable.strings */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -368,6 +369,8 @@
 		D7D8F6F0253B08CA00574F4B /* GradientNavigationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientNavigationControllerTests.swift; sourceTree = "<group>"; };
 		D7D8F6F8253B11B300574F4B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		D7D8F6FC253B11B400574F4B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D7D8F718253B15FC00574F4B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7D8F71D253B160000574F4B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -565,6 +568,7 @@
 				D795210724FFBE7F0094BAFE /* Info.plist */,
 				D7B4B51D250A5E8200BA07CB /* RemoteConfigDefaults.plist */,
 				D73C7DB82500FFC3007062D9 /* GoogleService-Info.plist */,
+				D7D8F719253B15FC00574F4B /* Localizable.strings */,
 				D79520FF24FFBE7E0094BAFE /* ProductsFromErokhin.xcdatamodeld */,
 			);
 			path = ProductsFromErokhin;
@@ -1038,6 +1042,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D795210624FFBE7F0094BAFE /* LaunchScreen.storyboard in Resources */,
+				D7D8F717253B15FC00574F4B /* Localizable.strings in Resources */,
 				D7B4B51E250A5E8200BA07CB /* RemoteConfigDefaults.plist in Resources */,
 				D73C7DB92500FFC3007062D9 /* GoogleService-Info.plist in Resources */,
 				D795210324FFBE7F0094BAFE /* Assets.xcassets in Resources */,
@@ -1402,6 +1407,15 @@
 				D7D8F6FC253B11B400574F4B /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D7D8F719253B15FC00574F4B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D7D8F718253B15FC00574F4B /* en */,
+				D7D8F71D253B160000574F4B /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

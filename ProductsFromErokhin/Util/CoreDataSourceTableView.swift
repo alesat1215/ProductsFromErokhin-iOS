@@ -93,7 +93,6 @@ class CoreDataSourceTableView<T: NSFetchRequestResult>: NSObject, UITableViewDat
             }
         case .delete:
             if let indexPath = indexPath, tableView.numberOfRows(inSection: indexPath.section) > 0 {
-//                tableView.deleteRows(at: [indexPath], with: .automatic)
                 tableView.reloadData()
             }
         @unknown default:

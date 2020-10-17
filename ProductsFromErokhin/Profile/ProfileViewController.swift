@@ -113,7 +113,7 @@ extension ProfileViewController {
             print("Profile saved error: \(error.localizedDescription)")
             return self.rx.showMessage(error.localizedDescription)
         default:
-            return self.rx.showMessage("Profile saved", withEvent: true)
+            return self.rx.showMessage(NSLocalizedString("profile", comment: ""), withEvent: true)
         }
     }
 }

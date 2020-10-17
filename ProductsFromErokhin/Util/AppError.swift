@@ -22,6 +22,6 @@ enum AppError: LocalizedError {
 
 extension AppError {
     static let unknown: AppError = .error("unknown")
-    static let context: AppError = .error("Context is nil.")
+    static let context: AppError = .error("context")
     static let group: AppError = .error("Group not found")
 }

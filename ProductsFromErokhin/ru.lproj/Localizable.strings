@@ -1,0 +1,20 @@
+/* 
+  Localizable.strings
+  ProductsFromErokhin
+
+  Created by Alexander Satunin on 17.10.2020.
+  Copyright © 2020 Alexander Satunin. All rights reserved.
+*/
+
+// AppError
+"unknown" = "Неизвестная ошибка";
+"context" = "Context is nil";
+"group" = "Группа не найдена";
+
+// TabBarController
+"clearCart" = "Вы уверены, что хотите очистить корзину?";
+"clear" = "Очистить";
+"cancel" = "Отмена";
+
+// Profile
+"profile" = "Профиль сохранён";

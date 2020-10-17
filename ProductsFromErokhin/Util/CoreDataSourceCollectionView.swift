@@ -16,13 +16,11 @@ class CoreDataSourceCollectionView<T: NSFetchRequestResult>: NSObject, UICollect
     
     private let observer: Observer
     private let frc: NSFetchedResultsController<T>
-//    private let cellId: String
     private let cellId: [String]
     private weak var collectionView: UICollectionView?
     
     init(
         observer: Observer,
-//        cellId: String,
         cellId: [String],
         fetchRequest: NSFetchRequest<T>,
         managedObjectContext: NSManagedObjectContext,
