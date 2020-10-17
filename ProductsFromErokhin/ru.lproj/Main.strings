@@ -1,0 +1,132 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1jG-un-CUD"; */
+"1jG-un-CUD.text" = "Label";
+
+/* Class = "UILabel"; text = "About products"; ObjectID = "2yw-7x-Ofd"; */
+"2yw-7x-Ofd.text" = "О продукции";
+
+/* Class = "UILabel"; text = "Image title"; ObjectID = "4Rx-RM-Qio"; */
+"4Rx-RM-Qio.text" = "Image title";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5WS-1m-IXl"; */
+"5WS-1m-IXl.text" = "Label";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "5mI-iL-nlB"; */
+"5mI-iL-nlB.text" = "Name";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "6tZ-XL-Xhy"; */
+"6tZ-XL-Xhy.text" = "Title";
+
+/* Class = "UILabel"; text = "About app"; ObjectID = "AGL-rm-hWH"; */
+"AGL-rm-hWH.text" = "О приложении";
+
+/* Class = "UILabel"; text = "380 P/Kg"; ObjectID = "Abe-7v-o4a"; */
+"Abe-7v-o4a.text" = "380 P/Kg";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "B8F-k9-pR8"; */
+"B8F-k9-pR8.text" = "5";
+
+/* Class = "UILabel"; text = "Phone"; ObjectID = "CyZ-IZ-KR4"; */
+"CyZ-IZ-KR4.text" = "Phone";
+
+/* Class = "UILabel"; text = "Products title 2"; ObjectID = "DUd-Vn-rCM"; */
+"DUd-Vn-rCM.text" = "Products title 2";
+
+/* Class = "UILabel"; text = "Contacts"; ObjectID = "EE7-BA-d31"; */
+"EE7-BA-d31.text" = "Контакты";
+
+/* Class = "UILabel"; text = "Products title"; ObjectID = "F84-hf-PDl"; */
+"F84-hf-PDl.text" = "Products title";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "GZE-zw-Lda"; */
+"GZE-zw-Lda.normalTitle" = "OK";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Iky-gb-SnE"; */
+"Iky-gb-SnE.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "KOB-pc-zkF"; */
+"KOB-pc-zkF.normalTitle" = "Сохранить";
+
+/* Class = "UILabel"; text = "5"; ObjectID = "KcW-sC-1gw"; */
+"KcW-sC-1gw.text" = "5";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "NwN-ML-4lZ"; */
+"NwN-ML-4lZ.text" = "Label";
+
+/* Class = "UILabel"; text = "Our address:"; ObjectID = "OUJ-cH-C5U"; */
+"OUJ-cH-C5U.text" = "Наш адрес:";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Ttu-aQ-jH5"; */
+"Ttu-aQ-jH5.text" = "Title";
+
+/* Class = "UILabel"; text = "How to order"; ObjectID = "VV0-3u-G6F"; */
+"VV0-3u-G6F.text" = "Как заказать";
+
+/* Class = "UILabel"; text = "Product name"; ObjectID = "VXV-ae-8UD"; */
+"VXV-ae-8UD.text" = "Product name";
+
+/* Class = "UILabel"; text = "Text"; ObjectID = "Xdj-LA-Iga"; */
+"Xdj-LA-Iga.text" = "Text";
+
+/* Class = "UILabel"; text = "Delivery data"; ObjectID = "YK6-1T-Z6s"; */
+"YK6-1T-Z6s.text" = "Данные для доставки";
+
+/* Class = "UITabBarItem"; title = "Start"; ObjectID = "acW-dT-cKf"; */
+"acW-dT-cKf.title" = "Начало";
+
+/* Class = "UITabBarItem"; title = "Menu"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Меню";
+
+/* Class = "UILabel"; text = "Product name"; ObjectID = "csR-xm-uCd"; */
+"csR-xm-uCd.text" = "Product name";
+
+/* Class = "UITabBarItem"; title = "More"; ObjectID = "dsa-Wi-9vR"; */
+"dsa-Wi-9vR.title" = "Ещё";
+
+/* Class = "UILabel"; text = "Version"; ObjectID = "fHT-yh-GDQ"; */
+"fHT-yh-GDQ.text" = "Version";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "gw5-nX-7op"; */
+"gw5-nX-7op.text" = "Label";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "hET-fK-iTe"; */
+"hET-fK-iTe.text" = "Address";
+
+/* Class = "UILabel"; text = "380 P/Kg"; ObjectID = "hd8-rN-5ej"; */
+"hd8-rN-5ej.text" = "380 P/Kg";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "jjJ-iH-gsc"; */
+"jjJ-iH-gsc.text" = "Label";
+
+/* Class = "UILabel"; text = "Our phone:"; ObjectID = "klJ-rE-EAk"; */
+"klJ-rE-EAk.text" = "Наш телефон:";
+
+/* Class = "UITabBarItem"; title = "Cart"; ObjectID = "lsJ-5R-aWA"; */
+"lsJ-5R-aWA.title" = "Корзина";
+
+/* Class = "UITextField"; placeholder = "Address"; ObjectID = "pGZ-ku-CMs"; */
+"pGZ-ku-CMs.placeholder" = "Address";
+
+/* Class = "UIButton"; normalTitle = "Update"; ObjectID = "qad-5a-kvc"; */
+"qad-5a-kvc.normalTitle" = "Обновить";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "sAg-zN-sEJ"; */
+"sAg-zN-sEJ.placeholder" = "Name";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "sRI-D4-hg7"; */
+"sRI-D4-hg7.normalTitle" = "Send";
+
+/* Class = "UITextField"; placeholder = "Phone"; ObjectID = "uRD-rT-THR"; */
+"uRD-rT-THR.placeholder" = "Phone";
+
+/* Class = "UILabel"; text = "Total:"; ObjectID = "vkj-wM-jDJ"; */
+"vkj-wM-jDJ.text" = "Total:";
+
+/* Class = "UIButton"; normalTitle = "Privacy policy"; ObjectID = "vsv-eg-74k"; */
+"vsv-eg-74k.normalTitle" = "Конфиденциальность";
+
+/* Class = "UILabel"; text = "Share"; ObjectID = "wkn-aL-fYa"; */
+"wkn-aL-fYa.text" = "Поделиться";
+
+/* Class = "UITabBarItem"; title = "Profile"; ObjectID = "xHn-tJ-vpY"; */
+"xHn-tJ-vpY.title" = "Профиль";
