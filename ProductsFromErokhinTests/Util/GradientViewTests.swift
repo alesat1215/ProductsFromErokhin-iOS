@@ -20,6 +20,14 @@ class GradientViewTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
+    func testFirstColor() {
+        let layer = view.layer as! CAGradientLayer
+        XCTAssertNil(layer.colors)
+        view.firstColor = UIColor.red
+        XCTAssertEqual(layer.colors?.first as! CGColor, view.firstColor.cgColor)
+        XCTAssertEqual(layer.colors?.last as! CGColor, view.secondColor.cgColor)
+    }
+    
     func testLayerClass() {
         XCTAssertTrue(GradientView.layerClass is CAGradientLayer.Type)
     }
