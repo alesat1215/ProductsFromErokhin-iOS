@@ -167,7 +167,9 @@
                             <constraint firstItem="YLi-Ae-7lz" firstAttribute="bottom" secondItem="WNf-At-51y" secondAttribute="bottom" id="XcE-Hv-xMo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Start" image="ic_logo_24pt" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Start" id="acW-dT-cKf">
+                        <imageReference key="image" image="ic_logo_24pt" symbolScale="large"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="_title" destination="Ttu-aQ-jH5" id="i4k-dd-bHb"/>
                         <outlet property="img" destination="44w-gK-Qcu" id="4rV-bn-EMG"/>
@@ -812,7 +814,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8fn-iQ-bu2">
                                                             <rect key="frame" x="154" y="103.33333333333333" width="85.666666666666686" height="31.333333333333329"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-SW-1Bf">
+                                                                <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-SW-1Bf">
                                                                     <rect key="frame" x="0.0" y="0.0" width="32" height="31.333333333333332"/>
                                                                     <state key="normal" image="minus.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
@@ -821,13 +823,13 @@
                                                                         <action selector="del:" destination="0BG-3j-ti1" eventType="touchUpInside" id="XoM-UO-1m6"/>
                                                                     </connections>
                                                                 </button>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8F-k9-pR8">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8F-k9-pR8">
                                                                     <rect key="frame" x="37" y="0.0" width="11.666666666666664" height="31.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djJ-na-YXs">
+                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djJ-na-YXs">
                                                                     <rect key="frame" x="53.666666666666657" y="0.0" width="32" height="31.333333333333332"/>
                                                                     <state key="normal" image="plus.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
@@ -1219,26 +1221,34 @@
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="Primary"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" textLabel="x1F-F0-c04" imageView="Uj8-im-7yV" style="IBUITableViewCellStyleDefault" id="KTC-iX-Mg7">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="KTC-iX-Mg7">
                                         <rect key="frame" x="0.0" y="202.66667175292969" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KTC-iX-Mg7" id="Emm-rs-LVa">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="About app" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="x1F-F0-c04">
-                                                    <rect key="frame" x="67" y="0.0" width="327" height="43.666667938232422"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Uj8-im-7yV">
-                                                    <rect key="frame" x="20" y="5.6666666666666679" width="32" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <imageReference key="image" image="ic_logo_24pt" symbolScale="large"/>
-                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aB1-it-cMf">
+                                                    <rect key="frame" x="16" y="8" width="390" height="28"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="ic_logo_24pt" translatesAutoresizingMaskIntoConstraints="NO" id="pml-vD-U4b">
+                                                            <rect key="frame" x="0.0" y="0.0" width="32" height="28"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bkR-Rm-aJh">
+                                                            <rect key="frame" x="42" y="2" width="348" height="24"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="aB1-it-cMf" secondAttribute="trailing" constant="8" id="VkQ-SM-cpZ"/>
+                                                <constraint firstItem="aB1-it-cMf" firstAttribute="top" secondItem="Emm-rs-LVa" secondAttribute="top" constant="8" id="aoZ-wJ-K3J"/>
+                                                <constraint firstAttribute="bottom" secondItem="aB1-it-cMf" secondAttribute="bottom" constant="8" id="g43-by-WON"/>
+                                                <constraint firstItem="aB1-it-cMf" firstAttribute="leading" secondItem="Emm-rs-LVa" secondAttribute="leading" constant="16" id="nBt-BF-cPA"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="tintColor" name="Primary"/>
                                         <connections>
