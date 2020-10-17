@@ -159,6 +159,7 @@
 		D7D8F6572538BD5400574F4B /* MoreTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6562538BD5400574F4B /* MoreTableViewControllerTests.swift */; };
 		D7D8F6952539B7B300574F4B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6942539B7B300574F4B /* GradientView.swift */; };
 		D7D8F6C6253AEF4100574F4B /* GradientNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6C5253AEF4100574F4B /* GradientNavigationBar.swift */; };
+		D7D8F6EC253AFE0900574F4B /* GradientViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6EB253AFE0900574F4B /* GradientViewTests.swift */; };
 		D7E2938F2523855100EA2845 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2938E2523855100EA2845 /* TabBarController.swift */; };
 		D7E293952523882E00EA2845 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E293942523882E00EA2845 /* CartViewController.swift */; };
 		D7E2939D2523886300EA2845 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E2939C2523886300EA2845 /* CartViewModel.swift */; };
@@ -362,6 +363,7 @@
 		D7D8F6562538BD5400574F4B /* MoreTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewControllerTests.swift; sourceTree = "<group>"; };
 		D7D8F6942539B7B300574F4B /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		D7D8F6C5253AEF4100574F4B /* GradientNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientNavigationBar.swift; sourceTree = "<group>"; };
+		D7D8F6EB253AFE0900574F4B /* GradientViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewTests.swift; sourceTree = "<group>"; };
 		D7E2938E2523855100EA2845 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		D7E293942523882E00EA2845 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		D7E2939C2523886300EA2845 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 				D7D64A7E253328740010E2F3 /* BindablePageTests.swift */,
 				D7D64A83253329890010E2F3 /* PagesDataSourceTests.swift */,
 				D7D8F62B2538294E00574F4B /* OpenLinkTests.swift */,
+				D7D8F6EB253AFE0900574F4B /* GradientViewTests.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1337,6 +1340,7 @@
 				D7D8F6492538356C00574F4B /* AboutAppViewModelMock.swift in Sources */,
 				D7C0FC1325151426009BC51F /* DatabaseUpdaterTests.swift in Sources */,
 				D7D8F5E52537194F00574F4B /* ContactsViewModelMock.swift in Sources */,
+				D7D8F6EC253AFE0900574F4B /* GradientViewTests.swift in Sources */,
 				D7D8F5EA253719FC00574F4B /* ContactsViewModelMockTests.swift in Sources */,
 				D7E2945E252A113700EA2845 /* CartViewModelTests.swift in Sources */,
 				D7D64A7525331F2A0010E2F3 /* InstructionRemoteTests.swift in Sources */,
