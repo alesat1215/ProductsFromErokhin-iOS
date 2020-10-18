@@ -18,6 +18,7 @@
 
 // Cart
 "total" = "Total:";
+"kg" = "Kg";
 
 // Profile
 "profile" = "Profile saved";

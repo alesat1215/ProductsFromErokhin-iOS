@@ -38,7 +38,7 @@ class ProductTableViewCell: BindableTableViewCell<Product> {
     
     override func bind(model: Product?) {
         name.text = model?.name
-        price.text = "\(model?.price ?? 0) P/Kg"
+        price.text = "\(model?.price ?? 0) ₽/\(NSLocalizedString("kg", comment: ""))"
         let inCartCount = model?.inCart?.count ?? 0
         inCart.text = "\(inCartCount)"
         // Set image
