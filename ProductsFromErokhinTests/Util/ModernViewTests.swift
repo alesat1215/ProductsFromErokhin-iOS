@@ -1,5 +1,5 @@
 //
-//  GradientViewTests.swift
+//  ModernViewTests.swift
 //  ProductsFromErokhinTests
 //
 //  Created by Alexander Satunin on 17.10.2020.
@@ -9,13 +9,14 @@
 import XCTest
 @testable import ProductsFromErokhin
 
-class GradientViewTests: XCTestCase {
+class ModernViewTests: XCTestCase {
     private var view: ModernView!
 
     override func setUpWithError() throws {
         view = ModernView()
     }
     
+    // MARK: - Gradient
     func testFirstColor() {
         let layer = view.layer as! CAGradientLayer
         XCTAssertNil(layer.colors)
@@ -55,5 +56,21 @@ class GradientViewTests: XCTestCase {
     func testLayerClass() {
         XCTAssertTrue(ModernView.layerClass is CAGradientLayer.Type)
     }
-
+    
+    // MARK: - Border
+    func testBorderColor() {
+        view.borderColor = UIColor.red
+        XCTAssertEqual(view.borderColor?.cgColor, view.layer.borderColor)
+    }
+    
+    func testBorderWidth() {
+        view.borderWidth = 100
+        XCTAssertEqual(view.borderWidth, view.layer.borderWidth)
+    }
+    
+    // MARK: - Corner
+    func testCornerRadius() {
+        view.cornerRadius = 100
+        XCTAssertEqual(view.cornerRadius, view.layer.cornerRadius)
+    }
 }

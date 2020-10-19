@@ -159,7 +159,7 @@
 		D7D8F6572538BD5400574F4B /* MoreTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6562538BD5400574F4B /* MoreTableViewControllerTests.swift */; };
 		D7D8F6952539B7B300574F4B /* ModernView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6942539B7B300574F4B /* ModernView.swift */; };
 		D7D8F6C6253AEF4100574F4B /* GradientNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6C5253AEF4100574F4B /* GradientNavigationBar.swift */; };
-		D7D8F6EC253AFE0900574F4B /* GradientViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6EB253AFE0900574F4B /* GradientViewTests.swift */; };
+		D7D8F6EC253AFE0900574F4B /* ModernViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6EB253AFE0900574F4B /* ModernViewTests.swift */; };
 		D7D8F6F1253B08CA00574F4B /* GradientNavigationControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D8F6F0253B08CA00574F4B /* GradientNavigationControllerTests.swift */; };
 		D7D8F717253B15FC00574F4B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7D8F719253B15FC00574F4B /* Localizable.strings */; };
 		D7D8F740253B225C00574F4B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7D8F73E253B225C00574F4B /* InfoPlist.strings */; };
@@ -366,7 +366,7 @@
 		D7D8F6562538BD5400574F4B /* MoreTableViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewControllerTests.swift; sourceTree = "<group>"; };
 		D7D8F6942539B7B300574F4B /* ModernView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernView.swift; sourceTree = "<group>"; };
 		D7D8F6C5253AEF4100574F4B /* GradientNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientNavigationBar.swift; sourceTree = "<group>"; };
-		D7D8F6EB253AFE0900574F4B /* GradientViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientViewTests.swift; sourceTree = "<group>"; };
+		D7D8F6EB253AFE0900574F4B /* ModernViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernViewTests.swift; sourceTree = "<group>"; };
 		D7D8F6F0253B08CA00574F4B /* GradientNavigationControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientNavigationControllerTests.swift; sourceTree = "<group>"; };
 		D7D8F6F8253B11B300574F4B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		D7D8F6FC253B11B400574F4B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -663,7 +663,7 @@
 				D7D64A7E253328740010E2F3 /* BindablePageTests.swift */,
 				D7D64A83253329890010E2F3 /* PagesDataSourceTests.swift */,
 				D7D8F62B2538294E00574F4B /* OpenLinkTests.swift */,
-				D7D8F6EB253AFE0900574F4B /* GradientViewTests.swift */,
+				D7D8F6EB253AFE0900574F4B /* ModernViewTests.swift */,
 				D7D8F6F0253B08CA00574F4B /* GradientNavigationControllerTests.swift */,
 			);
 			path = Util;
@@ -1358,7 +1358,7 @@
 				D7D8F6492538356C00574F4B /* AboutAppViewModelMock.swift in Sources */,
 				D7C0FC1325151426009BC51F /* DatabaseUpdaterTests.swift in Sources */,
 				D7D8F5E52537194F00574F4B /* ContactsViewModelMock.swift in Sources */,
-				D7D8F6EC253AFE0900574F4B /* GradientViewTests.swift in Sources */,
+				D7D8F6EC253AFE0900574F4B /* ModernViewTests.swift in Sources */,
 				D7D8F5EA253719FC00574F4B /* ContactsViewModelMockTests.swift in Sources */,
 				D7E2945E252A113700EA2845 /* CartViewModelTests.swift in Sources */,
 				D7D64A7525331F2A0010E2F3 /* InstructionRemoteTests.swift in Sources */,
