@@ -10,10 +10,10 @@ import XCTest
 @testable import ProductsFromErokhin
 
 class GradientViewTests: XCTestCase {
-    private var view: GradientView!
+    private var view: ModernView!
 
     override func setUpWithError() throws {
-        view = GradientView()
+        view = ModernView()
     }
     
     func testFirstColor() {
@@ -53,7 +53,7 @@ class GradientViewTests: XCTestCase {
     }
     
     func testLayerClass() {
-        XCTAssertTrue(GradientView.layerClass is CAGradientLayer.Type)
+        XCTAssertTrue(ModernView.layerClass is CAGradientLayer.Type)
     }
 
 }

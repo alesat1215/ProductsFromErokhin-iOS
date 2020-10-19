@@ -88,7 +88,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vX-5L-XQO" userLabel="Products title container" customClass="GradientView" customModule="ProductsFromErokhin" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4vX-5L-XQO" userLabel="Products title container" customClass="ModernView" customModule="ProductsFromErokhin" customModuleProvider="target">
                                                 <rect key="frame" x="8" y="228" width="166" height="44.666666666666686"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Products title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="F84-hf-PDl">
@@ -105,9 +105,6 @@
                                                     <constraint firstItem="F84-hf-PDl" firstAttribute="leading" secondItem="4vX-5L-XQO" secondAttribute="leading" constant="8" id="jdN-el-brF"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="10"/>
-                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
                                                         <color key="value" name="Primary"/>
                                                     </userDefinedRuntimeAttribute>
@@ -115,6 +112,9 @@
                                                         <color key="value" name="GradientEnd"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isHorizontal" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RhU-gd-FTP" userLabel="Container View Products">
@@ -368,7 +368,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="124.99999999999997" height="151.33333333333337"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glu-7V-W1B">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glu-7V-W1B" customClass="ModernView" customModule="ProductsFromErokhin" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="8" width="109" height="135.33333333333334"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wdl-PP-Qjd">
@@ -397,8 +397,8 @@
                                                         <constraint firstItem="Wdl-PP-Qjd" firstAttribute="leading" secondItem="glu-7V-W1B" secondAttribute="leading" constant="8" id="ugG-BT-LGY"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="10"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -799,7 +799,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="273.66666666666669" height="158.66666666666669"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="by7-vt-Ww2">
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="by7-vt-Ww2" customClass="ModernView" customModule="ProductsFromErokhin" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="8" width="257.66666666666669" height="142.66666666666666"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csR-xm-uCd">
@@ -867,7 +867,7 @@
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WlK-dv-xbR" userLabel="In Cart Marker" customClass="GradientView" customModule="ProductsFromErokhin" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WlK-dv-xbR" userLabel="In Cart Marker" customClass="ModernView" customModule="ProductsFromErokhin" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="8" height="142.66666666666666"/>
                                                             <color key="backgroundColor" systemColor="linkColor"/>
                                                             <constraints>
@@ -905,14 +905,14 @@
                                                         <constraint firstItem="csR-xm-uCd" firstAttribute="width" secondItem="WaN-cs-86o" secondAttribute="width" multiplier="2.21327" id="y00-0c-dd0"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                             <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                             <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
@@ -980,7 +980,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="158.66667175292969"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaU-9X-ic0">
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LaU-9X-ic0" customClass="ModernView" customModule="ProductsFromErokhin" customModuleProvider="target">
                                             <rect key="frame" x="8" y="8" width="398" height="142.66666666666666"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VXV-ae-8UD">
@@ -1062,7 +1062,7 @@
                                                         </button>
                                                     </subviews>
                                                 </stackView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WW4-eT-bJS" userLabel="In Cart Marker" customClass="GradientView" customModule="ProductsFromErokhin" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WW4-eT-bJS" userLabel="In Cart Marker" customClass="ModernView" customModule="ProductsFromErokhin" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="8" height="142.66666666666666"/>
                                                     <color key="backgroundColor" systemColor="linkColor"/>
                                                     <constraints>

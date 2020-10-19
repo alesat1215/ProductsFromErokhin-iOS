@@ -1,5 +1,5 @@
 //
-//  GradientView.swift
+//  ModernView.swift
 //  ProductsFromErokhin
 //
 //  Created by Alexander Satunin on 16.10.2020.
@@ -9,25 +9,26 @@
 import UIKit
 
 @IBDesignable
-class GradientView: UIView {
+class ModernView: UIView {
+    // MARK: - Gradient
     @IBInspectable var firstColor: UIColor = UIColor.clear {
        didSet {
-           updateView()
+           updateGradient()
         }
      }
      @IBInspectable var secondColor: UIColor = UIColor.clear {
         didSet {
-            updateView()
+            updateGradient()
         }
     }
     
     @IBInspectable var isHorizontal: Bool = true {
         didSet {
-            updateView()
+            updateGradient()
         }
     }
         
-    private func updateView() {
+    private func updateGradient() {
         guard let layer = layer as? CAGradientLayer else { return }
         layer.colors = [firstColor, secondColor]
             .map { $0.cgColor }
@@ -43,4 +44,40 @@ class GradientView: UIView {
     override class var layerClass: AnyClass {
         CAGradientLayer.self
     }
+    
+    // MARK: - Border
+    @IBInspectable var borderColor: UIColor? {
+        set {
+            layer.borderColor = newValue?.cgColor
+        }
+        get {
+            if let color = layer.borderColor {
+                return UIColor(cgColor: color)
+            }
+            else {
+                return nil
+            }
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat {
+        set {
+            layer.borderWidth = newValue
+        }
+        get {
+            return layer.borderWidth
+        }
+    }
+    
+    // MARK: - Corner
+    @IBInspectable var cornerRadius: CGFloat {
+        set {
+            layer.cornerRadius = newValue
+        }
+        get {
+            return layer.cornerRadius
+        }
+    }
+    
+    
 }
