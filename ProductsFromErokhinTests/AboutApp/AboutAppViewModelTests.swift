@@ -23,7 +23,7 @@ class AboutAppViewModelTests: XCTestCase {
     }
     
     func testName() {
-        XCTAssertEqual(viewModel.name(), Bundle.main.infoDictionary!["CFBundleName"] as! String)
+        XCTAssertEqual(viewModel.name(), Bundle.main.localizedInfoDictionary!["CFBundleDisplayName"] as! String)
     }
     
     func testVersion() {

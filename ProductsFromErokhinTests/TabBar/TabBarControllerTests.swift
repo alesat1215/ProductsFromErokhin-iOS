@@ -68,9 +68,9 @@ class TabBarControllerTests: XCTestCase {
         let alertController = controller.presentedViewController as! UIAlertController
         XCTAssertEqual(alertController.actions.count, 2)
         XCTAssertEqual(alertController.actions.first?.style, .cancel)
-        XCTAssertEqual(alertController.actions.first?.title, "CANCEL")
+        XCTAssertEqual(alertController.actions.first?.title, NSLocalizedString("cancel", comment: ""))
         XCTAssertEqual(alertController.actions[1].style, .destructive)
-        XCTAssertEqual(alertController.actions[1].title, "OK")
+        XCTAssertEqual(alertController.actions[1].title, NSLocalizedString("clear", comment: ""))
         XCTAssertFalse(viewModel.isClearCart)
         // Trigger action CANCEL
         let action = alertController.actions.first!
@@ -99,9 +99,9 @@ class TabBarControllerTests: XCTestCase {
         var alertController = controller.presentedViewController as! UIAlertController
         XCTAssertEqual(alertController.actions.count, 2)
         XCTAssertEqual(alertController.actions.first?.style, .cancel)
-        XCTAssertEqual(alertController.actions.first?.title, "CANCEL")
+        XCTAssertEqual(alertController.actions.first?.title, NSLocalizedString("cancel", comment: ""))
         XCTAssertEqual(alertController.actions[1].style, .destructive)
-        XCTAssertEqual(alertController.actions[1].title, "OK")
+        XCTAssertEqual(alertController.actions[1].title, NSLocalizedString("clear", comment: ""))
         XCTAssertFalse(viewModel.isClearCart)
         // Trigger action OK
         var action = alertController.actions[1]
@@ -147,9 +147,9 @@ class TabBarControllerTests: XCTestCase {
         let alertController = controller.presentedViewController as! UIAlertController
         XCTAssertEqual(alertController.actions.count, 2)
         XCTAssertEqual(alertController.actions.first?.style, .cancel)
-        XCTAssertEqual(alertController.actions.first?.title, "CANCEL")
+        XCTAssertEqual(alertController.actions.first?.title, NSLocalizedString("cancel", comment: ""))
         XCTAssertEqual(alertController.actions[1].style, .destructive)
-        XCTAssertEqual(alertController.actions[1].title, "OK")
+        XCTAssertEqual(alertController.actions[1].title, NSLocalizedString("clear", comment: ""))
         XCTAssertFalse(viewModel.isClearCart)
         // Trigger action OK
         let action = alertController.actions[1]
