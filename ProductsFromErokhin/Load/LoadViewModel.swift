@@ -11,7 +11,6 @@ import RxSwift
 
 protocol LoadViewModel {
     func auth() -> Observable<Event<Void>>
-//    func loadComplete() -> Observable<Event<Bool>>
     func loadComplete() -> Observable<Event<Void>>
     func tutorialIsRead() -> Bool
 }

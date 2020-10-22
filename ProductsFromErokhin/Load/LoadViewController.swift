@@ -60,7 +60,6 @@ class LoadViewController: UIViewController {
     /** Load data */
     private func load() -> Observable<Void> {
         viewModel?.loadComplete()
-            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
