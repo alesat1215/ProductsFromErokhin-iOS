@@ -33,6 +33,7 @@ class LoadViewController: UIViewController {
         loadData()
     }
     
+    /** Setup visible for activity & connection error */
     private func setupLoadView() {
         let nwAvailable = viewModel?.nwAvailable()
             .observeOn(MainScheduler.instance).share(replay: 1, scope: .forever)
