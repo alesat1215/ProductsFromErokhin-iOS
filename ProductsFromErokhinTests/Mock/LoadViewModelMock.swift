@@ -12,24 +12,22 @@ import RxSwift
 @testable import ProductsFromErokhin
 
 class LoadViewModelMock: LoadViewModel {
-    func nwAvailable() -> Observable<Bool> {
-        Observable.empty()
-    }
-    
-    func loadComplete() -> Observable<Event<Void>> {
-        Observable.empty()
-    }
     
     init() {}
+    
+    let nwAvailableResult = PublishRelay<Bool>()
+    func nwAvailable() -> Observable<Bool> {
+        nwAvailableResult.asObservable()
+    }
     
     let authResult = PublishRelay<Event<Void>>()
     func auth() -> Observable<Event<Void>> {
         authResult.asObservable()
     }
     
-    let loadCompleteResult = PublishRelay<Event<Bool>>()
+    let loadCompleteResult = PublishRelay<Event<Void>>()
     var isLoadComplete = false
-    func loadComplete() -> Observable<Event<Bool>> {
+    func loadComplete() -> Observable<Event<Void>> {
         isLoadComplete.toggle()
         return loadCompleteResult.asObservable()
     }

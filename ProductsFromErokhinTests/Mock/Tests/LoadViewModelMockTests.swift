@@ -19,6 +19,14 @@ class LoadViewModelMockTests: XCTestCase {
         disposeBag = DisposeBag()
     }
     
+    func testNWAvailable() {
+        var result: Bool?
+        viewModel.nwAvailable().subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
+        XCTAssertNil(result)
+        viewModel.nwAvailableResult.accept(true)
+        XCTAssertTrue(result!)
+    }
+    
     func testAuth() {
         var result: Event<Void>?
         viewModel.auth().subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
@@ -28,12 +36,10 @@ class LoadViewModelMockTests: XCTestCase {
     }
     
     func testLoadComplete() {
-        let complete = Event.next(true)
-        var result: Event<Bool>?
-        
+        var result: Event<Void>?
         viewModel.loadComplete().subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
-        viewModel.loadCompleteResult.accept(Event.next(true))
-        XCTAssertEqual(result?.element, complete.element)
+        viewModel.loadCompleteResult.accept(Event.next(()))
+        XCTAssertNotNil(result)
     }
     
     func testTutorialIsRead() {
