@@ -168,6 +168,33 @@ class LoadViewControllerTests: XCTestCase {
         XCTAssertNotNil(controller.presentedViewController)
         XCTAssertTrue(controller.presentedViewController is UIPageViewController)
         XCTAssertTrue(viewModel.isRead)
+        
+        // Data were loading. Sequense must be completed
+        controller.presentedViewController?.dismiss(animated: true)
+        viewModel.isLoadComplete = false
+        viewModel.isRead = false
+        
+        viewModel.nwAvailableResult.accept(true)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        viewModel.authResult.accept(Event.next(()))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertFalse(viewModel.isLoadComplete)
+        XCTAssertFalse(viewModel.isRead)
+        
+        viewModel.loadCompleteResult.accept(Event.next(()))
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertFalse(viewModel.isRead)
     }
     
     func testLoadDataTutorialIsRead() {
