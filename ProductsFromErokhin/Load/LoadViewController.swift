@@ -35,11 +35,19 @@ class LoadViewController: UIViewController {
     
     /** Setup visible for activity & connection error */
     private func setupLoadView() {
-        let nwAvailable = viewModel?.nwAvailable()
-            .observeOn(MainScheduler.instance).share(replay: 1, scope: .forever)
+        viewModel?.nwAvailable()
+            .observeOn(MainScheduler.instance)
+            .distinctUntilChanged()
+            .do(onNext: { [weak self] in
+                self?.connectionError.isHidden = $0
+                $0 ? self?.activity.startAnimating() : self?.activity.stopAnimating()
+            })
+            .subscribe(onNext: { [weak self] in
+                print("Connection: \($0)")
+                self?.connectionError.isHidden = $0
+                $0 ? self?.activity.startAnimating() : self?.activity.stopAnimating()
+            }).disposed(by: disposeBag)
         
-        nwAvailable?.bind(to: activity.rx.isAnimating).disposed(by: disposeBag)
-        nwAvailable?.bind(to: connectionError.rx.isHidden).disposed(by: disposeBag)
     }
     
     /** Sign in to Firebase, load data & navigate to destination */

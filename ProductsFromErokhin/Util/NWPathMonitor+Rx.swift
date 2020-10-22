@@ -28,6 +28,8 @@ extension Reactive where Base: NWPathMonitorMethods {
                 default:
                     observer.onNext(false)
                 }
+//                observer.onCompleted()
+//                base.cancel()
             }
             base.start(queue: DispatchQueue(label: "Monitor"))
             return Disposables.create { base.cancel() }
