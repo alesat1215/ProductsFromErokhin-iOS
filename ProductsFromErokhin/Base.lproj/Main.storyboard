@@ -619,11 +619,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zmk-og-YKe">
+                                <rect key="frame" x="8" y="408" width="398" height="90.333333333333314"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wifi.slash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="nS9-rh-YXS">
+                                        <rect key="frame" x="166" y="-2.6666666666666714" width="66" height="56.333333333333336"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Internet is not available" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LDU-cg-q9I">
+                                        <rect key="frame" x="69.666666666666686" y="61.666666666666679" width="259" height="28.666666666666664"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="a0q-WT-rIt">
                                 <rect key="frame" x="188.66666666666666" y="429.66666666666669" width="37" height="37"/>
                             </activityIndicatorView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading ..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1y-Ve-EgF">
-                                <rect key="frame" x="8" y="833" width="398" height="21"/>
+                                <rect key="frame" x="8" y="833.66666666666663" width="398" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -632,11 +648,15 @@
                         <viewLayoutGuide key="safeArea" id="nXH-WV-L6l"/>
                         <color key="backgroundColor" name="PrimaryAccent"/>
                         <constraints>
+                            <constraint firstItem="nXH-WV-L6l" firstAttribute="trailing" secondItem="zmk-og-YKe" secondAttribute="trailing" constant="8" id="6tY-Mq-YcX"/>
                             <constraint firstItem="a0q-WT-rIt" firstAttribute="centerX" secondItem="nXH-WV-L6l" secondAttribute="centerX" id="EKh-7r-75N"/>
+                            <constraint firstItem="zmk-og-YKe" firstAttribute="centerX" secondItem="nXH-WV-L6l" secondAttribute="centerX" id="Fl1-9x-pTY"/>
                             <constraint firstItem="a0q-WT-rIt" firstAttribute="centerY" secondItem="bxI-6c-L5o" secondAttribute="centerY" id="Hu5-wj-2h4"/>
                             <constraint firstItem="nXH-WV-L6l" firstAttribute="bottom" secondItem="W1y-Ve-EgF" secondAttribute="bottom" constant="8" id="Lgr-ja-IiR"/>
                             <constraint firstItem="nXH-WV-L6l" firstAttribute="trailing" secondItem="W1y-Ve-EgF" secondAttribute="trailing" constant="8" id="O3M-9s-6JG"/>
+                            <constraint firstItem="zmk-og-YKe" firstAttribute="leading" secondItem="nXH-WV-L6l" secondAttribute="leading" constant="8" id="W74-Kv-qki"/>
                             <constraint firstItem="W1y-Ve-EgF" firstAttribute="leading" secondItem="nXH-WV-L6l" secondAttribute="leading" constant="8" id="woi-OD-dTF"/>
+                            <constraint firstItem="zmk-og-YKe" firstAttribute="centerY" secondItem="nXH-WV-L6l" secondAttribute="centerY" id="y8x-V8-elH"/>
                         </constraints>
                     </view>
                     <connections>
@@ -851,7 +871,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8fn-iQ-bu2">
                                                             <rect key="frame" x="154" y="103.33333333333333" width="85.666666666666686" height="31.333333333333329"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-SW-1Bf">
+                                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICF-SW-1Bf">
                                                                     <rect key="frame" x="0.0" y="0.0" width="32" height="31.333333333333332"/>
                                                                     <state key="normal" image="minus.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
@@ -860,13 +880,13 @@
                                                                         <action selector="del:" destination="0BG-3j-ti1" eventType="touchUpInside" id="XoM-UO-1m6"/>
                                                                     </connections>
                                                                 </button>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8F-k9-pR8">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8F-k9-pR8">
                                                                     <rect key="frame" x="37" y="0.0" width="11.666666666666664" height="31.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djJ-na-YXs">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="djJ-na-YXs">
                                                                     <rect key="frame" x="53.666666666666657" y="0.0" width="32" height="31.333333333333332"/>
                                                                     <state key="normal" image="plus.circle.fill" catalog="system">
                                                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="large"/>
@@ -1475,6 +1495,7 @@
         <image name="questionmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
         <image name="trash.fill" catalog="system" width="121" height="128"/>
+        <image name="wifi.slash" catalog="system" width="128" height="108"/>
         <namedColor name="GradientEnd">
             <color red="0.97647058823529409" green="0.90196078431372551" blue="0.23137254901960785" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
