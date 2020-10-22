@@ -133,3 +133,6 @@
 
 /* Class = "UILabel"; text = "Loading..."; ObjectID = "W1y-Ve-EgF"; */
 "W1y-Ve-EgF.text" = "Загрузка...";
+
+/* Class = "UILabel"; text = "Internet is not available"; ObjectID = "LDU-cg-q9I"; */
+"LDU-cg-q9I.text" = "Интернет недоступен";
