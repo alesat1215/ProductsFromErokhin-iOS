@@ -106,6 +106,20 @@ class RepositoryTests: XCTestCase {
         try AboutProducts.clearEntity(context: context)
     }
     
+    func testLoadData() throws {
+        // Success
+        // Check sequence is empty
+        XCTAssertNil(try repository.loadData().toBlocking().first())
+        updater.isSync = false
+        
+        // Sync error
+        updater.isSync = false
+        updater.error = AppError.unknown
+        let result: Event<Void>? = try repository.loadData().toBlocking().first()
+        XCTAssertEqual(result?.error?.localizedDescription, AppError.unknown.localizedDescription)
+        XCTAssertTrue(updater.isSync)
+    }
+    
     func testGroups() throws {
         // Success
         // Check sequence contains only one element
