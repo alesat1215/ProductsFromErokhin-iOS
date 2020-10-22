@@ -11,6 +11,11 @@
 "context" = "Context is nil";
 "group" = "Group not found";
 
+// Load
+"loadComplete" = "Loading is complete";
+"authentication" = "Authentication...";
+"loadData" = "Loading data...";
+
 // TabBarController
 "clearCart" = "Are you sure you want to clear cart?";
 "clear" = "Clear";

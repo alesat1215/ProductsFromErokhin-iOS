@@ -130,3 +130,6 @@
 
 /* Class = "UITabBarItem"; title = "Profile"; ObjectID = "xHn-tJ-vpY"; */
 "xHn-tJ-vpY.title" = "Профиль";
+
+/* Class = "UILabel"; text = "Loading..."; ObjectID = "W1y-Ve-EgF"; */
+"W1y-Ve-EgF.text" = "Загрузка...";

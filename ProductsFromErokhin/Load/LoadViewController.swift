@@ -18,6 +18,7 @@ class LoadViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var loading: UILabel!
     var viewModel: LoadViewModel? // di
     
     private let disposeBag = DisposeBag()
@@ -29,6 +30,7 @@ class LoadViewController: UIViewController {
     }
     /** Sign in to Firebase, load data & navigate to destination */
     private func loadData() {
+        loading.text = NSLocalizedString("authentication", comment: "")
         // Sign in to Firebase
         auth()
             // Load data
@@ -39,6 +41,7 @@ class LoadViewController: UIViewController {
             // Navigate to destination
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
+                self?.loading.text = NSLocalizedString("loadComplete", comment: "")
                 print("Load complete")
                 if self?.viewModel?.tutorialIsRead() ?? true {
                     print("Navigate to start")
@@ -55,7 +58,9 @@ class LoadViewController: UIViewController {
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
-            } ?? Observable.empty()
+            }.do(onNext: { [weak self] in
+                self?.loading.text = NSLocalizedString("loadData", comment: "")
+            }) ?? Observable.empty()
     }
     /** Load data */
     private func load() -> Observable<Void> {

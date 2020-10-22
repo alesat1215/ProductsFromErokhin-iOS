@@ -11,6 +11,11 @@
 "context" = "Context is nil";
 "group" = "Группа не найдена";
 
+// Load
+"loadComplete" = "Загрузка завершена";
+"authentication" = "Авторизация...";
+"loadData" = "Загрузка данных...";
+
 // TabBarController
 "clearCart" = "Вы уверены, что хотите очистить корзину?";
 "clear" = "Очистить";
