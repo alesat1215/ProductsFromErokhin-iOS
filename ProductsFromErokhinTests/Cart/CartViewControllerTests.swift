@@ -219,7 +219,7 @@ class CartViewControllerTests: XCTestCase {
         XCTAssertTrue(viewModel.isMessage)
         XCTAssertFalse(viewModel.isClearCart)
         
-        activityController.dismiss(animated: false)
+        activityController.dismiss(animated: true)
         activityController.completionWithItemsHandler?(nil, false, nil, AppError.unknown)
         
         expectation(description: "wait 1 second").isInverted = true
