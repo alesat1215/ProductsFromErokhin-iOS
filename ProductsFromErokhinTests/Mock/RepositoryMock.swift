@@ -13,12 +13,14 @@ import RxRelay
 @testable import ProductsFromErokhin
 
 class RepositoryMock: Repository {
-    func loadData() -> Observable<Event<Void>> {
-        Observable.empty()
-    }
-    
     
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    // MARK: - load
+    var loadDataResult: Event<Void>?
+    func loadData() -> Observable<Event<Void>> {
+        loadDataResult == nil ? Observable.empty() : Observable.just(loadDataResult!)
+    }
     
     // MARK: - groups
     let groupsResult = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())

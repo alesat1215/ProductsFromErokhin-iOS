@@ -36,13 +36,17 @@ class LoadViewModelTests: XCTestCase {
         XCTAssertNotNil(result)
     }
     
-//    func testLoadComplete() {
-//        // Complete
-//        XCTAssertTrue(try viewModel.loadComplete().toBlocking().first()?.element ?? false)
-//        // Uncomplete
-//        repository.titlesResult = []
-//        XCTAssertFalse(try viewModel.loadComplete().toBlocking().first()?.element ?? true)
-//    }
+    func testLoadComplete() throws {
+        // Complete
+        var result: Event<Void>? = try viewModel.loadComplete().toBlocking().first()
+        XCTAssertNotNil(result)
+        XCTAssertNil(result?.error)
+        // Uncomplete
+        repository.loadDataResult = Event.error(AppError.unknown)
+        result = try viewModel.loadComplete().toBlocking().first()
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result?.error?.localizedDescription, AppError.unknown.localizedDescription)
+    }
     
     func testTutorialIsRead() {
         XCTAssertEqual(viewModel.tutorialIsRead(), userDefaults.boolResult)
