@@ -12,6 +12,8 @@ import RxCoreData
 import CoreData
 
 protocol Repository {
+    /** Update database from remote if needed */
+    func loadData() -> Observable<Event<Void>>
     /**
      Get groups from database & update it if needed
      - returns: Observable array with groups
@@ -82,6 +84,11 @@ class RepositoryImpl: Repository {
         self.updater = updater
         self.context = context
     }
+    /** Update database from remote if needed */
+    func loadData() -> Observable<Event<Void>> {
+        updater.sync()
+    }
+    
     /**
      Get groups from database & update it if needed
      - returns: Observable array with groups

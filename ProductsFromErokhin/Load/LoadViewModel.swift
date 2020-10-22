@@ -11,7 +11,8 @@ import RxSwift
 
 protocol LoadViewModel {
     func auth() -> Observable<Event<Void>>
-    func loadComplete() -> Observable<Event<Bool>>
+//    func loadComplete() -> Observable<Event<Bool>>
+    func loadComplete() -> Observable<Event<Void>>
     func tutorialIsRead() -> Bool
 }
 
@@ -41,6 +42,20 @@ class LoadViewModelImpl<T: AuthMethods>: LoadViewModel {
                 return Event.completed
             }
         }
+    }
+    
+    func loadComplete() -> Observable<Event<Void>> {
+//        repository.titles().map {
+//            switch $0 {
+//            case .next(let array):
+//                return Event.next(!array.isEmpty)
+//            case .error(let error):
+//                return Event.error(error)
+//            case .completed:
+//                return Event.completed
+//            }
+//        }
+        repository.loadData().ifEmpty(default: Event.next(()))
     }
     
     func tutorialIsRead() -> Bool {
