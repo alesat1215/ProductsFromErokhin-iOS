@@ -30,19 +30,6 @@ class LoadViewModelImpl<T: AuthMethods>: LoadViewModel {
         anonymousAuth.rx.signInAnonymously()
     }
     
-    func loadComplete() -> Observable<Event<Bool>> {
-        repository.titles().map {
-            switch $0 {
-            case .next(let array):
-                return Event.next(!array.isEmpty)
-            case .error(let error):
-                return Event.error(error)
-            case .completed:
-                return Event.completed
-            }
-        }
-    }
-    
     func loadComplete() -> Observable<Event<Void>> {
         repository.loadData().ifEmpty(default: Event.next(()))
     }
