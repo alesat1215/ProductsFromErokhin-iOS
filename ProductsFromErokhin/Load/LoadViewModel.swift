@@ -45,16 +45,6 @@ class LoadViewModelImpl<T: AuthMethods>: LoadViewModel {
     }
     
     func loadComplete() -> Observable<Event<Void>> {
-//        repository.titles().map {
-//            switch $0 {
-//            case .next(let array):
-//                return Event.next(!array.isEmpty)
-//            case .error(let error):
-//                return Event.error(error)
-//            case .completed:
-//                return Event.completed
-//            }
-//        }
         repository.loadData().ifEmpty(default: Event.next(()))
     }
     

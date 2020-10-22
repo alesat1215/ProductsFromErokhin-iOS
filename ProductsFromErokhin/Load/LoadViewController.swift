@@ -59,13 +59,6 @@ class LoadViewController: UIViewController {
     }
     /** Load data */
     private func load() -> Observable<Void> {
-//        viewModel?.loadComplete()
-//            .observeOn(MainScheduler.instance)
-//            .flatMapError { [weak self] in
-//                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
-//            }
-//            .filter { $0 }
-//            .map { _ in return } ?? Observable.empty()
         viewModel?.loadComplete()
             .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
             .observeOn(MainScheduler.instance)

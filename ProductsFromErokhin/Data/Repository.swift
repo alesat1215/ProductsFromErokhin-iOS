@@ -88,7 +88,6 @@ class RepositoryImpl: Repository {
     func loadData() -> Observable<Event<Void>> {
         updater.sync()
     }
-    
     /**
      Get groups from database & update it if needed
      - returns: Observable array with groups
