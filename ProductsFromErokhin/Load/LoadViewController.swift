@@ -24,47 +24,34 @@ class LoadViewController: UIViewController {
     
     var viewModel: LoadViewModel? // di
     
-    private let disposeBag = DisposeBag()
+    private var disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupLoadView()
-        loadData()
+        connect()
     }
     
-    /** Setup visible for activity & connection error */
-    private func setupLoadView() {
+    /** Setup visible for activity & connection error. Load data if connection available */
+    private func connect() {
         viewModel?.nwAvailable()
             .observeOn(MainScheduler.instance)
             .distinctUntilChanged()
+            // Show or hidden connection error
             .do(onNext: { [weak self] in
                 self?.connectionError.isHidden = $0
                 $0 ? self?.activity.startAnimating() : self?.activity.stopAnimating()
             })
-            .subscribe(onNext: { [weak self] in
-                print("Connection: \($0)")
-                self?.connectionError.isHidden = $0
-                $0 ? self?.activity.startAnimating() : self?.activity.stopAnimating()
-            }).disposed(by: disposeBag)
-        
-    }
-    
-    /** Sign in to Firebase, load data & navigate to destination */
-    private func loadData() {
-        loading.text = NSLocalizedString("authentication", comment: "")
-        // Sign in to Firebase
-        auth()
-            // Load data
-            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
-            .flatMapLatest { [weak self] in
-                self?.load() ?? Observable.empty()
+            // Load data if connection is enable
+            .filter { $0 }.flatMap { [weak self] _ in
+                self?.loadData() ?? Observable.empty()
             }
-            // Navigate to destination
+            // Navigate to destination & terminate sequence
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
                 self?.loading.text = NSLocalizedString("loadComplete", comment: "")
                 print("Load complete")
+                // Navigate
                 if self?.viewModel?.tutorialIsRead() ?? true {
                     print("Navigate to start")
                     self?.performSegue(withIdentifier: "toStart", sender: nil)
@@ -72,7 +59,26 @@ class LoadViewController: UIViewController {
                     print("Navigate to tutorial")
                     self?.performSegue(withIdentifier: "toTutorial", sender: nil)
                 }
+                // Terminate sequence
+                self?.disposeBag = DisposeBag()
             }).disposed(by: disposeBag)
+    }
+    
+    /** Sign in to Firebase, load data & navigate to destination */
+    private func loadData() -> Observable<Void> {
+        // Sign in to Firebase
+        Observable.just(NSLocalizedString("authentication", comment: ""))
+            .map { [weak self] in
+                self?.loading.text = $0
+            }
+            .flatMapLatest { [weak self] in
+                self?.auth() ?? Observable.empty()
+            }
+            // Load data
+            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .flatMapLatest { [weak self] in
+                self?.load() ?? Observable.empty()
+            }
     }
     /** Sign in to Firebase */
     private func auth() -> Observable<Void> {
