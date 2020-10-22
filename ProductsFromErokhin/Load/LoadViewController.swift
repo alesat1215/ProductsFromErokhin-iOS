@@ -19,6 +19,9 @@ class LoadViewController: UIViewController {
     }
     
     @IBOutlet weak var loading: UILabel!
+    @IBOutlet weak var activity: UIActivityIndicatorView!
+    @IBOutlet weak var connectionError: UIStackView!
+    
     var viewModel: LoadViewModel? // di
     
     private let disposeBag = DisposeBag()
