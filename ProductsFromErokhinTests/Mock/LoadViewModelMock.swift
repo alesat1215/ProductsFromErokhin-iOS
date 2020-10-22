@@ -21,8 +21,10 @@ class LoadViewModelMock: LoadViewModel {
     }
     
     let authResult = PublishRelay<Event<Void>>()
+    var isAuth = false
     func auth() -> Observable<Event<Void>> {
-        authResult.asObservable()
+        isAuth.toggle()
+        return authResult.asObservable()
     }
     
     let loadCompleteResult = PublishRelay<Event<Void>>()
