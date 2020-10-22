@@ -14,10 +14,11 @@ import Network
 
 class LoadViewModelTests: XCTestCase {
     
-    private var viewModel: LoadViewModelImpl<AuthMock, NWPathMonitor>!
+    private var viewModel: LoadViewModelImpl<AuthMock, NWPathMonitorMock>!
     private var repository: RepositoryMock!
     private var auth: AuthMock!
     private var userDefaults: UserDefaultsMock!
+    private var monitor: NWPathMonitorMock!
     private var disposeBag: DisposeBag!
 
     override func setUpWithError() throws {
@@ -25,7 +26,16 @@ class LoadViewModelTests: XCTestCase {
         repository = RepositoryMock()
         auth = AuthMock()
         userDefaults = UserDefaultsMock()
-        viewModel = LoadViewModelImpl(repository: repository, anonymousAuth: auth, userDefaults: userDefaults, monitor: nil)
+        monitor = NWPathMonitorMock()
+        viewModel = LoadViewModelImpl(repository: repository, anonymousAuth: auth, userDefaults: userDefaults, monitor: monitor)
+    }
+    
+    func testNWAvailable() {
+        var result = false
+        viewModel.nwAvailable().subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
+        XCTAssertFalse(result)
+        monitor.pathUpdateHandler?(NWPathMock(status: NWPath.Status.satisfied))
+        XCTAssertTrue(result)
     }
     
     func testAuth() {

@@ -11,7 +11,7 @@ import Network
 @testable import ProductsFromErokhin
 
 class NWPathMonitorMock: NWPathMonitorMethods {
-    var pathUpdateHandler: ((NWPath) -> Void)?
+    var pathUpdateHandler: ((NWPathMock) -> Void)?
     
     var isStart = false
     func start(queue: DispatchQueue) {
@@ -22,6 +22,8 @@ class NWPathMonitorMock: NWPathMonitorMethods {
     func cancel() {
         isCancel.toggle()
     }
-    
-    
+}
+
+struct NWPathMock: NWPathMethods {
+    var status: NWPath.Status
 }

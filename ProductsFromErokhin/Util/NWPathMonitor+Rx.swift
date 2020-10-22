@@ -11,11 +11,17 @@ import Network
 import RxSwift
 
 extension NWPathMonitor: NWPathMonitorMethods { }
+extension NWPath: NWPathMethods { }
 
 protocol NWPathMonitorMethods: AnyObject, ReactiveCompatible {
-    var pathUpdateHandler: ((NWPath) -> Void)? { get set }
+    associatedtype P: NWPathMethods
+    var pathUpdateHandler: ((P) -> Void)? { get set }
     func start(queue: DispatchQueue)
     func cancel()
+}
+
+protocol NWPathMethods {
+    var status: NWPath.Status { get }
 }
 
 extension Reactive where Base: NWPathMonitorMethods {
