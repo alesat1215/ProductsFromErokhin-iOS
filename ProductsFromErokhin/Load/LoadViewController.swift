@@ -29,8 +29,18 @@ class LoadViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupLoadView()
         loadData()
     }
+    
+    private func setupLoadView() {
+        let nwAvailable = viewModel?.nwAvailable()
+            .observeOn(MainScheduler.instance).share(replay: 1, scope: .forever)
+        
+        nwAvailable?.bind(to: activity.rx.isAnimating).disposed(by: disposeBag)
+        nwAvailable?.bind(to: connectionError.rx.isHidden).disposed(by: disposeBag)
+    }
+    
     /** Sign in to Firebase, load data & navigate to destination */
     private func loadData() {
         loading.text = NSLocalizedString("authentication", comment: "")

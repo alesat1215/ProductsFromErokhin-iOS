@@ -13,6 +13,7 @@ import FirebaseAuth
 import FirebaseStorage
 import CoreData
 import Contacts
+import Network
 
 extension SwinjectStoryboard {
     public static func setup() {
@@ -28,8 +29,12 @@ extension SwinjectStoryboard {
             LoadViewModelImpl(
                 repository: r.resolve(Repository.self),
                 anonymousAuth: r.resolve(Auth.self),
-                userDefaults: r.resolve(UserDefaults.self)
+                userDefaults: r.resolve(UserDefaults.self),
+                monitor: r.resolve(NWPathMonitor.self)
             )
+        }
+        defaultContainer.register(NWPathMonitor.self) { _ in
+            NWPathMonitor()
         }
         // MARK: - Tutorial
         defaultContainer.storyboardInitCompleted(TutorialViewController.self) { r, c in
