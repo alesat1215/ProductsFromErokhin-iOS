@@ -59,8 +59,6 @@ class LoadViewController: UIViewController {
                     print("Navigate to tutorial")
                     self?.performSegue(withIdentifier: "toTutorial", sender: nil)
                 }
-//                // Terminate sequence
-//                self?.disposeBag = DisposeBag()
             }).disposed(by: disposeBag)
     }
     
