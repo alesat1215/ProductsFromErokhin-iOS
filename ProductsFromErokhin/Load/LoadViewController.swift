@@ -24,7 +24,7 @@ class LoadViewController: UIViewController {
     
     var viewModel: LoadViewModel? // di
     
-    private var disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +45,7 @@ class LoadViewController: UIViewController {
             // Load data if connection is enable
             .filter { $0 }.flatMap { [weak self] _ in
                 self?.loadData() ?? Observable.empty()
-            }
+            }.take(1)
             // Navigate to destination & terminate sequence
             .observeOn(MainScheduler.instance)
             .subscribe(onNext: { [weak self] in
@@ -59,8 +59,8 @@ class LoadViewController: UIViewController {
                     print("Navigate to tutorial")
                     self?.performSegue(withIdentifier: "toTutorial", sender: nil)
                 }
-                // Terminate sequence
-                self?.disposeBag = DisposeBag()
+//                // Terminate sequence
+//                self?.disposeBag = DisposeBag()
             }).disposed(by: disposeBag)
     }
     
