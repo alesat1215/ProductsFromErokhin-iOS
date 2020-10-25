@@ -47,7 +47,7 @@ class ProductCollectionViewCell: BindableCollectionViewCell<Product> {
         // Set visible of elements
         let hidden = inCartCount == 0 ? true : false
         UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.inCartMarker.isHidden = hidden
+            self?.inCartMarker.alpha = hidden ? 0 : 1
             self?._del.isHidden = hidden
             self?.inCart.isHidden = hidden
         }
