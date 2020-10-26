@@ -46,7 +46,7 @@ class ProductCollectionViewCell: BindableCollectionViewCell<Product> {
         img.sd_setImage(with: storageReference(path: model?.img ?? ""))
         // Set visible of elements
         let hidden = inCartCount == 0 ? true : false
-        UIView.animate(withDuration: 0.3) { [weak self] in
+        UIView.animate(withDuration: 0.4) { [weak self] in
             self?.inCartMarker.alpha = hidden ? 0 : 1
             self?._del.isHidden = hidden
             self?.inCart.isHidden = hidden
