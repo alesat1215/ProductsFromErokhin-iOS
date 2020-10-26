@@ -16,9 +16,14 @@ class ProductCollectionViewCell: BindableCollectionViewCell<Product> {
     @IBOutlet weak var inCartMarker: UIView!
     @IBOutlet weak var _del: UIButton!
     @IBOutlet weak var img: UIImageView!
+    /** Enable animation only for add/del from button. Not for every bind */
+    private var withAnimation = false
     
     /** Add product to cart */
     @IBAction func add(_ sender: UIButton) {
+        // Enable animation
+        withAnimation = true
+        // Add product to cart
         switch model?.addToCart() {
         case .failure(let error):
             print(error.localizedDescription)
@@ -28,6 +33,9 @@ class ProductCollectionViewCell: BindableCollectionViewCell<Product> {
     }
     /** Del product from cart */
     @IBAction func del(_ sender: UIButton) {
+        // Enable animation
+        withAnimation = true
+        // Del product from cart
         switch model?.delFromCart() {
         case .failure(let error):
             print(error.localizedDescription)
@@ -45,12 +53,22 @@ class ProductCollectionViewCell: BindableCollectionViewCell<Product> {
         // Set image
         img.sd_setImage(with: storageReference(path: model?.img ?? ""))
         // Set visible of elements
-        let hidden = inCartCount == 0 ? true : false
-        UIView.animate(withDuration: 0.4) { [weak self] in
-            self?.inCartMarker.alpha = hidden ? 0 : 1
-            self?._del.isHidden = hidden
-            self?.inCart.isHidden = hidden
+        let hidden = inCartCount == 0
+        if withAnimation {
+            UIView.animate(withDuration: 0.4) { [weak self] in
+                self?.setupIsHidden(hidden: hidden)
+            }
+        } else {
+            setupIsHidden(hidden: hidden)
         }
+        // Disable animation
+        withAnimation = false
         super.bind(model: model)
+    }
+    /** Setup visibility for inCartMarker, del, inCart  */
+    private func setupIsHidden(hidden: Bool) {
+        inCartMarker.alpha = hidden ? 0 : 1
+        _del.isHidden = hidden
+        inCart.isHidden = hidden
     }
 }
