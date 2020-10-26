@@ -85,7 +85,7 @@ class ProductCollectionViewCellTests: XCTestCase {
         XCTAssertTrue(cell.price.text!.contains(String(product.price)))
         XCTAssertEqual(cell.model, product)
         XCTAssertEqual(cell.inCart.text, String(product.inCart?.count ?? 0))
-        XCTAssertTrue(cell.inCartMarker.isHidden)
+        XCTAssertEqual(cell.inCartMarker.alpha, 0)
         XCTAssertTrue(cell._del.isHidden)
         XCTAssertTrue(cell.inCart.isHidden)
         // inCart != 0
@@ -95,7 +95,7 @@ class ProductCollectionViewCellTests: XCTestCase {
         XCTAssertTrue(cell.price.text!.contains(String(product.price)))
         XCTAssertEqual(cell.model, product)
         XCTAssertEqual(cell.inCart.text, String(product.inCart?.count ?? 0))
-        XCTAssertFalse(cell.inCartMarker.isHidden)
+        XCTAssertEqual(cell.inCartMarker.alpha, 1)
         XCTAssertFalse(cell._del.isHidden)
         XCTAssertFalse(cell.inCart.isHidden)
     }
