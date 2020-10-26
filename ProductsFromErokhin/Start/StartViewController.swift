@@ -14,6 +14,7 @@ class StartViewController: UIViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var _title: UILabel!
+    @IBOutlet weak var productsTitleContainer: ModernView!
     @IBOutlet weak var img: UIImageView!
     @IBOutlet weak var imgTitle: UILabel!
     @IBOutlet weak var productsTitle: UILabel!
@@ -33,8 +34,39 @@ class StartViewController: UIViewController {
         // Bind data to views
         bindTitles()
         bindProducts()
+        setupAnimation()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        startAnimation()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        stopAnimation()
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    // Set otlets for products
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Set products outlet
+        if segue.identifier == productsSegueId {
+            products = segue.destination.view.subviews[0] as? UICollectionView
+        }
+        // Set products2 outlet
+        if segue.identifier == productsSegueId2 {
+            products2 = segue.destination.view.subviews[0] as? UICollectionView
+        }
+    }
+    
+}
+
+// MARK: - Bind
+extension StartViewController {
     /** Bind first result from request to titles */
     private func bindTitles() {
         viewModel?.titles()
@@ -77,17 +109,28 @@ class StartViewController: UIViewController {
                     $0.bind(collectionView: self?.products2)
                 }).disposed(by: disposeBag)
     }
-    
-    // Set otlets for products
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Set products outlet
-        if segue.identifier == productsSegueId {
-            products = segue.destination.view.subviews[0] as? UICollectionView
-        }
-        // Set products2 outlet
-        if segue.identifier == productsSegueId2 {
-            products2 = segue.destination.view.subviews[0] as? UICollectionView
-        }
+}
+
+// MARK: - Animation
+extension StartViewController {
+    /** Add/del animation when app foreground/background */
+    func setupAnimation() {
+        NotificationCenter.default.addObserver(self, selector: #selector(startAnimation), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(stopAnimation), name: UIApplication.didEnterBackgroundNotification, object: nil)
     }
-    
+    /** Add animation */
+    @objc private func startAnimation() {
+        guard let layer = productsTitleContainer.layer as? CAGradientLayer else { return }
+        let animation = CABasicAnimation(keyPath: #keyPath(CAGradientLayer.colors))
+        animation.fromValue = layer.colors
+        animation.toValue = [layer.colors?.last, layer.colors?.last]
+        animation.duration = 2
+        animation.repeatCount = Float.greatestFiniteMagnitude
+        animation.autoreverses = true
+        layer.add(animation, forKey: nil)
+    }
+    /** Del animation */
+    @objc private func stopAnimation() {
+        view.layer.removeAllAnimations()
+    }
 }
