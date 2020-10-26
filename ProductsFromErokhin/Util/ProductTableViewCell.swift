@@ -45,9 +45,14 @@ class ProductTableViewCell: BindableTableViewCell<Product> {
         img.sd_setImage(with: storageReference(path: model?.img ?? ""))
         // Set visible of elements
         let hidden = inCartCount == 0 ? true : false
-        inCartMarker.isHidden = hidden
-        _del.isHidden = hidden
-        inCart.isHidden = hidden
+//        inCartMarker.isHidden = hidden
+//        _del.isHidden = hidden
+//        inCart.isHidden = hidden
+        UIView.animate(withDuration: 0.4) { [weak self] in
+            self?.inCartMarker.alpha = hidden ? 0 : 1
+            self?._del.isHidden = hidden
+            self?.inCart.isHidden = hidden
+        }
         super.bind(model: model)
     }
     
