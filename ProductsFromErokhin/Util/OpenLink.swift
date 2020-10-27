@@ -19,7 +19,7 @@ extension OpenLink {
         UIApplication.shared
     }
     func open(link: String?) {
-        if let link = link, !link.isEmpty,
+        if let link = link?.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed), !link.isEmpty,
            let url = URL(string: link),
            let app = app,
            app.canOpenURL(url)
