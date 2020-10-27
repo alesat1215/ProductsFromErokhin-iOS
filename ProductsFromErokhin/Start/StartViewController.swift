@@ -131,6 +131,6 @@ extension StartViewController {
     }
     /** Del animation */
     @objc private func stopAnimation() {
-        view.layer.removeAllAnimations()
+        productsTitleContainer.layer.removeAllAnimations()
     }
 }
