@@ -54,7 +54,7 @@ class ProductTableViewCell: BindableTableViewCell<Product> {
         // Set visible of elements
         let hidden = inCartCount == 0
         if withAnimation {
-            layer.removeAllAnimations()
+            delAnimation()
             UIView.animate(withDuration: 0.4) { [weak self] in
                 self?.setupIsHidden(hidden: hidden)
             }
@@ -70,6 +70,12 @@ class ProductTableViewCell: BindableTableViewCell<Product> {
         inCartMarker.alpha = hidden ? 0 : 1
         _del.isHidden = hidden
         inCart.isHidden = hidden
+    }
+    
+    private func delAnimation() {
+        inCartMarker.layer.removeAllAnimations()
+        _del.layer.removeAllAnimations()
+        inCart.layer.removeAllAnimations()
     }
     
 }
