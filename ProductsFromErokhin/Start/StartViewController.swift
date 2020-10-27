@@ -127,7 +127,7 @@ extension StartViewController {
         animation.duration = 2
         animation.repeatCount = Float.greatestFiniteMagnitude
         animation.autoreverses = true
-        layer.add(animation, forKey: nil)
+        layer.add(animation, forKey: "productsTitleContainer")
     }
     /** Del animation */
     @objc private func stopAnimation() {

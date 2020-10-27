@@ -231,5 +231,19 @@ class StartViewControllerTests: XCTestCase {
         controller.prepare(for: segue, sender: nil)
         XCTAssertEqual(controller.products2, products)
     }
+    
+    func testAnimation() {
+        // Appear/Disappear
+        XCTAssertNil(controller.productsTitleContainer.layer.animation(forKey: "productsTitleContainer"))
+        controller.viewWillAppear(true)
+        XCTAssertNotNil(controller.productsTitleContainer.layer.animation(forKey: "productsTitleContainer"))
+        controller.viewWillDisappear(true)
+        XCTAssertNil(controller.productsTitleContainer.layer.animation(forKey: "productsTitleContainer"))
+        // Foreground/Background
+        NotificationCenter.default.post(name: UIApplication.willEnterForegroundNotification, object: nil)
+        XCTAssertNotNil(controller.productsTitleContainer.layer.animation(forKey: "productsTitleContainer"))
+        NotificationCenter.default.post(name: UIApplication.didEnterBackgroundNotification, object: nil)
+        XCTAssertNil(controller.productsTitleContainer.layer.animation(forKey: "productsTitleContainer"))
+    }
 
 }
