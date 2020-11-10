@@ -16,32 +16,11 @@ class StartViewControllerTests: XCTestCase {
     private var viewModel: StartViewModelMock!
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var navigationController: UINavigationController!
-    // Outlets
-    private var _title: UILabel!
-    private var img: UIImageView!
-    private var imgTitle: UILabel!
-    private var productsTitle: UILabel!
-    private var productsTitle2: UILabel!
-    private var products: UICollectionView!
-    private var products2: UICollectionView!
 
     override func setUpWithError() throws {
+        viewModel = StartViewModelMock()
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "StartViewController")
-        
-        // Set views
-        _title = UILabel()
-        img = UIImageView()
-        imgTitle = UILabel()
-        productsTitle = UILabel()
-        productsTitle2 = UILabel()
-        products = CollectionViewMock()
-        products2 = CollectionViewMock()
-        // Set outlets
-        controller._title = _title
-        controller.img = img
-        controller.imgTitle = imgTitle
-        controller.productsTitle = productsTitle
-        controller.productsTitle2 = productsTitle2
+        controller.viewModel = viewModel
         
         navigationController = UINavigationController()
         navigationController.viewControllers = [controller]
@@ -52,14 +31,6 @@ class StartViewControllerTests: XCTestCase {
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
-        
-        // Set viewModel & products
-        viewModel = StartViewModelMock()
-        controller.viewModel = viewModel
-        controller.products = products
-        controller.products2 = products2
-        
-        controller.viewDidLoad()
     }
     
     func testBindTitles() {
@@ -123,6 +94,8 @@ class StartViewControllerTests: XCTestCase {
     }
     
     func testBindProducts() {
+        let products = CollectionViewMock()
+        controller.products = products
         // Error. Show message
         XCTAssertNil(controller.presentedViewController)
         XCTAssertNil(controller.products.dataSource)
@@ -169,6 +142,8 @@ class StartViewControllerTests: XCTestCase {
     }
     
     func testBindProducts2() {
+        let products2 = CollectionViewMock()
+        controller.products2 = products2
         // Error. Show message
         XCTAssertNil(controller.presentedViewController)
         XCTAssertNil(controller.products2.dataSource)
@@ -215,21 +190,8 @@ class StartViewControllerTests: XCTestCase {
     }
     
     func testPrepare() {
-        controller.products = nil
-        controller.products2 = nil
-        
-        let destination = UIViewController()
-        destination.view.addSubview(products)
-        // products
-        var segue = UIStoryboardSegue(identifier: "productsSegueId", source: UIViewController(), destination: destination)
-        XCTAssertNil(controller.products)
-        controller.prepare(for: segue, sender: nil)
-        XCTAssertEqual(controller.products, products)
-        // products2
-        segue = UIStoryboardSegue(identifier: "productsSegueId2", source: UIViewController(), destination: destination)
-        XCTAssertNil(controller.products2)
-        controller.prepare(for: segue, sender: nil)
-        XCTAssertEqual(controller.products2, products)
+        XCTAssertNotNil(controller.products)
+        XCTAssertNotNil(controller.products2)
     }
     
     func testAnimation() {

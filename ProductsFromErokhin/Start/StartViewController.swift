@@ -55,11 +55,11 @@ class StartViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Set products outlet
         if segue.identifier == productsSegueId {
-            products = segue.destination.view.subviews[0] as? UICollectionView
+            products = segue.destination.view.subviews.first as? UICollectionView
         }
         // Set products2 outlet
         if segue.identifier == productsSegueId2 {
-            products2 = segue.destination.view.subviews[0] as? UICollectionView
+            products2 = segue.destination.view.subviews.first as? UICollectionView
         }
     }
     
