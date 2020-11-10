@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import RxSwift
 import IQKeyboardManagerSwift
 @testable import ProductsFromErokhin
 
@@ -104,6 +105,7 @@ class ProfileViewControllerTests: XCTestCase {
         XCTAssertNil(viewModel.updateProfileParamsResult)
         
         controller.save.sendActions(for: .touchUpInside)
+        viewModel.updateProfileResult.accept(Event.error(AppError.unknown))
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
@@ -133,9 +135,9 @@ class ProfileViewControllerTests: XCTestCase {
         // Success. Show message
         viewModel.isUpdateProfile = false
         viewModel.updateProfileParamsResult = nil
-        viewModel.updateProfileResult = .success(())
         
         controller.save.sendActions(for: .touchUpInside)
+        viewModel.updateProfileResult.accept(Event.next(()))
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)

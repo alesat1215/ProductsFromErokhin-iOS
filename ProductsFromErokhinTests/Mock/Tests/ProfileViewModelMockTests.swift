@@ -36,7 +36,7 @@ class ProfileViewModelMockTests: XCTestCase {
     func testUpdateProfile() {
         XCTAssertNil(viewModel.updateProfileParamsResult)
         XCTAssertFalse(viewModel.isUpdateProfile)
-        XCTAssertThrowsError(try viewModel.updateProfile(name: "name", phone: "phone", address: "address").get())
+        XCTAssertThrowsError(try viewModel.updateProfile(name: "name", phone: "phone", address: "address").toBlocking().first())
         XCTAssertNotNil(viewModel.updateProfileParamsResult)
         XCTAssertEqual(viewModel.updateProfileParamsResult?.name, "name")
         XCTAssertEqual(viewModel.updateProfileParamsResult?.phone, "phone")

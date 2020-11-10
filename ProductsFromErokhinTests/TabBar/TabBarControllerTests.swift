@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import RxSwift
 @testable import ProductsFromErokhin
 
 class TabBarControllerTests: XCTestCase {
@@ -88,9 +89,10 @@ class TabBarControllerTests: XCTestCase {
     
     func testSetupClearCartActionOKButError() {
         // Tap clearCart than tap OK button
-        viewModel.clearCartResult = .failure(AppError.unknown)
+//        viewModel.clearCartResult = .failure(AppError.unknown)
         XCTAssertNil(controller.presentedViewController)
         controller.clearCart.sendActions(for: .touchUpInside)
+        viewModel.clearCartResult.accept(Event.error(AppError.unknown))
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)

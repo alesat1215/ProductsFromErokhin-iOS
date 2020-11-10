@@ -14,21 +14,21 @@ import CoreData
 
 class DatabaseUpdaterTests: XCTestCase {
     
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private let container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     private let disposeBag = DisposeBag()
     
     // MARK: - Database
     func testSync() throws {
         let remoteConfig = RemoteConfigMock()
         let fetchLimiter = FetchLimiter(serialQueue: DispatchQueue(label: "test"))
-        let databaseUpdater = DatabaseUpdaterImpl(remoteConfig: remoteConfig, decoder: JSONDecoderMock(), context: context, fetchLimiter: fetchLimiter)
+        let databaseUpdater = DatabaseUpdaterImpl(remoteConfig: remoteConfig, decoder: JSONDecoderMock(), container: container, fetchLimiter: fetchLimiter)
         
         // Not update. Fetch in process
         fetchLimiter.fetchInProcess = true
         XCTAssertFalse(remoteConfig.isFetchAndActivate)
         XCTAssertFalse(remoteConfig.isSubscript)
         
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: container.viewContext)
             .isInverted = true
     
         var sync: Observable<Event<Void>> = databaseUpdater.sync()
@@ -42,7 +42,7 @@ class DatabaseUpdaterTests: XCTestCase {
         // Not update. successUsingPreFetchedData
         fetchLimiter.fetchInProcess = false
         
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: container.viewContext)
             .isInverted = true
         
         sync = databaseUpdater.sync()
@@ -61,7 +61,7 @@ class DatabaseUpdaterTests: XCTestCase {
         fetchLimiter.fetchInProcess = false
         remoteConfig.isFetchAndActivate = false
         
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: container.viewContext)
             .isInverted = true
         sync = databaseUpdater.sync()
         sync.subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
@@ -80,7 +80,7 @@ class DatabaseUpdaterTests: XCTestCase {
         remoteConfig.isFetchAndActivate = false
         result = nil
         
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: container.viewContext)
         
         sync = databaseUpdater.sync()
         sync.subscribe(onNext: { result = $0 }).disposed(by: disposeBag)

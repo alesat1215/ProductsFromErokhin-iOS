@@ -14,7 +14,7 @@ import CoreData
 class RepositoryTests: XCTestCase {
     
     private var updater: DatabaseUpdaterMock!
-    private var context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var container = (UIApplication.shared.delegate as! AppDelegate).persistentContainer
     private var repository: Repository!
     private var products = [Product]()
     private var titles = [Titles]()
@@ -30,80 +30,80 @@ class RepositoryTests: XCTestCase {
     override func setUpWithError() throws {
         updater = DatabaseUpdaterMock()
         products = ["product", "product1", "product2"].enumerated().map {
-            let product = Product(context: context)
+            let product = Product(context: container.viewContext)
             product.order = Int16($0.offset)
             product.name = $0.element
             return product
         }
         titles = ["title"].map {
-            let titles = Titles(context: context)
+            let titles = Titles(context: container.viewContext)
             titles.title = $0
             return titles
         }
         groups = ["group", "group1", "group2"].enumerated().map {
-            let group = Group(context: context)
+            let group = Group(context: container.viewContext)
             group.order = Int16($0.offset)
             group.name = $0.element
             return group
         }
         orderWarnings = ["warning"].enumerated().map {
-            let orderWarning = OrderWarning(context: context)
+            let orderWarning = OrderWarning(context: container.viewContext)
             orderWarning.order = Int16($0.offset)
             orderWarning.text = $0.element
             return orderWarning
         }
         productsInCart = ["product", "product1", "product2"].enumerated().map {
-            let productInCart = ProductInCart(context: context)
+            let productInCart = ProductInCart(context: container.viewContext)
             productInCart.name = $0.element
             return productInCart
         }
         sellerContacts = ["phone"].enumerated().map {
-            let sellerContact = SellerContacts(context: context)
+            let sellerContact = SellerContacts(context: container.viewContext)
             sellerContact.order = Int16($0.offset)
             sellerContact.phone = $0.element
             return sellerContact
         }
         profile = ["name"].enumerated().map {
-            let profile = Profile(context: context)
+            let profile = Profile(context: container.viewContext)
             profile.order = Int16($0.offset)
             profile.name = $0.element
             return profile
         }
         instructions = ["title", "title1", "title2"].enumerated().map {
-            let instruction = Instruction(context: context)
+            let instruction = Instruction(context: container.viewContext)
             instruction.order = Int16($0.offset)
             instruction.title = $0.element
             return instruction
         }
         aboutProducts = ["text", "text1", "text2"].enumerated().map {
-            let about = AboutProducts(context: context)
+            let about = AboutProducts(context: container.viewContext)
             about.order = Int16($0.offset)
             about.text = $0.element
             about.section = Int16($0.offset % 2)
             return about
         }
         aboutApp = ["appStore"].enumerated().map {
-            let aboutApp = AboutApp(context: context)
+            let aboutApp = AboutApp(context: container.viewContext)
             aboutApp.order = Int16($0.offset)
             aboutApp.appStore = $0.element
             return aboutApp
         }
         
-        try context.save()
+        try container.viewContext.save()
         
-        repository = RepositoryImpl(updater: updater, context: context)
+        repository = RepositoryImpl(updater: updater, container: container)
     }
 
     override func tearDownWithError() throws {
-        try Product.clearEntity(context: context)
-        try Titles.clearEntity(context: context)
-        try Group.clearEntity(context: context)
-        try OrderWarning.clearEntity(context: context)
-        try ProductInCart.clearEntity(context: context)
-        try SellerContacts.clearEntity(context: context)
-        try Profile.clearEntity(context: context)
-        try Instruction.clearEntity(context: context)
-        try AboutProducts.clearEntity(context: context)
+        try Product.clearEntity(context: container.viewContext)
+        try Titles.clearEntity(context: container.viewContext)
+        try Group.clearEntity(context: container.viewContext)
+        try OrderWarning.clearEntity(context: container.viewContext)
+        try ProductInCart.clearEntity(context: container.viewContext)
+        try SellerContacts.clearEntity(context: container.viewContext)
+        try Profile.clearEntity(context: container.viewContext)
+        try Instruction.clearEntity(context: container.viewContext)
+        try AboutProducts.clearEntity(context: container.viewContext)
     }
     
     func testLoadData() throws {
@@ -240,9 +240,9 @@ class RepositoryTests: XCTestCase {
     }
     
     func testClearCart() {
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: container.viewContext)
         
-        XCTAssertNoThrow(try repository.clearCart().get())
+        XCTAssertNoThrow(try repository.clearCart().toBlocking().first())
         
         waitForExpectations(timeout: 1)
     }
@@ -278,9 +278,9 @@ class RepositoryTests: XCTestCase {
         XCTAssertNil(profiles.first?.phone)
         XCTAssertNil(profiles.first?.address)
         
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: context)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: container.viewContext)
         
-        XCTAssertNoThrow(try repository.updateProfile(name: "name2", phone: "phone", address: "address").get())
+        XCTAssertNoThrow(try repository.updateProfile(name: "name2", phone: "phone", address: "address").toBlocking().first())
         profiles = try repository.profile().toBlocking().first()!
         XCTAssertEqual(profiles.count, 1)
         XCTAssertEqual(profiles.first?.name, "name2")

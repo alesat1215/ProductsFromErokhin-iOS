@@ -26,7 +26,7 @@ class CartViewModelMockTests: XCTestCase {
     
     func testClearCart() {
         XCTAssertFalse(viewModel.isClearCart)
-        XCTAssertNoThrow(try viewModel.clearCart().get())
+        XCTAssertNoThrow(try viewModel.clearCart().toBlocking().first())
         XCTAssertTrue(viewModel.isClearCart)
     }
     

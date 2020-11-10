@@ -18,11 +18,11 @@ class CartViewModelMock: CartViewModel {
         Observable.just(inCartCountResult)
     }
     
-    var clearCartResult: Result<Void, Error> = .success(())
+    var clearCartResult = PublishRelay<Event<Void>>()
     var isClearCart = false
-    func clearCart() -> Result<Void, Error> {
+    func clearCart() -> Observable<Event<Void>> {
         isClearCart.toggle()
-        return clearCartResult
+        return clearCartResult.asObservable()
     }
     
     let productsResult = PublishRelay<Event<CoreDataSourceTableView<Product>>>()

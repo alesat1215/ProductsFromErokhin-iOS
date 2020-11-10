@@ -64,9 +64,9 @@ class RepositoryMock: Repository {
     
     // MARK: - cart
     var isClearCart = false
-    func clearCart() -> Result<Void, Error> {
+    func clearCart() -> Observable<Event<Void>> {
         isClearCart.toggle()
-        return .success(())
+        return Observable.just(Event.next(()))
     }
     
     var orderWarningResult = [OrderWarning]()
@@ -85,9 +85,9 @@ class RepositoryMock: Repository {
         Observable.just(profileResult)
     }
     
-    var updateProfileResult: Result<Void, Error> = .success(())
-    func updateProfile(name: String?, phone: String?, address: String?) -> Result<Void, Error> {
-        updateProfileResult
+    var updateProfileResult: Event<Void>?
+    func updateProfile(name: String?, phone: String?, address: String?) -> Observable<Event<Void>> {
+        updateProfileResult == nil ? Observable.empty() : Observable.just(updateProfileResult!)
     }
     
     // MARK: - instructions

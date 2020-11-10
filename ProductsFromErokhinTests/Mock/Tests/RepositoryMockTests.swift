@@ -40,7 +40,7 @@ class RepositoryMockTests: XCTestCase {
     
     func testClearCart() {
         XCTAssertFalse(repository.isClearCart)
-        XCTAssertNoThrow(try repository.clearCart().get())
+        XCTAssertNoThrow(try repository.clearCart().toBlocking().first())
         XCTAssertTrue(repository.isClearCart)
     }
     
@@ -57,7 +57,7 @@ class RepositoryMockTests: XCTestCase {
     }
     
     func testUpdateProfile() {
-        XCTAssertNoThrow(try repository.updateProfile(name: "", phone: "", address: "").get())
+        XCTAssertNoThrow(try repository.updateProfile(name: "", phone: "", address: "").toBlocking().first())
     }
     
     func testInstructions() {

@@ -18,13 +18,13 @@ class ProfileViewModelMock: ProfileViewModel {
         profileResult.asObservable()
     }
     
-    var updateProfileResult: Result<Void, Error> = .failure(AppError.unknown)
+    var updateProfileResult = PublishRelay<Event<Void>>()
     var isUpdateProfile = false
     var updateProfileParamsResult: (name: String?, phone: String?, address: String?)?
-    func updateProfile(name: String?, phone: String?, address: String?) -> Result<Void, Error> {
+    func updateProfile(name: String?, phone: String?, address: String?) -> Observable<Event<Void>> {
         updateProfileParamsResult = (name, phone, address)
         isUpdateProfile.toggle()
-        return updateProfileResult
+        return updateProfileResult.asObservable()
     }
     
     

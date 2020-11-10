@@ -27,7 +27,7 @@ class ProfileViewModelTests: XCTestCase {
     }
     
     func testUpdateProfile() {
-        XCTAssertNoThrow(try viewModel.updateProfile(name: "", phone: "", address: "").get())
+        XCTAssertNoThrow(try viewModel.updateProfile(name: "", phone: "", address: "").toBlocking().first())
     }
 
 }
