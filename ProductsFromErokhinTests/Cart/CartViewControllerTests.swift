@@ -16,23 +16,23 @@ class CartViewControllerTests: XCTestCase {
     private var viewModel: CartViewModelMock!
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var navigationController: UINavigationController!
-    // Outlets
+    // Outlets mock
     private var products: TableViewMock!
-    private var orderWarning: UILabel!
-    private var resultSum: UILabel!
-    private var send: UIButton!
+//    private var orderWarning: UILabel!
+//    private var resultSum: UILabel!
+//    private var send: UIButton!
 
     override func setUpWithError() throws {
+        viewModel = CartViewModelMock()
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "CartViewController")
+        controller.viewModel = viewModel
         
-        // Set views
-        products = TableViewMock()
-        orderWarning = UILabel()
-        resultSum = UILabel()
-        send = UIButton()
-        // Set outlets
-        controller.orderWarning = orderWarning
-        controller.resultSum = resultSum
+//        orderWarning = UILabel()
+//        resultSum = UILabel()
+//        send = UIButton()
+//        // Set outlets
+//        controller.orderWarning = orderWarning
+//        controller.resultSum = resultSum
         
         navigationController = UINavigationController()
         navigationController.viewControllers = [controller]
@@ -41,34 +41,39 @@ class CartViewControllerTests: XCTestCase {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
+        // Set outlets mock
+        products = TableViewMock()
+        
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
         // Set viewModel & products
-        viewModel = CartViewModelMock()
-        controller.viewModel = viewModel
-        controller.products = products
-        controller.send = send
-        
-        controller.viewDidLoad()
+//        viewModel = CartViewModelMock()
+//        controller.viewModel = viewModel
+//        controller.products = products
+//        controller.send = send
+//
+//        controller.viewDidLoad()
     }
     
     func testPrepare() {
-        let tableView = TableViewMock()
-        let viewController = UIViewController()
-        viewController.view = tableView
-        let productsSegueId = "productsSegueId"
-        controller.products = nil
-        controller.prepare(for: UIStoryboardSegue(identifier: "test", source: UIViewController(), destination: viewController), sender: nil)
-        XCTAssertNil(controller.products)
-        controller.prepare(for: UIStoryboardSegue(identifier: productsSegueId, source: UIViewController(), destination: viewController), sender: nil)
-        XCTAssertEqual(controller.products, tableView)
+//        let tableView = TableViewMock()
+//        let viewController = UIViewController()
+//        viewController.view = tableView
+//        let productsSegueId = "productsSegueId"
+//        controller.products = nil
+//        controller.prepare(for: UIStoryboardSegue(identifier: "test", source: UIViewController(), destination: viewController), sender: nil)
+//        XCTAssertNil(controller.products)
+//        controller.prepare(for: UIStoryboardSegue(identifier: productsSegueId, source: UIViewController(), destination: viewController), sender: nil)
+//        XCTAssertEqual(controller.products, tableView)
+        XCTAssertNotNil(controller.products)
     }
     
     func testBindProducts() {
+        controller.products = products
         // Error. Show message
-        XCTAssertNil(products.dataSource)
-        XCTAssertFalse(products.isReload)
+        XCTAssertNil(controller.products.dataSource)
+        XCTAssertFalse((controller.products as! TableViewMock).isReload)
         XCTAssertNil(controller.navigationController?.presentedViewController)
         viewModel.productsResult.accept(Event.error(AppError.unknown))
         
@@ -117,7 +122,7 @@ class CartViewControllerTests: XCTestCase {
         XCTAssertFalse(controller.send.isEnabled)
     }
     
-    func testbindWarning() {
+    func testBindWarning() {
         viewModel.withoutWarningResult.accept(true)
         XCTAssertTrue(controller.orderWarning.isHidden)
         viewModel.withoutWarningResult.accept(false)
