@@ -14,11 +14,13 @@ class AboutProductsViewControllerTests: XCTestCase {
     private var controller: AboutProductsViewController!
     private var viewModel: AboutProductsViewModelMock!
     private var navigationController: UINavigationController!
-    // Outlets
+    // Outlets mock
     private var aboutProducts: CollectionViewMock!
 
     override func setUpWithError() throws {
+        viewModel = AboutProductsViewModelMock()
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "AboutProductsViewController")
+        controller.viewModel = viewModel
         
         navigationController = UINavigationController()
         navigationController.viewControllers = [controller]
@@ -27,21 +29,17 @@ class AboutProductsViewControllerTests: XCTestCase {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
+        // Set outlets mock
+        aboutProducts = CollectionViewMock()
+        
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
-        
-        // Set viewModel & products
-        aboutProducts = CollectionViewMock()
-        viewModel = AboutProductsViewModelMock()
-        controller.viewModel = viewModel
-        controller.aboutProducts = aboutProducts
-        
-        controller.viewDidLoad()
     }
     
     func testBindAboutProducts() {
+        controller.aboutProducts = aboutProducts
         // Error. Show message
-        XCTAssertNil(aboutProducts.dataSource)
+        XCTAssertNil(controller.aboutProducts.dataSource)
         XCTAssertNil(controller.presentedViewController)
         viewModel.aboutProductsResult.accept(Event.error(AppError.unknown))
         
@@ -53,8 +51,8 @@ class AboutProductsViewControllerTests: XCTestCase {
         XCTAssertEqual(alertController.actions.count, 1)
         XCTAssertEqual(alertController.actions.first?.style, .default)
         XCTAssertEqual(alertController.actions.first?.title, "OK")
-        XCTAssertNil(aboutProducts.dataSource)
-        XCTAssertFalse(aboutProducts.isReload)
+        XCTAssertNil(controller.aboutProducts.dataSource)
+        XCTAssertFalse((controller.aboutProducts as! CollectionViewMock).isReload)
         // Trigger action OK
         let action = alertController.actions.first!
         typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
@@ -67,8 +65,8 @@ class AboutProductsViewControllerTests: XCTestCase {
         waitForExpectations(timeout: 1)
         
         XCTAssertNil(controller.presentedViewController)
-        XCTAssertNil(aboutProducts.dataSource)
-        XCTAssertFalse(aboutProducts.isReload)
+        XCTAssertNil(controller.aboutProducts.dataSource)
+        XCTAssertFalse((controller.aboutProducts as! CollectionViewMock).isReload)
         
         // Success
         let dataSource = CoreDataSourceCollectionViewMock(fetchRequest: AboutProducts.fetchRequestWithSort())
@@ -77,8 +75,8 @@ class AboutProductsViewControllerTests: XCTestCase {
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
         
-        XCTAssertEqual(aboutProducts.dataSource as! CoreDataSourceCollectionViewMock, dataSource)
-        XCTAssertTrue(aboutProducts.isReload)
+        XCTAssertEqual(controller.aboutProducts.dataSource as! CoreDataSourceCollectionViewMock, dataSource)
+        XCTAssertTrue((controller.aboutProducts as! CollectionViewMock).isReload)
     }
 
 }
