@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentContainer(name: "ProductsFromErokhin")
-        
+
         // Store in memory for test
         if ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil {
             let description = NSPersistentStoreDescription()
@@ -71,7 +71,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        // Auto save for background
         container.viewContext.automaticallyMergesChangesFromParent = true
+        
         return container
     }()
 

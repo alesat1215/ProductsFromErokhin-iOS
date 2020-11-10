@@ -28,7 +28,7 @@ class DatabaseUpdaterTests: XCTestCase {
         XCTAssertFalse(remoteConfig.isFetchAndActivate)
         XCTAssertFalse(remoteConfig.isSubscript)
         
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: container.viewContext)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: nil)
             .isInverted = true
     
         var sync: Observable<Event<Void>> = databaseUpdater.sync()
@@ -42,7 +42,7 @@ class DatabaseUpdaterTests: XCTestCase {
         // Not update. successUsingPreFetchedData
         fetchLimiter.fetchInProcess = false
         
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: container.viewContext)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: nil)
             .isInverted = true
         
         sync = databaseUpdater.sync()
@@ -61,7 +61,7 @@ class DatabaseUpdaterTests: XCTestCase {
         fetchLimiter.fetchInProcess = false
         remoteConfig.isFetchAndActivate = false
         
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: container.viewContext)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: nil)
             .isInverted = true
         sync = databaseUpdater.sync()
         sync.subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
@@ -80,7 +80,7 @@ class DatabaseUpdaterTests: XCTestCase {
         remoteConfig.isFetchAndActivate = false
         result = nil
         
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: container.viewContext)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: nil)
         
         sync = databaseUpdater.sync()
         sync.subscribe(onNext: { result = $0 }).disposed(by: disposeBag)
