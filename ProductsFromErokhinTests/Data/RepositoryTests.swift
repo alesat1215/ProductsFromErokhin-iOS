@@ -240,7 +240,7 @@ class RepositoryTests: XCTestCase {
     }
     
     func testClearCart() {
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: container.viewContext)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: nil)
         
         XCTAssertNoThrow(try repository.clearCart().toBlocking().first())
         
@@ -278,7 +278,7 @@ class RepositoryTests: XCTestCase {
         XCTAssertNil(profiles.first?.phone)
         XCTAssertNil(profiles.first?.address)
         
-        expectation(forNotification: .NSManagedObjectContextDidSave, object: container.viewContext)
+        expectation(forNotification: .NSManagedObjectContextDidSave, object: nil)
         
         XCTAssertNoThrow(try repository.updateProfile(name: "name2", phone: "phone", address: "address").toBlocking().first())
         profiles = try repository.profile().toBlocking().first()!
