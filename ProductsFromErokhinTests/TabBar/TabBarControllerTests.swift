@@ -14,16 +14,12 @@ class TabBarControllerTests: XCTestCase {
     
     private var controller: TabBarController!
     private var viewModel: CartViewModelMock!
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var navigationController: UINavigationController!
-    // Outlets
-    private var clearCart: UIButton!
 
     override func setUpWithError() throws {
-        controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TabBarController")
-        
-        clearCart = UIButton()
         viewModel = CartViewModelMock()
+        controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TabBarController")
+        controller.viewModel = viewModel
         
         navigationController = UINavigationController()
         navigationController.viewControllers = [controller]
@@ -34,12 +30,6 @@ class TabBarControllerTests: XCTestCase {
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
-        
-        // Set viewModel & clearCart
-        controller.viewModel = viewModel
-        controller.clearCart = clearCart
-        
-        controller.viewDidLoad()
     }
     
     func testBindCartCount() {
@@ -89,10 +79,8 @@ class TabBarControllerTests: XCTestCase {
     
     func testSetupClearCartActionOKButError() {
         // Tap clearCart than tap OK button
-//        viewModel.clearCartResult = .failure(AppError.unknown)
         XCTAssertNil(controller.presentedViewController)
         controller.clearCart.sendActions(for: .touchUpInside)
-        viewModel.clearCartResult.accept(Event.error(AppError.unknown))
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
@@ -105,13 +93,18 @@ class TabBarControllerTests: XCTestCase {
         XCTAssertEqual(alertController.actions[1].style, .destructive)
         XCTAssertEqual(alertController.actions[1].title, NSLocalizedString("clear", comment: ""))
         XCTAssertFalse(viewModel.isClearCart)
-        // Trigger action OK
+        // Trigger action Clear
         var action = alertController.actions[1]
         typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
         var block = action.value(forKey: "handler")
         var blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
         var handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
         handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        viewModel.clearCartResult.accept(Event.error(AppError.unknown))
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
@@ -124,7 +117,7 @@ class TabBarControllerTests: XCTestCase {
         alertController = controller.presentedViewController as! UIAlertController
         
         XCTAssertEqual(alertController.actions.count, 1)
-        // Trigger action OK
+        // Trigger action Cancel
         action = alertController.actions[0]
         block = action.value(forKey: "handler")
         blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
@@ -140,6 +133,7 @@ class TabBarControllerTests: XCTestCase {
     func testSetupClearCartAction() {
         // Tap clearCart than tap OK button
         XCTAssertNil(controller.presentedViewController)
+        
         controller.clearCart.sendActions(for: .touchUpInside)
         
         expectation(description: "wait 1 second").isInverted = true
@@ -160,6 +154,11 @@ class TabBarControllerTests: XCTestCase {
         let blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
         let handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
         handler(action)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
+        viewModel.clearCartResult.accept(Event.next(()))
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
