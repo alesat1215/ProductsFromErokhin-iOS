@@ -18,8 +18,8 @@ class TutorialViewControllerTests: XCTestCase {
     private var instruction: Instruction!
 
     override func setUpWithError() throws {
-        controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TutorialViewController")
         viewModel = TutorialViewModelMock()
+        controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TutorialViewController")
         controller.viewModel = viewModel
         
         instruction = Instruction(context: context)
