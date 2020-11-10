@@ -16,16 +16,14 @@ class MenuViewControllerTests: XCTestCase {
     private var viewModel: MenuViewModelMock!
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var navigationController: UINavigationController!
-    // Outlets
+    // Outlets mock
     private var groups: UICollectionView!
     private var products: UITableView!
 
     override func setUpWithError() throws {
+        viewModel = MenuViewModelMock()
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "MenuViewController")
-        
-        // Set views
-        groups = CollectionViewMock()
-        products = TableViewMock()
+        controller.viewModel = viewModel
         
         navigationController = UINavigationController()
         navigationController.viewControllers = [controller]
@@ -34,19 +32,17 @@ class MenuViewControllerTests: XCTestCase {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
+        // Set outlets mock
+        groups = CollectionViewMock()
+        products = TableViewMock()
+        
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
-        
-        // Set viewModel & outlets
-        viewModel = MenuViewModelMock()
-        controller.viewModel = viewModel
-        controller.groups = groups
-        controller.products = products
-        
-        controller.viewDidLoad()
     }
     
     func testBindGroups() {
+        // Set mocks for groups
+        controller.groups = groups
         // Error. Show message
         XCTAssertNil(controller.groups.dataSource)
         XCTAssertFalse((controller.groups as! CollectionViewMock).isReload)
@@ -96,7 +92,11 @@ class MenuViewControllerTests: XCTestCase {
     }
     
     func testSelectGroup() {
-        XCTAssertNotNil(groups.delegate)
+        // Set mocks for groups & products
+        groups.delegate = controller.groups.delegate
+        controller.groups = groups
+        controller.products = products
+        
         let groupDataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
         let productsDataSource = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
         
@@ -145,6 +145,8 @@ class MenuViewControllerTests: XCTestCase {
     }
     
     func testBindProducts() {
+        // Set mocks for products
+        controller.products = products
         // Error. Show message
         XCTAssertNil(controller.products.dataSource)
         XCTAssertFalse((controller.products as! TableViewMock).isReload)
@@ -194,6 +196,12 @@ class MenuViewControllerTests: XCTestCase {
     }
     
     func testSelectGroupWhenScrollProducts() {
+        // Set mocks for groups & products
+        groups.delegate = controller.groups.delegate
+        products.delegate = controller.products.delegate
+        controller.groups = groups
+        controller.products = products
+        
         let groupDataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
         let productsDataSource = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
         
@@ -315,6 +323,12 @@ class MenuViewControllerTests: XCTestCase {
     }
     
     func testEnableSelectGroupByScroll() {
+        // Set mocks for groups & products
+        groups.delegate = controller.groups.delegate
+        products.delegate = controller.products.delegate
+        controller.groups = groups
+        controller.products = products
+        
         let groupDataSource = CoreDataSourceCollectionViewMock(fetchRequest: Group.fetchRequestWithSort())
         let productsDataSource = CoreDataSourceTableViewMock(fetchRequest: Product.fetchRequestWithSort())
         let product = Product(context: context)
