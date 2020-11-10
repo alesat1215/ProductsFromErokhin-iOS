@@ -18,21 +18,11 @@ class CartViewControllerTests: XCTestCase {
     private var navigationController: UINavigationController!
     // Outlets mock
     private var products: TableViewMock!
-//    private var orderWarning: UILabel!
-//    private var resultSum: UILabel!
-//    private var send: UIButton!
 
     override func setUpWithError() throws {
         viewModel = CartViewModelMock()
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "CartViewController")
         controller.viewModel = viewModel
-        
-//        orderWarning = UILabel()
-//        resultSum = UILabel()
-//        send = UIButton()
-//        // Set outlets
-//        controller.orderWarning = orderWarning
-//        controller.resultSum = resultSum
         
         navigationController = UINavigationController()
         navigationController.viewControllers = [controller]
@@ -46,26 +36,9 @@ class CartViewControllerTests: XCTestCase {
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
-        
-        // Set viewModel & products
-//        viewModel = CartViewModelMock()
-//        controller.viewModel = viewModel
-//        controller.products = products
-//        controller.send = send
-//
-//        controller.viewDidLoad()
     }
     
     func testPrepare() {
-//        let tableView = TableViewMock()
-//        let viewController = UIViewController()
-//        viewController.view = tableView
-//        let productsSegueId = "productsSegueId"
-//        controller.products = nil
-//        controller.prepare(for: UIStoryboardSegue(identifier: "test", source: UIViewController(), destination: viewController), sender: nil)
-//        XCTAssertNil(controller.products)
-//        controller.prepare(for: UIStoryboardSegue(identifier: productsSegueId, source: UIViewController(), destination: viewController), sender: nil)
-//        XCTAssertEqual(controller.products, tableView)
         XCTAssertNotNil(controller.products)
     }
     
@@ -208,53 +181,53 @@ class CartViewControllerTests: XCTestCase {
         XCTAssertFalse(viewModel.isClearCart)
         
         // phoneForOrder success. Select messenger for send error. Show message
-//        viewModel.isPhoneForOrder = false
-//        viewModel.phoneForOrderResult = Event.next("phone")
-//
-//        controller.send.sendActions(for: .touchUpInside)
-//
-//        expectation(description: "wait 1 second").isInverted = true
-//        waitForExpectations(timeout: 1)
-//
-//        XCTAssertNotNil(controller.presentedViewController)
-//        var activityController = controller.presentedViewController as! UIActivityViewController
-//
-//        XCTAssertTrue(viewModel.isPhoneForOrder)
-//        XCTAssertTrue(viewModel.isCheckContact)
-//        XCTAssertTrue(viewModel.isMessage)
-//        XCTAssertFalse(viewModel.isClearCart)
-//
-//        activityController.dismiss(animated: true)
-//        activityController.completionWithItemsHandler?(nil, false, nil, AppError.unknown)
-//
-//        expectation(description: "wait 1 second").isInverted = true
-//        waitForExpectations(timeout: 1)
-//
-//        XCTAssertNotNil(controller.presentedViewController)
-//        alertController = controller.presentedViewController as! UIAlertController
-//        XCTAssertEqual(alertController.actions.count, 1)
-//        XCTAssertEqual(alertController.actions.first?.style, .default)
-//        XCTAssertEqual(alertController.actions.first?.title, "OK")
-//        XCTAssertTrue(viewModel.isPhoneForOrder)
-//        XCTAssertTrue(viewModel.isCheckContact)
-//        XCTAssertTrue(viewModel.isMessage)
-//        XCTAssertFalse(viewModel.isClearCart)
-//
-//        // Trigger action OK
-//        action = alertController.actions.first!
-//        block = action.value(forKey: "handler")
-//        blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
-//        handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
-//        handler(action)
-//
-//        expectation(description: "wait 1 second").isInverted = true
-//        waitForExpectations(timeout: 1)
-//
-//        XCTAssertNil(controller.presentedViewController)
-//        XCTAssertTrue(viewModel.isPhoneForOrder)
-//        XCTAssertTrue(viewModel.isCheckContact)
-//        XCTAssertTrue(viewModel.isMessage)
-//        XCTAssertFalse(viewModel.isClearCart)
+        viewModel.isPhoneForOrder = false
+        viewModel.phoneForOrderResult = Event.next("phone")
+
+        controller.send.sendActions(for: .touchUpInside)
+
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+
+        XCTAssertNotNil(controller.presentedViewController)
+        var activityController = controller.presentedViewController as! UIActivityViewController
+
+        XCTAssertTrue(viewModel.isPhoneForOrder)
+        XCTAssertTrue(viewModel.isCheckContact)
+        XCTAssertTrue(viewModel.isMessage)
+        XCTAssertFalse(viewModel.isClearCart)
+
+        activityController.dismiss(animated: true)
+        activityController.completionWithItemsHandler?(nil, false, nil, AppError.unknown)
+
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+
+        XCTAssertNotNil(controller.presentedViewController)
+        alertController = controller.presentedViewController as! UIAlertController
+        XCTAssertEqual(alertController.actions.count, 1)
+        XCTAssertEqual(alertController.actions.first?.style, .default)
+        XCTAssertEqual(alertController.actions.first?.title, "OK")
+        XCTAssertTrue(viewModel.isPhoneForOrder)
+        XCTAssertTrue(viewModel.isCheckContact)
+        XCTAssertTrue(viewModel.isMessage)
+        XCTAssertFalse(viewModel.isClearCart)
+
+        // Trigger action OK
+        action = alertController.actions.first!
+        block = action.value(forKey: "handler")
+        blockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque())
+        handler = unsafeBitCast(blockPtr, to: AlertHandler.self)
+        handler(action)
+
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+
+        XCTAssertNil(controller.presentedViewController)
+        XCTAssertTrue(viewModel.isPhoneForOrder)
+        XCTAssertTrue(viewModel.isCheckContact)
+        XCTAssertTrue(viewModel.isMessage)
+        XCTAssertFalse(viewModel.isClearCart)
         
         // phoneForOrder success. Select messenger success but not completed
         viewModel.isPhoneForOrder = false
@@ -268,7 +241,7 @@ class CartViewControllerTests: XCTestCase {
         waitForExpectations(timeout: 1)
         
         XCTAssertNotNil(controller.presentedViewController)
-        var activityController = controller.presentedViewController as! UIActivityViewController
+        activityController = controller.presentedViewController as! UIActivityViewController
         
         XCTAssertTrue(viewModel.isPhoneForOrder)
         XCTAssertTrue(viewModel.isCheckContact)
