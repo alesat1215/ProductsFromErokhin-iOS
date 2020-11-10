@@ -70,7 +70,7 @@ class AboutAppViewController: UIViewController {
     
     private func aboutApp() -> Observable<AboutApp> {
         viewModel?.aboutApp()
-            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
+//            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()

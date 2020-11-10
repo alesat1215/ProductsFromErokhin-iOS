@@ -47,7 +47,7 @@ extension CartViewController {
     private func bindProducts() {
         // Set dataSource for products
         viewModel?.products()
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
@@ -61,7 +61,7 @@ extension CartViewController {
     private func bindResult() {
         
         let totalInCart = viewModel?.totalInCart()
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .share()
         
@@ -87,7 +87,7 @@ extension CartViewController {
         
         // Set text of warning
         viewModel?.warning()
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
@@ -106,19 +106,21 @@ extension CartViewController {
             .throttle(RxTimeInterval.seconds(1))
             .asObservable()
             // Get phone for order
-            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .flatMapLatest { [weak self] in
                 self?.phoneForOrder() ?? Observable.empty()
             }
             // Send order
-            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .observeOn(MainScheduler.instance)
             .flatMap { [weak self] in
                 self?.sendOrder() ?? Observable.empty()
             }
             // Clear cart for complete
-            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            .observeOn(MainScheduler.instance)
             .flatMap { [weak self] in
-                self?.clearCart($0) ?? Observable.empty()
+                self?.clearCart2($0) ?? Observable.empty()
             }
             // Print if clean cart
             .subscribe(onNext: {
@@ -133,7 +135,7 @@ extension CartViewController {
             // Show message for error
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
-            }.observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+            }.observeOn(SerialDispatchQueueScheduler(qos: .userInitiated))
             // Check phone in contacts
             .flatMap { [weak self] in
                 self?.viewModel?.checkContact(phone: $0) ?? Observable.empty()
@@ -175,6 +177,19 @@ extension CartViewController {
                 default:
                     return Observable.just(())
                 }
+            }
+    }
+    
+    private func clearCart2(_ complete: Bool) -> Observable<Void> {
+        // Check comlete for send
+        guard let viewModel = viewModel, complete else {
+            return Observable.empty()
+        }
+        
+        return viewModel.clearCart2()
+            .observeOn(MainScheduler.instance)
+            .flatMapError { [weak self] in
+                self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }
     }
 }

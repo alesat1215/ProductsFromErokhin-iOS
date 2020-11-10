@@ -25,7 +25,7 @@ class TutorialViewController: UIPageViewController {
     /** Set dataSource for page controller & save to _dataSource */
     private func bindDataSource() {
         viewModel?.instructions()
-            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
+//            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()

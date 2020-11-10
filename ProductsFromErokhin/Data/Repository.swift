@@ -46,6 +46,8 @@ protocol Repository {
     func orderWarning() -> Observable<Event<[OrderWarning]>>
     /** Clear ProductInCart entity & save context */
     func clearCart() -> Result<Void, Error>
+    
+    func clearCart2() -> Observable<Event<Void>>
     /**
     Get sellerContacts from database & update it if needed
     - returns: Observable array with sellerContacts
@@ -58,6 +60,8 @@ protocol Repository {
     func profile() -> Observable<[Profile]>
     /** Clear profile entity, add new with params, save & return result */
     func updateProfile(name: String?, phone: String?, address: String?) -> Result<Void, Error>
+    
+    func updateProfile2(name: String?, phone: String?, address: String?) -> Observable<Event<Void>>
     /**
     Get instructions from database & update it if needed
     - returns: Observable array with instructions
@@ -78,11 +82,13 @@ protocol Repository {
 /** Repository for groups & products */
 class RepositoryImpl: Repository {
     private let updater: DatabaseUpdater! // di
-    private let context: NSManagedObjectContext!// di
+//    private let context: NSManagedObjectContext!// di
+    private let container: NSPersistentContainer! // di
     
-    init(updater: DatabaseUpdater?, context: NSManagedObjectContext?) {
+    init(updater: DatabaseUpdater?, container: NSPersistentContainer?) {
         self.updater = updater
-        self.context = context
+//        self.context = context
+        self.container = container
     }
     /** Update database from remote if needed */
     func loadData() -> Observable<Event<Void>> {
@@ -94,7 +100,7 @@ class RepositoryImpl: Repository {
      */
     func groups(cellId: [String]) -> Observable<Event<CoreDataSourceCollectionView<Group>>> {
         Observable.merge([
-            context.rx.coreDataSource(
+            container.viewContext.rx.coreDataSource(
                 cellId: cellId,
                 fetchRequest: Group.fetchRequestWithSort()
             ).materialize(),
@@ -107,7 +113,7 @@ class RepositoryImpl: Repository {
     */
     func titles() -> Observable<Event<[Titles]>> {
         Observable.merge([
-            context.rx.entities(fetchRequest: Titles.fetchRequestWithSort()).materialize(),
+            container.viewContext.rx.entities(fetchRequest: Titles.fetchRequestWithSort()).materialize(),
             updater.sync()
         ])
     }
@@ -117,7 +123,7 @@ class RepositoryImpl: Repository {
     */
     func products(predicate: NSPredicate? = nil, cellId: [String]) -> Observable<Event<CoreDataSourceCollectionView<Product>>> {
         Observable.merge([
-            context.rx.coreDataSource(
+            container.viewContext.rx.coreDataSource(
                 cellId: cellId,
                 fetchRequest: Product.fetchRequestWithSort(predicate: predicate)
             ).materialize(),
@@ -130,7 +136,7 @@ class RepositoryImpl: Repository {
     */
     func products(predicate: NSPredicate? = nil, cellId: String) -> Observable<Event<CoreDataSourceTableView<Product>>> {
         Observable.merge([
-            context.rx.coreDataSource(
+            container.viewContext.rx.coreDataSource(
                 cellId: cellId,
                 fetchRequest: Product.fetchRequestWithSort(predicate: predicate)
             ).materialize(),
@@ -142,7 +148,7 @@ class RepositoryImpl: Repository {
     - returns: Observable array with products
     */
     func products(predicate: NSPredicate? = nil) -> Observable<[Product]> {
-        context.rx.entities(fetchRequest: Product.fetchRequestWithSort(predicate: predicate))
+        container.viewContext.rx.entities(fetchRequest: Product.fetchRequestWithSort(predicate: predicate))
     }
     /**
     Get orderWarning from database & update it if needed
@@ -150,20 +156,44 @@ class RepositoryImpl: Repository {
     */
     func orderWarning() -> Observable<Event<[OrderWarning]>> {
         Observable.merge([
-            context.rx.entities(fetchRequest: OrderWarning.fetchRequestWithSort()).materialize(),
+            container.viewContext.rx.entities(fetchRequest: OrderWarning.fetchRequestWithSort()).materialize(),
             updater.sync()
         ])
     }
     /** Clear ProductInCart entity & save context */
     func clearCart() -> Result<Void, Error> {
         do {
-            try ProductInCart.clearEntity(context: context)
-            if context.hasChanges {
-                try context.save()
+            try ProductInCart.clearEntity(context: container.viewContext)
+            if container.viewContext.hasChanges {
+                try container.viewContext.save()
             }
             return .success(())
         } catch {
             return .failure(error)
+        }
+    }
+    
+    func clearCart2() -> Observable<Event<Void>> {
+        Observable.create { [weak self] observer in
+            self?.container.performBackgroundTask { context in
+                do {
+                    try ProductInCart.clearEntity(context: context)
+                    if context.hasChanges {
+                        try context.save()
+                    }
+                    DispatchQueue.main.async {
+                        observer.onNext(Event.next(()))
+                        observer.onCompleted()
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        context.undo()
+                        observer.onNext(Event.error(error))
+                        observer.onCompleted()
+                    }
+                }
+            }
+            return Disposables.create()
         }
     }
     /**
@@ -172,7 +202,7 @@ class RepositoryImpl: Repository {
     */
     func sellerContacts() -> Observable<Event<[SellerContacts]>> {
         Observable.merge([
-            context.rx.entities(fetchRequest: SellerContacts.fetchRequestWithSort()).materialize(),
+            container.viewContext.rx.entities(fetchRequest: SellerContacts.fetchRequestWithSort()).materialize(),
             updater.sync()
         ])
     }
@@ -181,23 +211,52 @@ class RepositoryImpl: Repository {
      - returns: Observable array with Profile
      */
     func profile() -> Observable<[Profile]> {
-        context.rx.entities(fetchRequest: Profile.fetchRequestWithSort())
+        container.viewContext.rx.entities(fetchRequest: Profile.fetchRequestWithSort())
     }
     /** Clear profile entity, add new with params, save & return result */
     func updateProfile(name: String?, phone: String?, address: String?) -> Result<Void, Error> {
         do {
-            try Profile.clearEntity(context: context)
-            let profile = NSEntityDescription.insertNewObject(forEntityName: "Profile", into: context)
+            try Profile.clearEntity(context: container.viewContext)
+            let profile = NSEntityDescription.insertNewObject(forEntityName: "Profile", into: container.viewContext)
             (profile as? Profile)?.order = 0
             (profile as? Profile)?.name = name
             (profile as? Profile)?.phone = phone
             (profile as? Profile)?.address = address
-            if context.hasChanges {
-                try context.save()
+            if container.viewContext.hasChanges {
+                try container.viewContext.save()
             }
             return .success(())
         } catch {
             return .failure(error)
+        }
+    }
+    
+    func updateProfile2(name: String?, phone: String?, address: String?) -> Observable<Event<Void>> {
+        Observable.create { [weak self] observer in
+            self?.container.performBackgroundTask { context in
+                do {
+                    try Profile.clearEntity(context: context)
+                    let profile = NSEntityDescription.insertNewObject(forEntityName: "Profile", into: context)
+                    (profile as? Profile)?.order = 0
+                    (profile as? Profile)?.name = name
+                    (profile as? Profile)?.phone = phone
+                    (profile as? Profile)?.address = address
+                    if context.hasChanges {
+                        try context.save()
+                    }
+                    DispatchQueue.main.async {
+                        observer.onNext(Event.next(()))
+                        observer.onCompleted()
+                    }
+                } catch {
+                    context.undo()
+                    DispatchQueue.main.async {
+                        observer.onNext(Event.error(error))
+                        observer.onCompleted()
+                    }
+                }
+            }
+            return Disposables.create()
         }
     }
     /**
@@ -206,7 +265,7 @@ class RepositoryImpl: Repository {
     */
     func instructions() -> Observable<Event<[Instruction]>> {
         Observable.merge([
-            context.rx.entities(fetchRequest: Instruction.fetchRequestWithSort()).materialize(),
+            container.viewContext.rx.entities(fetchRequest: Instruction.fetchRequestWithSort()).materialize(),
             updater.sync()
         ])
     }
@@ -216,7 +275,7 @@ class RepositoryImpl: Repository {
     */
     func aboutProducts(cellId: [String]) -> Observable<Event<CoreDataSourceCollectionView<AboutProducts>>> {
         Observable.merge([
-            context.rx.coreDataSource(
+            container.viewContext.rx.coreDataSource(
                 cellId: cellId,
                 fetchRequest: AboutProducts.fetchRequestWithSort(sortDescriptors: [
                     NSSortDescriptor(key: "section", ascending: true),
@@ -233,7 +292,7 @@ class RepositoryImpl: Repository {
     */
     func aboutApp() -> Observable<Event<[AboutApp]>> {
         Observable.merge([
-            context.rx.entities(fetchRequest: AboutApp.fetchRequestWithSort()).materialize(),
+            container.viewContext.rx.entities(fetchRequest: AboutApp.fetchRequestWithSort()).materialize(),
             updater.sync()
         ])
     }

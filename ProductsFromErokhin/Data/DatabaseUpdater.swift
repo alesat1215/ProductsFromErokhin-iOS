@@ -21,18 +21,21 @@ protocol DatabaseUpdater {
 class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
     private let remoteConfig: R! // di
     private let decoder: JSONDecoder! // di
-    private let context: NSManagedObjectContext! // di
+//    private let context: NSManagedObjectContext! // di
+    private let container: NSPersistentContainer! // di
     private let fetchLimiter: FetchLimiter! // di
     
     init(
         remoteConfig: R?,
         decoder: JSONDecoder?,
-        context: NSManagedObjectContext?,
+//        context: NSManagedObjectContext?,
+        container: NSPersistentContainer?,
         fetchLimiter: FetchLimiter?
     ) {
         self.remoteConfig = remoteConfig
         self.decoder = decoder
-        self.context = context
+//        self.context = context
+        self.container = container
         self.fetchLimiter = fetchLimiter
     }
     
@@ -60,7 +63,8 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
             case .successFetchedFromRemote:
                 print("Remote config fetched data from remote")
                 // Update database from remote config
-                try self?.update()
+//                try self?.update()
+                result = self?.update() ?? Observable.empty()
             case .successUsingPreFetchedData:
                 print("Remote config using prefetched data")
             @unknown default:
@@ -72,21 +76,62 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
         }
     }
     /** Update database from remote data */
-    private func update() throws {
-        try updateProducts()
-        try updateTitles()
-        try updateOrderWarning()
-        try updateSellerContacts()
-        try updateInstructions()
-        try updateAboutProducts()
-        try updateAboutApp()
-        // Save result
-        if context.hasChanges {
-            try context.save()
+//    private func update() throws {
+//        try updateProducts()
+//        try updateTitles()
+//        try updateOrderWarning()
+//        try updateSellerContacts()
+//        try updateInstructions()
+//        try updateAboutProducts()
+//        try updateAboutApp()
+//        // Save result
+//        if context.hasChanges {
+//            try context.save()
+//        }
+//    }
+    
+    private func update<T>() -> Observable<Event<T>> {
+        Observable.create { [weak self] observer in
+            self?.container.performBackgroundTask { [weak self] context in
+                do {
+                    try self?.updateProducts(context)
+                    try self?.updateTitles(context)
+                    try self?.updateOrderWarning(context)
+                    try self?.updateSellerContacts(context)
+                    try self?.updateInstructions(context)
+                    try self?.updateAboutProducts(context)
+                    try self?.updateAboutApp(context)
+                    if context.hasChanges {
+                        try context.save()
+                    }
+                    DispatchQueue.main.async {
+                        observer.onCompleted()
+                    }
+                } catch {
+                    context.undo()
+                    DispatchQueue.main.async {
+                        observer.onNext(Event.error(error))
+                        observer.onCompleted()
+                    }
+                }
+            }
+            return Disposables.create()
         }
+        
+//        try updateProducts()
+//        try updateTitles()
+//        try updateOrderWarning()
+//        try updateSellerContacts()
+//        try updateInstructions()
+//        try updateAboutProducts()
+//        try updateAboutApp()
+//        // Save result
+//        if context.hasChanges {
+//            try context.save()
+//        }
     }
     
-    private func updateProducts() throws {
+    private func updateProducts(_ context: NSManagedObjectContext) throws {
         // Get groups with products from remote data
         let groups: [GroupRemote] = try remoteData(key: .products)
         // Delete all groups with products from database
@@ -99,7 +144,7 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
         }
     }
     
-    private func updateTitles() throws {
+    private func updateTitles(_ context: NSManagedObjectContext) throws {
         // Get titles from remote data
         let titles: TitlesRemote = try remoteData(key: .titles)
         // Delete all titles from database
@@ -108,7 +153,7 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
         context.insert(titles.managedObject(context: context))
     }
     
-    private func updateOrderWarning() throws {
+    private func updateOrderWarning(_ context: NSManagedObjectContext) throws {
         // Get orderWarning from remote data
         let orderWarning: OrderWarningRemote = try remoteData(key: .orderWarning)
         // Delete all orderWarnings from database
@@ -117,7 +162,7 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
         context.insert(orderWarning.managedObject(context: context))
     }
     
-    private func updateSellerContacts() throws {
+    private func updateSellerContacts(_ context: NSManagedObjectContext) throws {
         // Get sellerContact from remote data
         let sellerContact: SellerContactsRemote = try remoteData(key: .contacts)
         // Delete all sellerContact from database
@@ -126,7 +171,7 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
         context.insert(sellerContact.managedObject(context: context))
     }
     
-    private func updateInstructions() throws {
+    private func updateInstructions(_ context: NSManagedObjectContext) throws {
         // Get instructions from remote data
         let instructions: [InstructionRemote] = try remoteData(key: .instructions)
         // Delete all instructions from database
@@ -137,7 +182,7 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
         }
     }
     
-    private func updateAboutProducts() throws {
+    private func updateAboutProducts(_ context: NSManagedObjectContext) throws {
         // Get aboutProducts from remote data
         let aboutProducts: [AboutProductsRemote] = try remoteData(key: .aboutProducts)
         // Delete all aboutProducts from database
@@ -148,7 +193,7 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
         }
     }
     
-    private func updateAboutApp() throws {
+    private func updateAboutApp(_ context: NSManagedObjectContext) throws {
         // Get aboutApp from remote data
         let aboutApp: AboutAppRemote = try remoteData(key: .aboutApp)
         // Delete all aboutApp from database

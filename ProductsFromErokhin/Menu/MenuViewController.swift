@@ -48,7 +48,7 @@ class MenuViewController: UIViewController {
         
         // Set dataSource for groups
         viewModel?.groups()
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
@@ -82,7 +82,7 @@ class MenuViewController: UIViewController {
         
         // Set dataSource for products
         viewModel?.products()
-            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
+//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()

@@ -53,7 +53,7 @@ class MoreTableViewController: UITableViewController {
     
     private func aboutApp() -> Observable<AboutApp> {
         viewModel?.aboutApp().take(1)
-            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
+//            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
