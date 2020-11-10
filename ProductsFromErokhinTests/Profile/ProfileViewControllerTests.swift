@@ -17,20 +17,12 @@ class ProfileViewControllerTests: XCTestCase {
     private var viewModel: ProfileViewModelMock!
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var navigationController: UINavigationController!
-    // Outlets
-    private var _name: UITextField!
-    private var phone: UITextField!
-    private var address: UITextField!
-    private var save: UIButton!
 
     override func setUpWithError() throws {
-        controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ProfileViewController")
+        viewModel = ProfileViewModelMock()
         
-        // Set views
-        _name = UITextField()
-        phone = UITextField()
-        address = UITextField()
-        save = UIButton()
+        controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ProfileViewController")
+        controller.viewModel = viewModel
         
         navigationController = UINavigationController()
         navigationController.viewControllers = [controller]
@@ -41,20 +33,6 @@ class ProfileViewControllerTests: XCTestCase {
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
-        
-        // Set viewModel & outlets
-        viewModel = ProfileViewModelMock()
-        controller.viewModel = viewModel
-        controller.name = _name
-        controller.phone = phone
-        controller.address = address
-        controller.save = save
-        
-        controller.view.addSubview(controller.name)
-        controller.view.addSubview(controller.phone)
-        controller.view.addSubview(controller.address)
-        
-        controller.viewDidLoad()
     }
     
     func testBindProfile() {
@@ -137,6 +115,10 @@ class ProfileViewControllerTests: XCTestCase {
         viewModel.updateProfileParamsResult = nil
         
         controller.save.sendActions(for: .touchUpInside)
+        
+        expectation(description: "wait 1 second").isInverted = true
+        waitForExpectations(timeout: 1)
+        
         viewModel.updateProfileResult.accept(Event.next(()))
         
         expectation(description: "wait 1 second").isInverted = true
@@ -147,7 +129,7 @@ class ProfileViewControllerTests: XCTestCase {
         XCTAssertEqual(alertController.actions.count, 1)
         XCTAssertEqual(alertController.actions.first?.style, .default)
         XCTAssertEqual(alertController.actions.first?.title, "OK")
-        XCTAssertEqual(alertController.message, "Profile saved")
+        XCTAssertEqual(alertController.message, NSLocalizedString("profile", comment: ""))
         XCTAssertTrue(viewModel.isUpdateProfile)
         XCTAssertNotNil(viewModel.updateProfileParamsResult)
     

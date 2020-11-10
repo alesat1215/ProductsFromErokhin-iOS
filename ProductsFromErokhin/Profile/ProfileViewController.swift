@@ -98,5 +98,8 @@ extension ProfileViewController {
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }
+            .flatMap { [weak self] in
+                self?.rx.showMessage(NSLocalizedString("profile", comment: ""), withEvent: true) ?? Observable.empty()
+            }
     }
 }
