@@ -17,7 +17,9 @@ class LoadViewControllerTests: XCTestCase {
     private var navigationController: UINavigationController!
 
     override func setUpWithError() throws {
+        viewModel = LoadViewModelMock()
         controller = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "LoadViewController")
+        controller.viewModel = viewModel
         
         navigationController = UINavigationController()
         navigationController.viewControllers = [controller]
@@ -28,11 +30,6 @@ class LoadViewControllerTests: XCTestCase {
         
         expectation(description: "wait 1 second").isInverted = true
         waitForExpectations(timeout: 1)
-        
-        viewModel = LoadViewModelMock()
-        controller.viewModel = viewModel
-        
-        controller.viewDidLoad()
     }
     
     func testLoadData() {
