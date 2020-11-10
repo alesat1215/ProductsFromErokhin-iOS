@@ -28,7 +28,6 @@ class ContactsViewController: UIViewController {
     
     private func bindContacts() {
         viewModel?.contacts()
-//            .subscribeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()

@@ -141,7 +141,6 @@ extension SwinjectStoryboard {
             DatabaseUpdaterImpl(
                 remoteConfig: r.resolve(RemoteConfig.self),
                 decoder: r.resolve(JSONDecoder.self),
-//                context: r.resolve(NSManagedObjectContext.self),
                 container: r.resolve(NSPersistentContainer.self),
                 fetchLimiter: r.resolve(FetchLimiter.self)
             )
@@ -165,9 +164,6 @@ extension SwinjectStoryboard {
         }.inObjectScope(.container)
         
         // MARK: - Shared
-//        defaultContainer.register(NSManagedObjectContext.self) { r in
-//            (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-//        }.inObjectScope(.container)
         defaultContainer.register(NSPersistentContainer.self) { r in
             (UIApplication.shared.delegate as! AppDelegate).persistentContainer
         }.inObjectScope(.container)

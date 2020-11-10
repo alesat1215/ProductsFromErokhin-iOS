@@ -63,7 +63,6 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
             case .successFetchedFromRemote:
                 print("Remote config fetched data from remote")
                 // Update database from remote config
-//                try self?.update()
                 result = self?.update() ?? Observable.empty()
             case .successUsingPreFetchedData:
                 print("Remote config using prefetched data")
@@ -76,20 +75,6 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
         }
     }
     /** Update database from remote data */
-//    private func update() throws {
-//        try updateProducts()
-//        try updateTitles()
-//        try updateOrderWarning()
-//        try updateSellerContacts()
-//        try updateInstructions()
-//        try updateAboutProducts()
-//        try updateAboutApp()
-//        // Save result
-//        if context.hasChanges {
-//            try context.save()
-//        }
-//    }
-    
     private func update<T>() -> Observable<Event<T>> {
         Observable.create { [weak self] observer in
             self?.container.performBackgroundTask { [weak self] context in
@@ -117,18 +102,6 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
             }
             return Disposables.create()
         }
-        
-//        try updateProducts()
-//        try updateTitles()
-//        try updateOrderWarning()
-//        try updateSellerContacts()
-//        try updateInstructions()
-//        try updateAboutProducts()
-//        try updateAboutApp()
-//        // Save result
-//        if context.hasChanges {
-//            try context.save()
-//        }
     }
     
     private func updateProducts(_ context: NSManagedObjectContext) throws {

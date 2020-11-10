@@ -82,11 +82,6 @@ extension ProfileViewController {
             .flatMapLatest { [weak self] in
                 self?.updateProfile() ?? Observable.empty()
             }
-            // Show result message
-//            .observeOn(MainScheduler.instance)
-//            .flatMap { [weak self] in
-//                self?.showUpdateProfileResult($0) ?? Observable.empty()
-//            }
             // Log success result
             .subscribe(onNext: {
                 print("Profile saved success")
@@ -96,29 +91,12 @@ extension ProfileViewController {
     private func updateProfile() -> Observable<Void> {
         Observable.just((name.text, phone.text, address.text))
             // Update profile
-//            .observeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
             .flatMap { [weak self] profile -> Observable<Event<Void>> in
-//                guard let viewModel = self?.viewModel else {
-//                    return Observable.empty()
-//                }
-//                return Observable.just(
-//                    viewModel.updateProfile(name: profile.0, phone: profile.1, address: profile.2)
-//                )
-                self?.viewModel?.updateProfile2(name: profile.0, phone: profile.1, address: profile.2) ?? Observable.empty()
+                self?.viewModel?.updateProfile(name: profile.0, phone: profile.1, address: profile.2) ?? Observable.empty()
             }
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }
     }
-    /** Show result for update profile */
-//    private func showUpdateProfileResult(_ result: Result<Void, Error>) -> Observable<Void> {
-//        switch result {
-//        case .failure(let error):
-//            print("Profile saved error: \(error.localizedDescription)")
-//            return self.rx.showMessage(error.localizedDescription)
-//        default:
-//            return self.rx.showMessage(NSLocalizedString("profile", comment: ""), withEvent: true)
-//        }
-//    }
 }

@@ -70,7 +70,6 @@ extension StartViewController {
     /** Bind first result from request to titles */
     private func bindTitles() {
         viewModel?.titles()
-//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
@@ -89,25 +88,25 @@ extension StartViewController {
     private func bindProducts() {
         // products
         viewModel?.products()
-//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }.subscribe(
                 onNext: { [weak self] in
                     $0.bind(collectionView: self?.products)
-                }).disposed(by: disposeBag)
+                }
+            ).disposed(by: disposeBag)
         
         // products2
         viewModel?.products2()
-//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .flatMapError { [weak self] in
                 self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
             }.subscribe(
                 onNext: { [weak self] in
                     $0.bind(collectionView: self?.products2)
-                }).disposed(by: disposeBag)
+                }
+            ).disposed(by: disposeBag)
     }
 }
 

@@ -30,7 +30,7 @@ class TutorialViewModelImpl: TutorialViewModel {
     }
     /** Set true for key TutorialKey.tutorialIsRead in UserDefaults in global queue */
     func readTutorial() {
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             self?.userDefaults.set(true, forKey: TutorialKey.tutorialIsRead.rawValue)
         }
     }

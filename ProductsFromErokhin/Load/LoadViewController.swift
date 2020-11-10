@@ -73,7 +73,6 @@ class LoadViewController: UIViewController {
                 self?.auth() ?? Observable.empty()
             }
             // Load data
-//            .observeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .flatMapLatest { [weak self] in
                 self?.load() ?? Observable.empty()
             }

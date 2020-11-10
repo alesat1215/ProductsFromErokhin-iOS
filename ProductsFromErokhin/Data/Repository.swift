@@ -45,9 +45,7 @@ protocol Repository {
     */
     func orderWarning() -> Observable<Event<[OrderWarning]>>
     /** Clear ProductInCart entity & save context */
-    func clearCart() -> Result<Void, Error>
-    
-    func clearCart2() -> Observable<Event<Void>>
+    func clearCart() -> Observable<Event<Void>>
     /**
     Get sellerContacts from database & update it if needed
     - returns: Observable array with sellerContacts
@@ -59,9 +57,7 @@ protocol Repository {
      */
     func profile() -> Observable<[Profile]>
     /** Clear profile entity, add new with params, save & return result */
-    func updateProfile(name: String?, phone: String?, address: String?) -> Result<Void, Error>
-    
-    func updateProfile2(name: String?, phone: String?, address: String?) -> Observable<Event<Void>>
+    func updateProfile(name: String?, phone: String?, address: String?) -> Observable<Event<Void>>
     /**
     Get instructions from database & update it if needed
     - returns: Observable array with instructions
@@ -82,12 +78,10 @@ protocol Repository {
 /** Repository for groups & products */
 class RepositoryImpl: Repository {
     private let updater: DatabaseUpdater! // di
-//    private let context: NSManagedObjectContext!// di
     private let container: NSPersistentContainer! // di
     
     init(updater: DatabaseUpdater?, container: NSPersistentContainer?) {
         self.updater = updater
-//        self.context = context
         self.container = container
     }
     /** Update database from remote if needed */
@@ -161,19 +155,7 @@ class RepositoryImpl: Repository {
         ])
     }
     /** Clear ProductInCart entity & save context */
-    func clearCart() -> Result<Void, Error> {
-        do {
-            try ProductInCart.clearEntity(context: container.viewContext)
-            if container.viewContext.hasChanges {
-                try container.viewContext.save()
-            }
-            return .success(())
-        } catch {
-            return .failure(error)
-        }
-    }
-    
-    func clearCart2() -> Observable<Event<Void>> {
+    func clearCart() -> Observable<Event<Void>> {
         Observable.create { [weak self] observer in
             self?.container.performBackgroundTask { context in
                 do {
@@ -214,24 +196,7 @@ class RepositoryImpl: Repository {
         container.viewContext.rx.entities(fetchRequest: Profile.fetchRequestWithSort())
     }
     /** Clear profile entity, add new with params, save & return result */
-    func updateProfile(name: String?, phone: String?, address: String?) -> Result<Void, Error> {
-        do {
-            try Profile.clearEntity(context: container.viewContext)
-            let profile = NSEntityDescription.insertNewObject(forEntityName: "Profile", into: container.viewContext)
-            (profile as? Profile)?.order = 0
-            (profile as? Profile)?.name = name
-            (profile as? Profile)?.phone = phone
-            (profile as? Profile)?.address = address
-            if container.viewContext.hasChanges {
-                try container.viewContext.save()
-            }
-            return .success(())
-        } catch {
-            return .failure(error)
-        }
-    }
-    
-    func updateProfile2(name: String?, phone: String?, address: String?) -> Observable<Event<Void>> {
+    func updateProfile(name: String?, phone: String?, address: String?) -> Observable<Event<Void>> {
         Observable.create { [weak self] observer in
             self?.container.performBackgroundTask { context in
                 do {

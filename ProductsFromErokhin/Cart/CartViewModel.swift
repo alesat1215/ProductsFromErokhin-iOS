@@ -21,9 +21,7 @@ protocol CartViewModel {
     /** Count of products in cart */
     func inCartCount() -> Observable<String?>
     /** Remove all products from cart */
-    func clearCart() -> Result<Void, Error>
-    
-    func clearCart2() -> Observable<Event<Void>>
+    func clearCart() -> Observable<Event<Void>>
     /** Warning text for order */
     func warning() -> Observable<Event<String>>
     /** Check need the warning for order */
@@ -79,12 +77,8 @@ class CartViewModelImpl: CartViewModel {
         }
     }
     /** Remove all products from cart */
-    func clearCart() -> Result<Void, Error> {
+    func clearCart() -> Observable<Event<Void>> {
         repository.clearCart()
-    }
-    
-    func clearCart2() -> Observable<Event<Void>> {
-        repository.clearCart2()
     }
     
     // MARK: - Order warning

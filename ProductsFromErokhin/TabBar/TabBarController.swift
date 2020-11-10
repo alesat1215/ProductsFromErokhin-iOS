@@ -35,7 +35,6 @@ class TabBarController: UITabBarController {
         }
         
         let inCartCount = viewModel?.inCartCount()
-//            .subscribeOn(SerialDispatchQueueScheduler(qos: .userInteractive))
             .observeOn(MainScheduler.instance)
             .catchErrorJustReturn("")
             .share()
@@ -75,24 +74,14 @@ class TabBarController: UITabBarController {
             ]
         )
         // For OK action clear cart
-//        .observeOn(SerialDispatchQueueScheduler.init(qos: .userInteractive))
         .flatMap { [weak self] action -> Observable<Event<Void>> in
             guard let viewModel = self?.viewModel, action.index == 1 else {
                 return Observable.empty()
             }
-            return viewModel.clearCart2()
+            return viewModel.clearCart()
         }
         // Show message for clear cart error
         .observeOn(MainScheduler.instance)
-//        .flatMap { [weak self] result -> Observable<Void> in
-//            switch result {
-//            case .failure(let error):
-//                print("Clear cart error: \(error)")
-//                return self?.rx.showMessage(error.localizedDescription) ?? Observable.empty()
-//            default:
-//                return Observable.just(())
-//            }
-//        }
         .flatMapError { [weak self] in
             self?.rx.showMessage($0.localizedDescription) ?? Observable.empty()
         }
