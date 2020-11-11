@@ -86,19 +86,15 @@ class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
                     if context.hasChanges {
                         try context.save()
                     }
-                    DispatchQueue.main.async {
-                        observer.onCompleted()
-                    }
+                    observer.onCompleted()
                 } catch {
                     context.undo()
-                    DispatchQueue.main.async {
-                        observer.onNext(Event.error(error))
-                        observer.onCompleted()
-                    }
+                    observer.onNext(Event.error(error))
+                    observer.onCompleted()
                 }
             }
             return Disposables.create()
-        }
+        }.subscribeOn(CurrentThreadScheduler.instance)
     }
     
     private func updateProducts(_ context: NSManagedObjectContext) throws {
