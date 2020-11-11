@@ -21,20 +21,17 @@ protocol DatabaseUpdater {
 class DatabaseUpdaterImpl<R: RemoteConfigMethods>: DatabaseUpdater {
     private let remoteConfig: R! // di
     private let decoder: JSONDecoder! // di
-//    private let context: NSManagedObjectContext! // di
     private let container: NSPersistentContainer! // di
     private let fetchLimiter: FetchLimiter! // di
     
     init(
         remoteConfig: R?,
         decoder: JSONDecoder?,
-//        context: NSManagedObjectContext?,
         container: NSPersistentContainer?,
         fetchLimiter: FetchLimiter?
     ) {
         self.remoteConfig = remoteConfig
         self.decoder = decoder
-//        self.context = context
         self.container = container
         self.fetchLimiter = fetchLimiter
     }
